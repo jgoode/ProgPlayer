@@ -1,0 +1,13 @@
+minimumReleaseAgeExclude:
+  - electron@45.2.2
+
+# pnpm 12 requires every dependency with an install script to be reviewed.
+# electron downloads its platform binary; esbuild installs its native binary.
+allowBuilds:
+  electron: true
+  esbuild: true
+
+# minimatch <11.0.1 is affected by a glob-parts amplification advisory
+# (GHSA-1244012). The patched release is API-compatible for our usage.
+overrides:
+  minimatch: 11.0.1

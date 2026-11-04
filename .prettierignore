@@ -1,0 +1,10 @@
+node_modules
+out
+dist
+release
+coverage
+test-results
+playwright-report
+pnpm-lock.yaml
+docs
+tests/.boundary-probe
