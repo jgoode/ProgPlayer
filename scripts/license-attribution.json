@@ -1,0 +1,8 @@
+{
+  "caniuse-lite": {
+    "license": "CC-BY-4.0",
+    "url": "https://github.com/browserslist/browserslist#browsers-data",
+    "attribution": "caniuse-lite — browser usage statistics data, (c)(can i use) contributors, CC-BY-4.0. Development-only dependency; not part of the shipped application bundle.",
+    "bundled": false
+  }
+}
