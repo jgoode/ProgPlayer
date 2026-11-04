@@ -80,6 +80,19 @@ asserts the lint failure and removes the violation again:
 tests, build, the Electron smoke test, the dependency audit and the licence
 audit on `windows-latest`, `macos-latest` and `ubuntu-latest`.
 
+On Linux the Electron smoke test needs a display server and the Chromium
+shared libraries, so CI installs `xvfb` and the Playwright system
+dependencies and runs the test under `xvfb-run --auto-servernum`:
+
+```bash
+sudo apt-get install --no-install-recommends -y xvfb
+pnpm exec playwright install-deps chromium
+xvfb-run --auto-servernum pnpm exec playwright test
+```
+
+Line endings are normalised to LF by `.gitattributes`, so the format check
+reports the same result on every platform.
+
 ## Licence
 
 MIT — see [LICENSE](LICENSE). Every dependency and bundled asset must be

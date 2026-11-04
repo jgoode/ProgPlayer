@@ -56,9 +56,13 @@ Documents:
   - Boundary rules: **verified** — `tests/unit/import-boundaries.test.ts` writes a deliberate violation
     (`core` importing `@renderer`, `core` importing `electron`, `core` using `ipcRenderer`), asserts the lint
     error and removes the violation afterwards.
-  - Window opens: **verified on Windows 10/11 x64** (Playwright smoke test, 2026-11-04).
-  - macOS and Linux: **unverified locally** — the CI matrix in `.github/workflows/ci.yml` runs the same smoke
-    test on `macos-latest` and `ubuntu-latest`; the Phase 0 exit check stays open until that matrix is green.
+  - Window opens: **verified on Windows 10/11 x64** (Playwright smoke test, 2026-11-04) and **on Linux
+    x64** (Ubuntu 26.04 WSL with `xvfb-run`, 2026-11-04).
+  - macOS: **unverified locally** — the CI matrix in `.github/workflows/ci.yml` runs the same smoke test on
+    `macos-latest`; the Phase 0 exit check stays open until that matrix is green.
+  - First CI run (2026-11-04, run 41880743219) failed on all three platforms; the causes and the fix in
+    `ec94b21` are recorded in the changelog. Linux was re-verified locally on Ubuntu 26.04 (WSL) with the full
+    pipeline green; macOS and Windows are verified by the next CI matrix run.
 
 ### P1 — Technical spikes
 - [ ] P1.1 Spike S1: SoundFont engine (scheduled events, CPU, offline render, SF3)
@@ -195,6 +199,8 @@ Documents:
 | 2026-11-04 | `caniuse-lite` (CC-BY-4.0, dev-only transitive dependency) accepted with recorded attribution in `scripts/license-attribution.json`; it is not part of the shipped bundle | P0.9 |
 | 2026-11-04 | CSP applied through a build-time meta tag in `electron.vite.config.ts` plus a `session.defaultSession.webRequest` header in the main process (CSP as a response header) | P0.5 |
 | 2026-11-04 | Minimal preload API exposes one example call, `practicePlayer.getAppInfo()`, with no generic IPC escape hatch | P0.5 |
+| 2026-11-04 | Line endings normalised to LF via `.gitattributes` and Prettier `endOfLine: lf`, so the format check is identical on all three operating systems | CI fix 2026-11-04 |
+| 2026-11-04 | The Electron smoke test runs under `xvfb-run` on Ubuntu with `playwright install-deps chromium`; GitHub's Linux runners have no X server and lack the Chromium shared libraries | CI fix 2026-11-04 |
 
 ## 5. Open items
 
@@ -222,3 +228,4 @@ None.
 |---|---|
 | 2026-11-03 | Initial tracker created from implementation.md v0.1 |
 | 2026-11-04 | P0.1–P0.9 implemented: MIT licence, README, CONTRIBUTING, electron-vite + React + strict TypeScript app, ESLint/Prettier with a local import-boundary rule, Vitest suite (one test per layer plus cross-layer core-purity and boundary-violation tests), Electron hardening baseline (contextIsolation, sandbox, nodeIntegration off, CSP as header and meta tag, minimal typed preload API, backgroundThrottling off), Playwright Electron smoke test, GitHub Actions matrix (Windows/macOS/Ubuntu) with dependency and licence audits, ADR template plus ADR-0001. Verified locally on Windows: lint, type-check, 15 unit tests, build, Electron smoke test, dependency audit (0 vulnerabilities) and licence audit (259 packages, 0 incompatible). macOS/Linux pending the CI matrix run. |
+| 2026-11-04 | First CI run failed on all three platforms; fixed in `ec94b21`. Causes: (1) Windows — Git checked the files out with CRLF while the committed blobs were LF, so Prettier reported 45 files as unformatted; fixed with `.gitattributes` (`* text=auto eol=lf`) and Prettier `endOfLine: lf`. (2) Ubuntu — the Electron smoke test failed with "Missing X server or $DISPLAY" because the runners have no X server; fixed by installing `xvfb` plus the Chromium shared libraries (`playwright install-deps chromium`) and running the test under `xvfb-run --auto-servernum`. (3) All platforms — `actions/checkout@v4`, `actions/setup-node@v4` and `pnpm/action-setup@v4` run on Node 20, which GitHub deprecated; bumped to `checkout@v5`, `setup-node@v5` and `action-setup@v6`, which run on Node 24. Re-verified the full pipeline on Linux (Ubuntu 26.04 WSL, Node 24.21.0, pnpm 12.9.1): lint, format check, type-check, 16 unit tests, build, 2 Electron smoke tests, dependency audit and licence audit all pass. |
