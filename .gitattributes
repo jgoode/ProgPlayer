@@ -1,0 +1,23 @@
+# Normalise line endings in the repository so that formatting checks and
+# builds behave identically on Windows, macOS and Linux.
+#
+# `* text=auto eol=lf` stores LF in the index and checks out LF everywhere;
+# Prettier then reports the same result on every platform.
+* text=auto eol=lf
+
+# Files that must keep Windows CRLF line endings.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary files must never be line-ending converted.
+*.sf2 binary
+*.sf3 binary
+*.wav binary
+*.mp3 binary
+*.png binary
+*.jpg binary
+*.ico binary
+*.zip binary
+*.ttf binary
+*.otf binary
