@@ -226,7 +226,34 @@ Initial targets (to be tightened or relaxed with measurements from spikes S1/S2)
 | `audit` | Every push/PR | Dependency vulnerability and licence audit |
 | `package` | Tag / release branch | Build installers; run AT-8 steps on clean machines manually |
 
-## 12. Entry and exit criteria per phase
+## 12. Phase 0 test inventory (bootstrap)
+
+| Layer | Test | File | Checks |
+|---|---|---|---|
+| L1 | Core contracts | `src/core/core.test.ts` | IPC channel names and preload API key are stable |
+| L1 | Core purity | `tests/unit/core-purity.test.ts` | No Electron, DOM, audio or Node imports in `src/core` (NFR-MNT-1) |
+| L1 | Layer boundary rules | `tests/unit/import-boundaries.test.ts` | A deliberate violation fails the lint: `core` importing `@renderer`, `core` importing `electron`, `core` using `ipcRenderer`; the violation is removed after each case |
+| L3 | Audio / MIDI layer presence | `src/audio/audio.test.ts`, `src/midi/midi.test.ts` | The layers exist and contain no feature code in Phase 0 |
+| L4 | Security baseline | `src/main/main.test.ts` | `contextIsolation` on, `nodeIntegration` off, `sandbox` on, `backgroundThrottling` off, CSP present |
+| L4 | Preload surface | `src/preload/preload.test.ts` | The exposed API has exactly one method and no generic IPC escape hatch |
+| L3 | Renderer shell | `src/renderer/src/App.test.tsx` | The "PracticePlayer" heading renders |
+| L4 | Electron smoke | `tests/e2e/smoke.spec.ts` | The built app launches and the window title is `PracticePlayer` |
+| CI | Dependency audit | `pnpm run audit:deps` | No high/critical advisories |
+| CI | Licence audit | `pnpm run audit:licenses` | Every installed package has a permissive licence or a recorded attribution |
+
+**Deliberate violation procedure.** The boundary rule is demonstrated
+automatically: `tests/unit/import-boundaries.test.ts` writes a violating file
+into `src/core/__boundary_probe__/`, lints it with the project's ESLint
+configuration, asserts the expected error message and deletes the file in
+`afterEach`. The repository therefore never contains a violation. To reproduce
+the failure by hand, add `import { app } from 'electron'` to any file in
+`src/core/` and run `pnpm run lint`.
+
+**Not covered in Phase 0.** Real audio output, MIDI hardware, packaging and
+the device procedures in §7 do not apply yet: the app has no audio or MIDI
+code. They become applicable from Phase 1 (spikes) onwards.
+
+## 13. Entry and exit criteria per phase
 
 | Phase | Entry | Exit |
 |---|---|---|
@@ -242,6 +269,6 @@ Initial targets (to be tightened or relaxed with measurements from spikes S1/S2)
 | P9 | P3, P4, P8 done | AT-6 passes |
 | P10 | All previous | AT-1…AT-8 pass; release gate met |
 
-## 13. Reporting
+## 14. Reporting
 
 Test results are summarized in progress.md at each phase exit (counts, failures, open defects). Defects are tracked as issues labelled with severity and requirement IDs. Measurement outputs from L5/L6 runs are kept as dated notes under `docs/test-runs/`.

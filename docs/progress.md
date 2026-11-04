@@ -2,8 +2,8 @@
 
 | | |
 |---|---|
-| **Last updated** | 2026-11-03 |
-| **Current phase** | Planning complete — awaiting review before Phase 0 |
+| **Last updated** | 2026-11-04 |
+| **Current phase** | P0 Bootstrap — implementation complete; CI matrix pending first run |
 | **Plan of record** | implementation.md v0.1, requirements.md v0.2 |
 
 **How to use this file.** Update it at the end of every working session (human or AI agent). Tick tasks, change phase status, log decisions and blockers, and add one line to the changelog. Task IDs (e.g. `P2.3`) are referenced from agent-prompts.md and commit messages.
@@ -16,7 +16,7 @@
 
 | Phase | Name | Size | Status | Exit check met? |
 |---|---|---|---|---|
-| P0 | Bootstrap and CI | S | Not started | No |
+| P0 | Bootstrap and CI | S | In progress — implemented, awaiting CI matrix | No (Windows verified locally; macOS/Linux pending CI) |
 | P1 | Technical spikes | M | Not started | No |
 | P2 | Theory core | M | Not started | No |
 | P3 | Arrangement, compiler, presets, file formats | M | Not started | No |
@@ -34,24 +34,31 @@ Documents:
 |---|---|---|
 | requirements.md | 0.2 | Drafted; awaiting review |
 | implementation.md | 0.1 | Drafted; awaiting review |
-| progress.md | 0.1 | This file |
+| progress.md | 0.2 | This file |
 | testing.md | 0.1 | Drafted; awaiting review |
-| gap-analysis.md | 0.1 | Drafted; awaiting review |
+| gap-analysis.md | 0.2 | Phase 0 dependencies recorded in §4 |
 | agent-prompts.md | 0.1 | Drafted; awaiting review |
+| adr/0001-electron-toolchain.md | 1.0 | Accepted |
 
 ## 2. Task checklists
 
 ### P0 — Bootstrap and CI
-- [ ] P0.1 Create repo, MIT license, README, contribution notes
-- [ ] P0.2 electron-vite + React + strict TypeScript scaffold
-- [ ] P0.3 ESLint/Prettier; import-boundary rules (`core` isolation)
-- [ ] P0.4 Vitest set up with a first passing test
-- [ ] P0.5 Electron hardening baseline (context isolation, sandbox, CSP, minimal preload)
-- [ ] P0.6 Playwright smoke test that launches the app
-- [ ] P0.7 GitHub Actions matrix (Windows, macOS, Ubuntu): build, lint, test
-- [ ] P0.8 ADR template and `docs/adr/` folder
-- [ ] P0.9 Dependency and licence audit step in CI
+- [x] P0.1 Create repo, MIT license, README, contribution notes
+- [x] P0.2 electron-vite + React + strict TypeScript scaffold
+- [x] P0.3 ESLint/Prettier; import-boundary rules (`core` isolation)
+- [x] P0.4 Vitest set up with a first passing test
+- [x] P0.5 Electron hardening baseline (context isolation, sandbox, CSP, minimal preload)
+- [x] P0.6 Playwright smoke test that launches the app
+- [x] P0.7 GitHub Actions matrix (Windows, macOS, Ubuntu): build, lint, test
+- [x] P0.8 ADR template and `docs/adr/` folder
+- [x] P0.9 Dependency and licence audit step in CI
 - **Exit:** CI green on all three OSes; window opens on each; boundary rules fail the build when violated.
+  - Boundary rules: **verified** — `tests/unit/import-boundaries.test.ts` writes a deliberate violation
+    (`core` importing `@renderer`, `core` importing `electron`, `core` using `ipcRenderer`), asserts the lint
+    error and removes the violation afterwards.
+  - Window opens: **verified on Windows 10/11 x64** (Playwright smoke test, 2026-11-04).
+  - macOS and Linux: **unverified locally** — the CI matrix in `.github/workflows/ci.yml` runs the same smoke
+    test on `macos-latest` and `ubuntu-latest`; the Phase 0 exit check stays open until that matrix is green.
 
 ### P1 — Technical spikes
 - [ ] P1.1 Spike S1: SoundFont engine (scheduled events, CPU, offline render, SF3)
@@ -182,6 +189,12 @@ Documents:
 | 2026-11-03 | Chord-scale hints by chord quality, to be expanded later (OQ-8) | Design session |
 | 2026-11-03 | Preset list chosen by Claude: rock, blues, jazz, modal vamps (OQ-3) | Design session |
 | 2026-11-03 | Docs delivered as markdown in `docs/` | Design session |
+| 2026-11-04 | Electron + electron-vite + React + strict TypeScript toolchain; ADR-0001 records the decision | P0 bootstrap |
+| 2026-11-04 | Import boundaries enforced by a local ESLint rule (`scripts/eslint-boundaries.mjs`) instead of a third-party dependency-cruiser plugin — no extra dependency, no licence risk | P0.3 |
+| 2026-11-04 | All dependencies pinned to exact versions; `pnpm-workspace.yaml` holds the reviewed-build allowlist (`electron`, `esbuild`) and a `minimatch` override to 11.0.1 for advisory GHSA-1244012 | P0.2, P0.9 |
+| 2026-11-04 | `caniuse-lite` (CC-BY-4.0, dev-only transitive dependency) accepted with recorded attribution in `scripts/license-attribution.json`; it is not part of the shipped bundle | P0.9 |
+| 2026-11-04 | CSP applied through a build-time meta tag in `electron.vite.config.ts` plus a `session.defaultSession.webRequest` header in the main process (CSP as a response header) | P0.5 |
+| 2026-11-04 | Minimal preload API exposes one example call, `practicePlayer.getAppInfo()`, with no generic IPC escape hatch | P0.5 |
 
 ## 5. Open items
 
@@ -197,6 +210,7 @@ Documents:
 | OQ-11 | Installer size budget; SoundFont list | Spike S4 / P1.5 | Open |
 | OQ-12 | Code signing and notarization | Spike S4 | Open |
 | G-01…G-14 | Gaps found during planning | See gap-analysis.md | Open |
+| P0-CI | Run the GitHub Actions matrix on Windows, macOS and Ubuntu; close the Phase 0 exit check when all three are green | John | Open — workflow added, first run pending |
 
 ## 6. Blockers
 
@@ -207,3 +221,4 @@ None.
 | Date | Change |
 |---|---|
 | 2026-11-03 | Initial tracker created from implementation.md v0.1 |
+| 2026-11-04 | P0.1–P0.9 implemented: MIT licence, README, CONTRIBUTING, electron-vite + React + strict TypeScript app, ESLint/Prettier with a local import-boundary rule, Vitest suite (one test per layer plus cross-layer core-purity and boundary-violation tests), Electron hardening baseline (contextIsolation, sandbox, nodeIntegration off, CSP as header and meta tag, minimal typed preload API, backgroundThrottling off), Playwright Electron smoke test, GitHub Actions matrix (Windows/macOS/Ubuntu) with dependency and licence audits, ADR template plus ADR-0001. Verified locally on Windows: lint, type-check, 15 unit tests, build, Electron smoke test, dependency audit (0 vulnerabilities) and licence audit (259 packages, 0 incompatible). macOS/Linux pending the CI matrix run. |

@@ -82,14 +82,20 @@ Status key: **Expected** = believed compatible from general knowledge, to be con
 
 | Component | Role | Licence | Status | Notes |
 |---|---|---|---|---|
-| Electron | App shell | MIT | Expected | |
-| React, Vite/electron-vite, Zustand | UI/build/state | MIT | Expected | |
-| TypeScript | Language | Apache-2.0 | Expected | Dev dependency |
-| Vitest, Testing Library, ESLint, Prettier | Testing/quality | MIT | Expected | Dev dependencies |
-| Playwright | E2E testing | Apache-2.0 | Expected | Dev dependency |
-| electron-builder | Packaging | MIT | Expected | |
-| zod (or equivalent) | Schema validation | MIT | Expected | |
-| `tonal` (or equivalent) | Test oracle for theory | MIT | Expected | Dev/test only; never in the app bundle |
+| Electron 45.2.2 | App shell | MIT | Verified | Pinned exact version (P0.2). |
+| React 19.3.1, React DOM 19.3.1 | UI | MIT | Verified | Pinned exact versions; runtime dependencies (P0.2). |
+| Vite 7.3.7, electron-vite 5.0.0, @vitejs/plugin-react 5.1.0 | Build | MIT | Verified | Dev dependencies (P0.2). |
+| TypeScript 5.9.3 | Language | Apache-2.0 | Verified | Dev dependency. |
+| Vitest 5.1.0, @vitest/coverage-v8 5.1.0 | Testing | MIT | Verified | Dev dependencies (P0.4). |
+| Testing Library React 16.3.3, @testing-library/jest-dom 7.0.1, jsdom 30.1.3 | Component testing | MIT | Verified | Dev dependencies (P0.4). |
+| ESLint 9.39.5, @eslint/js 9.39.5, typescript-eslint 8.72.1, eslint-plugin-react-hooks 7.1.1, eslint-config-prettier 10.1.8 | Linting | MIT | Verified | Dev dependencies (P0.3). |
+| Prettier 3.9.10 | Formatting | MIT | Verified | Dev dependency (P0.3). |
+| Playwright 1.64.1 | E2E testing | Apache-2.0 | Verified | Dev dependency (P0.6). |
+| `caniuse-lite` (transitive, dev only) | Browser usage data for Babel/browserslist | CC-BY-4.0 | Verified (attribution required) | Not shipped in the app bundle. Attribution text recorded in `scripts/license-attribution.json`; audited by `pnpm run audit:licenses` (P0.9). |
+| Zustand | State | MIT | Expected | Planned for Phase 5; not installed yet. |
+| electron-builder | Packaging | MIT | Expected | Planned for Phase 10. |
+| zod (or equivalent) | Schema validation | MIT | Expected | Planned for Phase 3. |
+| `tonal` (or equivalent) | Test oracle for theory | MIT | Expected | Dev/test only; never in the app bundle. |
 | `spessasynth_lib` / `spessasynth_core` | SoundFont synth, offline render | Apache-2.0 (current releases) | Verified for current releases | Older releases list MIT and Apache-2.0 (the package's bundled Vorbis decoder is Apache-2.0). Pin a version, re-check its licence, include a NOTICE entry. Apache-2.0 is compatible with distributing an MIT-licensed app. |
 | FluidSynth-WASM wrapper | Alternative synth if S1 fails | LGPL-family | Unknown | Only if S1 rules out SpessaSynth; assess linking terms |
 | RtMidi-based Node addon | Fallback MIDI I/O | MIT-style (verify) | Unknown | Only if S2 rules out Web MIDI; check prebuilt binaries for all targets |
