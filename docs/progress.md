@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Last updated** | 2026-11-04 |
-| **Current phase** | P0 Bootstrap — implementation complete; CI matrix pending first run |
+| **Current phase** | P0 Bootstrap — complete (exit check met 2026-11-04); next: P1 Technical spikes |
 | **Plan of record** | implementation.md v0.1, requirements.md v0.2 |
 
 **How to use this file.** Update it at the end of every working session (human or AI agent). Tick tasks, change phase status, log decisions and blockers, and add one line to the changelog. Task IDs (e.g. `P2.3`) are referenced from agent-prompts.md and commit messages.
@@ -16,7 +16,7 @@
 
 | Phase | Name | Size | Status | Exit check met? |
 |---|---|---|---|---|
-| P0 | Bootstrap and CI | S | In progress — implemented, awaiting CI matrix | No (Windows verified locally; macOS/Linux pending CI) |
+| P0 | Bootstrap and CI | S | Done | Yes — CI run 41889258513 green on Windows, macOS and Ubuntu (2026-11-04) |
 | P1 | Technical spikes | M | Not started | No |
 | P2 | Theory core | M | Not started | No |
 | P3 | Arrangement, compiler, presets, file formats | M | Not started | No |
@@ -56,13 +56,13 @@ Documents:
   - Boundary rules: **verified** — `tests/unit/import-boundaries.test.ts` writes a deliberate violation
     (`core` importing `@renderer`, `core` importing `electron`, `core` using `ipcRenderer`), asserts the lint
     error and removes the violation afterwards.
-  - Window opens: **verified on Windows 10/11 x64** (Playwright smoke test, 2026-11-04) and **on Linux
-    x64** (Ubuntu 26.04 WSL with `xvfb-run`, 2026-11-04).
-  - macOS: **unverified locally** — the CI matrix in `.github/workflows/ci.yml` runs the same smoke test on
-    `macos-latest`; the Phase 0 exit check stays open until that matrix is green.
+  - Window opens: **verified on Windows 10/11 x64** (Playwright smoke test, 2026-11-04), **on Linux x64**
+    (Ubuntu 26.04 WSL with `xvfb-run`, 2026-11-04) and **on macOS** (CI run 41889258513, `macos-latest`,
+    2026-11-04).
+  - CI matrix: **green on all three platforms** — run 41889258513 (`windows-latest`, `macos-latest`,
+    `ubuntu-latest`), 2026-11-04.
   - First CI run (2026-11-04, run 41880743219) failed on all three platforms; the causes and the fix in
-    `ec94b21` are recorded in the changelog. Linux was re-verified locally on Ubuntu 26.04 (WSL) with the full
-    pipeline green; macOS and Windows are verified by the next CI matrix run.
+    `ec94b21` are recorded in the changelog.
 
 ### P1 — Technical spikes
 - [ ] P1.1 Spike S1: SoundFont engine (scheduled events, CPU, offline render, SF3)
@@ -216,7 +216,7 @@ Documents:
 | OQ-11 | Installer size budget; SoundFont list | Spike S4 / P1.5 | Open |
 | OQ-12 | Code signing and notarization | Spike S4 | Open |
 | G-01…G-14 | Gaps found during planning | See gap-analysis.md | Open |
-| P0-CI | Run the GitHub Actions matrix on Windows, macOS and Ubuntu; close the Phase 0 exit check when all three are green | John | Open — workflow added, first run pending |
+| P0-CI | Run the GitHub Actions matrix on Windows, macOS and Ubuntu; close the Phase 0 exit check when all three are green | John | Closed — run 41889258513 green on all three platforms (2026-11-04) |
 
 ## 6. Blockers
 
@@ -228,4 +228,5 @@ None.
 |---|---|
 | 2026-11-03 | Initial tracker created from implementation.md v0.1 |
 | 2026-11-04 | P0.1–P0.9 implemented: MIT licence, README, CONTRIBUTING, electron-vite + React + strict TypeScript app, ESLint/Prettier with a local import-boundary rule, Vitest suite (one test per layer plus cross-layer core-purity and boundary-violation tests), Electron hardening baseline (contextIsolation, sandbox, nodeIntegration off, CSP as header and meta tag, minimal typed preload API, backgroundThrottling off), Playwright Electron smoke test, GitHub Actions matrix (Windows/macOS/Ubuntu) with dependency and licence audits, ADR template plus ADR-0001. Verified locally on Windows: lint, type-check, 15 unit tests, build, Electron smoke test, dependency audit (0 vulnerabilities) and licence audit (259 packages, 0 incompatible). macOS/Linux pending the CI matrix run. |
+| 2026-11-04 | CI matrix green on all three platforms — run 41889258513 (`windows-latest`, `macos-latest`, `ubuntu-latest`) passed install, lint, format check, type-check, 16 unit tests, build, 2 Electron smoke tests, dependency audit and licence audit. Phase 0 exit check met. |
 | 2026-11-04 | First CI run failed on all three platforms; fixed in `ec94b21`. Causes: (1) Windows — Git checked the files out with CRLF while the committed blobs were LF, so Prettier reported 45 files as unformatted; fixed with `.gitattributes` (`* text=auto eol=lf`) and Prettier `endOfLine: lf`. (2) Ubuntu — the Electron smoke test failed with "Missing X server or $DISPLAY" because the runners have no X server; fixed by installing `xvfb` plus the Chromium shared libraries (`playwright install-deps chromium`) and running the test under `xvfb-run --auto-servernum`. (3) All platforms — `actions/checkout@v4`, `actions/setup-node@v4` and `pnpm/action-setup@v4` run on Node 20, which GitHub deprecated; bumped to `checkout@v5`, `setup-node@v5` and `action-setup@v6`, which run on Node 24. Re-verified the full pipeline on Linux (Ubuntu 26.04 WSL, Node 24.21.0, pnpm 12.9.1): lint, format check, type-check, 16 unit tests, build, 2 Electron smoke tests, dependency audit and licence audit all pass. |
