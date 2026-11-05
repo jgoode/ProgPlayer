@@ -8,6 +8,10 @@ minimumReleaseAgeExclude:
 allowBuilds:
   electron: true
   esbuild: true
+  # Spike S2 native MIDI candidate. The published tarball ships prebuilt
+  # Node-API binaries; the install script verifies them and only falls back
+  # to node-gyp when no prebuild matches the platform.
+  '@julusian/midi': true
 
 # minimatch <11.0.1 is affected by a glob-parts amplification advisory
 # (GHSA-1244012). The patched release is API-compatible for our usage.
