@@ -53,19 +53,27 @@ repeated below.
    Electron 45.2.2 ships.
 
 2. **A timestamped send moves the jitter from the app into the driver.**
-   With a 100 ms look-ahead, the Web MIDI path dispatched 912 messages with
-   **0 late dispatches**; the dispatch lateness stayed inside
-   [−100 ms, −80 ms] (i.e. every message was handed to the driver early
-   enough for its timestamp to be honoured).
+   Measured end to end against a real loopback — loopMIDI on Windows, a
+   CoreMIDI virtual endpoint on macOS — over 912 sends (8 bars at 120 BPM):
+
+   | Platform | p99 jitter | max error | Late sends |
+   |---|---|---|---|
+   | Windows (`windows-latest`) | **1.10 ms** | 2.10 ms | **0** |
+   | macOS (`macos-latest`) | **0.10 ms** | 0.10 ms | **0** |
+
+   Both are inside the 5 ms budget (NFR-TIM-2). Zero sends were late in
+   every configuration — idle, minimised window, and heavy UI load — so the
+   driver always received the message before its timestamp.
 
 3. **The native path cannot match it.** `RtMidiOut::sendMessage()` has no
    timestamp parameter: the bytes go to the OS immediately. To hit the
    intended instant the native sink must wake up exactly then, which means
-   the wake-up jitter *is* the timing error. Measured on Windows over 912
-   events with `setTimeout` armed at the intended time: **862 late sends
-   (94.5 %), p50 +8.47 ms, p99 +14.79 ms, max +26.46 ms** of lateness — over
-   the 5 ms budget before the driver is even involved. The Web MIDI path has
-   no such wake-up requirement because the driver does the waiting.
+   the wake-up jitter *is* the timing error. Measured with the same
+   loopback on the same runners: **48.68 % of the sends were late on
+   Windows and 75.44 % on macOS** (p99 dispatch lateness +1.41 ms and
+   +5.62 ms; on a busy development machine, p50 +8.47 ms, p99 +14.79 ms,
+   max +26.46 ms). The Web MIDI path has no such wake-up requirement
+   because the driver does the waiting.
 
 4. **The native path also cannot stay in the renderer.** The addon is a
    native Node module: it cannot be loaded in a sandboxed preload (measured:
@@ -91,26 +99,32 @@ repeated below.
    matters only for the measurement rig (it was the only output port on the
    measurement machine), not for the product.
 
+7. **A vanishing device does not break the schedule.** The hot-plug probe
+   removes the loopback port from the OS while the measurement runs. The
+   app keeps scheduling, the port disappears from the port list, the
+   `statechange` event reports it, and no send throws (NFR-REL-2).
+
 ### What the measurements did **not** establish
 
-The loopback capture could not be run on the measurement machine: no MIDI
-loopback driver could be installed (loopMIDI needs administrator rights that
-the session could not obtain), and the Windows MIDI Services runtime that
-ships loopback endpoints is not installed on that machine. Consequently
-**the end-to-end loopback error (received timestamp − intended timestamp)
-was not measured on Windows**, and macOS and Linux were not measured at all
-on this machine. The measured numbers in this ADR are therefore *dispatch*
-numbers — the part of the path the app controls — plus the Chromium and
-RtMidi source-level behaviour of the driver hand-off. The end-to-end
-numbers remain open; `docs/spikes/s2-midi-out-report.md` records the exact
-measurement protocol and the CI workflow that produces them.
+- **Linux was not measured end to end.** The GitHub Azure runners' kernels
+  ship without the ALSA sequencer drivers, so the virtual loopback cannot be
+  created there. The dispatch path is platform-independent and Chromium's
+  ALSA backend honours the timestamp (point 1), but the Linux p99 is
+  unknown. **Gap G-20.**
+- **No real MIDI hardware was involved.** The loopbacks are virtual ports;
+  a USB interface adds its own buffering, which the app cannot control.
+  The device checks in `testing.md` §7 (M-1..M-4) remain.
+- **The macOS figure is at the capture's resolution.** The received
+  timestamps are quantised to 100 µs, so 0.10 ms means "no measurable
+  jitter", not a precise measurement.
+- **One run per configuration.** The report gives no confidence interval.
 
 ## Options considered
 
 | Option | Summary | Pros | Cons |
 |---|---|---|---|
-| A | **Web MIDI in the renderer** (Chromium's timestamped `MIDIPort.send`) | Driver does the waiting, so the app's jitter does not reach the output; stays in the renderer, as `implementation.md` §2.4 requires; no native dependency, no packaging burden, no ABI problem; `statechange` gives hot-plug for free | The timestamp must be derived correctly from the audio clock; Windows needs a virtual MIDI driver for a DAW (FR-SND-8); the exact end-to-end jitter still has to be measured on all three OSes |
-| B | **Native RtMidi addon in the main process** | Works on Windows, macOS and Linux with one API; can see ports Web MIDI hides; MIT-compatible and actively maintained | No timestamped send — the app's own wake-up jitter becomes the output jitter (measured p99 15.2 ms, over budget); needs an IPC hop for every message; native module cannot load in a sandboxed preload; three-platform ABI and packaging burden; contradicts the renderer-only rule |
+| A | **Web MIDI in the renderer** (Chromium's timestamped `MIDIPort.send`) | Driver does the waiting, so the app's jitter does not reach the output (measured p99 jitter 1.10 ms on Windows, 0.10 ms on macOS, 0 late sends); stays in the renderer, as `implementation.md` §2.4 requires; no native dependency, no packaging burden, no ABI problem; `statechange` gives hot-plug for free | The timestamp must be derived correctly from the audio clock; Windows needs a virtual MIDI driver for a DAW (FR-SND-8); Linux not yet measured end to end (G-20) |
+| B | **Native RtMidi addon in the main process** | Works on Windows, macOS and Linux with one API; can see ports Web MIDI hides; MIT-compatible and actively maintained | No timestamped send — the app's own wake-up jitter becomes the output jitter (measured: 48.68 % of sends late on Windows, 75.44 % on macOS; p99 +14.79 ms on a busy machine); needs an IPC hop for every message; native module cannot load in a sandboxed preload; three-platform ABI and packaging burden; contradicts the renderer-only rule |
 | C | **Native addon in a helper process** (dedicated MIDI service) | Same API as B without blocking the main process; the helper could hold the port and do its own high-resolution timing | Still no timestamped send, so the same wake-up jitter; adds a process to install, supervise and secure; the IPC hop remains; a lot of machinery for a path that does not meet the budget |
 | D | **Web MIDI first, native addon as a fallback** | Keeps the simple path where it works; the native addon is available for the platforms where Web MIDI fails | Two MIDI implementations, two timing models, two sets of bugs; the native path cannot meet NFR-TIM-2 as measured, so it is a fallback for *availability*, not for *accuracy* |
 
@@ -135,11 +149,17 @@ measurement protocol and the CI workflow that produces them.
   evaluated fallback (Option D's fallback) so that if Web MIDI proves
   unusable on a platform, the work is already done.
 
-The native candidate is **not** adopted as the shipping MIDI path. If the
-end-to-end measurement in §7 of the report shows Web MIDI missing the 5 ms
-p99 target on a platform, the fallback is **Option C** — a native helper
-process with its own high-resolution timer — and *not* Option B, because
-Option B cannot meet the budget as measured.
+The native candidate is **not** adopted as the shipping MIDI path. It
+cannot meet the 5 ms budget as measured — on the same runners and the same
+loopback, **48.68 % of its sends on Windows and 75.44 % on macOS were
+late** — because it has no timestamped send. The fallback, if Web MIDI
+proves unusable on a platform, is **Option C** — a native helper process
+with its own high-resolution timer — and *not* Option B.
+
+The end-to-end measurement **meets the exit check on Windows and macOS**:
+p99 jitter 1.10 ms and 0.10 ms respectively, against a 5 ms budget, with
+0 late sends in every configuration. The Linux measurement is out of scope
+for this spike (G-20).
 
 ## Consequences
 
@@ -149,21 +169,29 @@ Option B cannot meet the budget as measured.
   - No native dependency ships with the app: no ABI matrix, no rebuild on
     every Electron upgrade, no code-signing of native libraries.
   - Hot-plug (`MIDIAccess.onstatechange`) and permission handling are part
-    of the Web MIDI API, so NFR-REL-2 has a direct implementation.
+    of the Web MIDI API, so NFR-REL-2 has a direct implementation — and the
+    hot-plug probe showed that a port disappearing mid-playback does not
+    throw and does not stop the schedule.
   - The measurement rig, the scheduler and the timing maths are reusable in
     Phase 6 (P6.1-P6.8).
+  - The scheduler's look-ahead must be **at least 300 ms**: with a 100 ms
+    window, heavy UI load made 3.5 % of the sends late, because the
+    main-thread block delayed the Worker message handling and the driver
+    clamps a past timestamp to an immediate send.
 - Negative:
   - Windows users need a virtual MIDI driver to reach a DAW (FR-SND-8). The
     app must document loopMIDI and its licence.
   - Chromium hides the Microsoft GS Wavetable Synth from Web MIDI; users who
     want to send to it need a real or virtual port.
-  - The end-to-end p99 jitter is **not yet demonstrated** on all three OSes.
-    The go/no-go for NFR-TIM-2 stays open until the loopback measurement in
-    `docs/spikes/s2-midi-out-report.md` §7 is complete.
+  - The end-to-end p99 jitter is **demonstrated on Windows and macOS only**.
+    The Linux figure is unknown (G-20) and the real-hardware figure is
+    unknown (`testing.md` §7).
 - Follow-up work:
   - P6: implement the `MidiOutSink` interface, the port manager and the
     clock generator in `src/midi`, with the session permission handlers in
     `src/main`.
-  - Close **G-20** (end-to-end MIDI jitter not yet measured on all three
-    OSes) using the CI workflow added for S2.
+  - Close **G-20** by running the S2 harness on a Linux machine with the
+    ALSA sequencer available.
+  - Run the device checks in `testing.md` §7 (M-1..M-4) with a real MIDI
+    interface.
   - Document the Windows loopback driver in the user guide (FR-SND-8).
