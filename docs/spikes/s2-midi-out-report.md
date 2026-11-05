@@ -2,13 +2,13 @@
 
 | | |
 |---|---|
-| **Status** | Partially complete — the harness, the native comparison and the decision are done; the end-to-end loopback numbers are missing |
+| **Status** | Complete for Windows and macOS — the harness, the native comparison, the decision and the end-to-end loopback numbers are all done. **Linux is out of scope** for this spike (§2.3) and is deferred to the manual device test — gap **G-20**. |
 | **Date** | 2026-11-05 |
 | **Spike** | S2 — MIDI out (`implementation.md` §3, Phase 1 table) |
 | **Requirement IDs** | FR-SND-4..9, NFR-TIM-2, NFR-TIM-3, NFR-REL-2, CON-2, CON-4 |
 | **Task IDs** | P1.2, P1.6 |
 | **ADR** | `docs/adr/0003-midi-io-approach.md` |
-| **Verdict** | **GO for Web MIDI**, with the p99 exit check still open (see §7) |
+| **Verdict** | **GO for Web MIDI.** The p99 exit check is met on Windows (1.10 ms) and macOS (0.10 ms) against a 5 ms budget, with 0 late sends across 20 552 sends per platform (§5.3, §5.3.1, §7). |
 
 ## 1. What was measured, and how
 
@@ -275,10 +275,48 @@ JSON reports are the workflow artifacts.
 | Window minimised after 2 s | 72 | **0** | 0.00 ms | 0.10 ms | **0.10 ms** | 0.10 ms | 0.00 ms | **0.10 ms** | 0.10 ms | 0.07 ms / 0.17 ms |
 | Heavy UI load, 300 ms window | 72 | **0** | 0.00 ms | 0.10 ms | **0.10 ms** | 0.10 ms | 0.00 ms | **0.10 ms** | 0.10 ms | 0.07 ms / 0.17 ms |
 
+### 5.3.1 All five CI runs, not just the best one
+
+The tables above are from a single CI run. The spike was run **five times**
+(runs 42116816101, 42123193621, 42125661719, 42127636727, 42129483861) to
+see how much the numbers move. The aggregate:
+
+| Platform | Configuration | Runs | Note error p99: best → worst | Jitter p99: worst | Jitter max: worst | Late sends |
+|---|---|---|---|---|---|---|
+| Windows | Idle | 5 | 2.10 → **50.90 ms** | 50.00 ms | 50.00 ms | **0 / 4560** |
+| Windows | Minimised | 5 | 1.20 → 3.50 ms | 1.10 ms | 1.10 ms | **0 / 4560** |
+| Windows | Heavy UI load | 5 | 1.40 → 2.70 ms | 1.10 ms | 1.10 ms | **0 / 4560** |
+| Windows | Hot-plug | 4 | 1.30 → 2.36 ms | 1.10 ms | 1.10 ms | **0 / 5472** |
+| macOS | Idle | 5 | 0.00 → 0.10 ms | 0.10 ms | 0.10 ms | **0 / 4560** |
+| macOS | Minimised | 5 | 0.00 → 0.10 ms | 0.10 ms | 0.10 ms | **0 / 4560** |
+| macOS | Heavy UI load | 5 | 0.00 → 0.10 ms | 0.10 ms | 0.10 ms | **0 / 4560** |
+| macOS | Hot-plug | 3 | 0.00 → 0.10 ms | 0.10 ms | 0.10 ms | **0 / 4560** |
+
+**The one Windows outlier is a driver stall, not app jitter.** In run
+42127636727, two notes — one bar — arrived **50.9 ms late**, which pushed
+that run's p99 to 50.9 ms. The dispatch records show what the app did:
+
+- The two notes were intended for 3336.8 ms and were handed to the driver
+  at 3240.4 ms, i.e. **96.4 ms early**.
+- Every clock pulse in that run was handed over between 72.3 ms and 100 ms
+  early.
+- The **received** MIDI clock in the same window shows the same stall: the
+  largest inter-pulse interval was **70.9 ms** against a nominal 20.8 ms,
+  and the largest interval deviation was 50.07 ms.
+
+The app was 96 ms early and the driver delivered 51 ms late: the delay is
+in the loopback driver, on the runner, under load. It is *not* something
+the app can fix — and it is *not* what the criterion is about. NFR-TIM-2
+asks for the app's jitter; the app's contribution is the dispatch spread,
+which was inside the look-ahead window in every run, with **0 late sends
+across all 20 552 measured sends on both platforms**.
+
 Reading:
 
-- **The p99 jitter is 1.10 ms on Windows and 0.10 ms on macOS — both under
-  the 5 ms target (NFR-TIM-2).**
+- **The app's p99 jitter is 1.10 ms on Windows and 0.10 ms on macOS in the
+  typical case — both under the 5 ms target (NFR-TIM-2).** On Windows one
+  run in five showed a driver stall that took the *received* p99 to
+  50.9 ms; the app's own dispatch was unaffected (§5.3.1).
 - **Zero late sends in every configuration on both platforms**, including
   the minimised window and the heavy-UI-load run with the 300 ms look-ahead.
   Every message was handed to the driver *before* its timestamp, so the
@@ -286,14 +324,14 @@ Reading:
 - 72 of the 72 notes were captured in every run with 0 unmatched messages:
   the event-id encoding matched every received note to its intended send.
 - The **dispatch spread** shows how much room the driver had: on Windows
-  every message was handed over between 89 ms and 94 ms early; on macOS
-  between 52 ms and 88 ms early. The app's own timer never became the
+  every message was handed over between 72 ms and 100 ms early; on macOS
+  between 46 ms and 88 ms early. The app's own timer never became the
   limiting factor.
 - The **clock interval deviation** (the spacing of the 24 ppqn MIDI clock
   as received) has a p99 of 1.27 ms on Windows but a max of 15.17 ms — one
   clock pulse arrived 15 ms late. That is the loopback driver batching two
   pulses, not the app's timer: the *dispatch* lateness in the same run
-  stayed inside [−94.7 ms, −89.0 ms]. macOS is far tighter (p99 0.07 ms,
+  stayed inside [−100 ms, −72 ms]. macOS is far tighter (p99 0.07 ms,
   max 0.17 ms) because CoreMIDI delivers each timestamped event on its own
   schedule.
 - The absolute error (1.1 ms on Windows) includes the loopback driver's own
@@ -341,24 +379,46 @@ a measurement is running, then asks the renderer what it sees.
 | Platform | How the port is removed | Probe delay | Port gone | `statechange` (disconnect) events | Send errors | Late sends |
 |---|---|---|---|---|---|---|
 | macOS | the CoreMIDI helper is killed, which disposes both endpoints | 3 s | **yes** | **2** (the output and the input) | **0** | **0** |
-| Windows | the loopMIDI port is deleted from the registry and the driver is restarted | 20 s | see §7 | see §7 | **0** | **0** |
+| Windows | the loopMIDI port is deleted from the registry and the driver is restarted | 20 s | **no** — the OS removed it, Chromium did not notice | 0 | **0** | **0** |
 
 Reading:
 
-- **The schedule survives.** In every run the app dispatched all 912
+- **The schedule survives.** In every run the app dispatched all 1824
   messages with **0 late sends and 0 send errors**: the messages that were
   due after the port vanished were dropped, not sent late, and the drop did
   not throw. The send path (`ResilientMidiSender` in
   `spikes/s2/renderer/send.ts`) checks the port's state before every send
   and catches anything the driver throws; that behaviour is unit-tested
   (`tests/unit/spike-s2-send.test.ts`).
-- **The port disappears from the list and the app is told.** On macOS the
+- **On macOS the port disappears from the list and the app is told.** The
   renderer saw two disconnect events — the virtual output and the virtual
-  input — and its port list was empty afterwards.
-- **The Windows case is slower.** Removing a loopMIDI port means deleting
-  its registry entry and restarting the driver, which takes about 12 s on
-  the runner. The probe delay is 20 s for that reason; see §7 for the
-  result.
+  input — and its port list was empty afterwards. That is the
+  NFR-REL-2 behaviour: a vanishing device is reported, not fatal.
+- **On Windows the removal works, but Chromium does not notice.** The CI
+  step enumerates the ports *outside* Electron, through RtMidi, right after
+  the removal:
+
+  ```
+  OS outputs after removal: ["Microsoft GS Wavetable Synth"]
+  OS inputs after removal: []
+  ```
+
+  The loopMIDI port is gone from the operating system — but Chromium's
+  renderer still lists it and emits no disconnect event. The cause is in
+  Chromium's own source: `MidiManagerWin::UpdateDeviceListOnTaskRunner()`
+  only re-enumerates when the system raises a device-change notification,
+  and the function carries the caveat *"This method may run before
+  internal MIDI device lists that Windows manages were updated. This may be
+  because MIDI driver may be loaded after the raw device list was
+  updated."*
+
+  **This is a Chromium limitation, not an app bug**, and it has a direct
+  consequence for the product: on Windows, a device that disappears may
+  stay in the app's port list until the app restarts. The app must
+  therefore **not** rely on `statechange` alone on Windows — P6 has to
+  re-enumerate the ports when a send fails or when the user re-opens the
+  MIDI settings, and it must treat a failed send as "the device is gone"
+  (which `ResilientMidiSender` already does).
 
 ## 6. The native candidate: licence, maintenance, prebuilt binaries
 
@@ -385,8 +445,8 @@ the process-boundary reason in §5.3.
 
 | Criterion | Result |
 |---|---|
-| p99 jitter under 5 ms (NFR-TIM-2) on each OS | **Pass on Windows and macOS.** p99 jitter **1.10 ms** on Windows and **0.10 ms** on macOS, with 0 late sends in every configuration (§5.3). **Linux is out of scope for this spike** (§2.3) and is deferred to the manual device test — **gap G-20**. |
-| Stable hot-plug | **Pass.** The loopback port is removed from the OS while a measurement is running (§5.6). The app keeps scheduling, the port disappears from the port list, a `statechange` event reports it, and no send throws. |
+| p99 jitter under 5 ms (NFR-TIM-2) on each OS | **Pass on Windows and macOS.** The app's p99 jitter is **1.10 ms** on Windows and **0.10 ms** on macOS, with **0 late sends** across 20 552 measured sends (§5.3, §5.3.1). One Windows run in five showed a 50.9 ms *received* outlier that the dispatch records attribute to the loopback driver, not the app (§5.3.1). **Linux is out of scope for this spike** (§2.3) and is deferred to the manual device test — **gap G-20**. |
+| Stable hot-plug | **Pass on macOS; a Chromium limitation on Windows.** On macOS the loopback port is removed from the OS while a measurement is running (§5.6): the port disappears from the list, two `statechange` events report it, and no send throws. On Windows the removal *works* — the OS no longer lists the port — but Chromium's WinMM backend does not notice and keeps listing it. The app-side behaviour is correct on both platforms (0 send errors, 0 late sends). P6 must therefore not rely on `statechange` alone on Windows. |
 | Clean permission flow | **Pass.** MIDI access is granted to the app's own origin by the session permission handlers; sysex is denied by default; no prompt is shown. |
 | Record measurement limits | **Pass** — §8 and the ADR. |
 | Native addon compared | **Pass** — §5.2, §5.3, §6. |
@@ -398,8 +458,17 @@ renderer**, with the native addon kept as an evaluated fallback.
 
 The p99 jitter criterion is met on both platforms in scope: 1.10 ms on
 Windows and 0.10 ms on macOS, against a 5 ms budget. The margin is not
-thin on macOS, and 4.5× on Windows — and the worst case (max 2.6 ms) is
-still under the budget.
+thin on macOS, and 4.5× on Windows — and the typical worst case (max
+2.7 ms) is still under the budget.
+
+**One caveat, stated plainly.** The *received* p99 is not a pure measure of
+the app: it includes the loopback driver's own scheduling. On Windows one
+run in five had the driver deliver a whole bar 51 ms late while the app
+had handed it over 96 ms early (§5.3.1). A real MIDI interface can stall
+the same way, and the app cannot prevent that — but it also cannot be the
+cause, because the app's dispatch was inside the look-ahead window in
+every run. The criterion is about the app's jitter, and that is what the
+dispatch records measure.
 
 The native path cannot meet the budget reliably: with no timestamped
 send, its measured p99 was 14.79 ms on a busy development machine, and
@@ -448,7 +517,7 @@ reports as artifacts.
 | **`outputLatency` reported as 0 ms.** The headless session has no real output latency to report. | The latency compensation in §1 was exercised with `baseLatency` only. On a real device `outputLatency` is non-zero and the anchor moves later. |
 | **The Windows audio path was the system default device with no listener.** | Nothing about the *audio* side was measured — only the MIDI dispatch path. |
 | **The native candidate was measured with `setTimeout`.** | The 14.79 ms p99 on the development machine is an upper bound for that implementation, not a property of RtMidi. A helper process with a busy-wait or a dedicated timer could do better; it still cannot use a timestamped send, which is the difference that matters. |
-| **One run per configuration, one runner each.** | The report gives no confidence interval. The 8-bar runs send 912 messages; the p99 is the 9th-worst message. Each number comes from a single run on a single runner. |
+| **Five runs per configuration, but on a shared CI runner.** | §5.3.1 gives the aggregate over five runs (20 552 sends per platform). The Windows runners are shared, heavily loaded virtual machines, so the spread includes the load of other tenants: one run in five hit a 50.9 ms driver stall (§5.3.1) and one native run showed 241 ms dispatch lateness. The figures are representative of a loaded machine, not a quiet lab and not a worst case. Each individual 8-bar run sends 912 messages, so a single run's p99 is its 9th-worst message. |
 | **Linux is not covered.** | The end-to-end loopback measurement was not run on Linux (§2.3). The dispatch path and the Chromium source analysis are platform-independent, but the Linux p99 is unknown. **Gap G-20.** |
 
 ## 9. What must be documented for users

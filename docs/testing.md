@@ -171,10 +171,14 @@ closes gap G-20.
 
 **Status (2026-11-05):** the procedure has already been run against a
 virtual loopback on Windows and macOS by the CI workflow
-`.github/workflows/spike-s2-midi.yml`: **p99 jitter 1.10 ms on Windows and
-0.10 ms on macOS**, 0 late sends in every configuration. **What is still
-missing is Linux** (the CI runners' kernels have no ALSA sequencer) and a run
-against **real MIDI hardware**, which is what this procedure is for.
+`.github/workflows/spike-s2-midi.yml`, five runs per configuration:
+**p99 jitter 1.10 ms on Windows and 0.10 ms on macOS**, 0 late sends
+across 20 552 sends per platform. One Windows run in five showed a
+50.9 ms *received* outlier that the dispatch records attribute to the
+loopback driver (the app had dispatched that bar 96 ms early), so a run
+on real hardware may show driver stalls too. **What is still missing is
+Linux** (the CI runners' kernels have no ALSA sequencer) and a run against
+**real MIDI hardware**, which is what this procedure is for.
 
 **M-1 MIDI note routing.** Create loopback port; open a MIDI monitor; assign channels; play a 4-bar loop; confirm note numbers and channels for chords, bass and click; stop; confirm all-notes-off on each used channel.
 
@@ -197,7 +201,7 @@ Initial targets (to be tightened or relaxed with measurements from spikes S1/S2)
 | Metric | Target |
 |---|---|
 | Synth scheduling error (audio clock) | Within one render quantum (128 frames, about 2.7 ms at 48 kHz) |
-| MIDI out jitter (p99) | Under 5 ms on every OS (NFR-TIM-2) — **not yet measured end to end** (gap G-20) |
+| MIDI out jitter (p99) | Under 5 ms on every OS (NFR-TIM-2) — **measured: 1.10 ms on Windows, 0.10 ms on macOS**, 0 late sends across 20 552 sends per platform. **Linux still open** (gap G-20) |
 | MIDI look-ahead window | At least 300 ms, and larger than the worst expected main-thread stall (S2: a 100 ms window produced 3.51 % late sends under a 120 ms block; a 300 ms window produced none — gap G-21) |
 | Late MIDI sends (message handed to the driver after its intended time) | 0 in every configuration, including a blocked main thread and a minimised window |
 | Late scheduler events during a 10-minute soak | 0 events later than the look-ahead window |

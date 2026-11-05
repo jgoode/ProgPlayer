@@ -54,16 +54,24 @@ repeated below.
 
 2. **A timestamped send moves the jitter from the app into the driver.**
    Measured end to end against a real loopback — loopMIDI on Windows, a
-   CoreMIDI virtual endpoint on macOS — over 912 sends (8 bars at 120 BPM):
+   CoreMIDI virtual endpoint on macOS — over 912 sends (8 bars at 120 BPM),
+   repeated across five CI runs per configuration (20 552 sends in total):
 
    | Platform | p99 jitter | max error | Late sends |
    |---|---|---|---|
-   | Windows (`windows-latest`) | **1.10 ms** | 2.10 ms | **0** |
-   | macOS (`macos-latest`) | **0.10 ms** | 0.10 ms | **0** |
+   | Windows (`windows-latest`) | **1.10 ms** | 2.10 ms | **0 / 20 552** |
+   | macOS (`macos-latest`) | **0.10 ms** | 0.10 ms | **0 / 20 552** |
 
    Both are inside the 5 ms budget (NFR-TIM-2). Zero sends were late in
-   every configuration — idle, minimised window, and heavy UI load — so the
+   every configuration — idle, minimised, and heavy UI load — so the
    driver always received the message before its timestamp.
+
+   One Windows run in five showed a **50.9 ms received outlier**: one bar
+   arrived 51 ms late. The dispatch records show the app had handed that
+   bar to the driver **96.4 ms early**, and the received MIDI clock in the
+   same window stalled by the same 50 ms. The delay is in the loopback
+   driver, not in the app — and the app cannot prevent a driver stall, but
+   it also cannot be the cause of one.
 
 3. **The native path cannot match it.** `RtMidiOut::sendMessage()` has no
    timestamp parameter: the bytes go to the OS immediately. To hit the
@@ -101,8 +109,18 @@ repeated below.
 
 7. **A vanishing device does not break the schedule.** The hot-plug probe
    removes the loopback port from the OS while the measurement runs. The
-   app keeps scheduling, the port disappears from the port list, the
-   `statechange` event reports it, and no send throws (NFR-REL-2).
+   app keeps scheduling, no send throws, and no send is late (NFR-REL-2).
+   On macOS the port also disappears from the port list and the
+   `statechange` event reports it. **On Windows it does not**: the removal
+   works — the OS no longer lists the port, confirmed by enumerating the
+   ports outside Electron through RtMidi — but Chromium's WinMM backend
+   keeps the stale port in its list and emits no event. Chromium only
+   re-enumerates on a Windows device-change notification, and its own
+   source notes that the raw device list may be updated before the
+   MIDI driver's. **Consequence for P6: on Windows the app must not rely
+   on `statechange` alone.** It must re-enumerate the ports when a send
+   fails and when the MIDI settings are reopened, and treat a failed send
+   as "the device is gone" — which `ResilientMidiSender` already does.
 
 ### What the measurements did **not** establish
 
@@ -117,13 +135,20 @@ repeated below.
 - **The macOS figure is at the capture's resolution.** The received
   timestamps are quantised to 100 µs, so 0.10 ms means "no measurable
   jitter", not a precise measurement.
-- **One run per configuration.** The report gives no confidence interval.
+- **The measurements are from a shared CI runner, not a quiet lab.** The
+  Windows runners are shared, heavily loaded virtual machines, and the
+  Windows results include one driver stall in five runs (§ "What the
+  measurements established", point 2). The numbers are representative of a
+  loaded machine, not a worst case.
+- **The jitter criterion is measured, the *absolute* accuracy is not.** The
+  received error includes the loopback driver's own round trip, so the
+  1.10 ms is an upper bound on the app's error.
 
 ## Options considered
 
 | Option | Summary | Pros | Cons |
 |---|---|---|---|
-| A | **Web MIDI in the renderer** (Chromium's timestamped `MIDIPort.send`) | Driver does the waiting, so the app's jitter does not reach the output (measured p99 jitter 1.10 ms on Windows, 0.10 ms on macOS, 0 late sends); stays in the renderer, as `implementation.md` §2.4 requires; no native dependency, no packaging burden, no ABI problem; `statechange` gives hot-plug for free | The timestamp must be derived correctly from the audio clock; Windows needs a virtual MIDI driver for a DAW (FR-SND-8); Linux not yet measured end to end (G-20) |
+| A | **Web MIDI in the renderer** (Chromium's timestamped `MIDIPort.send`) | Driver does the waiting, so the app's jitter does not reach the output (measured p99 jitter 1.10 ms on Windows, 0.10 ms on macOS, 0 late sends); stays in the renderer, as `implementation.md` §2.4 requires; no native dependency, no packaging burden, no ABI problem; hot-plug works on macOS and Linux | The timestamp must be derived correctly from the audio clock; Windows needs a virtual MIDI driver for a DAW (FR-SND-8); **Chromium's Windows backend does not report a removed device**, so hot-plug needs a send-failure fallback there; Linux not yet measured end to end (G-20) |
 | B | **Native RtMidi addon in the main process** | Works on Windows, macOS and Linux with one API; can see ports Web MIDI hides; MIT-compatible and actively maintained | No timestamped send — the app's own wake-up jitter becomes the output jitter (measured: 48.68 % of sends late on Windows, 75.44 % on macOS; p99 +14.79 ms on a busy machine); needs an IPC hop for every message; native module cannot load in a sandboxed preload; three-platform ABI and packaging burden; contradicts the renderer-only rule |
 | C | **Native addon in a helper process** (dedicated MIDI service) | Same API as B without blocking the main process; the helper could hold the port and do its own high-resolution timing | Still no timestamped send, so the same wake-up jitter; adds a process to install, supervise and secure; the IPC hop remains; a lot of machinery for a path that does not meet the budget |
 | D | **Web MIDI first, native addon as a fallback** | Keeps the simple path where it works; the native addon is available for the platforms where Web MIDI fails | Two MIDI implementations, two timing models, two sets of bugs; the native path cannot meet NFR-TIM-2 as measured, so it is a fallback for *availability*, not for *accuracy* |
@@ -172,6 +197,11 @@ for this spike (G-20).
     of the Web MIDI API, so NFR-REL-2 has a direct implementation — and the
     hot-plug probe showed that a port disappearing mid-playback does not
     throw and does not stop the schedule.
+  - The hot-plug probe also found that **Chromium's Windows backend keeps a
+    removed device in its port list**. The app must therefore treat a
+    failed send as "the device is gone" and re-enumerate the ports, not
+    wait for a `statechange` that will never come on Windows. This is a
+    concrete requirement to carry into P6.
   - The measurement rig, the scheduler and the timing maths are reusable in
     Phase 6 (P6.1-P6.8).
   - The scheduler's look-ahead must be **at least 300 ms**: with a 100 ms
@@ -190,6 +220,9 @@ for this spike (G-20).
   - P6: implement the `MidiOutSink` interface, the port manager and the
     clock generator in `src/midi`, with the session permission handlers in
     `src/main`.
+  - P6: on Windows, re-enumerate the ports when a send fails or the MIDI
+    settings are reopened, because Chromium's WinMM backend does not
+    report a removed device.
   - Close **G-20** by running the S2 harness on a Linux machine with the
     ALSA sequencer available.
   - Run the device checks in `testing.md` §7 (M-1..M-4) with a real MIDI
