@@ -52,15 +52,20 @@ const HOT_PLUG_AT_MS = Number(argValue('hot-plug-at', '0'));
  */
 const HOT_PLUG_PROBE_DELAY_MS = Number(argValue('hot-plug-probe-delay', '8000'));
 /**
- * The command that removes the loopback port from the OS, as a JSON array of
- * arguments. It is run by the driver (not by the renderer) because removing
- * a port is an operating system operation, not something the web page can do.
+ * A file containing the JSON array of arguments for the command that removes
+ * the loopback port from the OS.
  *
- * A JSON array rather than a shell string: the port names contain spaces,
- * and the quoting rules of `cmd.exe` and `sh` differ. The array is passed to
- * `execFileSync` directly, so no shell is involved.
+ * The command is run by the driver (not by the renderer) because removing a
+ * port is an operating system operation, not something the web page can do.
+ *
+ * The arguments come from a file rather than the command line because the
+ * CI shell (pwsh on Windows, bash on macOS) mangles a JSON array passed as
+ * an argument: both strip the double quotes. A file is read verbatim by
+ * Node, so the array survives on every platform. The array is passed to
+ * `execFileSync` directly, so no shell is involved and the port names (which
+ * contain spaces) need no quoting.
  */
-const HOT_PLUG_COMMAND = argValue('hot-plug-command', '');
+const HOT_PLUG_COMMAND_FILE = argValue('hot-plug-command-file', '');
 const OUT_NAME = argValue('out', `web-midi-${Date.now()}.json`);
 
 // Chromium's Windows MIDI backend is WinMM by default; the WinRT backend is
@@ -264,13 +269,16 @@ async function run() {
     // because the operating system needs time to actually drop the port
     // (on Windows the loopMIDI driver is restarted, which takes seconds).
     await new Promise((done) => setTimeout(done, HOT_PLUG_AT_MS));
-    console.log(`Removing the loopback port: ${HOT_PLUG_COMMAND}`);
     try {
       const { execFileSync } = require('node:child_process');
-      const argv = JSON.parse(HOT_PLUG_COMMAND);
-      if (!Array.isArray(argv) || argv.length === 0) {
-        throw new Error('--hot-plug-command must be a non-empty JSON array of arguments');
+      const { readFileSync } = require('node:fs');
+      const argv = JSON.parse(readFileSync(HOT_PLUG_COMMAND_FILE, 'utf8'));
+      if (!Array.isArray(argv) || argv.length === 0 || typeof argv[0] !== 'string') {
+        throw new Error(
+          `${HOT_PLUG_COMMAND_FILE} must contain a non-empty JSON array of arguments`,
+        );
       }
+      console.log(`Removing the loopback port: ${argv.join(' ')}`);
       execFileSync(argv[0], argv.slice(1), { stdio: 'inherit' });
     } catch (error) {
       console.error(`The hot-plug command failed: ${error}`);

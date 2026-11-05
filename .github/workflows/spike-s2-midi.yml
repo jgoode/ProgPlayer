@@ -115,17 +115,23 @@ jobs:
       # The measurement is 8 bars at 120 BPM, i.e. 16 s. The port is removed
       # 4 s in and the renderer snapshots its port list 8 s later, which
       # gives the operating system time to actually drop the port.
+      #
+      # The removal command goes into a file as a JSON array: the CI shell
+      # (pwsh on Windows, bash on macOS) strips the double quotes from a
+      # JSON array passed as a command-line argument.
       - name: Run the Web MIDI measurement (hot-plug, Windows)
         if: runner.os == 'Windows'
         run: |
-          pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-hotplug.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" --hot-plug-at 4000 --hot-plug-probe-delay 8000 --hot-plug-command '["powershell","-File","spikes/s2/tools/windows-loopmidi.ps1","-RemovePorts","-Ports","${{ matrix.output_port }}"]'
+          '["powershell","-File","spikes/s2/tools/windows-loopmidi.ps1","-RemovePorts","-Ports","${{ matrix.output_port }}"]' > "$RUNNER_TEMP/hot-plug-command.json"
+          pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-hotplug.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" --hot-plug-at 4000 --hot-plug-probe-delay 8000 --hot-plug-command-file "$RUNNER_TEMP/hot-plug-command.json"
           powershell -File spikes/s2/tools/windows-loopmidi.ps1 -Ports "${{ matrix.output_port }}"
 
       - name: Run the Web MIDI measurement (hot-plug, macOS)
         if: runner.os == 'macOS'
         run: |
           PID="$(cat "$RUNNER_TEMP/midi-virtual-port.pid")"
-          pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-hotplug.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" --hot-plug-at 4000 --hot-plug-probe-delay 3000 --hot-plug-command "[\"kill\",\"${PID}\"]"
+          '["kill","'"${PID}"'"]' > "$RUNNER_TEMP/hot-plug-command.json"
+          pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-hotplug.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" --hot-plug-at 4000 --hot-plug-probe-delay 3000 --hot-plug-command-file "$RUNNER_TEMP/hot-plug-command.json"
           bash spikes/s2/tools/macos-virtual-port.sh "${{ matrix.output_port }}" &
           echo $! > "$RUNNER_TEMP/midi-virtual-port.pid"
           sleep 5
