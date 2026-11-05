@@ -45,7 +45,7 @@ jobs:
           - os: macos-latest
             output_port: PracticePlayer S2 Loopback
             input_port: PracticePlayer S2 Loopback In
-          - os: ubuntu-latest
+          - os: ubuntu-24.04
             output_port: Midi Through Port-1
             input_port: Midi Through Port-0
     env:
@@ -86,20 +86,25 @@ jobs:
       - name: Create the CoreMIDI virtual endpoint (macOS)
         if: runner.os == 'macOS'
         run: |
-          swift spikes/s2/tools/macos-virtual-port.swift "PracticePlayer S2 Loopback" &
+          spikes/s2/tools/macos-virtual-port.sh "PracticePlayer S2 Loopback" &
           echo $! > "$RUNNER_TEMP/midi-virtual-port.pid"
           sleep 5
+          cat "$RUNNER_TEMP/midi-virtual-port.pid" | xargs -I{} ps -p {} || true
 
       # --- Linux: ALSA sequencer virtual ports ---------------------------
+      # The Azure kernels used by `ubuntu-latest` ship without the ALSA
+      # sequencer modules, so `ubuntu-24.04` is used instead. Even there the
+      # module may be unavailable: the step records what it found and the
+      # measurement still runs, reporting that the capture was impossible.
       - name: Load the ALSA sequencer virtual MIDI modules (Linux)
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
           sudo apt-get install --no-install-recommends -y alsa-utils
-          sudo modprobe snd-seq
-          sudo modprobe snd-virmidi
-          sudo spikes/s2/tools/linux-virtual-midi.sh start
-          ls -l /dev/snd
+          sudo modprobe snd-seq || echo "::warning::snd-seq is not available in this kernel"
+          sudo modprobe snd-virmidi || echo "::warning::snd-virmidi is not available in this kernel"
+          sudo spikes/s2/tools/linux-virtual-midi.sh start || echo "::warning::no ALSA loopback on this runner"
+          ls -l /dev/snd || echo "::warning::no /dev/snd on this runner"
 
       - name: Install the display server dependencies (Linux)
         if: runner.os == 'Linux'

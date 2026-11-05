@@ -33,6 +33,7 @@ case "${1:-start}" in
 
     if [ ! -e /dev/snd/seq ]; then
       echo "The ALSA sequencer device /dev/snd/seq is missing." >&2
+      echo "This kernel has no ALSA sequencer (Azure kernels do not ship snd-seq)." >&2
       exit 1
     fi
 

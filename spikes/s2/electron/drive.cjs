@@ -191,14 +191,24 @@ async function run() {
   const output = pickPort(ports.outputs, OUTPUT_NAME);
   const input = pickPort(ports.inputs, INPUT_NAME);
   const useNullSink = args.includes('--null-sink');
-  if (!output && !useNullSink) {
-    throw new Error(`No MIDI output port found (wanted "${OUTPUT_NAME}")`);
+  // A missing loopback is a *result*, not a crash: the report records why the
+  // capture was impossible and the dispatch path is still measured. The
+  // workflow relies on this so that one platform without a loopback does not
+  // hide the results of the others.
+  let loopbackUnavailableReason = null;
+  if (!output) {
+    loopbackUnavailableReason = `No MIDI output port matched "${OUTPUT_NAME}".`;
+    console.warn(`${loopbackUnavailableReason} Running without a MIDI output.`);
   }
   if (!input) {
-    console.warn('No MIDI input (loopback) port found: running without capture.');
+    const reason = `No MIDI input port matched "${INPUT_NAME}".`;
+    loopbackUnavailableReason = loopbackUnavailableReason
+      ? `${loopbackUnavailableReason} ${reason}`
+      : reason;
+    console.warn(`${reason} Running without capture.`);
   }
   console.log(
-    `Using output "${output ? output.name : 'null sink'}" and input "${input ? input.name : 'none'}"`,
+    `Using output "${output ? output.name : 'none'}" and input "${input ? input.name : 'none'}"`,
   );
 
   await window.webContents.executeJavaScript('window.spikeHost.startPowerSaveBlocker()');
@@ -242,6 +252,7 @@ async function run() {
     ports: { outputs: ports.outputs, inputs: ports.inputs },
     selected: { output: output ?? null, input: input ?? null },
     permission: access,
+    loopbackUnavailableReason,
     minimizedDuringRun: MINIMIZE_AFTER_MS > 0,
     windowStateAtEnd: windowState,
     stateChanges,

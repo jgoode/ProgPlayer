@@ -135,4 +135,33 @@ describe('look-ahead scheduler', () => {
         }),
     ).toThrow(RangeError);
   });
+
+  it('surfaces a late Worker tick as positive lateness', () => {
+    // Gap G-21: a main-thread stall makes the Worker tick arrive after the
+    // event's intended time. Chromium clamps a past timestamp to a zero
+    // delay, so the message is sent immediately and is audible early. The
+    // scheduler must therefore record the lateness so the harness can count
+    // it — and the production scheduler must be configured with a
+    // look-ahead larger than the worst expected stall.
+    let now = 1000;
+    const records: DispatchRecord[] = [];
+    const clock = new TimelineClock(0, 1000, 120);
+    const scheduler = new LookAheadScheduler({
+      now: () => now,
+      lookAheadMs: 100,
+      clock,
+      events: eventsAt([480]),
+      onDispatch: (_event, record) => records.push(record),
+    });
+
+    scheduler.start();
+    // The tick is delayed by 120 ms: the event was intended at 1500 ms and
+    // is dispatched at 1520 ms.
+    now = 1520;
+    scheduler.tick();
+
+    expect(records).toHaveLength(1);
+    expect(records[0]?.latenessMs).toBeCloseTo(20, 6);
+    expect(records[0]?.latenessMs).toBeGreaterThan(0);
+  });
 });

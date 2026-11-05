@@ -230,14 +230,10 @@ async function run(options: RunOptions): Promise<RunReport> {
   if (!midiAccess) {
     throw new Error('MIDI access has not been granted');
   }
+  // A missing port is not an error: the run still measures the dispatch path
+  // and the report records that no capture was possible.
   const output = options.useNullSink ? undefined : midiAccess.outputs.get(options.outputPortId);
-  if (!options.useNullSink && !output) {
-    throw new Error(`Output port ${options.outputPortId} is not available`);
-  }
   const input = options.inputPortId ? midiAccess.inputs.get(options.inputPortId) : undefined;
-  if (options.inputPortId && !input) {
-    throw new Error(`Input port ${options.inputPortId} is not available`);
-  }
 
   const errors: string[] = [];
   const noteSamples: NoteSample[] = [];
