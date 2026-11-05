@@ -156,6 +156,19 @@ A full requirement-level matrix (each FR/NFR ID to its test case IDs) is generat
 
 ## 7. Manual and device test procedures (L5)
 
+**M-0 MIDI output jitter (the S2 exit check).** Requires a MIDI loopback:
+loopMIDI or the Windows MIDI Services "MIDI 2.0 Loop Devices" on Windows, the
+OS's IAC Driver on macOS, ALSA `snd-virmidi` on Linux (see
+`docs/spikes/s2-midi-out-report.md` §9). Run
+`pnpm run spike:s2:web -- --output "<send port>" --input "<capture port>" --bars 8 --bpm 120`
+and repeat with `--minimize-after 2000` and with `--ui-load`. Record the
+p50/p95/p99/max of the received-timestamp error in the report. **Expected:**
+p99 under 5 ms on each OS (NFR-TIM-2), 0 late sends in every configuration,
+and no change when the window is minimised. The measurement is limited by the
+precision of the input timestamp, so the absolute error includes a constant
+loopback delay — read the *jitter*, not the absolute number. This procedure
+closes gap G-20.
+
 **M-1 MIDI note routing.** Create loopback port; open a MIDI monitor; assign channels; play a 4-bar loop; confirm note numbers and channels for chords, bass and click; stop; confirm all-notes-off on each used channel.
 
 **M-2 MIDI clock sync.** Open a DAW (two different DAWs across the test round) set to external MIDI clock; play from the app; confirm tempo display matches and transport follows Start/Stop/Continue; change tempo mid-play and confirm the DAW follows within a beat.
@@ -177,7 +190,9 @@ Initial targets (to be tightened or relaxed with measurements from spikes S1/S2)
 | Metric | Target |
 |---|---|
 | Synth scheduling error (audio clock) | Within one render quantum (128 frames, about 2.7 ms at 48 kHz) |
-| MIDI out jitter (p99) | Under 5 ms on every OS (NFR-TIM-2) |
+| MIDI out jitter (p99) | Under 5 ms on every OS (NFR-TIM-2) — **not yet measured end to end** (gap G-20) |
+| MIDI look-ahead window | At least 300 ms, and larger than the worst expected main-thread stall (S2: a 100 ms window produced 3.51 % late sends under a 120 ms block; a 300 ms window produced none — gap G-21) |
+| Late MIDI sends (message handed to the driver after its intended time) | 0 in every configuration, including a blocked main thread and a minimised window |
 | Late scheduler events during a 10-minute soak | 0 events later than the look-ahead window |
 | Audio dropouts during soak (low-tier machine) | 0 audible; 0 reported underruns |
 | CPU use during playback (typical machine) | Under 25% of one core average (to be confirmed by S1) |
@@ -224,6 +239,7 @@ Initial targets (to be tightened or relaxed with measurements from spikes S1/S2)
 | `e2e-full` | Nightly | Full Playwright suite including save/load and exports |
 | `soak` | Nightly (where hardware allows) | Headless long-run scheduler/offline-render consistency test |
 | `audit` | Every push/PR | Dependency vulnerability and licence audit |
+| `spike-s2-midi` | Push to `spike/s2/**` | The S2 MIDI measurement on Windows, macOS and Ubuntu: sets up the platform's MIDI loopback, runs the Web MIDI harness (idle, minimised, UI-load) and the native candidate, uploads the JSON reports as artifacts. Closes gap G-20 when the loopbacks are available |
 | `package` | Tag / release branch | Build installers; run AT-8 steps on clean machines manually |
 
 ## 12. Phase 0 test inventory (bootstrap)
@@ -252,6 +268,16 @@ the failure by hand, add `import { app } from 'electron'` to any file in
 **Not covered in Phase 0.** Real audio output, MIDI hardware, packaging and
 the device procedures in §7 do not apply yet: the app has no audio or MIDI
 code. They become applicable from Phase 1 (spikes) onwards.
+
+### 12.1 Phase 1 test inventory (spikes)
+
+| Layer | Test | File | Checks |
+|---|---|---|---|
+| L1 | S2 measurement maths | `tests/unit/spike-s2-analysis.test.ts` | The audio-clock → `performance.now()` mapping (including the latency compensation), the tick → milliseconds conversion at 480 ppq with 24 ppqn clock, the percentile function, and the event-id encoding/decoding used to match loopback messages to intended sends |
+| L2 | S2 scheduler (simulated clock) | `tests/integration/spike-s2-scheduler.test.ts` | The Worker-driven look-ahead scheduler dispatches every event exactly once, in tick order, inside the look-ahead window; a late Worker tick never produces a past-dated send (gap G-21); the stop path emits all-notes-off |
+| L5 | S2 Web MIDI measurement | `spikes/s2/electron/drive.cjs` | Permission handling, device enumeration, `statechange` (hot-plug), timestamped sends, the minimised-window and heavy-UI configurations, and the loopback capture. Report format in `spikes/s2/results/` |
+| L5 | S2 native candidate | `spikes/s2/native/measure-native.mjs` | The same timeline through `@julusian/midi` (RtMidi), in `--early` and `--timed` modes, plus the main-process ↔ renderer IPC round-trip cost |
+| CI | S2 matrix | `.github/workflows/spike-s2-midi.yml` | The measurement on `windows-latest`, `macos-latest` and `ubuntu-latest` with the platform's MIDI loopback; the reports are uploaded as artifacts |
 
 ## 13. Entry and exit criteria per phase
 
