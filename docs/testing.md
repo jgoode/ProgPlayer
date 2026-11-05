@@ -169,6 +169,13 @@ precision of the input timestamp, so the absolute error includes a constant
 loopback delay — read the *jitter*, not the absolute number. This procedure
 closes gap G-20.
 
+**Status (2026-11-05):** the procedure has already been run against a
+virtual loopback on Windows and macOS by the CI workflow
+`.github/workflows/spike-s2-midi.yml`: **p99 jitter 1.10 ms on Windows and
+0.10 ms on macOS**, 0 late sends in every configuration. **What is still
+missing is Linux** (the CI runners' kernels have no ALSA sequencer) and a run
+against **real MIDI hardware**, which is what this procedure is for.
+
 **M-1 MIDI note routing.** Create loopback port; open a MIDI monitor; assign channels; play a 4-bar loop; confirm note numbers and channels for chords, bass and click; stop; confirm all-notes-off on each used channel.
 
 **M-2 MIDI clock sync.** Open a DAW (two different DAWs across the test round) set to external MIDI clock; play from the app; confirm tempo display matches and transport follows Start/Stop/Continue; change tempo mid-play and confirm the DAW follows within a beat.

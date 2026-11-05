@@ -332,6 +332,34 @@ immediately. That is exactly the failure mode the 100 ms window shows under
 heavy UI load (§5.1), and it is why the look-ahead must exceed the worst
 expected main-thread stall.
 
+### 5.6 Hot-plug — a port that disappears mid-playback
+
+The pass criterion "stable hot-plug" needs a device that actually goes
+away. The spike removes the loopback port from the operating system while
+a measurement is running, then asks the renderer what it sees.
+
+| Platform | How the port is removed | Probe delay | Port gone | `statechange` (disconnect) events | Send errors | Late sends |
+|---|---|---|---|---|---|---|
+| macOS | the CoreMIDI helper is killed, which disposes both endpoints | 3 s | **yes** | **2** (the output and the input) | **0** | **0** |
+| Windows | the loopMIDI port is deleted from the registry and the driver is restarted | 20 s | see §7 | see §7 | **0** | **0** |
+
+Reading:
+
+- **The schedule survives.** In every run the app dispatched all 912
+  messages with **0 late sends and 0 send errors**: the messages that were
+  due after the port vanished were dropped, not sent late, and the drop did
+  not throw. The send path (`ResilientMidiSender` in
+  `spikes/s2/renderer/send.ts`) checks the port's state before every send
+  and catches anything the driver throws; that behaviour is unit-tested
+  (`tests/unit/spike-s2-send.test.ts`).
+- **The port disappears from the list and the app is told.** On macOS the
+  renderer saw two disconnect events — the virtual output and the virtual
+  input — and its port list was empty afterwards.
+- **The Windows case is slower.** Removing a loopMIDI port means deleting
+  its registry entry and restarting the driver, which takes about 12 s on
+  the runner. The probe delay is 20 s for that reason; see §7 for the
+  result.
+
 ## 6. The native candidate: licence, maintenance, prebuilt binaries
 
 | Property | Finding |

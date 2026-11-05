@@ -128,6 +128,9 @@ jobs:
         run: |
           '["powershell","-File","spikes/s2/tools/windows-loopmidi.ps1","-RemovePorts","-Ports","${{ matrix.output_port }}"]' > "$RUNNER_TEMP/hot-plug-command.json"
           pnpm run spike:s2:web -- --bars 16 --bpm 120 --out "web-midi-${{ matrix.os }}-hotplug.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" --hot-plug-at 4000 --hot-plug-probe-delay 20000 --hot-plug-command-file "$RUNNER_TEMP/hot-plug-command.json"
+          # Enumerate the ports outside Electron, to tell "the driver still
+          # has the port" apart from "Chromium did not notice the change".
+          node -e "const {Output,Input}=require('@julusian/midi'); console.log('OS outputs after removal:', JSON.stringify(Output.getPortNames())); console.log('OS inputs after removal:', JSON.stringify(Input.getPortNames()));"
           powershell -File spikes/s2/tools/windows-loopmidi.ps1 -Ports "${{ matrix.output_port }}"
 
       - name: Run the Web MIDI measurement (hot-plug, macOS)
