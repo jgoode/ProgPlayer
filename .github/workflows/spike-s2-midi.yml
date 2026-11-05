@@ -107,6 +107,31 @@ jobs:
       - name: Run the Web MIDI measurement (heavy UI load, 300 ms look-ahead)
         run: pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-uiload.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" --ui-load --look-ahead 300
 
+      # --- hot-plug ------------------------------------------------------
+      # The loopback port is removed while the measurement is running, so
+      # the report shows whether the app survives a disappearing device
+      # (NFR-REL-2). The port is put back afterwards for the native run.
+      - name: Run the Web MIDI measurement (hot-plug, Windows)
+        if: runner.os == 'Windows'
+        run: |
+          pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-hotplug.json" `
+            --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" `
+            --hot-plug-at 4000 `
+            --hot-plug-command '["powershell","-File","spikes/s2/tools/windows-loopmidi.ps1","-RemovePorts","-Ports","${{ matrix.output_port }}"]'
+          powershell -File spikes/s2/tools/windows-loopmidi.ps1 -Ports "${{ matrix.output_port }}"
+
+      - name: Run the Web MIDI measurement (hot-plug, macOS)
+        if: runner.os == 'macOS'
+        run: |
+          PID="$(cat "$RUNNER_TEMP/midi-virtual-port.pid")"
+          pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-hotplug.json" `
+            --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" `
+            --hot-plug-at 4000 `
+            --hot-plug-command "[\"kill\",\"${PID}\"]"
+          bash spikes/s2/tools/macos-virtual-port.sh "${{ matrix.output_port }}" &
+          echo $! > "$RUNNER_TEMP/midi-virtual-port.pid"
+          sleep 5
+
       - name: Run the native (RtMidi) measurement
         run: pnpm run spike:s2:native -- --bars 8 --bpm 120 --out "native-${{ matrix.os }}.json" --output "${{ matrix.output_port }}" --capture "${{ matrix.input_port }}"
 

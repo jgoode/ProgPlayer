@@ -39,6 +39,21 @@ const NOTES_PER_BEAT = Number(argValue('notes-per-beat', '1'));
 const LOOK_AHEAD_MS = Number(argValue('look-ahead', '100'));
 const WORKER_INTERVAL_MS = Number(argValue('worker-interval', '10'));
 const MINIMIZE_AFTER_MS = Number(argValue('minimize-after', '0'));
+/**
+ * Milliseconds into the run at which the loopback port is removed, to
+ * exercise hot-plug (NFR-REL-2). Zero disables the probe.
+ */
+const HOT_PLUG_AT_MS = Number(argValue('hot-plug-at', '0'));
+/**
+ * The command that removes the loopback port from the OS, as a JSON array of
+ * arguments. It is run by the driver (not by the renderer) because removing
+ * a port is an operating system operation, not something the web page can do.
+ *
+ * A JSON array rather than a shell string: the port names contain spaces,
+ * and the quoting rules of `cmd.exe` and `sh` differ. The array is passed to
+ * `execFileSync` directly, so no shell is involved.
+ */
+const HOT_PLUG_COMMAND = argValue('hot-plug-command', '');
 const OUT_NAME = argValue('out', `web-midi-${Date.now()}.json`);
 
 // Chromium's Windows MIDI backend is WinMM by default; the WinRT backend is
@@ -226,6 +241,7 @@ async function run() {
       minimizeAfterMs: MINIMIZE_AFTER_MS,
       simulateUiLoad: args.includes('--ui-load'),
       useNullSink,
+      hotPlugProbeAtMs: HOT_PLUG_AT_MS > 0 ? HOT_PLUG_AT_MS + 1500 : 0,
     })})`,
   );
 
@@ -233,6 +249,23 @@ async function run() {
     await new Promise((done) => setTimeout(done, MINIMIZE_AFTER_MS));
     console.log('Minimising the window.');
     await window.webContents.executeJavaScript('window.spikeHost.minimize()');
+  }
+
+  if (HOT_PLUG_AT_MS > 0) {
+    // Remove the loopback port from the OS while the measurement runs, then
+    // let the renderer snapshot its port list 1.5 s later.
+    await new Promise((done) => setTimeout(done, HOT_PLUG_AT_MS));
+    console.log(`Removing the loopback port: ${HOT_PLUG_COMMAND}`);
+    try {
+      const { execFileSync } = require('node:child_process');
+      const argv = JSON.parse(HOT_PLUG_COMMAND);
+      if (!Array.isArray(argv) || argv.length === 0) {
+        throw new Error('--hot-plug-command must be a non-empty JSON array of arguments');
+      }
+      execFileSync(argv[0], argv.slice(1), { stdio: 'inherit' });
+    } catch (error) {
+      console.error(`The hot-plug command failed: ${error}`);
+    }
   }
 
   const report = await runPromise;

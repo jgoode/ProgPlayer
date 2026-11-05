@@ -91,16 +91,40 @@ be created either. The end-to-end capture was therefore **not** run here.
 
 | | |
 |---|---|
-| Workflow | `.github/workflows/spike-s2-midi.yml`, run 42107377299 (Windows) and 42110658571 (all three) |
-| Runners | `windows-latest`, `macos-latest`, `ubuntu-24.04` |
+| Workflow | `.github/workflows/spike-s2-midi.yml` |
+| Runners | `windows-latest`, `macos-latest` |
 | Loopback — Windows | **loopMIDI 1.0.16.27**, port `PracticePlayer S2 Loopback`, created through the registry (`HKCU\Software\Tobias Erichsen\loopMIDI\Ports`) by `spikes/s2/tools/windows-loopmidi.ps1` — no GUI interaction needed |
-| Loopback — macOS | **CoreMIDI virtual source/destination** created by `spikes/s2/tools/macos-virtual-port.sh` (an Objective-C helper; the Swift version failed to compile because the `MIDISourceRef` importer differs between SDK versions) |
-| Loopback — Linux | the ALSA sequencer's `snd-virmidi` "Midi Through" client — see §5.4 for what the runner actually provided |
+| Loopback — macOS | **CoreMIDI virtual destination + source** created by `spikes/s2/tools/macos-virtual-port.sh` (an Objective-C helper; the Swift version failed to compile because the `MIDISourceRef` importer differs between SDK versions) |
 | Audio | the runner's null audio device: `getOutputTimestamp()` reports `contextTime` 0 and `performanceTime` 0, i.e. no output-timestamp lag information |
-| MIDI hardware | none on any runner; the loopback is the only port |
+| MIDI hardware | none on either runner; the loopback is the only port |
 
 The CI runs are the source of the numbers in §5.3; the development machine
 supplied the numbers in §5.1 and §5.2.
+
+### 2.3 Linux — out of scope for this spike
+
+Linux remains a supported platform (PLT-1), but the **S2 measurement is
+scoped to Windows and macOS**. The reason is practical: the GitHub Actions
+runners use Azure kernels, and those kernels ship without the ALSA
+sequencer drivers (`snd-seq`, `snd-virmidi`) — the packages that provide
+them are not published for the `linux-azure` kernel the runners run, and
+the runner images do not install them. Without `/dev/snd/seq` there is no
+ALSA virtual port and therefore no loopback to measure against.
+
+What was done for Linux anyway:
+
+- The harness itself is platform-independent: the same Worker-driven
+  scheduler, the same `getOutputTimestamp()` mapping and the same capture
+  code run on Linux. The Chromium source shows the ALSA backend honours
+  the timestamp (§5.5).
+- The dispatch path was measured on the development machine (which is
+  Windows) and is covered by the unit and simulated-clock tests.
+- `spikes/s2/tools/linux-virtual-midi.sh` was written and then removed: with
+  no way to exercise it, keeping it would be untested code.
+
+The Linux end-to-end measurement is therefore **deferred to the manual
+device test** (`testing.md` §7, M-0), which needs a Linux machine with the
+ALSA sequencer available. The gap is recorded as **G-20**.
 
 ## 3. Permission handling
 

@@ -27,6 +27,7 @@ import {
   type TimelineEvent,
 } from './analysis';
 import { LookAheadScheduler, type DispatchRecord } from './scheduler';
+import { ResilientMidiSender } from './send';
 
 interface PortSummary {
   id: string;
@@ -73,6 +74,13 @@ interface RunOptions {
    * measure driver or loopback timing, and the report says so.
    */
   useNullSink: boolean;
+  /**
+   * Milliseconds after the start of the run at which the driver asks the
+   * renderer to snapshot the port list. The driver removes the loopback
+   * port just before that instant, so the snapshot captures the effect of
+   * the hot-unplug.
+   */
+  hotPlugProbeAtMs: number;
 }
 
 interface RunReport {
@@ -129,6 +137,26 @@ interface RunReport {
     /** Deviation of each interval from the nominal 24 ppqn interval. */
     intervalDeviation: SampleStats;
     nominalIntervalMs: number;
+  };
+  /**
+   * The hot-unplug observation.
+   *
+   * `portsAfterUnplug` is the port list as the renderer saw it after the
+   * driver removed the loopback port; `portsBeforeUnplug` is the list the
+   * renderer took when the run started. `stateChangeCountDuringRun` counts
+   * the `statechange` events the renderer received while the run was going.
+   */
+  hotPlug: {
+    probed: boolean;
+    portsBeforeUnplug: { outputs: PortSummary[]; inputs: PortSummary[] };
+    portsAfterUnplug: { outputs: PortSummary[]; inputs: PortSummary[] };
+    stateChangeCountDuringRun: number;
+    /** True when the loopback port was gone from the list after the unplug. */
+    portDisappeared: boolean;
+    /** Messages dropped because the port was gone. */
+    droppedMessages: number;
+    /** Messages the port rejected with an exception. */
+    failedMessages: number;
   };
   unmatchedReceived: number;
   errors: string[];
@@ -335,6 +363,14 @@ async function run(options: RunOptions): Promise<RunReport> {
   const finished = new Promise<void>((resolve) => {
     finishRun = resolve;
   });
+  // The output port can disappear while the run is going (the hot-plug probe
+  // removes it). Sending to a disconnected port must not throw and must not
+  // stop the schedule: playback continues on the remaining outputs
+  // (NFR-REL-2).
+  const sender = new ResilientMidiSender({
+    port: output ?? null,
+    onError: (message) => errors.push(message),
+  });
   const scheduler = new LookAheadScheduler({
     now: () => performance.now(),
     lookAheadMs: options.lookAheadMs,
@@ -343,13 +379,13 @@ async function run(options: RunOptions): Promise<RunReport> {
     onComplete: () => finishRun?.(),
     onDispatch: (event: TimelineEvent, record: DispatchRecord) => {
       if (event.kind === 'clock') {
-        output?.send([0xf8], record.intendedTimeMs);
+        sender.send([0xf8], record.intendedTimeMs);
         return;
       }
       const status =
         event.kind === 'note-on' ? 0x90 | (event.channel - 1) : 0x80 | (event.channel - 1);
       intendedByEventId.set(event.id, record.intendedTimeMs);
-      output?.send([status, event.note, event.velocity], record.intendedTimeMs);
+      sender.send([status, event.note, event.velocity], record.intendedTimeMs);
     },
   });
 
@@ -377,6 +413,27 @@ async function run(options: RunOptions): Promise<RunReport> {
     }, 500);
   }
 
+  // The hot-unplug probe. The driver removes the loopback port from the OS
+  // while the run is going; the renderer snapshots its port list when the
+  // driver asks it to, which is how the spike shows that a disappearing
+  // port is reported through `statechange` and disappears from the list
+  // without disturbing the running schedule (NFR-REL-2).
+  const portsBeforeUnplug = listPorts();
+  const stateChangesBeforeRun = stateChanges.length;
+  let portsAfterUnplug: { outputs: PortSummary[]; inputs: PortSummary[] } = portsBeforeUnplug;
+  let hotPlugProbed = false;
+  let hotPlugTimer: number | undefined;
+  if (options.hotPlugProbeAtMs > 0) {
+    const remainingMs = Math.max(0, options.hotPlugProbeAtMs - (performance.now() - startedAtMs));
+    hotPlugTimer = window.setTimeout(() => {
+      portsAfterUnplug = listPorts();
+      hotPlugProbed = true;
+      log(
+        `Hot-plug snapshot taken; ${portsAfterUnplug.outputs.length} output(s), ${portsAfterUnplug.inputs.length} input(s) remain.`,
+      );
+    }, remainingMs);
+  }
+
   // The run finishes when the scheduler has dispatched the last event. The
   // completion signal comes from the Worker-driven scheduler, not from a UI
   // timer, so a minimised window cannot stall it.
@@ -388,6 +445,9 @@ async function run(options: RunOptions): Promise<RunReport> {
   scheduler.stop();
   if (uiLoadHandle !== undefined) {
     window.clearInterval(uiLoadHandle);
+  }
+  if (hotPlugTimer !== undefined) {
+    window.clearTimeout(hotPlugTimer);
   }
   worker.postMessage({ type: 'stop' });
   worker.terminate();
@@ -447,6 +507,20 @@ async function run(options: RunOptions): Promise<RunReport> {
       interval: summarizeSamples(intervals),
       intervalDeviation: summarizeSamples(intervals.map((value) => value - nominalIntervalMs)),
       nominalIntervalMs,
+    },
+    hotPlug: {
+      probed: hotPlugProbed,
+      portsBeforeUnplug,
+      portsAfterUnplug,
+      stateChangeCountDuringRun: stateChanges.length - stateChangesBeforeRun,
+      portDisappeared:
+        hotPlugProbed &&
+        portsBeforeUnplug.outputs.length + portsBeforeUnplug.inputs.length >
+          portsAfterUnplug.outputs.length + portsAfterUnplug.inputs.length,
+      /** Messages dropped because the port was gone. */
+      droppedMessages: sender.disconnectedCount,
+      /** Messages the port rejected with an exception. */
+      failedMessages: sender.failedCount,
     },
     unmatchedReceived,
     errors,

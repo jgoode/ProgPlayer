@@ -14,10 +14,16 @@
 #
 # Usage:
 #   powershell -File spikes/s2/tools/windows-loopmidi.ps1 -Ports "S2 Loopback"
+#
+# Removing a port (used by the hot-plug probe) deletes its registry entry
+# and restarts loopMIDI, which is how loopMIDI itself is told to drop the
+# port:
+#   powershell -File spikes/s2/tools/windows-loopmidi.ps1 -RemovePorts "S2 Loopback"
 
 param(
   [string[]]$Ports = @('PracticePlayer S2 Loopback'),
-  [string]$LoopMidiPath = 'C:\Program Files (x86)\Tobias Erichsen\loopMIDI\loopMIDI.exe'
+  [string]$LoopMidiPath = 'C:\Program Files (x86)\Tobias Erichsen\loopMIDI\loopMIDI.exe',
+  [switch]$RemovePorts
 )
 
 $ErrorActionPreference = 'Stop'
@@ -25,6 +31,33 @@ $ErrorActionPreference = 'Stop'
 $portsKey = 'HKCU:\Software\Tobias Erichsen\loopMIDI\Ports'
 if (-not (Test-Path $portsKey)) {
   New-Item -Path $portsKey -Force | Out-Null
+}
+
+if ($RemovePorts) {
+  foreach ($port in $Ports) {
+    if (Get-ItemProperty -Path $portsKey -Name $port -ErrorAction SilentlyContinue) {
+      Remove-ItemProperty -Path $portsKey -Name $port -Force
+      Write-Output "Removed loopMIDI port: $port"
+    } else {
+      Write-Output "loopMIDI port was not present: $port"
+    }
+  }
+
+  if (-not (Test-Path $LoopMidiPath)) {
+    Write-Error "loopMIDI was not found at '$LoopMidiPath'."
+    exit 1
+  }
+
+  # Restarting is how loopMIDI re-reads its port list.
+  $running = Get-Process -Name 'loopMIDI' -ErrorAction SilentlyContinue
+  if ($running) {
+    $running | Stop-Process -Force
+    Start-Sleep -Seconds 2
+  }
+  Start-Process -FilePath $LoopMidiPath
+  Start-Sleep -Seconds 5
+  Write-Output 'loopMIDI restarted without the removed ports.'
+  exit 0
 }
 
 foreach ($port in $Ports) {

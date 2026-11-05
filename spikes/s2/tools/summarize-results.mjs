@@ -73,6 +73,10 @@ function rowsFor(entry) {
     clockDeviationP99: number(clock?.p99),
     clockDeviationMax: number(clock?.max),
     capture: measurement.captureAvailable ?? (measurement.capturedNotes?.count ?? 0) > 0,
+    hotPlugProbed: measurement.hotPlug?.probed === true,
+    hotPlugPortGone: measurement.hotPlug?.portDisappeared === true,
+    hotPlugStateChanges: measurement.hotPlug?.stateChangeCountDuringRun ?? null,
+    sendErrors: measurement.errors?.length ?? 0,
   };
 }
 
@@ -85,11 +89,13 @@ if (reports.length === 0) {
 const rows = reports.map(rowsFor);
 
 console.log(
-  '| Report | Platform | Path | Sends | Late sends | Dispatch p50 (ms) | Dispatch p99 (ms) | Dispatch max (ms) | Note error p50 (ms) | Note error p99 (ms) | Note error max (ms) | Jitter p50 (ms) | Jitter p99 (ms) | Jitter max (ms) | Clock dev p99 (ms) | Clock dev max (ms) | Loopback capture |',
+  '| Report | Platform | Path | Sends | Late sends | Dispatch p50 (ms) | Dispatch p99 (ms) | Dispatch max (ms) | Note error p50 (ms) | Note error p99 (ms) | Note error max (ms) | Jitter p50 (ms) | Jitter p99 (ms) | Jitter max (ms) | Clock dev p99 (ms) | Clock dev max (ms) | Loopback capture | Hot-plug probed | Port gone | State changes | Send errors |',
 );
-console.log('|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|');
+console.log(
+  '|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|',
+);
 for (const row of rows) {
   console.log(
-    `| ${row.file} | ${row.platform} | ${row.kind} | ${row.dispatchCount} | ${row.lateCount} (${row.lateFraction}) | ${row.dispatchP50} | ${row.dispatchP99} | ${row.dispatchMax} | ${row.noteP50} | ${row.noteP99} | ${row.noteMax} | ${row.jitterP50} | ${row.jitterP99} | ${row.jitterMax} | ${row.clockDeviationP99} | ${row.clockDeviationMax} | ${row.capture ? 'yes' : 'no'} |`,
+    `| ${row.file} | ${row.platform} | ${row.kind} | ${row.dispatchCount} | ${row.lateCount} (${row.lateFraction}) | ${row.dispatchP50} | ${row.dispatchP99} | ${row.dispatchMax} | ${row.noteP50} | ${row.noteP99} | ${row.noteMax} | ${row.jitterP50} | ${row.jitterP99} | ${row.jitterMax} | ${row.clockDeviationP99} | ${row.clockDeviationMax} | ${row.capture ? 'yes' : 'no'} | ${row.hotPlugProbed ? 'yes' : 'no'} | ${row.hotPlugProbed ? (row.hotPlugPortGone ? 'yes' : 'no') : '—'} | ${row.hotPlugStateChanges ?? '—'} | ${row.sendErrors} |`,
   );
 }
