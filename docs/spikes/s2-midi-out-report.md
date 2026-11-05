@@ -60,7 +60,12 @@ the constant loopback delay removed (the median error is subtracted).
   `RtMidiOut::sendMessage()` when it fires. This is the closest the native
   path can get to a timestamped send.
 
-## 2. Machine
+## 2. Machines
+
+The measurements ran in two places: the development machine (no loopback
+available) and the GitHub Actions matrix (real loopbacks).
+
+### 2.1 Development machine — dispatch path only
 
 | | |
 |---|---|
@@ -80,7 +85,22 @@ Services runtime that ships loopback endpoints is not installed, and its
 release assets on GitHub 404 for the version winget resolves; the
 MIDI-Router client installer was also cancelled. The WSL2 kernel in this
 environment has no `snd-seq` module, so the ALSA sequencer loopback cannot
-be created either. The end-to-end capture was therefore **not** run.
+be created either. The end-to-end capture was therefore **not** run here.
+
+### 2.2 GitHub Actions matrix — end-to-end loopback
+
+| | |
+|---|---|
+| Workflow | `.github/workflows/spike-s2-midi.yml`, run 42107377299 (Windows) and 42110658571 (all three) |
+| Runners | `windows-latest`, `macos-latest`, `ubuntu-24.04` |
+| Loopback — Windows | **loopMIDI 1.0.16.27**, port `PracticePlayer S2 Loopback`, created through the registry (`HKCU\Software\Tobias Erichsen\loopMIDI\Ports`) by `spikes/s2/tools/windows-loopmidi.ps1` — no GUI interaction needed |
+| Loopback — macOS | **CoreMIDI virtual source/destination** created by `spikes/s2/tools/macos-virtual-port.sh` (an Objective-C helper; the Swift version failed to compile because the `MIDISourceRef` importer differs between SDK versions) |
+| Loopback — Linux | the ALSA sequencer's `snd-virmidi` "Midi Through" client — see §5.4 for what the runner actually provided |
+| Audio | the runner's null audio device: `getOutputTimestamp()` reports `contextTime` 0 and `performanceTime` 0, i.e. no output-timestamp lag information |
+| MIDI hardware | none on any runner; the loopback is the only port |
+
+The CI runs are the source of the numbers in §5.3; the development machine
+supplied the numbers in §5.1 and §5.2.
 
 ## 3. Permission handling
 
@@ -119,12 +139,17 @@ report includes the recorded changes, but the list is empty in every run.
 
 ## 5. Timing results
 
-All numbers below are **dispatch** numbers: the difference between the
-intended time of an event and the moment the message was handed to the MIDI
-driver. They are the part of the path the app controls. The end-to-end
-error (what a receiver sees) was not measured — §2.
+Two kinds of number appear below:
 
-### 5.1 Web MIDI, Worker look-ahead, 100 ms window, 8 bars at 120 BPM
+- **Dispatch** — the difference between the intended time of an event and
+  the moment the message was handed to the MIDI driver. This is the part of
+  the path the app controls. Measured on the development machine (§5.1,
+  §5.2) and on the CI runners.
+- **End-to-end** — the difference between the intended time and the
+  `MIDIMessageEvent.timeStamp` the receiver sees. This is the number the
+  p99 exit check is about. Measured with a real loopback in §5.3.
+
+### 5.1 Web MIDI, Worker look-ahead, 100 ms window, 8 bars at 120 BPM — dispatch
 
 | Run | Sends | Late sends | Lateness p50 | Lateness p99 | Lateness max |
 |---|---|---|---|---|---|
