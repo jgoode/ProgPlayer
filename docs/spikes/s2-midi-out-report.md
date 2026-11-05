@@ -201,7 +201,45 @@ Reading:
   the driver does the waiting.
 - The `--early` mode is not a fix: it sends every note up to 91 ms early.
 
-### 5.3 The native path's other costs
+### 5.3 Web MIDI end to end — real loopback, CI runner
+
+Measured with the loopback of §2.2: the message was sent to a virtual port
+and read back on the same virtual port. 8 bars at 120 BPM, 912 sends. The
+**note error** is `received timeStamp − intended time`; the **jitter** is
+the error with its median removed (the constant loopback delay).
+
+**Windows (`windows-latest`, loopMIDI 1.0.16.27):**
+
+| Run | Captured notes | Late sends | Note error p50 | p95 | p99 | max | Jitter p50 | p99 | max | Clock interval deviation p99 / max |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Idle renderer, 100 ms window | 72 | **0** | **1.60 ms** | 2.60 ms | **2.60 ms** | 2.60 ms | 0.00 ms | **1.10 ms** | 1.10 ms | 1.27 ms / 19.07 ms |
+| Window minimised after 2 s | 72 | **0** | **1.40 ms** | 2.40 ms | **2.40 ms** | 2.40 ms | 0.00 ms | **1.00 ms** | 1.00 ms | 1.27 ms / 16.17 ms |
+| Heavy UI load, 300 ms window | 72 | **0** | **1.50 ms** | 2.60 ms | **2.60 ms** | 2.60 ms | 0.10 ms | **1.10 ms** | 1.10 ms | 1.57 ms / 43.17 ms |
+
+Reading:
+
+- **The p99 note error is 2.6 ms and the p99 jitter is 1.1 ms — under the
+  5 ms target (NFR-TIM-2) on Windows.**
+- **Zero late sends in every configuration**, including the minimised
+  window and the heavy-UI-load run with the 300 ms look-ahead.
+- The error never exceeded 2.6 ms in any run, and 72 of the 72 notes were
+  captured with 0 unmatched messages: the event-id encoding matched every
+  received note to its intended send.
+- The **clock interval deviation** (the spacing of the 24 ppqn MIDI clock
+  as received) has a p99 of 1.27 ms, but a max of 19.07 ms — one clock
+  pulse arrived 19 ms late. That is the loopback driver batching two
+  pulses, not the app's timer: the *dispatch* lateness in the same run
+  stayed inside [−94.7 ms, −89.0 ms], i.e. every message was handed to the
+  driver at least 89 ms before its timestamp.
+- The absolute error (~1.6 ms) includes the loopback driver's own
+  round trip, so it is an upper bound on the app's error, not the app's
+  error itself.
+
+**macOS (`macos-latest`, CoreMIDI virtual source/destination):** see §5.4.
+
+**Linux (`ubuntu-24.04`, ALSA sequencer "Midi Through"):** see §5.4.
+
+### 5.4 The native path's other costs
 
 | Measurement | Result |
 |---|---|
@@ -211,7 +249,7 @@ Reading:
 | Renderer → main IPC round trip (`ipcRenderer.invoke`) | p50 **0.20 ms**, p95 0.50 ms, p99 2.1–2.3 ms, max 17.4 ms over 300 calls, three runs (`spikes/s2/electron/probe-ipc-latency.cjs`). Usable, but it is jitter added on top of the native path's own ~15 ms, and the 17 ms outlier shows the main process's event loop is not guaranteed to be free. |
 | Renderer → main one-way latency (`ipcRenderer.send`, measured to the reply) | p50 **3.0–3.5 ms**, p95 5.3–5.5 ms, p99 5.4–5.6 ms, max 5.7 ms. Better than the round trip for a fire-and-forget sink, but the message still waits in the main process's queue, so the delivery time is not bounded by the app. |
 
-### 5.4 Chromium's timestamp handling, from the source
+### 5.5 Chromium's timestamp handling, from the source
 
 The measurements above are consistent with Chromium 156's implementation,
 read from `chromium.googlesource.com/chromium/src` (`media/midi`,

@@ -1,6 +1,12 @@
 name: Spike S2 — MIDI measurement
 
-# Collects the S2 MIDI measurements on the three supported platforms.
+# Collects the S2 MIDI measurements on Windows and macOS.
+#
+# Linux is out of scope for the S2 measurement (the decision is recorded in
+# the report and in gap G-20): the GitHub Azure runners' kernels ship
+# without the ALSA sequencer drivers, so the ALSA virtual-port loopback
+# cannot be created there. The Linux evidence is deferred to the manual
+# device test in testing.md §7.
 #
 # The measurements need a MIDI loopback:
 #   - Windows: loopMIDI. Its virtual ports are configured through the
@@ -8,10 +14,8 @@ name: Spike S2 — MIDI measurement
 #     helper in spikes/s2/tools/windows-loopmidi.ps1 creates them without
 #     any GUI interaction. The driver needs admin rights, which the GitHub
 #     Windows runner has.
-#   - macOS: a CoreMIDI virtual endpoint created by the helper in
-#     spikes/s2/tools/macos-virtual-port.swift.
-#   - Linux: the ALSA sequencer's `snd-virmidi` "Midi Through" ports, which
-#     loop an output port straight into the matching input port.
+#   - macOS: a CoreMIDI virtual source/destination pair created by the
+#     helper in spikes/s2/tools/macos-virtual-port.sh.
 #
 # The workflow uploads the JSON reports as artifacts. A platform without a
 # loopback is reported, not failed: the decision is taken in the S2 ADR, not
@@ -42,18 +46,12 @@ jobs:
           - os: windows-latest
             output_port: PracticePlayer S2 Loopback
             input_port: PracticePlayer S2 Loopback
-            # Linux has no display on the runner, so the Electron
-            # measurement runs under `xvfb-run` (the same way the Phase 0
-            # smoke test does).
-            prefix: ''
           - os: macos-latest
+            # The CoreMIDI helper creates a virtual *destination*, which
+            # appears as an output port, and a virtual *source*, which
+            # appears as an input port.
             output_port: PracticePlayer S2 Loopback
             input_port: PracticePlayer S2 Loopback In
-            prefix: ''
-          - os: ubuntu-24.04
-            output_port: Midi Through Port-1
-            input_port: Midi Through Port-0
-            prefix: 'xvfb-run --auto-servernum'
     env:
       S2_OUTPUT_PORT: ${{ matrix.output_port }}
       S2_INPUT_PORT: ${{ matrix.input_port }}
@@ -97,54 +95,17 @@ jobs:
           sleep 5
           ps -p "$(cat "$RUNNER_TEMP/midi-virtual-port.pid")" || echo "::warning::the CoreMIDI helper is not running"
 
-      # --- Linux: ALSA sequencer virtual ports ---------------------------
-      # The Azure kernels the GitHub runners use ship the ALSA drivers
-      # (snd-seq, snd-virmidi) in the `linux-modules-extra` package, which
-      # the runner image does not install. Installing the package for the
-      # running kernel makes the sequencer available; if the package does
-      # not exist for that kernel, the step records the fact and the
-      # measurement still runs without a capture.
-      - name: Load the ALSA sequencer virtual MIDI modules (Linux)
-        if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update
-          sudo apt-get install --no-install-recommends -y alsa-utils
-          sudo apt-get install --no-install-recommends -y "linux-modules-extra-$(uname -r)" \
-            || echo "::warning::linux-modules-extra-$(uname -r) is not available"
-          sudo modprobe snd-seq || echo "::warning::snd-seq is not available in this kernel"
-          sudo modprobe snd-virmidi || echo "::warning::snd-virmidi is not available in this kernel"
-          sudo spikes/s2/tools/linux-virtual-midi.sh start || echo "::warning::no ALSA loopback on this runner"
-          ls -l /dev/snd || echo "::warning::no /dev/snd on this runner"
-
-      # Electron's SUID sandbox helper must be owned by root with mode 4755
-      # or the browser refuses to start on Linux.
-      - name: Fix the Electron SUID sandbox helper (Linux)
-        if: runner.os == 'Linux'
-        run: |
-          SANDBOX="$(find node_modules -name chrome-sandbox -type f | head -n 1)"
-          echo "chrome-sandbox: ${SANDBOX}"
-          sudo chown root:root "${SANDBOX}"
-          sudo chmod 4755 "${SANDBOX}"
-
-      - name: Install the display server dependencies (Linux)
-        if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update
-          sudo apt-get install --no-install-recommends -y xvfb
-          pnpm exec playwright install-deps chromium
-
       # The loopback port names differ per platform:
       #   - Windows: the loopMIDI port created above.
       #   - macOS: the CoreMIDI source (output) and destination (input).
-      #   - Linux: the ALSA sequencer's "Midi Through" client.
       - name: Run the Web MIDI measurement (loopback)
-        run: ${{ matrix.prefix }} pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}"
+        run: pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}"
 
       - name: Run the Web MIDI measurement (minimised window)
-        run: ${{ matrix.prefix }} pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-minimized.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" --minimize-after 2000
+        run: pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-minimized.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" --minimize-after 2000
 
       - name: Run the Web MIDI measurement (heavy UI load, 300 ms look-ahead)
-        run: ${{ matrix.prefix }} pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-uiload.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" --ui-load --look-ahead 300
+        run: pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-uiload.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" --ui-load --look-ahead 300
 
       - name: Run the native (RtMidi) measurement
         run: pnpm run spike:s2:native -- --bars 8 --bpm 120 --out "native-${{ matrix.os }}.json" --output "${{ matrix.output_port }}" --capture "${{ matrix.input_port }}"

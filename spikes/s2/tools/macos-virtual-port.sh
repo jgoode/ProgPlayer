@@ -6,10 +6,10 @@
 # Usage:
 #   spikes/s2/tools/macos-virtual-port.sh "PracticePlayer S2 Loopback" &
 #
-# The helper creates a virtual *source* (an output port that other
-# applications write to) and a virtual *destination* (an input port), and
-# connects the source to the destination so that everything written to the
-# source is delivered to the destination.
+# The helper creates a virtual *destination* (which appears in other
+# applications as an output port that they write to) and a virtual *source*
+# (which appears as an input port that they read from), and forwards every
+# packet the destination receives into the source.
 
 set -euo pipefail
 
