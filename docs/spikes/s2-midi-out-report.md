@@ -530,7 +530,7 @@ reports as artifacts.
 | **Linux** | FR-SND-8 | The ALSA sequencer's `snd-virmidi` ("Midi Through") provides the loopback; it needs `snd-seq` and `snd-virmidi` loaded. PipeWire/JACK users connect ports with their usual tooling. |
 | **Sysex** | CON-4 | The app does not request system-exclusive access by default. If it is added later, the permission handler must ask the user first. |
 | **Latency calibration** | NFR-TIM-3 | The setup guide must explain the user offset that compensates for the audio output latency, and the click-test helper used to set it. |
-| **Hot-plug** | NFR-REL-2 | The guide must say that unplugging a device removes it from the port list and that playback continues without it. |
+| **Hot-plug** | NFR-REL-2 | The guide must say that unplugging a device removes it from the port list and that playback continues without it. **On Windows the removal may not be immediate**: Chromium's WinMM backend does not re-enumerate when a device disappears, so the app may list a port that is already gone until it re-enumerates. The guide should tell users that a vanished device is detected when the next send fails, and that reopening the MIDI settings refreshes the list. |
 | **Windows: the Microsoft GS Wavetable Synth is hidden from Web MIDI** | — | Not user-facing, but worth a troubleshooting note: it is not a usable target for MIDI out from the app. |
 
 ## 10. What is *not* verified
