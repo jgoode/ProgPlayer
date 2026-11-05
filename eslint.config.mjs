@@ -16,6 +16,9 @@ export default tseslint.config(
       'playwright-report/**',
       'node_modules/**',
       'docs/**',
+      // The spike's build output and the vendored worklet bundle it produces.
+      'spikes/**/dist/**',
+      'spikes/**/public/vendor/**',
     ],
   },
   js.configs.recommended,
@@ -59,6 +62,25 @@ export default tseslint.config(
       globals: {
         console: 'readonly',
         process: 'readonly',
+        fetch: 'readonly',
+      },
+    },
+    rules: { ...tseslint.configs.disableTypeChecked.rules },
+  },
+  {
+    // The spike's CommonJS Electron scripts run in the main process.
+    files: ['spikes/**/electron/**/*.cjs'],
+    languageOptions: {
+      sourceType: 'commonjs',
+      globals: {
+        __dirname: 'readonly',
+        console: 'readonly',
+        process: 'readonly',
+        Buffer: 'readonly',
+        URL: 'readonly',
+        Response: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
       },
     },
     rules: { ...tseslint.configs.disableTypeChecked.rules },

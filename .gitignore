@@ -16,3 +16,14 @@ tests/.boundary-probe/
 .env
 .env.*
 !.env.example
+
+# Spike S1 SoundFont fixtures: downloaded by `node spikes/s1/prepare-fixtures.mjs`,
+# 32 MB (SF2) and 9 MB (SF3) of binary assets that are not committed.
+spikes/s1/fixtures/*.sf2
+spikes/s1/fixtures/*.sf3
+spikes/s1/results/*.json
+spikes/s1/results/*.txt
+
+# The spike's build output: the vendored worklet bundle is produced by
+# `pnpm exec vite build --config spikes/s1/worklet/vite.config.ts`.
+spikes/s1/renderer/public/vendor/

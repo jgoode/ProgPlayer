@@ -1,5 +1,7 @@
 minimumReleaseAgeExclude:
   - electron@45.2.2
+  - spessasynth_core@4.4.5 || 4.4.6
+  - spessasynth_lib@4.4.3 || 4.4.4
 
 # pnpm 12 requires every dependency with an install script to be reviewed.
 # electron downloads its platform binary; esbuild installs its native binary.

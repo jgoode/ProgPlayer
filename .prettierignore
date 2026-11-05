@@ -8,3 +8,7 @@ playwright-report
 pnpm-lock.yaml
 docs
 tests/.boundary-probe
+
+# The spike's build output and the vendored worklet bundle it produces.
+spikes/**/dist/**
+spikes/**/public/vendor/**

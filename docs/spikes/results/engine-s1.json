@@ -1,0 +1,323 @@
+{
+  "environment": {
+    "timestamp": "2026-11-05T13:21:38.427Z",
+    "os": {
+      "platform": "win32",
+      "type": "Windows_NT",
+      "release": "10.0.26300",
+      "version": "Windows 11 Home",
+      "arch": "x64"
+    },
+    "cpu": {
+      "model": "Intel(R) Core(TM) 5 120U",
+      "logicalCores": 12,
+      "nominalMHz": 2496
+    },
+    "memory": {
+      "totalBytes": 16849256448,
+      "freeBytesAtStart": 4144820224
+    },
+    "node": "v24.21.0",
+    "engine": {
+      "sampleRate": 48000,
+      "renderQuantum": 128,
+      "bpm": 200,
+      "ticksPerQuarter": 480
+    }
+  },
+  "banks": {
+    "sf2": {
+      "file": "GeneralUser-GS.sf2",
+      "fileBytes": 32319396,
+      "parseMs": 41.8,
+      "totalLoadMs": 62.16,
+      "presets": 287,
+      "samples": 920,
+      "compressedSamples": 0,
+      "version": {
+        "major": 2,
+        "minor": 1
+      },
+      "rssDeltaBytes": 107315200,
+      "heapDeltaBytes": 3767456,
+      "sha256": "9575028c7a1f589f5770fccc8cff2734566af40cd26ed836944e9a5152688cfe"
+    },
+    "sf3": {
+      "file": "GeneralUser-GS.sf3",
+      "fileBytes": 9176020,
+      "parseMs": 10.86,
+      "totalLoadMs": 17.36,
+      "presets": 287,
+      "samples": 920,
+      "compressedSamples": 920,
+      "version": {
+        "major": 3,
+        "minor": 0
+      },
+      "rssDeltaBytes": 34537472,
+      "heapDeltaBytes": 6219904,
+      "sha256": "37c3eb58a718a3b6d26b15f27476ba26536caedf85b3d4b7e04f88bd9619a9fd"
+    }
+  },
+  "arrangement": {
+    "bars": 500,
+    "bpm": 200,
+    "chordNotesPerBar": 7,
+    "notesScheduled": 6000,
+    "digest": "d9f131ed"
+  },
+  "timing": {
+    "leads": [
+      1,
+      32,
+      64,
+      96,
+      127,
+      128,
+      129,
+      200,
+      255,
+      256,
+      300,
+      512,
+      1000,
+      4096
+    ],
+    "plain": [
+      {
+        "leadFrames": 1,
+        "errorFrames": 127.00000000000067,
+        "dispatchEngineTime": 0.17333333333333348,
+        "targetEngineTime": 0.17068750000000013
+      },
+      {
+        "leadFrames": 32,
+        "errorFrames": 96.00000000000009,
+        "dispatchEngineTime": 0.17333333333333348,
+        "targetEngineTime": 0.17133333333333348
+      },
+      {
+        "leadFrames": 64,
+        "errorFrames": 64.00000000000094,
+        "dispatchEngineTime": 0.17333333333333348,
+        "targetEngineTime": 0.17200000000000013
+      },
+      {
+        "leadFrames": 96,
+        "errorFrames": 32.00000000000047,
+        "dispatchEngineTime": 0.17333333333333348,
+        "targetEngineTime": 0.1726666666666668
+      },
+      {
+        "leadFrames": 127,
+        "errorFrames": 0.9999999999998899,
+        "dispatchEngineTime": 0.17333333333333348,
+        "targetEngineTime": 0.17331250000000015
+      },
+      {
+        "leadFrames": 128,
+        "errorFrames": 0,
+        "dispatchEngineTime": 0.17333333333333348,
+        "targetEngineTime": 0.17333333333333348
+      },
+      {
+        "leadFrames": 129,
+        "errorFrames": 127.00000000000067,
+        "dispatchEngineTime": 0.17600000000000016,
+        "targetEngineTime": 0.1733541666666668
+      },
+      {
+        "leadFrames": 200,
+        "errorFrames": 56.0000000000005,
+        "dispatchEngineTime": 0.17600000000000016,
+        "targetEngineTime": 0.17483333333333348
+      },
+      {
+        "leadFrames": 255,
+        "errorFrames": 1.0000000000012221,
+        "dispatchEngineTime": 0.17600000000000016,
+        "targetEngineTime": 0.1759791666666668
+      },
+      {
+        "leadFrames": 256,
+        "errorFrames": 1.3322676295501878e-12,
+        "dispatchEngineTime": 0.17600000000000016,
+        "targetEngineTime": 0.17600000000000013
+      },
+      {
+        "leadFrames": 300,
+        "errorFrames": 84.0000000000014,
+        "dispatchEngineTime": 0.17866666666666683,
+        "targetEngineTime": 0.1769166666666668
+      },
+      {
+        "leadFrames": 512,
+        "errorFrames": 2.6645352591003757e-12,
+        "dispatchEngineTime": 0.1813333333333335,
+        "targetEngineTime": 0.18133333333333346
+      },
+      {
+        "leadFrames": 1000,
+        "errorFrames": 24.000000000004018,
+        "dispatchEngineTime": 0.19200000000000023,
+        "targetEngineTime": 0.19150000000000014
+      },
+      {
+        "leadFrames": 4096,
+        "errorFrames": 1.5987211554602254e-11,
+        "dispatchEngineTime": 0.25600000000000045,
+        "targetEngineTime": 0.2560000000000001
+      }
+    ],
+    "split": [
+      {
+        "leadFrames": 1,
+        "errorFrames": 0,
+        "dispatchEngineTime": 0.17068750000000013,
+        "targetEngineTime": 0.17068750000000013
+      },
+      {
+        "leadFrames": 32,
+        "errorFrames": 0,
+        "dispatchEngineTime": 0.17133333333333348,
+        "targetEngineTime": 0.17133333333333348
+      },
+      {
+        "leadFrames": 64,
+        "errorFrames": 0,
+        "dispatchEngineTime": 0.17200000000000013,
+        "targetEngineTime": 0.17200000000000013
+      },
+      {
+        "leadFrames": 96,
+        "errorFrames": 0,
+        "dispatchEngineTime": 0.1726666666666668,
+        "targetEngineTime": 0.1726666666666668
+      },
+      {
+        "leadFrames": 127,
+        "errorFrames": 0,
+        "dispatchEngineTime": 0.17331250000000015,
+        "targetEngineTime": 0.17331250000000015
+      },
+      {
+        "leadFrames": 128,
+        "errorFrames": 0,
+        "dispatchEngineTime": 0.17333333333333348,
+        "targetEngineTime": 0.17333333333333348
+      },
+      {
+        "leadFrames": 129,
+        "errorFrames": 0,
+        "dispatchEngineTime": 0.1733541666666668,
+        "targetEngineTime": 0.1733541666666668
+      },
+      {
+        "leadFrames": 200,
+        "errorFrames": 0,
+        "dispatchEngineTime": 0.17483333333333348,
+        "targetEngineTime": 0.17483333333333348
+      },
+      {
+        "leadFrames": 255,
+        "errorFrames": 0,
+        "dispatchEngineTime": 0.1759791666666668,
+        "targetEngineTime": 0.1759791666666668
+      },
+      {
+        "leadFrames": 256,
+        "errorFrames": 1.3322676295501878e-12,
+        "dispatchEngineTime": 0.17600000000000016,
+        "targetEngineTime": 0.17600000000000013
+      },
+      {
+        "leadFrames": 300,
+        "errorFrames": 1.3322676295501878e-12,
+        "dispatchEngineTime": 0.17691666666666683,
+        "targetEngineTime": 0.1769166666666668
+      },
+      {
+        "leadFrames": 512,
+        "errorFrames": 2.6645352591003757e-12,
+        "dispatchEngineTime": 0.1813333333333335,
+        "targetEngineTime": 0.18133333333333346
+      },
+      {
+        "leadFrames": 1000,
+        "errorFrames": 3.9968028886505635e-12,
+        "dispatchEngineTime": 0.19150000000000023,
+        "targetEngineTime": 0.19150000000000014
+      },
+      {
+        "leadFrames": 4096,
+        "errorFrames": 1.5987211554602254e-11,
+        "dispatchEngineTime": 0.25600000000000045,
+        "targetEngineTime": 0.2560000000000001
+      }
+    ],
+    "plainErrorFrames": {
+      "count": 14,
+      "min": 0,
+      "median": 28.000000000002245,
+      "max": 127.00000000000067,
+      "mean": 43.71428571428784
+    },
+    "splitErrorFrames": {
+      "count": 14,
+      "min": 0,
+      "median": 0,
+      "max": 1.5987211554602254e-11,
+      "mean": 1.8080774972466836e-12
+    },
+    "maxAbsPlainErrorFrames": 127.00000000000067,
+    "maxAbsSplitErrorFrames": 1.5987211554602254e-11,
+    "withinOneQuantum": true,
+    "splitWithinOneQuantum": true,
+    "splitAudibleDifference": {
+      "frames": 12000,
+      "signalRms": 0.03719882188274577,
+      "differenceRms": 0.005632722587893515,
+      "differenceToSignalDb": -16.4,
+      "maxAbsoluteDifference": 0.014627032913267612
+    }
+  },
+  "equivalence": {
+    "seconds": 20,
+    "schedulerOnsetFrame": 4,
+    "sequencerOnsetFrame": 132,
+    "onsetDeltaFrames": 128,
+    "schedulerPeak": 34.6959228515625,
+    "sequencerPeak": 34.69232940673828,
+    "schedulerRms": 7.282718445524405,
+    "sequencerRms": 7.282441711907505,
+    "peakDeltaDb": 0.001,
+    "rmsDeltaDb": 0,
+    "alignedDifferenceToSignalDb": -43.15
+  },
+  "throughput": {
+    "sf2": {
+      "seconds": 600,
+      "wallClockSeconds": 5.45,
+      "fasterThanRealTime": 110.1,
+      "cpuUserSeconds": 5.281,
+      "cpuSystemSeconds": 0.032,
+      "cpuPercentOfOneCore": 97.5,
+      "peakVoices": 20,
+      "meanVoices": 15.89,
+      "rssDeltaBytes": -4861952,
+      "rssAfterBytes": 461402112
+    },
+    "sf3": {
+      "seconds": 600,
+      "wallClockSeconds": 6.358,
+      "fasterThanRealTime": 94.37,
+      "cpuUserSeconds": 6.25,
+      "cpuSystemSeconds": 0.078,
+      "cpuPercentOfOneCore": 99.53,
+      "peakVoices": 20,
+      "meanVoices": 15.89,
+      "rssDeltaBytes": -15659008,
+      "rssAfterBytes": 485351424
+    }
+  }
+}

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PracticePlayer — Spike S1 SoundFont engine</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 1.5rem;
+        background: #12141a;
+        color: #e6e8ee;
+        font-family: system-ui, sans-serif;
+      }
+      h1 {
+        font-size: 1.4rem;
+      }
+      h2 {
+        font-size: 1.05rem;
+        margin-bottom: 0.4rem;
+      }
+      section {
+        margin-bottom: 1.2rem;
+      }
+      dl {
+        display: grid;
+        grid-template-columns: 12rem 1fr;
+        gap: 0.15rem 0.75rem;
+        margin: 0;
+      }
+      dt {
+        color: #98a0b3;
+      }
+      dd {
+        margin: 0;
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: end;
+      }
+      label {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        font-size: 0.85rem;
+        color: #98a0b3;
+      }
+      button {
+        padding: 0.45rem 0.9rem;
+        border-radius: 6px;
+        border: 1px solid #3a4054;
+        background: #222736;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.45;
+        cursor: default;
+      }
+      pre {
+        background: #0d0f15;
+        border: 1px solid #2a2f3e;
+        border-radius: 8px;
+        padding: 0.75rem;
+        max-height: 26rem;
+        overflow: auto;
+        font-size: 0.8rem;
+      }
+      progress {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Spike S1 — SpessaSynth SoundFont engine</h1>
+      <p>
+        Throwaway measurement page. It loads a SoundFont into the
+        <code>spessasynth_core</code> engine running inside an AudioWorklet, schedules notes with
+        future timestamps, records the frame each event was dispatched on, soaks the three-part
+        arrangement and compares a real-time capture with an offline render.
+      </p>
+
+      <section>
+        <h2>Environment</h2>
+        <dl id="environment"></dl>
+      </section>
+
+      <section>
+        <h2>Controls</h2>
+        <div class="controls">
+          <label>
+            SoundFont
+            <select id="font">
+              <option value="sf2">GeneralUser-GS.sf2 (SF2, PCM)</option>
+              <option value="sf3">GeneralUser-GS.sf3 (SF3, Vorbis)</option>
+            </select>
+          </label>
+          <label>
+            Soak duration (s)
+            <input id="duration" type="number" min="5" max="3600" step="5" value="600" />
+          </label>
+          <button id="load" type="button">Load sound font</button>
+          <button id="timing" type="button" disabled>Run timing test</button>
+          <button id="soak" type="button" disabled>Run soak test</button>
+          <button id="offline" type="button" disabled>Run offline comparison</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Progress</h2>
+        <p id="status">Idle.</p>
+        <progress id="progress" max="1" value="0"></progress>
+      </section>
+
+      <section>
+        <h2>Results</h2>
+        <pre id="results">No measurement yet.</pre>
+      </section>
+
+      <section>
+        <h2>Log</h2>
+        <pre id="log"></pre>
+      </section>
+    </main>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

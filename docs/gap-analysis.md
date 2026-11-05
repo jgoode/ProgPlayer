@@ -17,12 +17,12 @@
 | Area | Current state | Main concern |
 |---|---|---|
 | Music model (keys, chords, presets) | Fully specified | Preset resolution rule needs confirmation (G-01); voicing rules not yet decided (G-10) |
-| Playback and timing | Specified; design proven only on paper | Future-timed events in the SoundFont engine and Web MIDI jitter (spikes S1/S2) |
+| Playback and timing | Specified; **SoundFont engine timing proven by measurement (S1)** | Web MIDI jitter (spike S2); engine-clock arithmetic (G-15); low-end and non-Windows evidence (G-16, G-19) |
 | MIDI out | Specified | Program-change and Start/clock semantics undecided (G-03, G-04) |
 | Odd/compound meters | Grouping defaults chosen | Click accents and sub-bar chord splits not defined (G-05, G-06) |
-| Looping and live editing | Loop modes specified | Interaction with sections, repeats and live edits undefined (G-07, G-08) |
-| Sound assets | Plan exists | Licences and size not verified (G-11) |
-| Export | Specified | MP3 licence (G-12); audio device handling (G-14) |
+| Looping and live editing | Loop modes chosen | Interaction with sections, repeats and live edits undefined (G-07, G-08) |
+| Sound assets | **Engine settled by S1 (Apache-2.0, SF3 confirmed)**; font list not yet chosen | Which fonts to bundle (G-11); effects chain on or off (G-17) |
+| Export | Specified; library offline path proven bit-identical by S1 | MP3 licence (G-12); audio device handling (G-14); export needs a MIDI file from the tick timeline (G-18) |
 | Distribution | Plan exists | Signing and notarization undecided (G-13) |
 
 ## 2. Gaps found while planning
@@ -39,10 +39,20 @@
 | **G-08** | **Live edits during playback.** Can the user change key, tempo, chords or sections while playing? Only tempo is required (FR-TMP-2). | Prevents crashes and surprises; affects compiler/scheduler design. | v1: tempo, volumes, mutes, loop region, instrument changes are live; edits to chords/sections/key/time signature stop or require "apply at next loop/bar" confirmation (design in P5). | P5 | Major | Open |
 | **G-09** | **Remote keys and double accidentals.** Some modes/minors on sharp keys need double accidentals (e.g. G♯ harmonic minor); some key/mode combinations are rarely used. | Spelling correctness (FR-CHD-2) and UI clutter. | Offer all 12 tonics with a spelling choice; where the combination needs more than a double accidental, show the enharmonic equivalent and note it; supported down to double accidentals; tests per key/scale. | P2 | Minor | Open |
 | **G-10** | **Voicing and register rules.** OQ-6 not yet decided; extension voicing (dropping 5th/11th) needs musician review; bass register and instrument ranges unspecified. | Poor voicings are the likeliest source of "it sounds wrong" feedback. | Implement the rule set in implementation.md §2.5; review by ear with M-7; keep rules table-driven so they can be tuned. | P2 | Major | Open |
-| **G-11** | **SoundFont licences, quality and size.** No fonts chosen or verified; installer size budget not set (OQ-11). | May block bundling; affects installer size and load time. | P1.5 shortlist with licence check (permissive/CC0, redistribution allowed, attribution requirements recorded in §4); prefer SF3 compression; budget around 150 MB initially. | P1 | Blocker (for P4 bundling) | Open |
+| **G-11** | **SoundFont licences, quality and size.** No fonts chosen or verified; installer size budget not set (OQ-11). | May block bundling; affects installer size and load time. | P1.5 shortlist with licence check (permissive/CC0, redistribution allowed, attribution requirements recorded in §4); prefer SF3 compression; budget around 150 MB initially. | P1 | Blocker (for P4 bundling) | **Partly closed 2026-11-05 (S1):** the *engine* is settled (Apache-2.0, ADR-0002) and SF3 is confirmed as the shipping format — 3.5× smaller on disk, 3–4× faster to parse, 3× less resident memory, sample-for-sample identical output. The *font selection* is still open: GeneralUser GS was measured as a fixture but is **not suitable for redistribution** (it cannot vouch for every sample's provenance). P1.5 must shortlist fonts with clearer provenance. |
 | **G-12** | **MP3 encoder licence.** Most easily available JS/WASM MP3 encoders are LGPL, which may conflict with MIT distribution expectations. | Could force WAV-only in v1. | Spike S3; if unresolved, ship WAV in v1.0 and add MP3 in a later release. | P1 | Minor (v1.0 can ship without) | Open |
 | **G-13** | **Signing and notarization.** macOS notarization needs an Apple Developer account; Windows signing needs a certificate or a signing service; Linux needs no signing. | Unsigned builds trigger OS warnings; affects release credibility. | Decide in S4; document unsigned-install steps as interim. | P1 (decision), P10 (done) | Major | Open |
 | **G-14** | **Audio output device and sample rate.** Requirements do not cover choosing the output device, sample rate (44.1 vs 48 kHz), or behaviour on device change. | Real-world setups (USB interfaces, Bluetooth) vary; Linux audio especially. | v1: follow the system default device; surface the active device and sample rate in settings; react to device changes by re-creating the audio context where possible; add explicit device picker if S1/S4 show it is needed. | P4 | Major | Open |
+
+### Gaps found by spike S1 (2026-11-05)
+
+| ID | Gap | Why it matters | Proposed resolution | Decide by | Severity | Status |
+|---|---|---|---|---|---|---|
+| **G-15** | **Quantum-snapped scheduling targets must use the engine's own clock arithmetic.** `SpessaSynthProcessor` advances its clock by `quantumFrames * (1 / sampleRate)` once per render quantum and *accumulates* the rounding error. The obvious `currentTime + quanta * (quantumFrames / sampleRate)` computes a different double that lands a few ULP above the clock the engine actually reaches; the engine's `event.time <= currentTime` test then fails and every event is dispatched a whole quantum (128 frames ≈ 2.7 ms) late. Measured in S1: 128.00 frames against 0.00 frames for the correct arithmetic. | Silent, uniform 2.7 ms lateness on every note. It is within the one-quantum budget, so it would pass a coarse test and still be wrong; it also breaks the bit-identical live/export comparison ADR-0002 relies on. | P4.6 must compute the snapped target with the engine's own accumulation — the spike's `engineClockAfterQuanta` (`spikes/s1/renderer/analysis.ts`) and its regression test are the reference. Keep the helper as the single place the arithmetic lives; never recompute it at a call site. | P4 | Major | **Open — P4.6.** ADR-0002 §2 records the rule; the helper and test exist in the spike. |
+| **G-16** | **The S1 pass criterion "no dropouts for 10 minutes on a low-end laptop" is only half met.** The 10-minute soak ran on a recent thin-and-light laptop (Core 5 120U) and passed with 0 dropouts over 60 011 blocks at 9.28 % average process-tree CPU. The *low-end* clause is untested; the headroom is an inference, not a measurement. | The CPU budget in testing.md §8 ("under 25 % of one core") and the low-tier gate in testing.md §3 depend on it. A machine an order of magnitude slower would change the answer. | Run `pnpm run spike:s1:browser` (or `electron spikes/s1/electron/drive.cjs --soak 600`) on the oldest machine in the support matrix, and again on Linux (PulseAudio and PipeWire) and macOS. Record the result in `docs/test-runs/` and close the gap. | P1 | Major | **Open — measured on Windows only.** Tracked as `S1-LOWEND` in progress.md §5. |
+| **G-17** | **The engine's effects chain is on by default and changes the sound.** S1 measured with `effectsEnabled: true` (the library default): reverb and chorus are applied, and the dry signal differs by **−42.6 dB**. The measurement harness does not model a dry-signal export, and the bundled fonts' presets may rely on the reverb tail to sound natural. | Export and live playback must agree with each other and with what the user hears (FR-SND-3). A dry export would sound different from live playback; a wet export would carry reverb into the audio file, which most users would not expect from a backing track. | Decide in P4 whether effects are on for live playback and for export, and make the two paths agree. If a dry signal is wanted, disable effects in *both* paths and re-measure the level and the offline/real-time equivalence — the S1 figures for effects-on do not carry over. | P4 | Major | **Open — product decision.** Recorded in ADR-0002 §"What was not decided here". |
+| **G-18** | **The library's offline path and the scheduler path are not interchangeable for export without a MIDI file.** `WorkletSynthesizer.startOfflineRender()` is bit-identical to the library's real-time output and ~45× faster than real time, but it plays a *MIDI sequence* through the engine's own sequencer, not the tick timeline. The scheduler path can read the tick timeline directly and honour live edits, but it differs from the sequencer by a one-quantum dispatch phase and does not have the bit-identical guarantee. | ADR-0002 chooses the library's offline path for export, which means the export path needs a MIDI file built from the compiled timeline. That adds a writer to the export path and a second representation of the same arrangement. | Implement the SMF writer in P3 and have the export path consume it, so the tick timeline remains the single source of truth (D2). Verify with AT-6 that the exported WAV matches live playback. If the SMF writer slips, the documented fallback is to render the live path into an `OfflineAudioContext` with the same scheduler, giving up bit-identity but keeping one timeline. | P3 / P4 | Major | **Open — depends on the P3 SMF writer.** Recorded in ADR-0002 §Fallback. |
+| **G-19** | **Only Windows was measured.** The engine is pure TypeScript, so the DSP is platform-independent, but the audio device, the render-quantum size and the scheduling behaviour differ per OS. The measured render quantum is 128 frames at 48 kHz; a platform with a different quantum changes the snapping arithmetic. | The timing criterion (NFR-TIM-1) is stated in frames, not milliseconds. A 512-frame quantum on some platform would make one quantum 10.7 ms, which changes the quantisation cost and the worst-case error. | Repeat the S1 driver on macOS and Linux (PulseAudio and PipeWire) and record the actual render quantum per platform in the report. The snapping helper takes the quantum size as a parameter, so no code change is expected — but the *measured* constants are Windows-only until then. | P1 | Major | **Open.** CI can run the driver headless on all three OSes (`xvfb-run` on Ubuntu, as the P0 smoke test does). |
 
 ### Minor clarifications to confirm
 
@@ -67,11 +77,11 @@ Every requirement group has a phase and a test route. This table records whether
 | FR-ARR | P3, P5 | L1/L2/L3, AT-1 | G-06, G-07, G-08 |
 | FR-TMP | P3, P4 | L1/L2 | G-05 |
 | FR-PLY | P4, P5 | L2/L4/L5, AT-1/3/4 | G-02, G-07 |
-| FR-SND-1..3 | P1, P4, P8 | L2/L5 | G-11, G-14 |
+| FR-SND-1..3 | P1, P4, P8 | L2/L5 | G-11, G-14, G-17 |
 | FR-SND-4..9 | P6 | L2/L5, AT-5 | G-03, G-04; risk RK-2 |
 | FR-UI | P5, P7 | L3/L4 | G-08 |
-| FR-IO | P3, P8, P9 | L1/L4/L5, AT-6/7 | G-12 |
-| NFR-TIM, NFR-PRF | P1, P4, P6, P10 | L2/L5/L6, AT-3 | Risks RK-1, RK-2, RK-6 |
+| FR-IO | P3, P8, P9 | L1/L4/L5, AT-6/7 | G-12, G-18 |
+| NFR-TIM, NFR-PRF | P1, P4, P6, P10 | L2/L5/L6, AT-3 | Risks RK-1, RK-2, RK-6; gaps G-15, G-16, G-19 |
 | NFR-REL, NFR-SEC, NFR-PRV | P0, P6, P8 | L1/L4/L5, AT-5/7/8 | None |
 | NFR-A11Y, NFR-I18N | P5 | L3/L5 | Screen-reader coverage is manual |
 | PLT | P0, P10 | L7, AT-8 | G-13 |
@@ -96,8 +106,12 @@ Status key: **Expected** = believed compatible from general knowledge, to be con
 | electron-builder | Packaging | MIT | Expected | Planned for Phase 10. |
 | zod (or equivalent) | Schema validation | MIT | Expected | Planned for Phase 3. |
 | `tonal` (or equivalent) | Test oracle for theory | MIT | Expected | Dev/test only; never in the app bundle. |
-| `spessasynth_lib` / `spessasynth_core` | SoundFont synth, offline render | Apache-2.0 (current releases) | Verified for current releases | Older releases list MIT and Apache-2.0 (the package's bundled Vorbis decoder is Apache-2.0). Pin a version, re-check its licence, include a NOTICE entry. Apache-2.0 is compatible with distributing an MIT-licensed app. |
-| FluidSynth-WASM wrapper | Alternative synth if S1 fails | LGPL-family | Unknown | Only if S1 rules out SpessaSynth; assess linking terms |
+| `spessasynth_core` 4.4.6 | SoundFont engine, offline render | Apache-2.0 | **Verified** (S1, 2026-11-05) | LICENSE file read from the installed package. Apache-2.0 is compatible with distributing an MIT-licensed app; the NOTICE/attribution text must appear in the attribution screen (P10.3). Accepted as the engine by ADR-0002. |
+| `spessasynth_lib` 4.4.4 | Renderer-side wrapper, offline render | Apache-2.0 | **Verified** (S1, 2026-11-05) | Same conditions as `spessasynth_core`. |
+| `stb-vorbis` 0.0.7 | Ogg Vorbis decoder, bundled by `spessasynth_core`; needed to read SF3 | Apache-2.0 | **Verified** (S1, 2026-11-05) | Transitive dependency of `spessasynth_core`; ships in the bundle, so it needs the same NOTICE entry. |
+| `fflate` 0.8.3 | ZIP/deflate helper, transitive dependency of `spessasynth_core` | MIT | **Verified** (S1, 2026-11-05) | Transitive; MIT, no attribution condition beyond the licence text. |
+| GeneralUser GS v2.0.3 | SoundFont **test fixture only** — not bundled | Permissive, custom ("free of charge, unrestricted use, including commercial") | **Verified for the spike only** (S1, 2026-11-05) | Used to measure SF2 vs SF3. **Not suitable for redistribution**: the font states it cannot be certain of every sample's provenance. G-11 and P1.5 must find fonts with clearer provenance (CC0 or explicitly licensed sample sets). |
+| FluidSynth-WASM wrapper | Alternative synth if S1 fails | LGPL-family | Unknown | Not needed: S1 passed. Retained as ADR-0002's fallback, but the LGPL linking terms conflict with the MIT distribution expectation (CON-4) and need legal review, not just a licence-audit entry. |
 | RtMidi-based Node addon | Fallback MIDI I/O | MIT-style (verify) | Unknown | Only if S2 rules out Web MIDI; check prebuilt binaries for all targets |
 | MP3 encoder (JS/WASM) | MP3 export | Often LGPL | Unknown | Spike S3 |
 | Bundled SoundFonts (piano, bass, guitar, click/percussion) | Sound content | Per font | Unknown | Spike P1.5; record author, licence, URL, attribution text |
@@ -107,13 +121,13 @@ Requirements on the register: every row ends as **Verified** before the first re
 
 ## 5. Spike-driven unknowns
 
-| Unknown | Spike | If the answer is "no" |
-|---|---|---|
-| Can the SoundFont engine accept future-timed events with sub-quantum accuracy? | S1 | Worklet-side event queue, or play through the engine's own sequencer from the compiled timeline; as a last resort evaluate FluidSynth-WASM |
-| Can Web MIDI meet 5 ms p99 jitter on all OSes? | S2 | Native RtMidi-based addon behind the same sink interface; document platform limitations |
-| Is any MP3 encoder licence-compatible and fast enough? | S3 | WAV only in v1.0 |
-| Do bundled fonts fit the size/load-time budget? | S4 | SF3 compression; fewer fonts; optional download of extra fonts after v1 |
-| Is macOS/Windows signing achievable without delaying release? | S4 | Unsigned interim builds with clear install notes |
+| Unknown | Spike | If the answer is "no" | Result |
+|---|---|---|---|
+| Can the SoundFont engine accept future-timed events with sub-quantum accuracy? | S1 | Worklet-side event queue, or play through the engine's own sequencer from the compiled timeline; as a last resort evaluate FluidSynth-WASM | **Closed 2026-11-05 — YES.** `SpessaSynthProcessor.processMessage(msg, offset, { time })` dispatches on the first quantum whose clock has reached the target: 128 frames worst case with an arbitrary target, **0 frames** when the target is snapped to the 128-frame grid. ADR-0002 mandates the snap and requires the snapped target to be computed with the engine's own clock accumulation — the natural `currentTime + quanta * quantumSeconds` lands a few ULP high and is dispatched a whole quantum late (measured 128.00 frames against 0.00). Splitting the quantum instead was measured and rejected (−16.4 dB, audible). No worklet-side event queue and no use of the engine's sequencer is needed for live playback. |
+| Can Web MIDI meet 5 ms p99 jitter on all OSes? | S2 | Native RtMidi-based addon behind the same sink interface; document platform limitations | Open |
+| Is any MP3 encoder licence-compatible and fast enough? | S3 | WAV only in v1.0 | Open |
+| Do bundled fonts fit the size/load-time budget? | S4 | SF3 compression; fewer fonts; optional download of extra fonts after v1 | Open — S1 established that SF3 is 3.5× smaller on disk and 3–4× faster to parse than SF2, so compression is available if the budget is exceeded |
+| Is macOS/Windows signing achievable without delaying release? | S4 | Unsigned interim builds with clear install notes | Open |
 
 ## 6. Deliberately deferred (not gaps)
 
@@ -140,3 +154,4 @@ Requirements on the register: every row ends as **Verified** before the first re
 | Date | Reviewer | Notes |
 |---|---|---|
 | 2026-11-03 | Initial draft | Gaps G-01…G-14 identified while writing implementation and test plans |
+| 2026-11-05 | Spike S1 | SoundFont engine settled: SpessaSynth (`spessasynth_core` 4.4.6, `spessasynth_lib` 4.4.4), Apache-2.0, accepted by ADR-0002. Future-timed events confirmed with 0-frame error when snapped to the render-quantum grid; the "sub-quantum accuracy" unknown in §5 is closed. G-11 partly closed (engine and format settled; font selection still open). Five new gaps recorded from the spike: G-15 (engine-clock arithmetic), G-16 (low-end evidence), G-17 (effects chain), G-18 (export needs a MIDI file), G-19 (non-Windows evidence). Evidence: `docs/spikes/s1-soundfont-engine-report.md`. |
