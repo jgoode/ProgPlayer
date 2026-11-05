@@ -45,6 +45,13 @@ const MINIMIZE_AFTER_MS = Number(argValue('minimize-after', '0'));
  */
 const HOT_PLUG_AT_MS = Number(argValue('hot-plug-at', '0'));
 /**
+ * How long after the removal command starts the renderer takes its port-list
+ * snapshot. It has to cover the time the operating system needs to actually
+ * drop the port: on Windows the loopMIDI driver is restarted, which takes
+ * several seconds.
+ */
+const HOT_PLUG_PROBE_DELAY_MS = Number(argValue('hot-plug-probe-delay', '8000'));
+/**
  * The command that removes the loopback port from the OS, as a JSON array of
  * arguments. It is run by the driver (not by the renderer) because removing
  * a port is an operating system operation, not something the web page can do.
@@ -241,7 +248,7 @@ async function run() {
       minimizeAfterMs: MINIMIZE_AFTER_MS,
       simulateUiLoad: args.includes('--ui-load'),
       useNullSink,
-      hotPlugProbeAtMs: HOT_PLUG_AT_MS > 0 ? HOT_PLUG_AT_MS + 1500 : 0,
+      hotPlugProbeAtMs: HOT_PLUG_AT_MS > 0 ? HOT_PLUG_AT_MS + HOT_PLUG_PROBE_DELAY_MS : 0,
     })})`,
   );
 
@@ -252,8 +259,10 @@ async function run() {
   }
 
   if (HOT_PLUG_AT_MS > 0) {
-    // Remove the loopback port from the OS while the measurement runs, then
-    // let the renderer snapshot its port list 1.5 s later.
+    // Remove the loopback port from the OS while the measurement runs. The
+    // renderer takes its port-list snapshot `HOT_PLUG_PROBE_DELAY_MS` later,
+    // because the operating system needs time to actually drop the port
+    // (on Windows the loopMIDI driver is restarted, which takes seconds).
     await new Promise((done) => setTimeout(done, HOT_PLUG_AT_MS));
     console.log(`Removing the loopback port: ${HOT_PLUG_COMMAND}`);
     try {

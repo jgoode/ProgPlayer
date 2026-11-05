@@ -92,13 +92,15 @@ describe('resilient MIDI sender', () => {
     expect(errors[0]).toContain('device disappeared');
   });
 
-  it('treats a missing port as a disconnected one', () => {
+  it('reports a missing port separately from a disconnected one', () => {
     const sender = new ResilientMidiSender({ port: null, onError: () => {} });
 
     const result = sender.send([0xf8], 1000);
 
-    expect(result.outcome).toBe('port-disconnected');
-    expect(sender.disconnectedCount).toBe(1);
+    // There was never a port, so nothing was lost by a device disappearing.
+    expect(result.outcome).toBe('no-port');
+    expect(sender.disconnectedCount).toBe(0);
+    expect(sender.failedCount).toBe(0);
   });
 
   it('counts every outcome separately', () => {

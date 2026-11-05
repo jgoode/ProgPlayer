@@ -111,23 +111,21 @@ jobs:
       # The loopback port is removed while the measurement is running, so
       # the report shows whether the app survives a disappearing device
       # (NFR-REL-2). The port is put back afterwards for the native run.
+      #
+      # The measurement is 8 bars at 120 BPM, i.e. 16 s. The port is removed
+      # 4 s in and the renderer snapshots its port list 8 s later, which
+      # gives the operating system time to actually drop the port.
       - name: Run the Web MIDI measurement (hot-plug, Windows)
         if: runner.os == 'Windows'
         run: |
-          pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-hotplug.json" `
-            --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" `
-            --hot-plug-at 4000 `
-            --hot-plug-command '["powershell","-File","spikes/s2/tools/windows-loopmidi.ps1","-RemovePorts","-Ports","${{ matrix.output_port }}"]'
+          pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-hotplug.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" --hot-plug-at 4000 --hot-plug-probe-delay 8000 --hot-plug-command '["powershell","-File","spikes/s2/tools/windows-loopmidi.ps1","-RemovePorts","-Ports","${{ matrix.output_port }}"]'
           powershell -File spikes/s2/tools/windows-loopmidi.ps1 -Ports "${{ matrix.output_port }}"
 
       - name: Run the Web MIDI measurement (hot-plug, macOS)
         if: runner.os == 'macOS'
         run: |
           PID="$(cat "$RUNNER_TEMP/midi-virtual-port.pid")"
-          pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-hotplug.json" `
-            --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" `
-            --hot-plug-at 4000 `
-            --hot-plug-command "[\"kill\",\"${PID}\"]"
+          pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-hotplug.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" --hot-plug-at 4000 --hot-plug-probe-delay 3000 --hot-plug-command "[\"kill\",\"${PID}\"]"
           bash spikes/s2/tools/macos-virtual-port.sh "${{ matrix.output_port }}" &
           echo $! > "$RUNNER_TEMP/midi-virtual-port.pid"
           sleep 5

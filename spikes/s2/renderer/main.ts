@@ -150,6 +150,7 @@ interface RunReport {
     probed: boolean;
     portsBeforeUnplug: { outputs: PortSummary[]; inputs: PortSummary[] };
     portsAfterUnplug: { outputs: PortSummary[]; inputs: PortSummary[] };
+    /** The `statechange` events that reported a port going away. */
     stateChangeCountDuringRun: number;
     /** True when the loopback port was gone from the list after the unplug. */
     portDisappeared: boolean;
@@ -419,17 +420,22 @@ async function run(options: RunOptions): Promise<RunReport> {
   // port is reported through `statechange` and disappears from the list
   // without disturbing the running schedule (NFR-REL-2).
   const portsBeforeUnplug = listPorts();
-  const stateChangesBeforeRun = stateChanges.length;
   let portsAfterUnplug: { outputs: PortSummary[]; inputs: PortSummary[] } = portsBeforeUnplug;
   let hotPlugProbed = false;
   let hotPlugTimer: number | undefined;
+  // The `statechange` events that report the port *going away*. The events
+  // that report the initial connection are not counted: they arrive
+  // asynchronously and can land anywhere in the run, and they say nothing
+  // about the unplug.
+  let disconnectEvents = 0;
   if (options.hotPlugProbeAtMs > 0) {
     const remainingMs = Math.max(0, options.hotPlugProbeAtMs - (performance.now() - startedAtMs));
     hotPlugTimer = window.setTimeout(() => {
       portsAfterUnplug = listPorts();
       hotPlugProbed = true;
+      disconnectEvents = stateChanges.filter((change) => change.state === 'disconnected').length;
       log(
-        `Hot-plug snapshot taken; ${portsAfterUnplug.outputs.length} output(s), ${portsAfterUnplug.inputs.length} input(s) remain.`,
+        `Hot-plug snapshot taken; ${portsAfterUnplug.outputs.length} output(s), ${portsAfterUnplug.inputs.length} input(s) remain, ${disconnectEvents} disconnect event(s).`,
       );
     }, remainingMs);
   }
@@ -512,7 +518,7 @@ async function run(options: RunOptions): Promise<RunReport> {
       probed: hotPlugProbed,
       portsBeforeUnplug,
       portsAfterUnplug,
-      stateChangeCountDuringRun: stateChanges.length - stateChangesBeforeRun,
+      stateChangeCountDuringRun: disconnectEvents,
       portDisappeared:
         hotPlugProbed &&
         portsBeforeUnplug.outputs.length + portsBeforeUnplug.inputs.length >

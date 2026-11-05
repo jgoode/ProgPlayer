@@ -232,36 +232,51 @@ and read back on the same virtual port. 8 bars at 120 BPM, 912 sends. The
 **note error** is `received timeStamp − intended time`; the **jitter** is
 the error with its median removed (the constant loopback delay).
 
+Source: CI run **42116816101** (`.github/workflows/spike-s2-midi.yml`), the
+JSON reports are the workflow artifacts.
+
 **Windows (`windows-latest`, loopMIDI 1.0.16.27):**
 
 | Run | Captured notes | Late sends | Note error p50 | p95 | p99 | max | Jitter p50 | p99 | max | Clock interval deviation p99 / max |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Idle renderer, 100 ms window | 72 | **0** | **1.60 ms** | 2.60 ms | **2.60 ms** | 2.60 ms | 0.00 ms | **1.10 ms** | 1.10 ms | 1.27 ms / 19.07 ms |
-| Window minimised after 2 s | 72 | **0** | **1.40 ms** | 2.40 ms | **2.40 ms** | 2.40 ms | 0.00 ms | **1.00 ms** | 1.00 ms | 1.27 ms / 16.17 ms |
-| Heavy UI load, 300 ms window | 72 | **0** | **1.50 ms** | 2.60 ms | **2.60 ms** | 2.60 ms | 0.10 ms | **1.10 ms** | 1.10 ms | 1.57 ms / 43.17 ms |
+| Idle renderer, 100 ms window | 72 | **0** | 1.10 ms | 2.10 ms | **2.10 ms** | 2.10 ms | 0.10 ms | **1.10 ms** | 1.10 ms | 1.27 ms / 15.17 ms |
+| Window minimised after 2 s | 72 | **0** | 1.05 ms | 2.10 ms | **2.10 ms** | 2.10 ms | 0.05 ms | **1.05 ms** | 1.05 ms | 1.27 ms / 9.07 ms |
+| Heavy UI load, 300 ms window | 72 | **0** | 1.60 ms | 2.60 ms | **2.60 ms** | 2.60 ms | 0.10 ms | **1.10 ms** | 1.10 ms | 1.27 ms / 23.17 ms |
+
+**macOS (`macos-latest`, CoreMIDI virtual destination + source):**
+
+| Run | Captured notes | Late sends | Note error p50 | p95 | p99 | max | Jitter p50 | p99 | max | Clock interval deviation p99 / max |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Idle renderer, 100 ms window | 72 | **0** | 0.00 ms | 0.10 ms | **0.10 ms** | 0.10 ms | 0.00 ms | **0.10 ms** | 0.10 ms | 0.07 ms / 0.17 ms |
+| Window minimised after 2 s | 72 | **0** | 0.00 ms | 0.10 ms | **0.10 ms** | 0.10 ms | 0.00 ms | **0.10 ms** | 0.10 ms | 0.07 ms / 0.17 ms |
+| Heavy UI load, 300 ms window | 72 | **0** | 0.00 ms | 0.10 ms | **0.10 ms** | 0.10 ms | 0.00 ms | **0.10 ms** | 0.10 ms | 0.07 ms / 0.17 ms |
 
 Reading:
 
-- **The p99 note error is 2.6 ms and the p99 jitter is 1.1 ms — under the
-  5 ms target (NFR-TIM-2) on Windows.**
-- **Zero late sends in every configuration**, including the minimised
-  window and the heavy-UI-load run with the 300 ms look-ahead.
-- The error never exceeded 2.6 ms in any run, and 72 of the 72 notes were
-  captured with 0 unmatched messages: the event-id encoding matched every
-  received note to its intended send.
+- **The p99 jitter is 1.10 ms on Windows and 0.10 ms on macOS — both under
+  the 5 ms target (NFR-TIM-2).**
+- **Zero late sends in every configuration on both platforms**, including
+  the minimised window and the heavy-UI-load run with the 300 ms look-ahead.
+  Every message was handed to the driver *before* its timestamp, so the
+  driver did the waiting.
+- 72 of the 72 notes were captured in every run with 0 unmatched messages:
+  the event-id encoding matched every received note to its intended send.
+- The **dispatch spread** shows how much room the driver had: on Windows
+  every message was handed over between 89 ms and 94 ms early; on macOS
+  between 52 ms and 88 ms early. The app's own timer never became the
+  limiting factor.
 - The **clock interval deviation** (the spacing of the 24 ppqn MIDI clock
-  as received) has a p99 of 1.27 ms, but a max of 19.07 ms — one clock
-  pulse arrived 19 ms late. That is the loopback driver batching two
+  as received) has a p99 of 1.27 ms on Windows but a max of 15.17 ms — one
+  clock pulse arrived 15 ms late. That is the loopback driver batching two
   pulses, not the app's timer: the *dispatch* lateness in the same run
-  stayed inside [−94.7 ms, −89.0 ms], i.e. every message was handed to the
-  driver at least 89 ms before its timestamp.
-- The absolute error (~1.6 ms) includes the loopback driver's own
+  stayed inside [−94.7 ms, −89.0 ms]. macOS is far tighter (p99 0.07 ms,
+  max 0.17 ms) because CoreMIDI delivers each timestamped event on its own
+  schedule.
+- The absolute error (1.1 ms on Windows) includes the loopback driver's own
   round trip, so it is an upper bound on the app's error, not the app's
-  error itself.
-
-**macOS (`macos-latest`, CoreMIDI virtual source/destination):** see §5.4.
-
-**Linux (`ubuntu-24.04`, ALSA sequencer "Midi Through"):** see §5.4.
+  error itself. macOS's 0.1 ms is at the resolution of
+  `MIDIMessageEvent.timeStamp` (Chromium clamps it to 100 µs), so it
+  measures the *resolution* of the capture as much as the timing.
 
 ### 5.4 The native path's other costs
 

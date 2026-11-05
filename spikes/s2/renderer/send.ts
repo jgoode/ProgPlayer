@@ -27,6 +27,8 @@ export type SendOutcome =
   | 'sent'
   /** The port was not connected; the message was dropped. */
   | 'port-disconnected'
+  /** There was no port at all; the message was never going to be sent. */
+  | 'no-port'
   /** The port threw; the message was dropped and the error recorded. */
   | 'send-failed';
 
@@ -78,7 +80,12 @@ export class ResilientMidiSender {
    */
   send(data: number[], intendedTimeMs: number): SendResult {
     const port = this.options.port;
-    if (!port || port.state !== 'connected') {
+    if (!port) {
+      // No port was ever available; the message was never going to be sent.
+      // This is not a drop caused by a device disappearing.
+      return { outcome: 'no-port' };
+    }
+    if (port.state !== 'connected') {
       this.dropped += 1;
       return { outcome: 'port-disconnected' };
     }
