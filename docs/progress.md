@@ -246,6 +246,7 @@ Documents:
 | G-20 | End-to-end MIDI output jitter on **Linux** (the S2 p99 exit check) | Phase 1 / P6 | Partly closed — **Windows (1.10 ms) and macOS (0.10 ms) measured and passing** across five CI runs per configuration; Linux deferred to the manual device test because the CI runners' kernels have no ALSA sequencer |
 | G-21 | The MIDI look-ahead window must exceed the worst main-thread stall | Phase 6 | Open — decided in ADR-0003 (≥300 ms window); P6 must implement it and must not send a past-dated message |
 | G-22 | Chromium's Windows MIDI backend does not report a removed device | Phase 6 | Open — found by S2; P6 must re-enumerate the ports on a failed send and on reopening the MIDI settings, and must not rely on `statechange` alone |
+| RK-15 | The MIDI driver stalls and delivers a batch of messages late, which the app cannot prevent | Phase 6 / Phase 10 | Open — measured once in five CI runs; the ≥300 ms look-ahead absorbs it, but the user guide should say that a badly-behaved driver can delay messages |
 | P0-CI | Run the GitHub Actions matrix on Windows, macOS and Ubuntu; close the Phase 0 exit check when all three are green | John | Closed — run 41889258513 green on all three platforms (2026-11-04) |
 | S1-LOWEND | Demonstrate the S1 pass criterion "no dropouts for 10 minutes on a **low-end** laptop": the 10-minute soak ran on a recent thin-and-light laptop (Core 5 120U), not a low-end machine | Phase 1 / P4 | Open — run `drive.cjs --soak 600` on the oldest supported CI machine; tracked in gap-analysis.md as G-16 |
 
