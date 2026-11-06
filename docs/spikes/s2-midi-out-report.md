@@ -141,6 +141,32 @@ of the S2 pass criteria.
 
 ## 4. Device enumeration
 
+**On the CI runners**, with a loopback port present, Web MIDI enumerated
+exactly the expected port pair in every configuration:
+
+| Platform | Outputs seen by Web MIDI | Inputs seen by Web MIDI | Port IDs |
+|---|---|---|---|
+| Windows (`windows-latest`, WinMM backend) | "PracticePlayer S2 Loopback" | "PracticePlayer S2 Loopback" | Chromium's own `output-1` / `input-0` |
+| macOS (`macos-latest`, CoreMIDI) | "PracticePlayer S2 Loopback" | "PracticePlayer S2 Loopback In" | the real CoreMIDI IDs `1218634587` / `-2089396538` |
+
+The permission was granted on both, the selected output and input resolved
+to the loopback, and each run recorded 2 `statechange` events — the
+initial `connected` notifications for the two ports.
+
+In the **hot-plug** configuration the event counts diverge, and the pattern
+is identical in every run that produced a report:
+
+| Platform | Runs | `statechange` events | Sequence |
+|---|---|---|---|
+| macOS | 3 | **4** | `connected` input, `connected` output, **`disconnected` input**, **`disconnected` output** |
+| Windows | 4 | **2** | `connected` input, `connected` output — **no disconnect** |
+
+That is the platform difference described in §5.6: the removal reaches
+Chromium on macOS but not on Windows.
+
+**On the development machine** there is no loopback, and the two backends
+disagree:
+
 | Platform | Ports seen by Web MIDI | Ports seen by the native addon |
 |---|---|---|
 | Windows (WinMM backend, default) | 0 outputs, 0 inputs | 1 output ("Microsoft GS Wavetable Synth"), 0 inputs |
@@ -155,11 +181,13 @@ also probed. It reported 0 ports as well: the WinRT MIDI activation classes
 (`Windows.Devices.Midi.*`) are not registered on this machine, because the
 Windows MIDI Services runtime is not installed.
 
-**Hot-plug (`statechange`)** could not be exercised for the same reason:
-there is no MIDI port to unplug, and no virtual port could be created. The
-handler is implemented (`access.onstatechange` in
-`spikes/s2/renderer/main.ts` records every change with a timestamp) and the
-report includes the recorded changes, but the list is empty in every run.
+**Hot-plug (`statechange`)** could not be exercised on the development
+machine for the same reason: there is no MIDI port to unplug, and no
+virtual port could be created. The handler is implemented
+(`access.onstatechange` in `spikes/s2/renderer/main.ts` records every
+change with a timestamp) and the report includes the recorded changes, but
+the list is empty in every run there. On the CI runners the loopback port
+*was* removed mid-run — see §5.6.
 
 ## 5. Timing results
 
@@ -412,8 +440,11 @@ Reading:
   (`tests/unit/spike-s2-send.test.ts`).
 - **On macOS the port disappears from the list and the app is told.** The
   renderer saw two disconnect events — the virtual output and the virtual
-  input — and its port list was empty afterwards. That is the
-  NFR-REL-2 behaviour: a vanishing device is reported, not fatal.
+  input — and its port list was empty afterwards. Every one of the three
+  macOS hot-plug runs recorded the same four-event sequence (`connected`
+  input, `connected` output, `disconnected` input, `disconnected` output).
+  That is the NFR-REL-2 behaviour: a vanishing device is reported, not
+  fatal.
 - **On Windows the removal works, but Chromium does not notice.** The CI
   step enumerates the ports *outside* Electron, through RtMidi, right after
   the removal:
@@ -424,13 +455,14 @@ Reading:
   ```
 
   The loopMIDI port is gone from the operating system — but Chromium's
-  renderer still lists it and emits no disconnect event. The cause is in
-  Chromium's own source: `MidiManagerWin::UpdateDeviceListOnTaskRunner()`
-  only re-enumerates when the system raises a device-change notification,
-  and the function carries the caveat *"This method may run before
-  internal MIDI device lists that Windows manages were updated. This may be
-  because MIDI driver may be loaded after the raw device list was
-  updated."*
+  renderer still lists it and emits no disconnect event. All four Windows
+  hot-plug runs recorded only the two initial `connected` notifications,
+  never a `disconnected` one. The cause is in Chromium's own source:
+  `MidiManagerWin::UpdateDeviceListOnTaskRunner()` only re-enumerates when
+  the system raises a device-change notification, and the function carries
+  the caveat *"This method may run before internal MIDI device lists that
+  Windows manages were updated. This may be because MIDI driver may be
+  loaded after the raw device list was updated."*
 
   **This is a Chromium limitation, not an app bug**, and it has a direct
   consequence for the product: on Windows, a device that disappears may
