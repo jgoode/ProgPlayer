@@ -289,6 +289,12 @@ The tables above are from a single CI run. The spike was run **five times**
 (runs 42116816101, 42123193621, 42125661719, 42127636727, 42129483861) to
 see how much the numbers move. The aggregate:
 
+(The hot-plug configuration has fewer runs because the hot-plug probe was
+added later in the spike, in commit `b4d441e`: the first CI run
+(42116816101) predates it on both platforms, and run 42125661719's macOS
+leg failed, so it produced no macOS hot-plug report. Every run that
+produced a report is included.)
+
 | Platform | Configuration | Runs | Note error p99: best → worst | Jitter p99: worst | Jitter max: worst | Late sends |
 |---|---|---|---|---|---|---|
 | Windows | Idle | 5 | 2.10 → **50.90 ms** | 50.00 ms | 50.00 ms | **0 / 4560** |
