@@ -55,12 +55,12 @@ repeated below.
 2. **A timestamped send moves the jitter from the app into the driver.**
    Measured end to end against a real loopback — loopMIDI on Windows, a
    CoreMIDI virtual endpoint on macOS — over 912 sends (8 bars at 120 BPM),
-   repeated across five CI runs per configuration (20 552 sends in total):
+   repeated across five CI runs per configuration:
 
    | Platform | p99 jitter | max error | Late sends |
    |---|---|---|---|
-   | Windows (`windows-latest`) | **1.10 ms** | 2.10 ms | **0 / 20 552** |
-   | macOS (`macos-latest`) | **0.10 ms** | 0.10 ms | **0 / 20 552** |
+   | Windows (`windows-latest`) | **1.10 ms** | 2.10 ms | **0 / 19 152** |
+   | macOS (`macos-latest`) | **0.10 ms** | 0.10 ms | **0 / 18 240** |
 
    Both are inside the 5 ms budget (NFR-TIM-2). Zero sends were late in
    every configuration — idle, minimised, and heavy UI load — so the
