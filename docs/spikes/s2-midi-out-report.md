@@ -213,12 +213,13 @@ harness was developed:
 | `--early` (send as soon as the event enters the window) | 912 | 0 (0.00 %) | −90.71 ms | −82.28 ms | −77.58 ms |
 | `--timed` (send at the intended instant) | 912 | **862 (94.52 %)** | **+8.47 ms** | **+14.79 ms** | **+26.46 ms** |
 
-On the CI runners, with the same loopback as §5.3:
+On the CI runners, with the same loopback as §5.3 — **all five runs**, not
+just one:
 
-| Platform | Sends | Late sends | Lateness p50 | Lateness p99 | Lateness max | Note error p99 | Jitter p99 |
+| Platform | Runs | Late sends | Lateness p50 | Lateness p99 | Lateness max | Note error p99 | Jitter p99 |
 |---|---|---|---|---|---|---|---|
-| Windows (`windows-latest`) | 912 | **444 (48.68 %)** | −0.02 ms | **+1.41 ms** | +2.36 ms | 1.62 ms | 1.23 ms |
-| macOS (`macos-latest`) | 912 | **688 (75.44 %)** | +0.70 ms | **+5.62 ms** | +18.08 ms | 4.13 ms | 3.45 ms |
+| Windows (`windows-latest`) | 5 | **432–483 (47.4–53.0 %)** | −0.05 → +0.07 ms | **+1.41 → +241.18 ms** | +2.36 → +367.98 ms | 1.62 ms | 1.23 ms |
+| macOS (`macos-latest`) | 5 | **688–762 (75.4–83.6 %)** | +0.70 → +1.22 ms | **+5.29 → +5.93 ms** | +6.14 → +18.07 ms | 4.13 ms | 3.45 ms |
 
 Reading:
 
@@ -236,13 +237,20 @@ Reading:
 - **The CI runners are less loaded, so the native path does better there** —
   but it is still the wrong architecture, and the comparison is against the
   *same* loopback the Web MIDI path used:
-  - Windows: p99 jitter 1.23 ms, but **48.68 % of the sends were late**.
+  - Windows: **47.4–53.0 % of the sends were late** across the five runs.
     Every late send is a message the OS received after its intended time —
-    audible as a flam against the built-in synth.
-  - macOS: p99 jitter 3.45 ms, under the 5 ms budget *in this particular
-    run*, but with a **75.44 % late rate** and a max dispatch lateness of
-    18.08 ms. A single quiet CI runner is not a guarantee; the app's
-    playback must not depend on the machine being idle.
+    audible as a flam against the built-in synth. The p99 dispatch lateness
+    ranged from **+1.41 ms to +241.18 ms**: two runs hit a 62 ms and a
+    241 ms p99, because a loaded Windows runner delays the `setTimeout`
+    wake-up. The native path's accuracy therefore depends entirely on how
+    busy the machine is — exactly the property the shipping app cannot
+    accept.
+  - macOS: **75.4–83.6 % of the sends were late** across the five runs,
+    with a max dispatch lateness of 6.14–18.07 ms. The p99 jitter (3.45 ms)
+    sits under the 5 ms budget, but a late rate of more than three quarters
+    of all messages is not a pass: a single quiet CI runner is not a
+    guarantee, and the app's playback must not depend on the machine being
+    idle.
 - The `--early` mode is not a fix: it sends every note up to 91 ms early.
 - The decisive difference is not the p99 but the **late rate**: Web MIDI
   produced **0 late sends in every configuration on both platforms**
@@ -472,12 +480,13 @@ dispatch records measure.
 
 The native path cannot meet the budget reliably: with no timestamped
 send, its measured p99 was 14.79 ms on a busy development machine, and
-even on the idle CI runners **48.68 % of its sends on Windows and 75.44 %
-on macOS were late** (§5.2) — every late send is a message that reaches
-the device after its intended time. Its p99 jitter happened to fit the
-budget on macOS in one quiet run, but a late rate of three quarters of
-all messages is not a pass: the app's playback must not depend on the
-machine being idle.
+even on the idle CI runners **47.4–53.0 % of its sends on Windows and
+75.4–83.6 % on macOS were late** (§5.2) — every late send is a message
+that reaches the device after its intended time. Its p99 jitter happened
+to fit the budget on macOS, but a late rate of three quarters of all
+messages is not a pass, and the Windows p99 dispatch lateness swung from
++1.41 ms to +241.18 ms across five runs on the same runner image: the
+app's playback must not depend on the machine being idle.
 
 **What remains open.** The Linux end-to-end measurement (§2.3, G-20) and
 the hardware checks in `testing.md` §7 (M-1..M-4), which need a real
@@ -516,8 +525,8 @@ reports as artifacts.
 | **Headless CI session, no interactive desktop.** The audio device does not advance in step with the monotonic clock: `getOutputTimestamp()` reported `contextTime` 0 and `performanceTime` 0, i.e. an output-timestamp lag of 450–580 ms. | The anchor would have been in the past; the harness pushes it to at least `lookAhead + 50 ms` into the future and records the deviation (`clockMapping.anchorLeadMs`, `outputTimestampLagMs`). **A measurement on a machine with a working audio device may show different numbers.** |
 | **`outputLatency` reported as 0 ms.** The headless session has no real output latency to report. | The latency compensation in §1 was exercised with `baseLatency` only. On a real device `outputLatency` is non-zero and the anchor moves later. |
 | **The Windows audio path was the system default device with no listener.** | Nothing about the *audio* side was measured — only the MIDI dispatch path. |
-| **The native candidate was measured with `setTimeout`.** | The 14.79 ms p99 on the development machine is an upper bound for that implementation, not a property of RtMidi. A helper process with a busy-wait or a dedicated timer could do better; it still cannot use a timestamped send, which is the difference that matters. |
-| **Five runs per configuration, but on a shared CI runner.** | §5.3.1 gives the aggregate over five runs (20 552 sends per platform). The Windows runners are shared, heavily loaded virtual machines, so the spread includes the load of other tenants: one run in five hit a 50.9 ms driver stall (§5.3.1) and one native run showed 241 ms dispatch lateness. The figures are representative of a loaded machine, not a quiet lab and not a worst case. Each individual 8-bar run sends 912 messages, so a single run's p99 is its 9th-worst message. |
+| **Five runs per configuration, but on a shared CI runner.** | §5.3.1 gives the aggregate over five runs (20 552 sends per platform). The Windows runners are shared, heavily loaded virtual machines, so the spread includes the load of other tenants: one Web MIDI run in five hit a 50.9 ms driver stall (§5.3.1), and the native runs' Windows p99 dispatch lateness swung from +1.41 ms to +241.18 ms across the same five runs. The figures are representative of a loaded machine, not a quiet lab and not a worst case. Each individual 8-bar run sends 912 messages, so a single run's p99 is its 9th-worst message. |
+| **The native candidate was measured with `setTimeout`,** which is what the current implementation uses. | Its numbers are an upper bound for that implementation, not a property of RtMidi. A helper process with a busy-wait or a dedicated timer could do better; it still cannot use a timestamped send, which is the difference that matters. |
 | **Linux is not covered.** | The end-to-end loopback measurement was not run on Linux (§2.3). The dispatch path and the Chromium source analysis are platform-independent, but the Linux p99 is unknown. **Gap G-20.** |
 
 ## 9. What must be documented for users
