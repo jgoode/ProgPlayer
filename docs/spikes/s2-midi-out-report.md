@@ -273,14 +273,14 @@ JSON reports are the workflow artifacts.
 |---|---|---|---|---|---|---|---|---|---|---|
 | Idle renderer, 100 ms window | 72 | **0** | 1.10 ms | 2.10 ms | **2.10 ms** | 2.10 ms | 0.10 ms | **1.10 ms** | 1.10 ms | 1.27 ms / 15.17 ms |
 | Window minimised after 2 s | 72 | **0** | 1.05 ms | 2.10 ms | **2.10 ms** | 2.10 ms | 0.05 ms | **1.05 ms** | 1.05 ms | 1.27 ms / 9.07 ms |
-| Heavy UI load, 300 ms window | 72 | **0** | 1.60 ms | 2.60 ms | **2.60 ms** | 2.60 ms | 0.10 ms | **1.10 ms** | 1.10 ms | 1.27 ms / 23.17 ms |
+| Heavy UI load, 300 ms window | 72 | **0** | 1.60 ms | 2.55 ms | **2.60 ms** | 2.60 ms | 0.10 ms | **1.10 ms** | 1.10 ms | 1.27 ms / 23.17 ms |
 
 **macOS (`macos-latest`, CoreMIDI virtual destination + source):**
 
 | Run | Captured notes | Late sends | Note error p50 | p95 | p99 | max | Jitter p50 | p99 | max | Clock interval deviation p99 / max |
 |---|---|---|---|---|---|---|---|---|---|---|
 | Idle renderer, 100 ms window | 72 | **0** | 0.00 ms | 0.10 ms | **0.10 ms** | 0.10 ms | 0.00 ms | **0.10 ms** | 0.10 ms | 0.07 ms / 0.17 ms |
-| Window minimised after 2 s | 72 | **0** | 0.00 ms | 0.10 ms | **0.10 ms** | 0.10 ms | 0.00 ms | **0.10 ms** | 0.10 ms | 0.07 ms / 0.17 ms |
+| Window minimised after 2 s | 72 | **0** | 0.00 ms | 0.00 ms | **0.00 ms** | 0.00 ms | 0.00 ms | **0.00 ms** | 0.00 ms | 0.07 ms / 0.17 ms |
 | Heavy UI load, 300 ms window | 72 | **0** | 0.00 ms | 0.10 ms | **0.10 ms** | 0.10 ms | 0.00 ms | **0.10 ms** | 0.10 ms | 0.07 ms / 0.17 ms |
 
 ### 5.3.1 All five CI runs, not just the best one
