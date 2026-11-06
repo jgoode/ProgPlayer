@@ -151,7 +151,7 @@ repeated below.
 
 | Option | Summary | Pros | Cons |
 |---|---|---|---|
-| A | **Web MIDI in the renderer** (Chromium's timestamped `MIDIPort.send`) | Driver does the waiting, so the app's jitter does not reach the output (measured p99 jitter 1.10 ms on Windows, 0.10 ms on macOS, 0 late sends); stays in the renderer, as `implementation.md` §2.4 requires; no native dependency, no packaging burden, no ABI problem; hot-plug works on macOS and Linux | The timestamp must be derived correctly from the audio clock; Windows needs a virtual MIDI driver for a DAW (FR-SND-8); **Chromium's Windows backend does not report a removed device**, so hot-plug needs a send-failure fallback there; Linux not yet measured end to end (G-20) |
+| A | **Web MIDI in the renderer** (Chromium's timestamped `MIDIPort.send`) | Driver does the waiting, so the app's jitter does not reach the output (measured p99 jitter 1.10 ms on Windows — 1.10–50.00 ms across five runs, one driver stall — 0.10 ms on macOS, 0 late sends); stays in the renderer, as `implementation.md` §2.4 requires; no native dependency, no packaging burden, no ABI problem; hot-plug works on macOS and Linux | The timestamp must be derived correctly from the audio clock; Windows needs a virtual MIDI driver for a DAW (FR-SND-8); **Chromium's Windows backend does not report a removed device**, so hot-plug needs a send-failure fallback there; Linux not yet measured end to end (G-20) |
 | B | **Native RtMidi addon in the main process** | Works on Windows, macOS and Linux with one API; can see ports Web MIDI hides; MIT-compatible and actively maintained | No timestamped send — the app's own wake-up jitter becomes the output jitter (measured: 47.4–53.0 % of sends late on Windows, 75.4–83.6 % on macOS; the received p99 jitter ranged from 1.15 ms to 369.53 ms on Windows and from 3.45 ms to 5.16 ms on macOS); needs an IPC hop for every message; native module cannot load in a sandboxed preload; three-platform ABI and packaging burden; contradicts the renderer-only rule |
 | C | **Native addon in a helper process** (dedicated MIDI service) | Same API as B without blocking the main process; the helper could hold the port and do its own high-resolution timing | Still no timestamped send, so the same wake-up jitter; adds a process to install, supervise and secure; the IPC hop remains; a lot of machinery for a path that does not meet the budget |
 | D | **Web MIDI first, native addon as a fallback** | Keeps the simple path where it works; the native addon is available for the platforms where Web MIDI fails | Two MIDI implementations, two timing models, two sets of bugs; the native path cannot meet NFR-TIM-2 as measured, so it is a fallback for *availability*, not for *accuracy* |
@@ -185,7 +185,9 @@ proves unusable on a platform, is **Option C** — a native helper process
 with its own high-resolution timer — and *not* Option B.
 
 The end-to-end measurement **meets the exit check on Windows and macOS**:
-p99 jitter 1.10 ms and 0.10 ms respectively, against a 5 ms budget, with
+p99 jitter 1.10 ms and 0.10 ms respectively (the typical case; the
+Windows idle jitter p99 ranged from 1.10 ms to 50.00 ms across the five
+runs because of one driver stall), against a 5 ms budget, with
 0 late sends in every configuration. The Linux measurement is out of scope
 for this spike (G-20).
 

@@ -333,9 +333,10 @@ across all 37 392 measured sends on both platforms**.
 Reading:
 
 - **The app's p99 jitter is 1.10 ms on Windows and 0.10 ms on macOS in the
-  typical case — both under the 5 ms target (NFR-TIM-2).** On Windows one
-  run in five showed a driver stall that took the *received* p99 to
-  50.9 ms; the app's own dispatch was unaffected (§5.3.1).
+  typical case — both under the 5 ms target (NFR-TIM-2).** Across the five
+  Windows runs the idle jitter p99 ranged from 1.10 ms to 50.00 ms (a
+  driver stall in one run); the app's own dispatch was unaffected in every
+  run (§5.3.1). The macOS figure was 0.10 ms in all five runs.
 - **Zero late sends in every configuration on both platforms**, including
   the minimised window and the heavy-UI-load run with the 300 ms look-ahead.
   Every message was handed to the driver *before* its timestamp, so the
@@ -464,7 +465,7 @@ the process-boundary reason in §5.3.
 
 | Criterion | Result |
 |---|---|
-| p99 jitter under 5 ms (NFR-TIM-2) on each OS | **Pass on Windows and macOS.** The app's p99 jitter is **1.10 ms** on Windows and **0.10 ms** on macOS, with **0 late sends** across 37 392 measured sends — 19 152 on Windows and 18 240 on macOS (§5.3, §5.3.1). One Windows run in five showed a 50.9 ms *received* outlier that the dispatch records attribute to the loopback driver, not the app (§5.3.1). **Linux is out of scope for this spike** (§2.3) and is deferred to the manual device test — **gap G-20**. |
+| p99 jitter under 5 ms (NFR-TIM-2) on each OS | **Pass on Windows and macOS.** The app's p99 jitter is **1.10 ms** on Windows (1.10–50.00 ms across five runs, one driver stall) and **0.10 ms** on macOS, with **0 late sends** across 37 392 measured sends — 19 152 on Windows and 18 240 on macOS (§5.3, §5.3.1). One Windows run in five showed a 50.9 ms *received* outlier that the dispatch records attribute to the loopback driver, not the app (§5.3.1). **Linux is out of scope for this spike** (§2.3) and is deferred to the manual device test — **gap G-20**. |
 | Stable hot-plug | **Pass on macOS; a Chromium limitation on Windows.** On macOS the loopback port is removed from the OS while a measurement is running (§5.6): the port disappears from the list, two `statechange` events report it, and no send throws. On Windows the removal *works* — the OS no longer lists the port — but Chromium's WinMM backend does not notice and keeps listing it. The app-side behaviour is correct on both platforms (0 send errors, 0 late sends). P6 must therefore not rely on `statechange` alone on Windows. |
 | Clean permission flow | **Pass.** MIDI access is granted to the app's own origin by the session permission handlers; sysex is denied by default; no prompt is shown. |
 | Record measurement limits | **Pass** — §8 and the ADR. |
@@ -476,7 +477,8 @@ The decision (ADR-0003) is taken and now backed by data: **Web MIDI in the
 renderer**, with the native addon kept as an evaluated fallback.
 
 The p99 jitter criterion is met on both platforms in scope: 1.10 ms on
-Windows and 0.10 ms on macOS, against a 5 ms budget. The margin is not
+Windows (the typical case; 1.10–50.00 ms across the five runs, one driver
+stall) and 0.10 ms on macOS, against a 5 ms budget. The margin is not
 thin on macOS, and 4.5× on Windows — and the typical worst case (max
 2.7 ms) is still under the budget.
 
