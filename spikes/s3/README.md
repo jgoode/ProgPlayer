@@ -11,7 +11,7 @@ enough and small enough to be worth shipping?
 embeds a copyleft codec, and the LGPL relinking condition is not demonstrable
 for a statically linked WASM/JS bundle. **v1.0 ships WAV only.**
 
-- Full report: [`REPORT.md`](REPORT.md)
+- Full report: [`docs/spikes/s3-mp3-encoder-report.md`](../../docs/spikes/s3-mp3-encoder-report.md)
 - Decision: [`docs/adr/0004-mp3-export.md`](../../docs/adr/0004-mp3-export.md)
 - Gap register: [`docs/gap-analysis.md`](../../docs/gap-analysis.md) §2 (G-12, G-24, G-25, G-26), §4
 

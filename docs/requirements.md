@@ -2,8 +2,8 @@
 
 | | |
 |---|---|
-| **Status** | Draft v0.3 — OQ-1, OQ-3, OQ-5, OQ-8, OQ-9 resolved; for review |
-| **Date** | 2026-11-06 |
+| **Status** | Draft v0.4 — OQ-1, OQ-3, OQ-5, OQ-8, OQ-9, OQ-11, OQ-12 resolved; for review |
+| **Date** | 2026-11-07 |
 | **Related docs** | implementation.md, progress.md, testing.md, gap-analysis.md, agent-prompts.md (to follow) |
 
 ---
@@ -254,8 +254,8 @@ Notes:
 | OQ-8 | ~~Scale hints for non-diatonic chords~~ **Resolved:** chord-scale chosen by chord quality, shown alongside the in-key scale. To be expanded in later iterations. | — |
 | OQ-9 | ~~MP3 encoder choice and its license?~~ **Resolved 2026-11-06:** no combined-permissive JS/WASM MP3 encoder is distributed; v1.0 ships WAV only (ADR-0004). `rusty_mp3` (Apache-2.0) is the designated candidate if MP3 is reopened, subject to a listening test and a project-owned WASM build. | — |
 | OQ-10 | How to calibrate latency compensation between synth and MIDI out? | Manual offset slider with a click-test helper |
-| OQ-11 | Installer size budget and the final list of bundled SoundFonts? | Budget around 150 MB total; candidates evaluated for license and quality |
-| OQ-12 | Code signing and notarization approach for macOS and Windows? | Decide before first public release |
+| OQ-11 | ~~Installer size budget and the final list of bundled SoundFonts?~~ **Resolved 2026-11-07 (ADR-0005):** **250 MB per installer, 500 MB installed.** The 150 MB default is not reachable — the Electron runtime alone is ~115 MB of a compressed installer. The bundled set is the dedicated per-role FreePats fonts (piano, bass, acoustic guitar, electric guitar, percussion), all CC0 or CC-BY, shipped as SF3; no General MIDI bank fits the budget. |
+| OQ-12 | ~~Code signing and notarization approach for macOS and Windows?~~ **Resolved 2026-11-07 (ADR-0005):** **interim releases are unsigned**, with per-platform install instructions. macOS notarization needs an Apple Developer Program membership (99 USD/year) with no free route for an ordinary open-source project; Windows signing is 9.99 USD/month (Azure Artifact Signing), 129–300 USD/year (public-CA OV) or free via SignPath Foundation for qualifying OSS; EV certificates are not recommended. The build configuration carries the signing path so adding credentials is configuration, not code. | — |
 
 ---
 
