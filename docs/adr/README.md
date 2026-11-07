@@ -13,6 +13,9 @@ page: context, options considered, decision, consequences.
 | ADR | Title | Status | Date |
 |---|---|---|---|
 | [0001](0001-electron-toolchain.md) | Electron, electron-vite and React as the application toolchain | Accepted | 2026-11-04 |
+| [0002](0002-soundfont-engine.md) | SpessaSynth as the SoundFont engine | Accepted | 2026-11-05 |
+| [0003](0003-midi-io-approach.md) | MIDI I/O approach — Web MIDI in the renderer | Accepted | 2026-11-05 |
+| [0004](0004-mp3-export.md) | MP3 export — WAV only in v1.0 | Accepted | 2026-11-06 |
 
 ## Rules
 

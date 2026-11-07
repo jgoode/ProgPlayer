@@ -2,8 +2,8 @@
 
 | | |
 |---|---|
-| **Status** | Draft v0.2 — OQ-1, OQ-3, OQ-5, OQ-8 resolved; for review |
-| **Date** | 2026-11-03 |
+| **Status** | Draft v0.3 — OQ-1, OQ-3, OQ-5, OQ-8, OQ-9 resolved; for review |
+| **Date** | 2026-11-06 |
 | **Related docs** | implementation.md, progress.md, testing.md, gap-analysis.md, agent-prompts.md (to follow) |
 
 ---
@@ -147,7 +147,7 @@ The user chooses a key (or mode), arranges progressions into song-style sections
 | FR-IO-1 | **Sessions:** save and load sessions to/from files. The format is a documented, versioned format (JSON proposed) so future versions can migrate old files. |
 | FR-IO-2 | The app restores the last-used audio/MIDI settings on startup, and degrades gracefully when a saved MIDI port or SoundFont is no longer available. |
 | FR-IO-3 | **MIDI export:** writes a Standard MIDI File containing tempo and time-signature meta events and separate tracks/channels for chords, bass and click. Options: include/exclude click, include/exclude count-in, number of times the arrangement repeats. |
-| FR-IO-4 | **Audio export:** renders the built-in synth output to WAV, and to MP3 (encoder choice is subject to licensing, OQ-9). Options: include/exclude click, include/exclude count-in, repeats. Rendering runs faster than real time when possible and shows progress. |
+| FR-IO-4 | **Audio export:** renders the built-in synth output to WAV. Options: include/exclude click, include/exclude count-in, repeats. Rendering runs faster than real time when possible and shows progress. **MP3 export is deferred**: every npm-distributable JS/WASM MP3 encoder embeds a copyleft codec, and the project's MIT licence (CON-4) rules out the LGPL ones; see ADR-0004. MP3 is added only when a combined-permissive encoder with validated quality is available. |
 | FR-IO-5 | Audio export covers only the built-in synth. Output sent to external MIDI instruments cannot be captured by the app; the UI states this clearly. |
 
 ## 6. Non-functional requirements
@@ -252,7 +252,7 @@ Notes:
 | OQ-6 | Voicing register and voice-leading rules for chords and bass? | Chords centred around middle C, close-position voicings with minimal-movement inversions; bass in the octave below |
 | OQ-7 | Fretboard: chord tones only, or also suggested fingered shapes? | Chord tones only in v1 |
 | OQ-8 | ~~Scale hints for non-diatonic chords~~ **Resolved:** chord-scale chosen by chord quality, shown alongside the in-key scale. To be expanded in later iterations. | — |
-| OQ-9 | MP3 encoder choice and its license? | Evaluate options; ship WAV first if licensing is unresolved |
+| OQ-9 | ~~MP3 encoder choice and its license?~~ **Resolved 2026-11-06:** no combined-permissive JS/WASM MP3 encoder is distributed; v1.0 ships WAV only (ADR-0004). `rusty_mp3` (Apache-2.0) is the designated candidate if MP3 is reopened, subject to a listening test and a project-owned WASM build. | — |
 | OQ-10 | How to calibrate latency compensation between synth and MIDI out? | Manual offset slider with a click-test helper |
 | OQ-11 | Installer size budget and the final list of bundled SoundFonts? | Budget around 150 MB total; candidates evaluated for license and quality |
 | OQ-12 | Code signing and notarization approach for macOS and Windows? | Decide before first public release |
