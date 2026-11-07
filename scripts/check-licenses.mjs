@@ -38,6 +38,14 @@ const ALLOWED_LICENSES = new Set([
   'Python-2.0',
   'BlueOak-1.0.0',
   'PostgreSQL',
+  // WTFPL-2.0 is a permissive, non-copyleft licence: it grants the right to
+  // use, copy, modify and redistribute without conditions and carries no
+  // attribution requirement, so it is compatible with MIT distribution
+  // (SPDX: OSI approved "No", FSF free "Yes"; FSF counts it as GPL-compatible).
+  // It reaches the tree only as a build-time transitive dependency of
+  // electron-builder (`sanitize-filename` -> `truncate-utf8-bytes`) and is
+  // never part of the shipped application bundle. See docs/gap-analysis.md §4.
+  'WTFPL',
 ]);
 
 const attributionRegister = JSON.parse(
