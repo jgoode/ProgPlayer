@@ -92,6 +92,16 @@ jobs:
           console.log(JSON.stringify({unpackedDirectory:dir,installedBytes:total,installedMB:Number((total/1048576).toFixed(2))},null,2));
           "
 
+      # Electron's Chromium SUID sandbox refuses to start when the
+      # `chrome-sandbox` helper is not owned by root with mode 4755. The
+      # unpacked tree produced by electron-builder does not carry those
+      # permissions, so set them before launching the packaged binary.
+      - name: Prepare the Chromium SUID sandbox helper (Linux only)
+        if: runner.os == 'Linux'
+        run: |
+          sudo chown root:root spikes/s4/app/dist/packages/linux-unpacked/chrome-sandbox
+          sudo chmod 4755 spikes/s4/app/dist/packages/linux-unpacked/chrome-sandbox
+
       # The first-launch measurement launches the *packaged* app, so it
       # exercises the installed layout (the asset lives in `resources/assets`
       # and is reached through the custom protocol handler).
