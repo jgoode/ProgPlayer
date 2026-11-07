@@ -45,3 +45,7 @@ spikes/s3/results/*.md
 spikes/s4/app/assets/
 spikes/s4/app/dist/
 spikes/s4/results/
+
+# Local downloads of the CI packaging artefacts, used to collect the size
+# and first-launch measurements for the S4 report.
+.s4-artifacts/
