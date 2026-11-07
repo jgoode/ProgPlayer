@@ -330,8 +330,10 @@ checksums regardless.
   downloaded tree counts the 198 MB framework binary three times and
   reports ~823 MB instead of ~323 MB). The script's own dedup by device
   and inode handles the case where the files *are* hard links, but it
-  cannot undo copies that the extraction created.
-- **The Linux window-presentation time**, as explained in §3.
+  cannot undo copies that the extraction created. **Tracked as gap G-29**:
+  measure on the macOS runner, never from a downloaded artefact.
+- **The Linux window-presentation time**, as explained in §3. **Tracked as
+  gap G-30.**
 - **Real audio and MIDI hardware.** The spike is a stub app: it does not
   play sound and does not open a MIDI port. `testing.md` §7's device checks
   are still required.
@@ -341,9 +343,10 @@ checksums regardless.
   validated (`sf2-cutter validate`: 0 errors). What remains unverified is
   that the project's own build pipeline reproduces those sizes with the
   same tool and quality setting, and that the converted banks were not
-  auditioned against the SF2 originals.
+  auditioned against the SF2 originals. **Tracked as gap G-31.**
 - **Listening quality** of the shortlisted fonts. The quality notes come
-  from the publishers.
+  from the publishers. **Tracked as gap G-33**; the procedure is
+  `testing.md` §7 **M-8** (bundled SoundFont review).
 
 ## 8. Reproducing the spike
 

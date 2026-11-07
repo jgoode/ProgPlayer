@@ -195,6 +195,18 @@ Linux** (the CI runners' kernels have no ALSA sequencer) and a run against
 
 **M-7 Listening review.** A musician reviews voicings across all presets in at least four keys and rates them (acceptable / awkward / wrong); awkward and wrong cases become defects against the voicing rules.
 
+**M-8 Bundled SoundFont review (S4 follow-up).** Before any font is committed to
+v1.0, play each shortlisted bank in the app for its role — piano, bass, guitar,
+click/percussion — over a short progression at a practice tempo, and record the
+result. For each bank record: (1) whether the SF3 build sounds like the SF2
+original (audition both if the conversion is available, otherwise the bank
+alone), (2) whether the bank is usable for its role at the app's default
+velocity, and (3) an accept / reject rating. A bank rated reject is replaced
+or dropped; it is not shipped. The ratings are recorded in
+`docs/spikes/s4-soundfont-shortlist.md` and the gap (G-33) is closed only when
+every bundled bank has a recorded rating. Automated listening quality is out of
+scope for v1 (`testing.md` §1), so this procedure is the evidence.
+
 ## 8. Performance and timing budgets
 
 Initial targets (to be tightened or relaxed with measurements from spikes S1/S2):
