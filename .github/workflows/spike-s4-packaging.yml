@@ -21,6 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
+  PNPM_VERSION: '12.9.1'
   NODE_VERSION: '24'
   # The sample asset is 64 MiB of incompressible pseudo-random bytes, which
   # is the size of a mid-sized SoundFont bank. Override S4_ASSET_FILE to
@@ -55,9 +56,14 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      - uses: pnpm/action-setup@v6
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
       - uses: actions/setup-node@v5
         with:
           node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
