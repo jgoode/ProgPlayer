@@ -18,7 +18,7 @@
     "typecheck": "pnpm run typecheck:node && pnpm run typecheck:web && pnpm run typecheck:spikes",
     "typecheck:node": "tsc --noEmit -p tsconfig.node.json",
     "typecheck:web": "tsc --noEmit -p tsconfig.web.json",
-    "typecheck:spikes": "tsc --noEmit -p spikes/s1/tsconfig.json && tsc --noEmit -p spikes/s2/tsconfig.json",
+    "typecheck:spikes": "tsc --noEmit -p spikes/s1/tsconfig.json && tsc --noEmit -p spikes/s2/tsconfig.json && tsc --noEmit -p spikes/s4/tsconfig.json",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
@@ -36,6 +36,9 @@
     "spike:s2:build": "vite build --config spikes/s2/vite.config.ts",
     "spike:s2:web": "electron spikes/s2/electron/drive.cjs",
     "spike:s2:native": "node spikes/s2/native/measure-native.mjs",
+    "spike:s4:build": "node spikes/s4/tools/build.mjs",
+    "spike:s4:package": "node spikes/s4/tools/package.mjs",
+    "spike:s4:measure": "node spikes/s4/tools/measure.mjs",
     "verify": "pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run test:e2e && pnpm run audit:deps && pnpm run audit:licenses"
   },
   "dependencies": {
@@ -54,6 +57,7 @@
     "@vitejs/plugin-react": "5.1.0",
     "@vitest/coverage-v8": "5.1.0",
     "electron": "45.2.2",
+    "electron-builder": "26.18.0",
     "electron-vite": "5.0.0",
     "eslint": "9.39.5",
     "eslint-config-prettier": "10.1.8",

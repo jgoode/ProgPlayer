@@ -94,6 +94,14 @@ export default tseslint.config(
     rules: { ...tseslint.configs.disableTypeChecked.rules },
   },
   {
+    // The Spike S4 packaging harness runs in the Electron main process and
+    // reports its measurements on stdout.
+    files: ['spikes/s4/app/electron/**/*.ts'],
+    rules: {
+      'no-console': 'off',
+    },
+  },
+  {
     files: ['src/renderer/**/*.{ts,tsx}'],
     plugins: { 'react-hooks': reactHooks },
     rules: {

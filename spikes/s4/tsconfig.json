@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    // "legacy" keeps a file without import/export a *script*. The renderer
+    // is loaded with a classic <script src> tag from a file:// URL, and a
+    // module would compile to a script that references `exports`, which does
+    // not exist in a browser page.
+    "moduleDetection": "legacy",
+    "lib": ["ES2024", "DOM", "DOM.Iterable"],
+    "types": ["node"],
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": true,
+    "useUnknownInCatchVariables": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "rootDir": "app",
+    "outDir": "app/dist",
+    "sourceMap": true
+  },
+  "include": ["app/electron/**/*.ts", "app/renderer/**/*.ts"]
+}

@@ -1,0 +1,113 @@
+name: Spike S4 — Packaging
+
+# Proves that PracticePlayer can be packaged with a large bundled asset on
+# all three operating systems, and measures the installer size and the
+# first-launch asset load time.
+#
+# The harness under `spikes/s4/` is a throwaway stub app: a window, a custom
+# protocol handler and one large sample asset shipped as an `extraResource`.
+# Nothing it produces is part of a release.
+#
+# Evidence: `docs/spikes/s4-packaging-report.md` and ADR-0005.
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'spike/s4/**'
+
+concurrency:
+  group: spike-s4-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '24'
+  # The sample asset is 64 MiB of incompressible pseudo-random bytes, which
+  # is the size of a mid-sized SoundFont bank. Override S4_ASSET_FILE to
+  # package a real font instead.
+  S4_ASSET_BYTES: '67108864'
+
+jobs:
+  package:
+    name: package (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            builder_args: '--win --x64'
+            executable: 'spikes/s4/app/dist/packages/win-unpacked/PracticePlayer S4 Spike.exe'
+          - os: ubuntu-latest
+            builder_args: '--linux --x64'
+            executable: 'spikes/s4/app/dist/packages/linux-unpacked/practiceplayer-s4-spike'
+          # macOS: arm64 and x64 are separate builds. Building the x64 target
+          # on an arm64 runner works (electron-builder downloads the x64
+          # Electron distribution and builds a universal-safe x64 app), and
+          # the reverse is true for the arm64 target on an Intel runner.
+          - os: macos-latest
+            builder_args: '--mac --arm64'
+            executable: 'spikes/s4/app/dist/packages/mac-arm64/PracticePlayer S4 Spike.app/Contents/MacOS/PracticePlayer S4 Spike'
+          - os: macos-15-intel
+            builder_args: '--mac --x64'
+            executable: 'spikes/s4/app/dist/packages/mac/PracticePlayer S4 Spike.app/Contents/MacOS/PracticePlayer S4 Spike'
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build the spike app and prepare the sample asset
+        run: node spikes/s4/tools/build.mjs
+
+      - name: Package
+        run: node spikes/s4/tools/package.mjs ${{ matrix.builder_args }}
+
+      - name: Record artefact sizes
+        run: |
+          node -e "const r=require('./spikes/s4/app/dist/packages/sizes.json'); console.log(JSON.stringify(r,null,2));"
+
+      - name: Collect the installed size of the unpacked application
+        run: |
+          node -e "
+          const {readdirSync,statSync}=require('node:fs');
+          const {join,resolve}=require('node:path');
+          const root=resolve('spikes/s4/app/dist/packages');
+          const dir=readdirSync(root).find((e)=>e.includes('unpacked'));
+          if(!dir){console.log('no unpacked directory');process.exit(0);}
+          let total=0;
+          const walk=(p)=>{for(const e of readdirSync(p,{withFileTypes:true})){const f=join(p,e.name); if(e.isDirectory())walk(f); else total+=statSync(f).size;}};
+          walk(join(root,dir));
+          console.log(JSON.stringify({unpackedDirectory:dir,installedBytes:total,installedMB:Number((total/1048576).toFixed(2))},null,2));
+          "
+
+      # The first-launch measurement launches the *packaged* app, so it
+      # exercises the installed layout (the asset lives in `resources/assets`
+      # and is reached through the custom protocol handler).
+      - name: Measure first launch (Windows)
+        if: runner.os == 'Windows'
+        run: node spikes/s4/tools/measure.mjs
+
+      - name: Measure first launch (Linux)
+        if: runner.os == 'Linux'
+        run: xvfb-run --auto-servernum node spikes/s4/tools/measure.mjs
+
+      - name: Measure first launch (macOS)
+        if: runner.os == 'macOS'
+        run: node spikes/s4/tools/measure.mjs
+
+      - name: Upload packages and measurements
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spike-s4-${{ matrix.os }}-${{ matrix.builder_args }}
+          path: |
+            spikes/s4/app/dist/packages/*
+            spikes/s4/results/*.json
+          if-no-files-found: warn
+          retention-days: 30
