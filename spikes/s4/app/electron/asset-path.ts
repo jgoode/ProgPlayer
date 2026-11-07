@@ -89,7 +89,12 @@ export function resolveAssetPath(url: string, assetRoot: string): string | null 
   }
 
   const relative = normalize(decoded.replace(/^\/+/, ''));
-  if (relative.length === 0 || relative === '.' || relative.startsWith('..') || isAbsolute(relative)) {
+  if (
+    relative.length === 0 ||
+    relative === '.' ||
+    relative.startsWith('..') ||
+    isAbsolute(relative)
+  ) {
     return null;
   }
 

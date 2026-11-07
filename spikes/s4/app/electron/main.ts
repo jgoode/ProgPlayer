@@ -52,9 +52,7 @@ const reportPath = process.env.S4_REPORT_PATH ?? '';
  */
 const assetRoot =
   process.env.S4_ASSET_ROOT ??
-  (app.isPackaged
-    ? join(process.resourcesPath, 'assets')
-    : join(app.getAppPath(), 'assets'));
+  (app.isPackaged ? join(process.resourcesPath, 'assets') : join(app.getAppPath(), 'assets'));
 
 const measurements = {
   appReadyMs: 0,
