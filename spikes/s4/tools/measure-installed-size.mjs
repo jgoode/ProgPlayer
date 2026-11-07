@@ -37,19 +37,32 @@ async function exists(path) {
   }
 }
 
-async function walk(root) {
+/**
+ * Sums the real size of the files under `root`.
+ *
+ * macOS framework bundles hard-link the same binary into several
+ * `Versions/` directories, so a naive walk counts the Electron framework
+ * three times. Every file is therefore counted once, keyed by its device
+ * and inode number.
+ */
+async function walk(root, seen = new Set()) {
   let bytes = 0;
   let files = 0;
   const entries = await readdir(root, { withFileTypes: true });
   for (const entry of entries) {
     const full = join(root, entry.name);
     if (entry.isDirectory()) {
-      const nested = await walk(full);
+      const nested = await walk(full, seen);
       bytes += nested.bytes;
       files += nested.files;
       continue;
     }
     const info = await stat(full);
+    const key = `${info.dev}:${info.ino}`;
+    if (seen.has(key)) {
+      continue;
+    }
+    seen.add(key);
     bytes += info.size;
     files += 1;
   }
