@@ -4,6 +4,7 @@ dist
 release
 coverage
 test-results
+.smoke-out
 playwright-report
 pnpm-lock.yaml
 docs

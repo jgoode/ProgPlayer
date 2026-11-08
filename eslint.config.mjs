@@ -14,6 +14,7 @@ export default tseslint.config(
       'coverage/**',
       'test-results/**',
       'playwright-report/**',
+      '.smoke-out/**',
       'node_modules/**',
       'docs/**',
       // The spike's build output and the vendored worklet bundle it produces.

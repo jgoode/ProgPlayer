@@ -49,6 +49,17 @@ jobs:
       - name: Unit and component tests
         run: pnpm run test
 
+      # Testing.md §10: the core layer is gated at 90% lines and 85% branches,
+      # so the threshold is enforced on every OS in the matrix, not only
+      # locally.
+      - name: Core coverage gate
+        run: pnpm run test:coverage
+
+      # A run of the theory core's public API: scale generation, degree
+      # resolution, voicing, hints and fretboard positions.
+      - name: Theory core smoke run
+        run: pnpm run test:smoke
+
       - name: Build
         run: pnpm run build
 

@@ -1,0 +1,325 @@
+{
+  "R1": {
+    "name": "Classic rock I–IV–V–IV",
+    "home": ["mixolydian", "major"],
+    "chords": [
+      { "degree": 1, "quality": "" },
+      { "degree": 4, "quality": "" },
+      { "degree": 5, "quality": "" },
+      { "degree": 4, "quality": "" }
+    ]
+  },
+  "R2": {
+    "name": "Mixolydian rock",
+    "home": ["mixolydian"],
+    "chords": [
+      { "degree": 1, "quality": "" },
+      { "degree": 7, "alteration": -1, "quality": "" },
+      { "degree": 4, "quality": "" },
+      { "degree": 1, "quality": "" }
+    ]
+  },
+  "R3": {
+    "name": "Borrowed ♭III rock",
+    "home": ["major"],
+    "chords": [
+      { "degree": 1, "quality": "" },
+      { "degree": 3, "alteration": -1, "quality": "" },
+      { "degree": 4, "quality": "" },
+      { "degree": 1, "quality": "" }
+    ]
+  },
+  "R4": {
+    "name": "Minor rock vamp",
+    "home": ["naturalMinor"],
+    "chords": [
+      { "degree": 1, "quality": "m" },
+      { "degree": 7, "alteration": -1, "quality": "" },
+      { "degree": 6, "alteration": -1, "quality": "" },
+      { "degree": 7, "alteration": -1, "quality": "" }
+    ]
+  },
+  "R5": {
+    "name": "Minor anthem",
+    "home": ["naturalMinor"],
+    "chords": [
+      { "degree": 1, "quality": "m" },
+      { "degree": 6, "alteration": -1, "quality": "" },
+      { "degree": 3, "alteration": -1, "quality": "" },
+      { "degree": 7, "alteration": -1, "quality": "" }
+    ]
+  },
+  "R6": {
+    "name": "Rock turnaround",
+    "home": ["major"],
+    "chords": [
+      { "degree": 1, "quality": "" },
+      { "degree": 5, "quality": "" },
+      { "degree": 7, "alteration": -1, "quality": "" },
+      { "degree": 4, "quality": "" }
+    ]
+  },
+  "R7": {
+    "name": "50s rock-and-roll",
+    "home": ["major"],
+    "chords": [
+      { "degree": 1, "quality": "" },
+      { "degree": 6, "quality": "m" },
+      { "degree": 4, "quality": "" },
+      { "degree": 5, "quality": "" }
+    ]
+  },
+  "R8": {
+    "name": "Andalusian cadence",
+    "home": ["naturalMinor", "phrygian"],
+    "chords": [
+      { "degree": 1, "quality": "m" },
+      { "degree": 7, "alteration": -1, "quality": "" },
+      { "degree": 6, "alteration": -1, "quality": "" },
+      { "degree": 5, "quality": "" }
+    ]
+  },
+  "B1": {
+    "name": "12-bar blues",
+    "home": ["mixolydian", "major"],
+    "chords": [
+      { "degree": 1, "quality": "7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 4, "quality": "7" },
+      { "degree": 4, "quality": "7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 5, "quality": "7" },
+      { "degree": 4, "quality": "7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 1, "quality": "7" }
+    ]
+  },
+  "B2": {
+    "name": "12-bar quick-change",
+    "home": ["mixolydian", "major"],
+    "chords": [
+      { "degree": 1, "quality": "7" },
+      { "degree": 4, "quality": "7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 4, "quality": "7" },
+      { "degree": 4, "quality": "7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 5, "quality": "7" },
+      { "degree": 4, "quality": "7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 5, "quality": "7" }
+    ]
+  },
+  "B3": {
+    "name": "12-bar minor blues",
+    "home": ["naturalMinor"],
+    "chords": [
+      { "degree": 1, "quality": "m7" },
+      { "degree": 1, "quality": "m7" },
+      { "degree": 1, "quality": "m7" },
+      { "degree": 1, "quality": "m7" },
+      { "degree": 4, "quality": "m7" },
+      { "degree": 4, "quality": "m7" },
+      { "degree": 1, "quality": "m7" },
+      { "degree": 1, "quality": "m7" },
+      { "degree": 6, "alteration": -1, "quality": "7" },
+      { "degree": 5, "quality": "7" },
+      { "degree": 1, "quality": "m7" },
+      { "degree": 5, "quality": "7" }
+    ]
+  },
+  "B4": {
+    "name": "8-bar blues",
+    "home": ["mixolydian", "major"],
+    "chords": [
+      { "degree": 1, "quality": "7" },
+      { "degree": 5, "quality": "7" },
+      { "degree": 4, "quality": "7" },
+      { "degree": 4, "quality": "7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 5, "quality": "7" },
+      { "degree": 5, "quality": "7" }
+    ]
+  },
+  "B5": {
+    "name": "Jazz blues (12-bar)",
+    "home": ["major"],
+    "chords": [
+      { "degree": 1, "quality": "7" },
+      { "degree": 4, "quality": "7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 4, "quality": "7" },
+      { "degree": 4, "alteration": 1, "quality": "dim7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 6, "quality": "7" },
+      { "degree": 2, "quality": "m7" },
+      { "degree": 5, "quality": "7" },
+      { "degree": 1, "quality": "7" },
+      { "degree": 6, "quality": "7" },
+      { "degree": 2, "quality": "m7" },
+      { "degree": 5, "quality": "7" }
+    ]
+  },
+  "B6": {
+    "name": "Blues turnaround",
+    "home": ["mixolydian", "major"],
+    "chords": [
+      { "degree": 1, "quality": "7" },
+      { "degree": 6, "quality": "7" },
+      { "degree": 2, "quality": "m7" },
+      { "degree": 5, "quality": "7" }
+    ]
+  },
+  "J1": {
+    "name": "ii–V–I (major)",
+    "home": ["major"],
+    "chords": [
+      { "degree": 2, "quality": "m7" },
+      { "degree": 5, "quality": "7" },
+      { "degree": 1, "quality": "maj7" },
+      { "degree": 1, "quality": "maj7" }
+    ]
+  },
+  "J2": {
+    "name": "ii–V–i (minor)",
+    "home": ["naturalMinor", "harmonicMinor"],
+    "chords": [
+      { "degree": 2, "quality": "m7♭5" },
+      { "degree": 5, "quality": "7♭9" },
+      { "degree": 1, "quality": "m7" },
+      { "degree": 1, "quality": "m7" }
+    ]
+  },
+  "J3": {
+    "name": "I–vi–ii–V",
+    "home": ["major"],
+    "chords": [
+      { "degree": 1, "quality": "maj7" },
+      { "degree": 6, "quality": "m7" },
+      { "degree": 2, "quality": "m7" },
+      { "degree": 5, "quality": "7" }
+    ]
+  },
+  "J4": {
+    "name": "iii–vi–ii–V–I",
+    "home": ["major"],
+    "chords": [
+      { "degree": 3, "quality": "m7" },
+      { "degree": 6, "quality": "m7" },
+      { "degree": 2, "quality": "m7" },
+      { "degree": 5, "quality": "7" },
+      { "degree": 1, "quality": "maj7" },
+      { "degree": 1, "quality": "maj7" }
+    ]
+  },
+  "J5": {
+    "name": "I–VI7–ii–V turnaround",
+    "home": ["major"],
+    "chords": [
+      { "degree": 1, "quality": "maj7" },
+      { "degree": 6, "quality": "7" },
+      { "degree": 2, "quality": "m7" },
+      { "degree": 5, "quality": "7" }
+    ]
+  },
+  "J6": {
+    "name": "Backdoor ii–V",
+    "home": ["major"],
+    "chords": [
+      { "degree": 4, "quality": "m7" },
+      { "degree": 7, "alteration": -1, "quality": "7" },
+      { "degree": 1, "quality": "maj7" },
+      { "degree": 1, "quality": "maj7" }
+    ]
+  },
+  "J7": {
+    "name": "Tritone-substitution ii–V–I",
+    "home": ["major"],
+    "chords": [
+      { "degree": 2, "quality": "m7" },
+      { "degree": 2, "alteration": -1, "quality": "7" },
+      { "degree": 1, "quality": "maj7" },
+      { "degree": 1, "quality": "maj7" }
+    ]
+  },
+  "J8": {
+    "name": "Diatonic cycle to the relative minor",
+    "home": ["major"],
+    "chords": [
+      { "degree": 2, "quality": "m7" },
+      { "degree": 5, "quality": "7" },
+      { "degree": 1, "quality": "maj7" },
+      { "degree": 4, "quality": "maj7" },
+      { "degree": 7, "quality": "m7♭5" },
+      { "degree": 3, "quality": "7♭9" },
+      { "degree": 6, "quality": "m7" },
+      { "degree": 6, "quality": "m7" }
+    ]
+  },
+  "M1": {
+    "name": "Dorian vamp",
+    "home": ["dorian"],
+    "chords": [
+      { "degree": 1, "quality": "m7" },
+      { "degree": 4, "quality": "7" }
+    ]
+  },
+  "M2": {
+    "name": "Mixolydian vamp",
+    "home": ["mixolydian"],
+    "chords": [
+      { "degree": 1, "quality": "" },
+      { "degree": 7, "alteration": -1, "quality": "" }
+    ]
+  },
+  "M3": {
+    "name": "Phrygian vamp",
+    "home": ["phrygian"],
+    "chords": [
+      { "degree": 1, "quality": "m" },
+      { "degree": 2, "alteration": -1, "quality": "" }
+    ]
+  },
+  "M4": {
+    "name": "Lydian vamp",
+    "home": ["lydian"],
+    "chords": [
+      { "degree": 1, "quality": "maj7" },
+      { "degree": 2, "quality": "" }
+    ]
+  },
+  "M5": {
+    "name": "Aeolian vamp",
+    "home": ["naturalMinor"],
+    "chords": [
+      { "degree": 1, "quality": "m" },
+      { "degree": 6, "alteration": -1, "quality": "" },
+      { "degree": 7, "alteration": -1, "quality": "" },
+      { "degree": 1, "quality": "m" }
+    ]
+  },
+  "M6": {
+    "name": "Modal half-step shift",
+    "home": ["dorian"],
+    "chords": [
+      { "degree": 1, "quality": "m7" },
+      { "degree": 2, "alteration": -1, "quality": "m7" },
+      { "degree": 1, "quality": "m7" }
+    ]
+  },
+  "M7": {
+    "name": "Locrian vamp",
+    "home": ["locrian"],
+    "chords": [
+      { "degree": 1, "quality": "m7♭5" },
+      { "degree": 2, "alteration": -1, "quality": "maj7" }
+    ]
+  }
+}
