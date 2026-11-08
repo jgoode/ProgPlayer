@@ -1,11 +1,10 @@
 # PracticePlayer
 
-PracticePlayer is a cross-platform desktop app (Windows, macOS, Linux) that
-plays chord progressions in a chosen key at a chosen tempo as a practice and
-improvisation backing track. The v1 product plays sustained block chords, a
-root-note bass line and a metronome click through a built-in SoundFont
-synthesiser and/or MIDI out, with separate channels for chords, bass and click
-plus MIDI clock.
+PracticePlayer is a desktop app for Windows and macOS that plays chord
+progressions in a chosen key at a chosen tempo as a practice and improvisation
+backing track. The v1 product plays sustained block chords, a root-note bass
+line and a metronome click through a built-in SoundFont synthesiser and/or MIDI
+out, with separate channels for chords, bass and click plus MIDI clock.
 
 **Current state: Phase 0 (bootstrap).** The app opens a hardened Electron
 window showing "PracticePlayer". No audio, MIDI or music-theory features exist
@@ -78,7 +77,9 @@ asserts the lint failure and removes the violation again:
 
 `.github/workflows/ci.yml` runs install, lint, format check, type-check, unit
 tests, build, the Electron smoke test, the dependency audit and the licence
-audit on `windows-latest`, `macos-latest` and `ubuntu-latest`.
+audit on `windows-latest` and `macos-latest`. The `ubuntu-latest` leg is still
+in the matrix as an interim check — Linux is not a supported platform for
+v1.0 (PLT-1), and that leg is removed in the code-side cutover.
 
 On Linux the Electron smoke test needs a display server and the Chromium
 shared libraries, so CI installs `xvfb` and the Playwright system

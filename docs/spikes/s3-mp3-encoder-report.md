@@ -293,7 +293,8 @@ In short:
   `testing.md` §1 puts automated listening quality out of scope for v1, so
   this is closed by a human (**G-24**).
 - **One machine, one platform.** Everything was measured on one Windows
-  laptop, in Node and Electron. No macOS, no Linux, no low-end machine.
+  laptop, in Node and Electron. No macOS, no low-end machine. (Linux was
+  dropped as a supported platform on 2026-11-08.)
 - **The `rusty_mp3` WASM build is spike scaffolding.** It has no
   `wasm-bindgen` glue, no typed JS API, no bundler integration and no SIMD
   dispatch in the renderer. Those are Phase 9 work if the ADR is revisited

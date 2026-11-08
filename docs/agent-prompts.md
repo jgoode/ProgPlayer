@@ -20,7 +20,7 @@
 
 ```
 You are a senior TypeScript/Electron engineer working on PracticePlayer, an open-source (MIT)
-cross-platform desktop app (Windows, macOS, Linux) that plays chord progressions in a chosen key
+desktop app for Windows and macOS that plays chord progressions in a chosen key
 at a chosen tempo as a practice/improvisation backing track. It uses a built-in SoundFont synth
 and MIDI out (separate channels for chords, bass, click; MIDI clock).
 
@@ -44,7 +44,7 @@ Rules:
 5. Testing: write tests with the code (testing.md). Pure logic gets unit tests; scheduler logic
    gets simulated-clock tests; fix every bug with a regression test at the lowest possible layer.
 6. Work in small, reviewable commits that reference requirement and task IDs.
-7. Definition of done: typed, linted, tests pass, runs on the CI matrix (Windows, macOS, Ubuntu),
+7. Definition of done: typed, linted, tests pass, runs on the CI matrix (Windows, macOS),
    behaviour documented, progress.md updated (tick tasks, status, decisions, changelog).
 8. Never claim something works unless you ran it. Report what you ran and what you could not run
    (for example, real audio or MIDI hardware) so a human can do the device checks in testing.md §7.
@@ -91,10 +91,13 @@ Deliverables:
   typed preload API with one example call, backgroundThrottling disabled.
 - Vitest with one passing test per layer folder; Playwright-for-Electron smoke test that launches
   the app and checks the window title.
-- GitHub Actions: matrix (windows-latest, macos-latest, ubuntu-latest) running install, lint,
-  type-check, unit tests, smoke test, and a dependency+licence audit step.
+- GitHub Actions: matrix (windows-latest, macos-latest) running install, lint,
+  type-check, unit tests, smoke test, and a dependency+licence audit step. The
+  `ubuntu-latest` leg is an interim check only — Linux is not a supported
+  platform for v1.0 (PLT-1) and that leg is removed in the code-side cutover.
 Constraints: pnpm; Node LTS; no audio or MIDI code yet.
-Exit check: CI green on all three OSes; app window opens on each; boundary rules demonstrably
+Exit check: CI green on both supported OSes (the interim Ubuntu leg must stay green
+until the cutover); app window opens on each; boundary rules demonstrably
 fail on a deliberate violation (add that as a documented test, then remove the violation).
 Out of scope: any feature code.
 ```
@@ -128,22 +131,22 @@ Exit check: written go/no-go with numbers against the pass criteria in implement
 ### Spike S2 — MIDI out
 
 ```
-TASK: Spike S2 — measure Web MIDI output accuracy and reliability in Electron on Windows,
-macOS and Linux, and compare with a native RtMidi-based Node addon.
+TASK: Spike S2 — measure Web MIDI output accuracy and reliability in Electron on Windows
+and macOS, and compare with a native RtMidi-based Node addon.
 Read first: implementation.md §2.4 and Phase 1 table (S2); requirements FR-SND-4..9,
 NFR-TIM-2/3, NFR-REL-2; gap-analysis.md RK-2, RK-3, G-03, G-04; testing.md §7-§8.
 Do:
 - Implement a sender that schedules notes and MIDI clock (24 ppqn) with timestamps from a
   Worker-driven look-ahead loop; map audio-clock time to performance.now via getOutputTimestamp.
-- Measure jitter by looping back to a second port (loopMIDI on Windows, IAC on macOS, ALSA virtual
-  on Linux) and comparing received timestamps to intended ones; report p50/p95/p99/max and note
+- Measure jitter by looping back to a second port (loopMIDI on Windows, IAC on macOS) and
+  comparing received timestamps to intended ones; report p50/p95/p99/max and note
   measurement limits.
 - Test permission handling in Electron (session permission handlers), device enumeration,
   hot-plug, and behaviour with the window minimized.
 - Repeat with a native addon candidate; verify its licence, maintenance and prebuilt binaries.
-Deliverables: spike code, measurement report per OS, ADR "MIDI I/O approach", updated
+Deliverables: spike code, measurement report per supported OS, ADR "MIDI I/O approach", updated
 gap-analysis.md, notes on what must be documented for users (Windows loopback driver).
-Exit check: go/no-go against "p99 jitter under 5 ms on each OS" with data.
+Exit check: go/no-go against "p99 jitter under 5 ms on each supported OS" with data.
 ```
 
 ### Spike S3 — MP3 encoder
@@ -162,12 +165,12 @@ Exit check: a clear decision with licence reasoning; no encoder added to src/ in
 ### Spike S4 — Packaging and SoundFont assets
 
 ```
-TASK: Spike S4 — prove packaging with large assets on all three OSes and shortlist SoundFonts.
+TASK: Spike S4 — prove packaging with large assets on both supported OSes and shortlist SoundFonts.
 Read first: implementation.md Phase 1 table (S4) and tasks P1.4/P1.5; requirements FR-SND-2,
 PLT-3, NFR-PRF-2, CON-4..6, OQ-11/12; gap-analysis.md G-11, G-13.
 Do:
-- Package a trivial Electron app with electron-builder for Windows (installer), macOS (dmg;
-  arm64 + x64) and Linux (AppImage + deb) in CI; bundle a large sample asset via asarUnpack or
+- Package a trivial Electron app with electron-builder for Windows (installer) and macOS (dmg;
+  arm64 + x64) in CI; bundle a large sample asset via asarUnpack or
   extraResources; serve it to the renderer through a custom protocol handler.
 - Measure installer size and first-launch load time.
 - Investigate macOS notarization and Windows signing options and costs; document the interim
@@ -177,7 +180,7 @@ Do:
   notes. Reject any font whose licence is not compatible with MIT distribution.
 Deliverables: CI packaging workflow, measurements, SoundFont shortlist table, ADR "Packaging and
 assets", updates to gap-analysis.md (G-11, G-13, §4).
-Exit check: installers produced on all three OSes; size budget recommendation (OQ-11); signing path
+Exit check: installers produced on both supported OSes; size budget recommendation (OQ-11); signing path
 (OQ-12).
 ```
 
@@ -230,7 +233,7 @@ Deliverables:
 - Standard MIDI File writer producing tempo/time-signature meta events and separate tracks.
 Tests: property-based timeline invariants; golden timelines (single-section loop, 3-section
 arrangement, 7/8 arrangement); session save/load round trip; SMF parses in a reference parser.
-Exit check: tests green on all three OSes; SMF round-trip passes.
+Exit check: tests green on both supported OSes; SMF round-trip passes.
 Out of scope: playback, UI.
 ```
 
@@ -238,7 +241,7 @@ Out of scope: playback, UI.
 
 ```
 TASK: Implement the scheduler, transport, built-in synth playback and a minimal UI so a chosen
-preset can be heard on all three OSes (Phase 4, tasks P4.1-P4.10).
+preset can be heard on both supported OSes (Phase 4, tasks P4.1-P4.10).
 Read first: implementation.md §2.3-2.4 and Phase 4; the S1 ADR; requirements §5.5 (FR-PLY),
 FR-TMP-1/2, FR-SND-1/2, NFR-TIM-1; testing.md §4.4-4.5, §8; gap-analysis.md G-02, G-07, G-08, G-14.
 Prerequisites: Phase 1 S1 ADR and Phase 3 complete; decisions for G-02 (count-in/resume), G-07
@@ -254,7 +257,7 @@ Deliverables:
 - Minimal UI: key and scale selector, tempo, preset picker, play/stop, current bar/beat readout.
 Tests: simulated-clock tests for every scenario in testing.md §4.4; recording-sink tests; a
 10-minute soak harness; report late-event metric.
-Exit check: AT-1 and AT-4 pass manually with the minimal UI on all OSes; soak run has no dropouts
+Exit check: AT-1 and AT-4 pass manually with the minimal UI on both supported OSes; soak run has no dropouts
 or drift; scheduler metrics recorded.
 Out of scope: full UI, MIDI out, export.
 ```
@@ -297,10 +300,10 @@ Deliverables:
 - MIDI clock (24 ppqn) with Start/Stop/Continue per the decision; all-notes-off and all-sound-off
   on stop, pause, loop-region change and device change.
 - Latency calibration helper; settings persisted.
-- User documentation for Windows loopback drivers and macOS/Linux virtual ports.
+- User documentation for Windows loopback drivers and macOS virtual ports.
 Tests: fake-port unit tests (byte-exact messages, clock spacing, timestamps); scripted manual
 procedures M-1..M-4 results recorded in docs/test-runs/.
-Exit check: AT-5 passes on all three OSes; clock verified against two DAWs; device removal does
+Exit check: AT-5 passes on both supported OSes; clock verified against two DAWs; device removal does
 not crash or leave hanging notes.
 Out of scope: export, new UI beyond MIDI settings.
 ```
@@ -339,7 +342,7 @@ Deliverables:
 - Corrupt/unknown-version file handling with specific, user-friendly messages.
 Tests: round-trip tests, fixtures for missing assets and corrupt files, fuzz test over file
 mutations, Playwright save/restart/load scenario.
-Exit check: AT-7 passes on all OSes; fuzzing never produces an uncaught exception.
+Exit check: AT-7 passes on both supported OSes; fuzzing never produces an uncaught exception.
 Out of scope: export.
 ```
 
@@ -359,7 +362,7 @@ Deliverables:
 - Clear UI text that audio from external MIDI instruments cannot be captured (FR-IO-5).
 Tests: SMF and WAV structural tests; offline-versus-real-time comparison (length, RMS envelope);
 e2e export scenario.
-Exit check: AT-6 passes on all OSes; MIDI file opens in a DAW with correct tempo, time signature
+Exit check: AT-6 passes on both supported OSes; MIDI file opens in a DAW with correct tempo, time signature
 and notes.
 Out of scope: new sound sources.
 ```
@@ -371,11 +374,11 @@ TASK: Produce release candidates and complete cross-platform QA (Phase 10, tasks
 Read first: implementation.md Phase 10; requirements §4 (PLT), §8 (CON), §11; the S4 ADR;
 testing.md §5, §7, §10; gap-analysis.md §4, G-13.
 Deliverables:
-- Installers for Windows, macOS (signed and notarized if decided in S4), and Linux, produced by CI.
+- Installers for Windows and macOS (signed and notarized if decided in S4), produced by CI.
 - Licences/attributions screen generated from the register in gap-analysis.md §4 (SoundFonts,
   dependencies, Apache-2.0 NOTICE entries).
-- User guide and quick start (installing, choosing a key and preset, MIDI setup per OS, export).
-- Full run of AT-1...AT-8 and manual procedures M-1...M-7 on all OSes; results in docs/test-runs/.
+- User guide and quick start (installing, choosing a key and preset, MIDI setup per supported OS, export).
+- Full run of AT-1...AT-8 and manual procedures M-1...M-7 on both supported OSes; results in docs/test-runs/.
 - Known-issues list and v1.0 release notes; the requirement-level traceability matrix.
 Exit check: AT-8 passes on clean machines; no open S1/S2 defects; no open gaps rated Blocker;
 all licence register rows Verified.

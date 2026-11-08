@@ -5,8 +5,8 @@ name: Spike S2 — MIDI measurement
 # Linux is out of scope for the S2 measurement (the decision is recorded in
 # the report and in gap G-20): the GitHub Azure runners' kernels ship
 # without the ALSA sequencer drivers, so the ALSA virtual-port loopback
-# cannot be created there. The Linux evidence is deferred to the manual
-# device test in testing.md §7.
+# cannot be created there. Linux was dropped as a supported platform on
+# 2026-11-08, so the Linux half of G-20 is withdrawn as out of scope.
 #
 # The measurements need a MIDI loopback:
 #   - Windows: loopMIDI. Its virtual ports are configured through the

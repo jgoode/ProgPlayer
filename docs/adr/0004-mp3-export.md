@@ -256,7 +256,8 @@ MP3 export is re-opened when **any** of these becomes true:
   - Record the evaluated candidates in `docs/gap-analysis.md` §4 and close
     G-12 and OQ-9.
   - Keep the `spikes/s3/` harness so the measurements can be repeated on
-    macOS and Linux, and on a low-end machine, before any encoder ships.
+    macOS, and on a low-end machine, before any encoder ships. (The Linux
+    repeat was dropped with the platform on 2026-11-08.)
   - If Option D is ever taken up: a human listening test at 128 and 192
     kbps, an Apache-2.0 NOTICE entry, a typed JS API over the WASM build,
     and the `wasm-unsafe-eval` CSP change that WASM requires.

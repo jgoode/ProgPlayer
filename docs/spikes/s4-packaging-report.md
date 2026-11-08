@@ -332,8 +332,11 @@ checksums regardless.
   and inode handles the case where the files *are* hard links, but it
   cannot undo copies that the extraction created. **Tracked as gap G-29**:
   measure on the macOS runner, never from a downloaded artefact.
-- **The Linux window-presentation time**, as explained in §3. **Tracked as
-  gap G-30.**
+- **The Linux window-presentation time**, as explained in §3. **Gap G-30 —
+  withdrawn 2026-11-08** as out of scope: Linux is not a supported platform
+  for v1.0, so the measurement is not required. The Windows and macOS
+  first-launch figures are measured on real desktops. The Linux numbers in
+  this report stay as historical evidence.
 - **Real audio and MIDI hardware.** The spike is a stub app: it does not
   play sound and does not open a MIDI port. `testing.md` §7's device checks
   are still required.

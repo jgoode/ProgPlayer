@@ -2,15 +2,15 @@
 
 | | |
 |---|---|
-| **Status** | Draft v0.4 — OQ-1, OQ-3, OQ-5, OQ-8, OQ-9, OQ-11, OQ-12 resolved; for review |
-| **Date** | 2026-11-07 |
+| **Status** | Draft v0.5 — OQ-1, OQ-3, OQ-5, OQ-8, OQ-9, OQ-11, OQ-12 resolved; **Linux dropped from the supported platforms (2026-11-08)**; for review |
+| **Date** | 2026-11-08 |
 | **Related docs** | implementation.md, progress.md, testing.md, gap-analysis.md, agent-prompts.md (to follow) |
 
 ---
 
 ## 1. Purpose
 
-PracticePlayer is a cross-platform desktop application that plays a sequence of chord progressions in a chosen key at a chosen tempo, as a backing track for practice and improvisation.
+PracticePlayer is a desktop application for Windows and macOS that plays a sequence of chord progressions in a chosen key at a chosen tempo, as a backing track for practice and improvisation.
 
 The user chooses a key (or mode), arranges progressions into song-style sections, sets the tempo, and presses play. The app plays chords and a bass line, with a metronome click, through a built-in SoundFont synthesizer and/or MIDI out.
 
@@ -18,7 +18,7 @@ The user chooses a key (or mode), arranges progressions into song-style sections
 
 ### 2.1 Goals (v1)
 
-1. Reliable, tight-timing playback of chords, bass and click on Windows, Linux and macOS.
+1. Reliable, tight-timing playback of chords, bass and click on Windows and macOS.
 2. A library of preset progressions, expressed in scale degrees so they work in any key or mode, which the user can extend with their own.
 3. Song-style arrangement: ordered sections, each with its own progression and repeat count.
 4. Practice aids: count-in, loop of a section or bar range, metronome click.
@@ -52,9 +52,9 @@ The user chooses a key (or mode), arranges progressions into song-style sections
 
 | ID | Requirement |
 |---|---|
-| PLT-1 | Supported OS: Windows 10/11 (x64), macOS (Apple Silicon and Intel), Linux (x64; mainstream desktop distributions). |
+| PLT-1 | Supported OS: Windows 10/11 (x64), macOS (Apple Silicon and Intel). **Linux is out of scope for v1 (dropped 2026-11-08).** |
 | PLT-2 | Built with Electron and TypeScript. |
-| PLT-3 | Installable packages per platform (indicative: Windows installer, macOS disk image, Linux AppImage and/or .deb). |
+| PLT-3 | Installable packages per platform (indicative: Windows installer, macOS disk image). |
 | PLT-4 | The app runs fully offline; no network access is required for any feature. |
 | PLT-5 | The app is open source under the MIT license (OQ-1, resolved). |
 
@@ -126,7 +126,7 @@ The user chooses a key (or mode), arranges progressions into song-style sections
 | FR-SND-5 | Chords, bass and click are sent on separate, user-selectable MIDI channels (defaults: chords ch. 1, bass ch. 2, click ch. 10). |
 | FR-SND-6 | The app can send MIDI clock (24 pulses per quarter note) plus Start/Stop/Continue messages, so a DAW can synchronize to the app. Clock output is switchable on and off. |
 | FR-SND-7 | The built-in synth and MIDI out can be enabled simultaneously or independently, per part (chords, bass, click). |
-| FR-SND-8 | On Windows, creating virtual MIDI ports is not supported by the OS; the app documents the need for a loopback driver (e.g. loopMIDI) to reach a DAW. On macOS and Linux the user can connect through the OS's virtual ports. |
+| FR-SND-8 | On Windows, creating virtual MIDI ports is not supported by the OS; the app documents the need for a loopback driver (e.g. loopMIDI) to reach a DAW. On macOS the user can connect through the OS's virtual ports. |
 | FR-SND-9 | Stopping or pausing playback never leaves hanging notes (all-notes-off is sent on every connected output). |
 
 ### 5.7 Display
@@ -167,7 +167,7 @@ The user chooses a key (or mode), arranges progressions into song-style sections
 | NFR-I18N-1 | UI strings are externalized to allow future translation. v1 ships in English. |
 | NFR-MNT-1 | The music-theory core (keys, scales, chords, progression resolution) is a pure TypeScript module with no UI or audio dependencies, and is covered by unit tests. |
 | NFR-MNT-2 | The audio/MIDI scheduling layer is separated from the UI so it can be tested with a simulated clock. |
-| NFR-QLT-1 | The same feature set behaves identically on all three platforms, apart from documented OS-specific MIDI port behaviour. |
+| NFR-QLT-1 | The same feature set behaves identically on both supported platforms, apart from documented OS-specific MIDI port behaviour. |
 
 ## 7. Data model (conceptual)
 
@@ -202,7 +202,7 @@ Notes:
 | ID | Constraint |
 |---|---|
 | CON-1 | Electron + TypeScript, with a React-style component UI is assumed (framework to be confirmed in implementation.md). |
-| CON-2 | MIDI I/O in Electron relies on what Chromium's Web MIDI API (or a native module) can provide on each OS; the choice is made in implementation.md after a spike (see gap-analysis.md). |
+| CON-2 | MIDI I/O in Electron relies on what Chromium's Web MIDI API (or a native module) can provide on each supported OS; the choice is made in implementation.md after a spike (see gap-analysis.md). |
 | CON-3 | SoundFont synthesis requires an SF2-capable engine in JavaScript/WASM; candidate engines are evaluated in implementation.md. |
 | CON-4 | Every dependency and every bundled asset (SoundFonts, click sounds, fonts, icons) must have a license compatible with the chosen project license, with required attributions shown in an About/Licenses screen. |
 | CON-5 | Installer size grows with the number of bundled SoundFonts; a budget will be agreed (OQ-11). |
@@ -231,14 +231,14 @@ Notes:
 
 | Area | Criterion |
 |---|---|
-| Playback | A 3-section arrangement in 4/4 plays start to finish with correct chords, bass and click at 120 BPM on all three OSes. |
+| Playback | A 3-section arrangement in 4/4 plays start to finish with correct chords, bass and click at 120 BPM on both supported OSes. |
 | Keys | Selecting each of the 12 tonics and each supported scale type resolves a ii–V–I (or the scale's equivalent) to the correct chords and spelling. |
-| Timing | Over a 10-minute run at 140 BPM, no audible dropouts or drift; MIDI jitter within NFR-TIM-2 on each OS. |
+| Timing | Over a 10-minute run at 140 BPM, no audible dropouts or drift; MIDI jitter within NFR-TIM-2 on each supported OS. |
 | Loop | Loop of a bar range repeats seamlessly with no gap or doubled beat at the loop point. |
 | MIDI | With a virtual port connected to a DAW, notes arrive on the three configured channels; clock keeps the DAW within one tick of the app; stop sends all-notes-off. |
 | Export | Exported MIDI opens in a DAW with correct tempo, time signature and notes; exported WAV length matches the arrangement length to within one sample buffer. |
 | Persistence | A saved session reloads to an identical arrangement; a session with a missing SoundFont loads and reports the missing asset. |
-| Packaging | A clean install on each OS launches and plays with the bundled SoundFonts, with no network. |
+| Packaging | A clean install on each supported OS launches and plays with the bundled SoundFonts, with no network. |
 
 ## 12. Open questions
 

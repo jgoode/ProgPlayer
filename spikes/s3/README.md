@@ -118,7 +118,8 @@ the two hosts agree to within 0.02 dB on every SNR figure.
   (gap **G-24**).
 - **One machine only.** All figures come from a single Windows laptop
   (Intel Core 5 120U, 12 logical CPUs, Node 24.22.1, Electron 45.2.2).
-  macOS and Linux are not measured, and neither is a low-end machine.
+  macOS is not measured, and neither is a low-end machine. (Linux was
+  dropped as a supported platform on 2026-11-08.)
 - **The `rusty_mp3` WASM build here is a spike artifact**, not a shipping
   build. It has no `wasm-bindgen` glue, no typed JS API, no bundler
   integration and no SIMD dispatch in the renderer; those are P9 work if the

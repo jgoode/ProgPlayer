@@ -46,7 +46,7 @@ headline numbers:
 | A | **SpessaSynth** (`spessasynth_core` + `spessasynth_lib`) in the renderer | Future-timed events with 0-frame error when quantum-snapped; Apache-2.0; pure TypeScript, no WASM boundary; SF3 support with a 3.5× size reduction; the same engine serves live playback, offline render and MIDI export | ~1 MB of JavaScript; the offline path needs a MIDI sequence rather than the tick timeline; the scheduler path's dispatch phase differs from the sequencer path by one quantum unless the timeline is snapped |
 | B | **FluidSynth-WASM** | Mature synthesis; widely used | LGPL-family licensing, which conflicts with the MIT distribution expectation (CON-4) unless the boundary is kept strictly separate; WASM boundary in the audio thread; not measured, because S1 did not fail |
 | C | **Web Audio's own oscillators / a hand-written synth** | No dependency at all | Not a SoundFont engine: it fails FR-SND-1's requirement to load and play a SoundFont; no sampler quality; would have to be built and maintained from scratch |
-| D | **A native addon** (e.g. a C++ SoundFont library) | Full control over the DSP | Platform-specific builds for three operating systems; a much larger maintenance and packaging burden (the same problem S2 will face for MIDI); the renderer would lose the Web Audio scheduling model |
+| D | **A native addon** (e.g. a C++ SoundFont library) | Full control over the DSP | Platform-specific builds for each supported operating system; a much larger maintenance and packaging burden (the same problem S2 will face for MIDI); the renderer would lose the Web Audio scheduling model |
 
 ## Decision
 

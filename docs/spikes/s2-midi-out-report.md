@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | Complete for Windows and macOS — the harness, the native comparison, the decision and the end-to-end loopback numbers are all done. **Linux is out of scope** for this spike (§2.3) and is deferred to the manual device test — gap **G-20**. |
+| **Status** | Complete for Windows and macOS — the harness, the native comparison, the decision and the end-to-end loopback numbers are all done. **Linux is out of scope** for this spike (§2.3); it was dropped as a supported platform on 2026-11-08, so the Linux half of gap **G-20** is withdrawn. |
 | **Date** | 2026-11-05 |
 | **Spike** | S2 — MIDI out (`implementation.md` §3, Phase 1 table) |
 | **Requirement IDs** | FR-SND-4..9, NFR-TIM-2, NFR-TIM-3, NFR-REL-2, CON-2, CON-4 |
@@ -103,12 +103,18 @@ supplied the numbers in §5.1 and §5.2.
 
 ### 2.3 Linux — out of scope for this spike
 
-Linux remains a supported platform (PLT-1), but the **S2 measurement is
-scoped to Windows and macOS**. The reason is practical: the GitHub Actions
-runners use Azure kernels, and those kernels ship without the ALSA
-sequencer drivers (`snd-seq`, `snd-virmidi`) — the packages that provide
-them are not published for the `linux-azure` kernel the runners run, and
-the runner images do not install them. Without `/dev/snd/seq` there is no
+> **Superseded 2026-11-08.** Linux was dropped as a supported platform for
+> v1.0 (PLT-1), so the Linux end-to-end measurement is out of scope rather
+> than deferred. G-20's Linux half is withdrawn; its real-hardware half
+> remains open under `testing.md` §7, M-0. The analysis below is kept as
+> the record of why the measurement was never possible.
+
+Linux was a supported platform (PLT-1) when this spike was written, but the
+**S2 measurement was scoped to Windows and macOS**. The reason is practical:
+the GitHub Actions runners use Azure kernels, and those kernels ship without
+the ALSA sequencer drivers (`snd-seq`, `snd-virmidi`) — the packages that
+provide them are not published for the `linux-azure` kernel the runners run,
+and the runner images do not install them. Without `/dev/snd/seq` there is no
 ALSA virtual port and therefore no loopback to measure against.
 
 What was done for Linux anyway:
@@ -122,9 +128,9 @@ What was done for Linux anyway:
 - `spikes/s2/tools/linux-virtual-midi.sh` was written and then removed: with
   no way to exercise it, keeping it would be untested code.
 
-The Linux end-to-end measurement is therefore **deferred to the manual
-device test** (`testing.md` §7, M-0), which needs a Linux machine with the
-ALSA sequencer available. The gap is recorded as **G-20**.
+The Linux end-to-end measurement was therefore deferred to the manual
+device test (`testing.md` §7, M-0), which would have needed a Linux machine
+with the ALSA sequencer available. The gap was recorded as **G-20**.
 
 ## 3. Permission handling
 
@@ -497,7 +503,7 @@ the process-boundary reason in §5.3.
 
 | Criterion | Result |
 |---|---|
-| p99 jitter under 5 ms (NFR-TIM-2) on each OS | **Pass on Windows and macOS.** The app's p99 jitter is **1.10 ms** on Windows (1.10–50.00 ms across five runs, one driver stall) and **0.10 ms** on macOS, with **0 late sends** across 37 392 measured sends — 19 152 on Windows and 18 240 on macOS (§5.3, §5.3.1). One Windows run in five showed a 50.9 ms *received* outlier that the dispatch records attribute to the loopback driver, not the app (§5.3.1). **Linux is out of scope for this spike** (§2.3) and is deferred to the manual device test — **gap G-20**. |
+| p99 jitter under 5 ms (NFR-TIM-2) on each supported OS | **Pass on Windows and macOS.** The app's p99 jitter is **1.10 ms** on Windows (1.10–50.00 ms across five runs, one driver stall) and **0.10 ms** on macOS, with **0 late sends** across 37 392 measured sends — 19 152 on Windows and 18 240 on macOS (§5.3, §5.3.1). One Windows run in five showed a 50.9 ms *received* outlier that the dispatch records attribute to the loopback driver, not the app (§5.3.1). **Linux is out of scope for this spike** (§2.3) and is deferred to the manual device test — **gap G-20**. |
 | Stable hot-plug | **Pass on macOS; a Chromium limitation on Windows.** On macOS the loopback port is removed from the OS while a measurement is running (§5.6): the port disappears from the list, two `statechange` events report it, and no send throws. On Windows the removal *works* — the OS no longer lists the port — but Chromium's WinMM backend does not notice and keeps listing it. The app-side behaviour is correct on both platforms (0 send errors, 0 late sends). P6 must therefore not rely on `statechange` alone on Windows. |
 | Clean permission flow | **Pass.** MIDI access is granted to the app's own origin by the session permission handlers; sysex is denied by default; no prompt is shown. |
 | Record measurement limits | **Pass** — §8 and the ADR. |
@@ -534,9 +540,10 @@ The Windows p99 dispatch lateness swung from +1.41 ms to +241.18 ms
 across five runs on the same runner image: the app's playback must not
 depend on the machine being idle.
 
-**What remains open.** The Linux end-to-end measurement (§2.3, G-20) and
-the hardware checks in `testing.md` §7 (M-1..M-4), which need a real
-MIDI interface rather than a virtual port.
+**What remains open.** The hardware checks in `testing.md` §7 (M-1..M-4),
+which need a real MIDI interface rather than a virtual port. (The Linux
+end-to-end measurement, §2.3 / G-20, was withdrawn as out of scope on
+2026-11-08.)
 
 **How to reproduce.** The protocol is implemented and automated:
 
@@ -551,7 +558,7 @@ bash spikes/s2/tools/macos-virtual-port.sh "PracticePlayer S2 Loopback" &
 pnpm run spike:s2:web -- --output "PracticePlayer S2 Loopback" \
                           --input  "PracticePlayer S2 Loopback In" --bars 8 --bpm 120
 
-# Linux (ALSA sequencer loopback) — deferred to the manual device test
+# Linux (ALSA sequencer loopback) — out of scope since 2026-11-08
 sudo modprobe snd-seq && sudo modprobe snd-virmidi
 pnpm run spike:s2:web -- --output "Midi Through Port-0" \
                           --input "Midi Through Port-0" --bars 8 --bpm 120
@@ -573,7 +580,7 @@ reports as artifacts.
 | **The Windows audio path was the system default device with no listener.** | Nothing about the *audio* side was measured — only the MIDI dispatch path. |
 | **Five runs per configuration, but on a shared CI runner.** | §5.3.1 gives the aggregate over five runs (19 152 on Windows, 18 240 on macOS). The Windows runners are shared, heavily loaded virtual machines, so the spread includes the load of other tenants: one Web MIDI run in five hit a 50.9 ms driver stall (§5.3.1), and the native runs' Windows p99 dispatch lateness swung from +1.41 ms to +241.18 ms across the same five runs. The figures are representative of a loaded machine, not a quiet lab and not a worst case. Each individual 8-bar run sends 912 messages, so a single run's p99 is its 9th-worst message. |
 | **The native candidate was measured with `setTimeout`,** which is what the current implementation uses. | Its numbers are an upper bound for that implementation, not a property of RtMidi. A helper process with a busy-wait or a dedicated timer could do better; it still cannot use a timestamped send, which is the difference that matters. Two of the five Windows runs produced large outliers (a 62.55 ms and a 241.18 ms p99 dispatch lateness) because the runner was loaded; that is the native path's weakness, not its ceiling. |
-| **Linux is not covered.** | The end-to-end loopback measurement was not run on Linux (§2.3). The dispatch path and the Chromium source analysis are platform-independent, but the Linux p99 is unknown. **Gap G-20.** |
+| **Linux is not covered.** | The end-to-end loopback measurement was not run on Linux (§2.3). The dispatch path and the Chromium source analysis are platform-independent, but the Linux p99 is unknown. **Gap G-20 — withdrawn 2026-11-08**, out of scope with the platform drop. |
 
 ## 9. What must be documented for users
 
@@ -582,7 +589,7 @@ reports as artifacts.
 | **Windows virtual MIDI driver** | FR-SND-8 | Windows has no OS-level virtual MIDI port. To route PracticePlayer into a DAW, the user installs a loopback driver — **loopMIDI** (freeware, Tobias Erichsen; redistribution in the app is **not** required, only a download link) — creates one or more virtual ports, and selects one in the app's MIDI output settings. The app must name the driver in the setup guide and link to the vendor's page. |
 | **Windows MIDI Services (the in-box replacement)** | FR-SND-8 | Windows 11 24H2/25H2 roll out "Windows MIDI Services", whose "MIDI 2.0 Loop Devices" provide loopback ports without a third-party driver. The app should mention it as the modern alternative to loopMIDI. |
 | **macOS** | FR-SND-8 | macOS ships virtual MIDI ports (IAC Driver) with the OS; no extra install is needed. The Audio MIDI Setup app is where the user inspects them. |
-| **Linux** | FR-SND-8 | The ALSA sequencer's `snd-virmidi` ("Midi Through") provides the loopback; it needs `snd-seq` and `snd-virmidi` loaded. PipeWire/JACK users connect ports with their usual tooling. |
+| **Linux** | FR-SND-8 | *(Out of scope — Linux was dropped as a supported platform on 2026-11-08.)* The ALSA sequencer's `snd-virmidi` ("Midi Through") would have provided the loopback; it needs `snd-seq` and `snd-virmidi` loaded. |
 | **Sysex** | CON-4 | The app does not request system-exclusive access by default. If it is added later, the permission handler must ask the user first. |
 | **Latency calibration** | NFR-TIM-3 | The setup guide must explain the user offset that compensates for the audio output latency, and the click-test helper used to set it. |
 | **Hot-plug** | NFR-REL-2 | The guide must say that unplugging a device removes it from the port list and that playback continues without it. **On Windows the removal may not be immediate**: Chromium's WinMM backend does not re-enumerate when a device disappears, so the app may list a port that is already gone until it re-enumerates. The guide should tell users that a vanished device is detected when the next send fails, and that reopening the MIDI settings refreshes the list. |
@@ -592,7 +599,7 @@ reports as artifacts.
 
 | Item | Why | How to close it |
 |---|---|---|
-| End-to-end p99 jitter on **Linux** | The GitHub Azure runners' kernels ship without the ALSA sequencer drivers, so the virtual loopback cannot be created there (§2.3). | Run the same harness on a Linux machine with `snd-seq` and `snd-virmidi` loaded. **Gap G-20.** |
+| End-to-end p99 jitter on **Linux** | The GitHub Azure runners' kernels ship without the ALSA sequencer drivers, so the virtual loopback cannot be created there (§2.3). | **Withdrawn 2026-11-08** — out of scope with the platform drop. **Gap G-20.** |
 | The end-to-end numbers with a **real MIDI interface** | The CI runners have no MIDI hardware; the loopback is the only port. | The device checks in `testing.md` §7 (M-1..M-4). |
 | **Windows hot-plug on a real device** | The CI probe removes a *virtual* port (loopMIDI is restarted). Unplugging a USB interface is a different code path in the driver. | Unplug a USB MIDI interface during playback and check the app's behaviour (P6). |
 | **Hot-plug on macOS** | The CI probe kills the CoreMIDI helper, which disposes both endpoints. That is a clean removal, not a device disappearing. | The same, plus the `testing.md` §7 checks. |

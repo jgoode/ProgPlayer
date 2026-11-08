@@ -219,7 +219,8 @@ for this spike (G-20).
   - Chromium hides the Microsoft GS Wavetable Synth from Web MIDI; users who
     want to send to it need a real or virtual port.
   - The end-to-end p99 jitter is **demonstrated on Windows and macOS only**.
-    The Linux figure is unknown (G-20) and the real-hardware figure is
+    The Linux figure is unknown (G-20; withdrawn as out of scope on
+    2026-11-08 when Linux was dropped) and the real-hardware figure is
     unknown (`testing.md` §7).
 - Follow-up work:
   - P6: implement the `MidiOutSink` interface, the port manager and the
@@ -228,8 +229,10 @@ for this spike (G-20).
   - P6: on Windows, re-enumerate the ports when a send fails or the MIDI
     settings are reopened, because Chromium's WinMM backend does not
     report a removed device.
-  - Close **G-20** by running the S2 harness on a Linux machine with the
-    ALSA sequencer available.
+  - ~~Close **G-20** by running the S2 harness on a Linux machine with the
+    ALSA sequencer available.~~ **Withdrawn 2026-11-08** — Linux is not a
+    supported platform for v1.0, so this measurement is out of scope. G-20's
+    real-hardware half remains open (`testing.md` §7, M-0).
   - Run the device checks in `testing.md` §7 (M-1..M-4) with a real MIDI
     interface.
   - Document the Windows loopback driver in the user guide (FR-SND-8).

@@ -17,6 +17,10 @@ The repository must ship a typed, lint-enforced, testable skeleton with CI on
 all three operating systems, and no runtime dependency may carry a licence
 incompatible with MIT.
 
+> **Amendment 2026-11-08.** Linux was dropped as a supported platform for
+> v1.0 (PLT-1). The toolchain decision itself is unchanged; the `ubuntu-latest`
+> CI leg is an interim check that is removed in the code-side cutover.
+
 ## Options considered
 
 | Option | Summary | Pros | Cons |

@@ -1,5 +1,5 @@
 You are a senior TypeScript/Electron engineer working on PracticePlayer, an open-source (MIT)
-cross-platform desktop app (Windows, macOS, Linux) that plays chord progressions in a chosen key
+desktop app for Windows and macOS that plays chord progressions in a chosen key
 at a chosen tempo as a practice/improvisation backing track. It uses a built-in SoundFont synth
 and MIDI out (separate channels for chords, bass, click; MIDI clock).
 
@@ -23,7 +23,7 @@ Rules:
 5. Testing: write tests with the code (testing.md). Pure logic gets unit tests; scheduler logic
    gets simulated-clock tests; fix every bug with a regression test at the lowest possible layer.
 6. Work in small, reviewable commits that reference requirement and task IDs.
-7. Definition of done: typed, linted, tests pass, runs on the CI matrix (Windows, macOS, Ubuntu),
+7. Definition of done: typed, linted, tests pass, runs on the CI matrix (Windows, macOS),
    behaviour documented, progress.md updated (tick tasks, status, decisions, changelog).
 8. Never claim something works unless you ran it. Report what you ran and what you could not run
    (for example, real audio or MIDI hardware) so a human can do the device checks in testing.md §7.
@@ -44,9 +44,12 @@ Deliverables:
   typed preload API with one example call, backgroundThrottling disabled.
 - Vitest with one passing test per layer folder; Playwright-for-Electron smoke test that launches
   the app and checks the window title.
-- GitHub Actions: matrix (windows-latest, macos-latest, ubuntu-latest) running install, lint,
-  type-check, unit tests, smoke test, and a dependency+licence audit step.
+- GitHub Actions: matrix (windows-latest, macos-latest) running install, lint,
+  type-check, unit tests, smoke test, and a dependency+licence audit step. The
+  `ubuntu-latest` leg is an interim check only — Linux is not a supported
+  platform for v1.0 (PLT-1) and that leg is removed in the code-side cutover.
 Constraints: pnpm; Node LTS; no audio or MIDI code yet.
-Exit check: CI green on all three OSes; app window opens on each; boundary rules demonstrably
+Exit check: CI green on both supported OSes (the interim Ubuntu leg must stay green
+until the cutover); app window opens on each; boundary rules demonstrably
 fail on a deliberate violation (add that as a documented test, then remove the violation).
 Out of scope: any feature code.

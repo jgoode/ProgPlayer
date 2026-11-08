@@ -20,10 +20,15 @@ and notarization and Windows may need signing to avoid SmartScreen warnings
 (OQ-12). PLT-3 requires installable packages per platform.
 
 Spike S4 packaged a throwaway Electron application with electron-builder
-26.18.0 on all three operating systems and bundled a 64 MiB asset as an
-`extraResource`, served to the renderer through a custom protocol handler.
+26.18.0 on all three operating systems it was run on (Windows, macOS arm64
+and x64, and Linux) and bundled a 64 MiB asset as an `extraResource`, served
+to the renderer through a custom protocol handler.
 The harness is in `spikes/s4/`; **nothing in it ships**. The measurements are
 in `docs/spikes/s4-packaging-report.md`.
+
+> **Amendment 2026-11-08.** Linux was dropped as a supported platform for
+> v1.0 (PLT-1). The decision below is unchanged; the Linux measurements stay
+> as historical evidence and the Linux follow-ups are withdrawn.
 
 ### What the spike measured
 
@@ -222,7 +227,10 @@ for the deb.
     committed to v1.0 — `testing.md` §7 **M-8**. **Gap G-33.**
   - Re-run the packaging workflow on GitHub Actions once the billing block
     is lifted, to capture the macOS installed-size figure in CI. **Gap G-29.**
-  - Measure the first launch on a physical Linux desktop: the CI figure is
-    Xvfb's first paint, not the application. **Gap G-30.**
+  - ~~Measure the first launch on a physical Linux desktop: the CI figure is
+    Xvfb's first paint, not the application.~~ **Gap G-30 — withdrawn
+    2026-11-08** as out of scope: Linux is not a supported platform for
+    v1.0. The Windows and macOS first-launch figures are measured on real
+    desktops.
   - Merge the spike work to `main`: all four spikes currently live on
     `spike/s4/packaging`. **Gap G-32.**
