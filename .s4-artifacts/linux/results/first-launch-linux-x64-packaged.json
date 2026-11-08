@@ -1,0 +1,19 @@
+{
+  "appReadyMs": 424.204286,
+  "rendererLoadedMs": 513.53265,
+  "windowShownMs": 5482.793402,
+  "assetRoot": "/home/runner/work/ProgPlayer/ProgPlayer/spikes/s4/app/dist/packages/linux-unpacked/resources/assets",
+  "assetFiles": [
+    {
+      "name": "sample.bin",
+      "bytes": 67108864
+    }
+  ],
+  "totalMs": 5482.973724,
+  "renderer": {
+    "coldFetchMs": 241,
+    "warmFetchMs": 198.89999999999418,
+    "bytes": 67108864,
+    "contentType": "application/octet-stream"
+  }
+}

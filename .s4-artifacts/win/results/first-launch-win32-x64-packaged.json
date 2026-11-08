@@ -1,0 +1,19 @@
+{
+  "appReadyMs": 35.99059999999999,
+  "rendererLoadedMs": 663.3261,
+  "windowShownMs": 697.4655,
+  "assetRoot": "D:\\a\\ProgPlayer\\ProgPlayer\\spikes\\s4\\app\\dist\\packages\\win-unpacked\\resources\\assets",
+  "assetFiles": [
+    {
+      "name": "sample.bin",
+      "bytes": 67108864
+    }
+  ],
+  "totalMs": 1389.9147,
+  "renderer": {
+    "coldFetchMs": 407.79999999993015,
+    "warmFetchMs": 341.9000000000233,
+    "bytes": 67108864,
+    "contentType": "application/octet-stream"
+  }
+}

@@ -1,0 +1,308 @@
+{
+  "measurements": [
+    {
+      "candidate": "@mediabunny/mp3-encoder",
+      "sampleRate": 44100,
+      "bitrate": 128,
+      "encodeSecondsMedian": 3.2826999999284743,
+      "encodeSecondsMin": 3.227899999976158,
+      "encodeSecondsMax": 3.854,
+      "runs": [3.2279, 3.2827, 3.854],
+      "realTimeFactor": 91.39,
+      "mp3Bytes": 4800887,
+      "bytesPerSecond": 16003,
+      "quality": {
+        "snrDb": 25.914375493137882,
+        "alignmentLagSamples": 0,
+        "comparedSamples": 26460000,
+        "decodedSamples": 26461534,
+        "referenceSamples": 26460000
+      }
+    },
+    {
+      "candidate": "@mediabunny/mp3-encoder",
+      "sampleRate": 44100,
+      "bitrate": 192,
+      "encodeSecondsMedian": 3.896899999976158,
+      "encodeSecondsMin": 3.875100000023842,
+      "encodeSecondsMax": 4.005100000023842,
+      "runs": [4.0051, 3.8969, 3.8751],
+      "realTimeFactor": 76.98,
+      "mp3Bytes": 7201226,
+      "bytesPerSecond": 24004.1,
+      "quality": {
+        "snrDb": 30.396706215357145,
+        "alignmentLagSamples": 0,
+        "comparedSamples": 26460000,
+        "decodedSamples": 26461534,
+        "referenceSamples": 26460000
+      }
+    },
+    {
+      "candidate": "@mediabunny/mp3-encoder",
+      "sampleRate": 48000,
+      "bitrate": 128,
+      "encodeSecondsMedian": 4.144600000023842,
+      "encodeSecondsMin": 4.119300000071526,
+      "encodeSecondsMax": 4.218899999976158,
+      "runs": [4.1446, 4.1193, 4.2189],
+      "realTimeFactor": 72.38,
+      "mp3Bytes": 4800576,
+      "bytesPerSecond": 16001.9,
+      "quality": {
+        "snrDb": 25.884708819039922,
+        "alignmentLagSamples": 0,
+        "comparedSamples": 28800000,
+        "decodedSamples": 28800094,
+        "referenceSamples": 28800000
+      }
+    },
+    {
+      "candidate": "@mediabunny/mp3-encoder",
+      "sampleRate": 48000,
+      "bitrate": 192,
+      "encodeSecondsMedian": 4.010799999952316,
+      "encodeSecondsMin": 4.002700000047684,
+      "encodeSecondsMax": 4.317200000047683,
+      "runs": [4.3172, 4.0108, 4.0027],
+      "realTimeFactor": 74.8,
+      "mp3Bytes": 7200768,
+      "bytesPerSecond": 24002.6,
+      "quality": {
+        "snrDb": 30.387380169035886,
+        "alignmentLagSamples": 0,
+        "comparedSamples": 28800000,
+        "decodedSamples": 28800094,
+        "referenceSamples": 28800000
+      }
+    },
+    {
+      "candidate": "wasm-media-encoders",
+      "sampleRate": 44100,
+      "bitrate": 128,
+      "encodeSecondsMedian": 3.3602999999523164,
+      "encodeSecondsMin": 3.253600000023842,
+      "encodeSecondsMax": 3.443600000023842,
+      "runs": [3.4436, 3.3603, 3.2536],
+      "realTimeFactor": 89.28,
+      "mp3Bytes": 4800679,
+      "bytesPerSecond": 16002.3,
+      "quality": {
+        "snrDb": 25.90401843124127,
+        "alignmentLagSamples": 2210,
+        "comparedSamples": 26460000,
+        "decodedSamples": 26463744,
+        "referenceSamples": 26460000
+      }
+    },
+    {
+      "candidate": "wasm-media-encoders",
+      "sampleRate": 44100,
+      "bitrate": 192,
+      "encodeSecondsMedian": 2.9997999999523164,
+      "encodeSecondsMin": 2.915399999976158,
+      "encodeSecondsMax": 3.1521000000238417,
+      "runs": [2.9998, 2.9154, 3.1521],
+      "realTimeFactor": 100.01,
+      "mp3Bytes": 7201018,
+      "bytesPerSecond": 24003.4,
+      "quality": {
+        "snrDb": 30.399733296615118,
+        "alignmentLagSamples": 2210,
+        "comparedSamples": 26460000,
+        "decodedSamples": 26463744,
+        "referenceSamples": 26460000
+      }
+    },
+    {
+      "candidate": "wasm-media-encoders",
+      "sampleRate": 48000,
+      "bitrate": 128,
+      "encodeSecondsMedian": 3.5793999999761583,
+      "encodeSecondsMin": 3.4198000000715254,
+      "encodeSecondsMax": 3.622799999952316,
+      "runs": [3.5794, 3.4198, 3.6228],
+      "realTimeFactor": 83.81,
+      "mp3Bytes": 4800384,
+      "bytesPerSecond": 16001.3,
+      "quality": {
+        "snrDb": 25.894514380405273,
+        "alignmentLagSamples": 2210,
+        "comparedSamples": 28800000,
+        "decodedSamples": 28802304,
+        "referenceSamples": 28800000
+      }
+    },
+    {
+      "candidate": "wasm-media-encoders",
+      "sampleRate": 48000,
+      "bitrate": 192,
+      "encodeSecondsMedian": 3.1455,
+      "encodeSecondsMin": 3.054,
+      "encodeSecondsMax": 3.225299999952316,
+      "runs": [3.1455, 3.054, 3.2253],
+      "realTimeFactor": 95.37,
+      "mp3Bytes": 7200576,
+      "bytesPerSecond": 24001.9,
+      "quality": {
+        "snrDb": 30.381635577560303,
+        "alignmentLagSamples": 2210,
+        "comparedSamples": 28800000,
+        "decodedSamples": 28802304,
+        "referenceSamples": 28800000
+      }
+    },
+    {
+      "candidate": "@breezystack/lamejs",
+      "sampleRate": 44100,
+      "bitrate": 128,
+      "encodeSecondsMedian": 8.922200000047683,
+      "encodeSecondsMin": 8.898199999928474,
+      "encodeSecondsMax": 9.352899999976158,
+      "runs": [8.8982, 9.3529, 8.9222],
+      "realTimeFactor": 33.62,
+      "mp3Bytes": 4800679,
+      "bytesPerSecond": 16002.3,
+      "quality": {
+        "snrDb": 18.90795643236197,
+        "alignmentLagSamples": 2210,
+        "comparedSamples": 26460000,
+        "decodedSamples": 26463744,
+        "referenceSamples": 26460000
+      }
+    },
+    {
+      "candidate": "@breezystack/lamejs",
+      "sampleRate": 44100,
+      "bitrate": 192,
+      "encodeSecondsMedian": 8.980200000047684,
+      "encodeSecondsMin": 8.972100000023842,
+      "encodeSecondsMax": 9.247899999976157,
+      "runs": [9.2479, 8.9721, 8.9802],
+      "realTimeFactor": 33.41,
+      "mp3Bytes": 7201018,
+      "bytesPerSecond": 24003.4,
+      "quality": {
+        "snrDb": 29.53102080822383,
+        "alignmentLagSamples": 2210,
+        "comparedSamples": 26460000,
+        "decodedSamples": 26463744,
+        "referenceSamples": 26460000
+      }
+    },
+    {
+      "candidate": "@breezystack/lamejs",
+      "sampleRate": 48000,
+      "bitrate": 128,
+      "encodeSecondsMedian": 9.437100000023841,
+      "encodeSecondsMin": 9.368,
+      "encodeSecondsMax": 9.437299999952316,
+      "runs": [9.368, 9.4371, 9.4373],
+      "realTimeFactor": 31.79,
+      "mp3Bytes": 4800384,
+      "bytesPerSecond": 16001.3,
+      "quality": {
+        "snrDb": 18.6326574164094,
+        "alignmentLagSamples": 2210,
+        "comparedSamples": 28800000,
+        "decodedSamples": 28802304,
+        "referenceSamples": 28800000
+      }
+    },
+    {
+      "candidate": "@breezystack/lamejs",
+      "sampleRate": 48000,
+      "bitrate": 192,
+      "encodeSecondsMedian": 9.656299999952317,
+      "encodeSecondsMin": 9.484,
+      "encodeSecondsMax": 9.666,
+      "runs": [9.666, 9.6563, 9.484],
+      "realTimeFactor": 31.07,
+      "mp3Bytes": 7200576,
+      "bytesPerSecond": 24001.9,
+      "quality": {
+        "snrDb": 29.747040044230445,
+        "alignmentLagSamples": 2210,
+        "comparedSamples": 28800000,
+        "decodedSamples": 28802304,
+        "referenceSamples": 28800000
+      }
+    },
+    {
+      "candidate": "rusty_mp3 (wasm)",
+      "sampleRate": 44100,
+      "bitrate": 128,
+      "encodeSecondsMedian": 3.8500999999046326,
+      "encodeSecondsMin": 3.8304000000953673,
+      "encodeSecondsMax": 3.9074000000953673,
+      "runs": [3.9074, 3.8501, 3.8304],
+      "realTimeFactor": 77.92,
+      "mp3Bytes": 4790079,
+      "bytesPerSecond": 15966.9,
+      "quality": {
+        "snrDb": 35.25732838341763,
+        "alignmentLagSamples": 0,
+        "comparedSamples": 26460000,
+        "decodedSamples": 26460000,
+        "referenceSamples": 26460000
+      }
+    },
+    {
+      "candidate": "rusty_mp3 (wasm)",
+      "sampleRate": 44100,
+      "bitrate": 192,
+      "encodeSecondsMedian": 5.364199999928474,
+      "encodeSecondsMin": 5.266600000023842,
+      "encodeSecondsMax": 5.474700000047684,
+      "runs": [5.3642, 5.4747, 5.2666],
+      "realTimeFactor": 55.93,
+      "mp3Bytes": 7190862,
+      "bytesPerSecond": 23969.5,
+      "quality": {
+        "snrDb": 39.67047070516051,
+        "alignmentLagSamples": 0,
+        "comparedSamples": 26460000,
+        "decodedSamples": 26460000,
+        "referenceSamples": 26460000
+      }
+    },
+    {
+      "candidate": "rusty_mp3 (wasm)",
+      "sampleRate": 48000,
+      "bitrate": 128,
+      "encodeSecondsMedian": 4.038899999976159,
+      "encodeSecondsMin": 4.022700000047684,
+      "encodeSecondsMax": 4.052100000023842,
+      "runs": [4.0521, 4.0227, 4.0389],
+      "realTimeFactor": 74.28,
+      "mp3Bytes": 4800768,
+      "bytesPerSecond": 16002.6,
+      "quality": {
+        "snrDb": 35.01833095638095,
+        "alignmentLagSamples": 0,
+        "comparedSamples": 28800000,
+        "decodedSamples": 28800000,
+        "referenceSamples": 28800000
+      }
+    },
+    {
+      "candidate": "rusty_mp3 (wasm)",
+      "sampleRate": 48000,
+      "bitrate": 192,
+      "encodeSecondsMedian": 5.3065,
+      "encodeSecondsMin": 5.134399999976158,
+      "encodeSecondsMax": 5.3258999999761585,
+      "runs": [5.3259, 5.1344, 5.3065],
+      "realTimeFactor": 56.53,
+      "mp3Bytes": 7201152,
+      "bytesPerSecond": 24003.8,
+      "quality": {
+        "snrDb": 39.52164905305557,
+        "alignmentLagSamples": 0,
+        "comparedSamples": 28800000,
+        "decodedSamples": 28800000,
+        "referenceSamples": 28800000
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "appReadyMs": 87.20470800000001,
+  "rendererLoadedMs": 402.1105,
+  "windowShownMs": 454.57979100000006,
+  "assetRoot": "/Users/runner/work/ProgPlayer/ProgPlayer/spikes/s4/app/dist/packages/mac-arm64/PracticePlayer S4 Spike.app/Contents/Resources/assets",
+  "assetFiles": [
+    {
+      "name": "sample.bin",
+      "bytes": 67108864
+    }
+  ],
+  "totalMs": 680.036083,
+  "renderer": {
+    "coldFetchMs": 188.10000000003492,
+    "warmFetchMs": 104.20000000001164,
+    "bytes": 67108864,
+    "contentType": "application/octet-stream"
+  }
+}

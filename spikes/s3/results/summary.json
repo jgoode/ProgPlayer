@@ -1,0 +1,472 @@
+{
+  "machine": {
+    "os": "win32 x64",
+    "node": "v24.22.1",
+    "cpu": "Intel(R) Core(TM) 5 120U",
+    "cpus": "12"
+  },
+  "audio": {
+    "seconds": 300,
+    "sampleRates": [
+      44100,
+      48000
+    ],
+    "bitrates": [
+      128,
+      192
+    ],
+    "runs": 3
+  },
+  "candidates": [
+    {
+      "id": "wasm-media-encoders",
+      "version": "0.7.0",
+      "packageLicense": "MIT",
+      "encoderLicense": "LAME 3.x — LGPL (embedded WASM binary)",
+      "kind": "wasm",
+      "licenseFiles": [
+        {
+          "path": "wasm-media-encoders\\LICENSE",
+          "firstLines": "MIT License\n\nCopyright (c) 2020-2024 arseneyr\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all"
+        }
+      ]
+    },
+    {
+      "id": "@breezystack/lamejs",
+      "version": "1.2.7",
+      "packageLicense": "LGPL-3.0",
+      "encoderLicense": "LAME 3.x port — LGPL",
+      "kind": "js",
+      "licenseFiles": [
+        {
+          "path": "@breezystack/lamejs\\LICENSE",
+          "firstLines": "Can I use LAME in my commercial program?  \n\nYes, you can, under the restrictions of the LGPL.  The easiest\nway to do this is to:\n\n1. Link to LAME as separate jar (lame.min.js or lame.all.js)\n\n2. Fully acknowledge that you are using LAME, and give a link\n   to our web site, lame.sourceforge.net\n\n3. If you make modifications to LAME, you *must* release these\n   these modifications back to the LAME project, under the LGPL."
+        }
+      ]
+    },
+    {
+      "id": "lamejs",
+      "version": "1.2.1",
+      "packageLicense": "LGPL-3.0",
+      "encoderLicense": "LAME 3.x port — LGPL",
+      "kind": "js",
+      "licenseFiles": [
+        {
+          "path": "lamejs\\LICENSE",
+          "firstLines": "Can I use LAME in my commercial program?  \n\nYes, you can, under the restrictions of the LGPL.  The easiest\nway to do this is to:\n\n1. Link to LAME as separate jar (lame.min.js or lame.all.js)\n\n2. Fully acknowledge that you are using LAME, and give a link\n   to our web site, lame.sourceforge.net\n\n3. If you make modifications to LAME, you *must* release these\n   these modifications back to the LAME project, under the LGPL."
+        },
+        {
+          "path": "lamejs\\src\\main\\java\\COPYING",
+          "firstLines": "GNU LIBRARY GENERAL PUBLIC LICENSE\n\t\t       Version 2, June 1991\n\n Copyright (C) 1991 Free Software Foundation, Inc.\n    \t\t    59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n Everyone is permitted to copy and distribute verbatim copies\n of this license document, but changing it is not allowed.\n\n[This is the first released version of the library GPL.  It is\n numbered 2 because it goes with version 2 of the ordinary GPL.]\n\n\t\t\t    Preamble"
+        },
+        {
+          "path": "lamejs\\src\\main\\java\\LICENSE",
+          "firstLines": "Can I use LAME in my commercial program?  \n\nYes, you can, under the restrictions of the LGPL.  The easiest\nway to do this is to:\n\n1. Link to LAME as separate jar (jump3r.jar)\n\n2. Fully acknowledge that you are using LAME, and give a link\n   to our web site, www.mp3dev.org\n\n3. If you make modifications to LAME, you *must* release these\n   these modifications back to the LAME project, under the LGPL."
+        }
+      ]
+    },
+    {
+      "id": "@mediabunny/mp3-encoder",
+      "version": "1.65.2",
+      "packageLicense": "MPL-2.0",
+      "encoderLicense": "LAME 3.100 WASM — LGPL (licenses/lame shipped in the package)",
+      "kind": "wasm",
+      "licenseFiles": [
+        {
+          "path": "@mediabunny/mp3-encoder\\LICENSE",
+          "firstLines": "Mozilla Public License Version 2.0\n==================================\n\n1. Definitions\n--------------\n\n1.1. \"Contributor\"\n    means each individual or legal entity that creates, contributes to\n    the creation of, or owns Covered Software.\n\n1.2. \"Contributor Version\"\n    means the combination of the Contributions of others (if any) used"
+        },
+        {
+          "path": "@mediabunny/mp3-encoder\\licenses\\lame\\COPYING",
+          "firstLines": "GNU LIBRARY GENERAL PUBLIC LICENSE\n\t\t       Version 2, June 1991\n\n Copyright (C) 1991 Free Software Foundation, Inc.\n    \t\t    59 Temple Place, Suite 330, Boston, MA  02111-1307  USA\n Everyone is permitted to copy and distribute verbatim copies\n of this license document, but changing it is not allowed.\n\n[This is the first released version of the library GPL.  It is\n numbered 2 because it goes with version 2 of the ordinary GPL.]\n\n\t\t\t    Preamble"
+        },
+        {
+          "path": "@mediabunny/mp3-encoder\\licenses\\lame\\LICENSE",
+          "firstLines": "Can I use LAME in my commercial program?  \n\nYes, you can, under the restrictions of the LGPL (see COPYING\nin this folder). The easiest way to do this is to:\n\n1. Link to LAME as separate library (libmp3lame.a on unix or \n   lame_enc.dll or libmp3lame.dll on windows)\n\n2. Fully acknowledge that you are using LAME, and give a link\n   to our web site, www.mp3dev.org\n\n3. If you make modifications to LAME, you *must* release these"
+        }
+      ]
+    },
+    {
+      "id": "rusty_mp3 (wasm)",
+      "version": "1.0.5",
+      "packageLicense": "Apache-2.0",
+      "encoderLicense": "Apache-2.0 (own implementation, no LAME code)",
+      "kind": "wasm",
+      "licenseFiles": []
+    }
+  ],
+  "measurements": [
+    {
+      "candidate": "wasm-media-encoders",
+      "sampleRate": 44100,
+      "bitrate": 128,
+      "encodeSecondsMedian": 2.7930966000000006,
+      "encodeSecondsMin": 2.7914326,
+      "encodeSecondsMax": 2.8290879999999996,
+      "runs": [
+        2.7914,
+        2.7931,
+        2.8291
+      ],
+      "realTimeFactor": 107.41,
+      "mp3Bytes": 4800679,
+      "bytesPerSecond": 16002.3,
+      "quality": {
+        "snrDb": 25.904012706200575,
+        "alignmentLagSamples": 2210,
+        "errorEnergyBelowHalf": 314.92238986166825,
+        "errorEnergyAboveHalf": 314.7563737974098,
+        "signalEnergyBelowHalf": 122599.16363807443,
+        "signalEnergyAboveHalf": 122600.75249244604,
+        "comparedSamples": 26460000,
+        "decodedSamples": 26463744,
+        "referenceSamples": 26460000
+      }
+    },
+    {
+      "candidate": "wasm-media-encoders",
+      "sampleRate": 44100,
+      "bitrate": 192,
+      "encodeSecondsMedian": 2.9415082000000004,
+      "encodeSecondsMin": 2.687854300000001,
+      "encodeSecondsMax": 2.9859958000000004,
+      "runs": [
+        2.6879,
+        2.986,
+        2.9415
+      ],
+      "realTimeFactor": 101.99,
+      "mp3Bytes": 7201018,
+      "bytesPerSecond": 24003.4,
+      "quality": {
+        "snrDb": 30.39972423162528,
+        "alignmentLagSamples": 2210,
+        "errorEnergyBelowHalf": 111.81948194740788,
+        "errorEnergyAboveHalf": 111.81969956457327,
+        "signalEnergyBelowHalf": 122599.16363807443,
+        "signalEnergyAboveHalf": 122600.75249244604,
+        "comparedSamples": 26460000,
+        "decodedSamples": 26463744,
+        "referenceSamples": 26460000
+      }
+    },
+    {
+      "candidate": "wasm-media-encoders",
+      "sampleRate": 48000,
+      "bitrate": 128,
+      "encodeSecondsMedian": 3.4785975999999974,
+      "encodeSecondsMin": 3.4445596000000007,
+      "encodeSecondsMax": 3.588927899999999,
+      "runs": [
+        3.5889,
+        3.4786,
+        3.4446
+      ],
+      "realTimeFactor": 86.24,
+      "mp3Bytes": 4800384,
+      "bytesPerSecond": 16001.3,
+      "quality": {
+        "snrDb": 25.894506652063193,
+        "alignmentLagSamples": 2210,
+        "errorEnergyBelowHalf": 343.39579278549513,
+        "errorEnergyAboveHalf": 343.47069389251504,
+        "signalEnergyBelowHalf": 133441.2759989674,
+        "signalEnergyAboveHalf": 133443.00302948666,
+        "comparedSamples": 28800000,
+        "decodedSamples": 28802304,
+        "referenceSamples": 28800000
+      }
+    },
+    {
+      "candidate": "wasm-media-encoders",
+      "sampleRate": 48000,
+      "bitrate": 192,
+      "encodeSecondsMedian": 3.1895259000000005,
+      "encodeSecondsMin": 3.0536005000000004,
+      "encodeSecondsMax": 3.223468200000003,
+      "runs": [
+        3.2235,
+        3.1895,
+        3.0536
+      ],
+      "realTimeFactor": 94.06,
+      "mp3Bytes": 7200576,
+      "bytesPerSecond": 24001.9,
+      "quality": {
+        "snrDb": 30.38162295645457,
+        "alignmentLagSamples": 2210,
+        "errorEnergyBelowHalf": 122.23326539272541,
+        "errorEnergyAboveHalf": 122.20021779452435,
+        "signalEnergyBelowHalf": 133441.2759989674,
+        "signalEnergyAboveHalf": 133443.00302948666,
+        "comparedSamples": 28800000,
+        "decodedSamples": 28802304,
+        "referenceSamples": 28800000
+      }
+    },
+    {
+      "candidate": "@breezystack/lamejs",
+      "sampleRate": 44100,
+      "bitrate": 128,
+      "encodeSecondsMedian": 9.208994099999996,
+      "encodeSecondsMin": 9.11694369999999,
+      "encodeSecondsMax": 9.429743299999995,
+      "runs": [
+        9.209,
+        9.4297,
+        9.1169
+      ],
+      "realTimeFactor": 32.58,
+      "mp3Bytes": 4800679,
+      "bytesPerSecond": 16002.3,
+      "quality": {
+        "snrDb": 18.907954345660258,
+        "alignmentLagSamples": 2210,
+        "errorEnergyBelowHalf": 1585.3697462217435,
+        "errorEnergyAboveHalf": 1567.6368748293537,
+        "signalEnergyBelowHalf": 122599.16363807443,
+        "signalEnergyAboveHalf": 122600.75249244604,
+        "comparedSamples": 26460000,
+        "decodedSamples": 26463744,
+        "referenceSamples": 26460000
+      }
+    },
+    {
+      "candidate": "@breezystack/lamejs",
+      "sampleRate": 44100,
+      "bitrate": 192,
+      "encodeSecondsMedian": 9.299147899999996,
+      "encodeSecondsMin": 9.285084600000001,
+      "encodeSecondsMax": 9.448880400000009,
+      "runs": [
+        9.4489,
+        9.2991,
+        9.2851
+      ],
+      "realTimeFactor": 32.26,
+      "mp3Bytes": 7201018,
+      "bytesPerSecond": 24003.4,
+      "quality": {
+        "snrDb": 29.531005673594947,
+        "alignmentLagSamples": 2210,
+        "errorEnergyBelowHalf": 136.86281285864564,
+        "errorEnergyAboveHalf": 136.2988513423505,
+        "signalEnergyBelowHalf": 122599.16363807443,
+        "signalEnergyAboveHalf": 122600.75249244604,
+        "comparedSamples": 26460000,
+        "decodedSamples": 26463744,
+        "referenceSamples": 26460000
+      }
+    },
+    {
+      "candidate": "@breezystack/lamejs",
+      "sampleRate": 48000,
+      "bitrate": 128,
+      "encodeSecondsMedian": 9.30321669999999,
+      "encodeSecondsMin": 9.216575199999992,
+      "encodeSecondsMax": 9.710914000000004,
+      "runs": [
+        9.7109,
+        9.3032,
+        9.2166
+      ],
+      "realTimeFactor": 32.25,
+      "mp3Bytes": 4800384,
+      "bytesPerSecond": 16001.3,
+      "quality": {
+        "snrDb": 18.632655222330172,
+        "alignmentLagSamples": 2210,
+        "errorEnergyBelowHalf": 1818.932697411927,
+        "errorEnergyAboveHalf": 1837.499040237491,
+        "signalEnergyBelowHalf": 133441.2759989674,
+        "signalEnergyAboveHalf": 133443.00302948666,
+        "comparedSamples": 28800000,
+        "decodedSamples": 28802304,
+        "referenceSamples": 28800000
+      }
+    },
+    {
+      "candidate": "@breezystack/lamejs",
+      "sampleRate": 48000,
+      "bitrate": 192,
+      "encodeSecondsMedian": 9.72483739999999,
+      "encodeSecondsMin": 9.6172837,
+      "encodeSecondsMax": 10.01969439999998,
+      "runs": [
+        10.0197,
+        9.6173,
+        9.7248
+      ],
+      "realTimeFactor": 30.85,
+      "mp3Bytes": 7200576,
+      "bytesPerSecond": 24001.9,
+      "quality": {
+        "snrDb": 29.747022823123885,
+        "alignmentLagSamples": 2210,
+        "errorEnergyBelowHalf": 141.32570122980385,
+        "errorEnergyAboveHalf": 141.56632729519146,
+        "signalEnergyBelowHalf": 133441.2759989674,
+        "signalEnergyAboveHalf": 133443.00302948666,
+        "comparedSamples": 28800000,
+        "decodedSamples": 28802304,
+        "referenceSamples": 28800000
+      }
+    },
+    {
+      "candidate": "lamejs",
+      "sampleRate": 44100,
+      "bitrate": 128,
+      "failed": "ReferenceError: MPEGMode is not defined"
+    },
+    {
+      "candidate": "lamejs",
+      "sampleRate": 44100,
+      "bitrate": 192,
+      "failed": "ReferenceError: MPEGMode is not defined"
+    },
+    {
+      "candidate": "lamejs",
+      "sampleRate": 48000,
+      "bitrate": 128,
+      "failed": "ReferenceError: MPEGMode is not defined"
+    },
+    {
+      "candidate": "lamejs",
+      "sampleRate": 48000,
+      "bitrate": 192,
+      "failed": "ReferenceError: MPEGMode is not defined"
+    },
+    {
+      "candidate": "@mediabunny/mp3-encoder",
+      "sampleRate": 44100,
+      "bitrate": 128,
+      "failed": "Error: AudioEncoder is not available in this environment."
+    },
+    {
+      "candidate": "@mediabunny/mp3-encoder",
+      "sampleRate": 44100,
+      "bitrate": 192,
+      "failed": "Error: AudioEncoder is not available in this environment."
+    },
+    {
+      "candidate": "@mediabunny/mp3-encoder",
+      "sampleRate": 48000,
+      "bitrate": 128,
+      "failed": "Error: AudioEncoder is not available in this environment."
+    },
+    {
+      "candidate": "@mediabunny/mp3-encoder",
+      "sampleRate": 48000,
+      "bitrate": 192,
+      "failed": "Error: AudioEncoder is not available in this environment."
+    },
+    {
+      "candidate": "rusty_mp3 (wasm)",
+      "sampleRate": 44100,
+      "bitrate": 128,
+      "encodeSecondsMedian": 3.956758600000001,
+      "encodeSecondsMin": 3.9060987000000025,
+      "encodeSecondsMax": 3.983838699999993,
+      "runs": [
+        3.9838,
+        3.9568,
+        3.9061
+      ],
+      "realTimeFactor": 75.82,
+      "mp3Bytes": 4790079,
+      "bytesPerSecond": 15966.9,
+      "quality": {
+        "snrDb": 35.25732842754492,
+        "alignmentLagSamples": 0,
+        "errorEnergyBelowHalf": 36.645634507263,
+        "errorEnergyAboveHalf": 36.43250372067868,
+        "signalEnergyBelowHalf": 122599.16363807443,
+        "signalEnergyAboveHalf": 122600.75249244604,
+        "comparedSamples": 26460000,
+        "decodedSamples": 26460000,
+        "referenceSamples": 26460000
+      }
+    },
+    {
+      "candidate": "rusty_mp3 (wasm)",
+      "sampleRate": 44100,
+      "bitrate": 192,
+      "encodeSecondsMedian": 5.334764999999985,
+      "encodeSecondsMin": 5.3338320999999995,
+      "encodeSecondsMax": 5.415303699999989,
+      "runs": [
+        5.4153,
+        5.3348,
+        5.3338
+      ],
+      "realTimeFactor": 56.23,
+      "mp3Bytes": 7190862,
+      "bytesPerSecond": 23969.5,
+      "quality": {
+        "snrDb": 39.6704700916088,
+        "alignmentLagSamples": 0,
+        "errorEnergyBelowHalf": 13.277770844801076,
+        "errorEnergyAboveHalf": 13.175130248460288,
+        "signalEnergyBelowHalf": 122599.16363807443,
+        "signalEnergyAboveHalf": 122600.75249244604,
+        "comparedSamples": 26460000,
+        "decodedSamples": 26460000,
+        "referenceSamples": 26460000
+      }
+    },
+    {
+      "candidate": "rusty_mp3 (wasm)",
+      "sampleRate": 48000,
+      "bitrate": 128,
+      "encodeSecondsMedian": 4.1774049999999985,
+      "encodeSecondsMin": 4.124994500000001,
+      "encodeSecondsMax": 4.212624599999981,
+      "runs": [
+        4.2126,
+        4.125,
+        4.1774
+      ],
+      "realTimeFactor": 71.81,
+      "mp3Bytes": 4800768,
+      "bytesPerSecond": 16002.6,
+      "quality": {
+        "snrDb": 35.018331075057844,
+        "alignmentLagSamples": 0,
+        "errorEnergyBelowHalf": 42.17747247553855,
+        "errorEnergyAboveHalf": 41.863270782393265,
+        "signalEnergyBelowHalf": 133441.2759989674,
+        "signalEnergyAboveHalf": 133443.00302948666,
+        "comparedSamples": 28800000,
+        "decodedSamples": 28800000,
+        "referenceSamples": 28800000
+      }
+    },
+    {
+      "candidate": "rusty_mp3 (wasm)",
+      "sampleRate": 48000,
+      "bitrate": 192,
+      "encodeSecondsMedian": 5.243711800000019,
+      "encodeSecondsMin": 5.218866500000003,
+      "encodeSecondsMax": 5.552617300000013,
+      "runs": [
+        5.5526,
+        5.2189,
+        5.2437
+      ],
+      "realTimeFactor": 57.21,
+      "mp3Bytes": 7201152,
+      "bytesPerSecond": 24003.8,
+      "quality": {
+        "snrDb": 39.52165032274478,
+        "alignmentLagSamples": 0,
+        "errorEnergyBelowHalf": 14.920431095062133,
+        "errorEnergyAboveHalf": 14.875568512271547,
+        "signalEnergyBelowHalf": 133441.2759989674,
+        "signalEnergyAboveHalf": 133443.00302948666,
+        "comparedSamples": 28800000,
+        "decodedSamples": 28800000,
+        "referenceSamples": 28800000
+      }
+    }
+  ]
+}
