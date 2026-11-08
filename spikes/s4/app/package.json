@@ -1,0 +1,14 @@
+{
+  "name": "practiceplayer-s4-spike",
+  "productName": "PracticePlayer S4 Spike",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "commonjs",
+  "description": "Throwaway packaging spike: bundles a large asset and serves it over a custom protocol.",
+  "homepage": "https://github.com/jgoode/ProgPlayer",
+  "main": "dist/electron/main.js",
+  "author": {
+    "name": "PracticePlayer contributors"
+  }
+}

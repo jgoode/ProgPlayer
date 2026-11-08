@@ -1,0 +1,7908 @@
+{
+  "R1": {
+    "C": [
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      }
+    ],
+    "D": [
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "A♯",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      }
+    ],
+    "E": [
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      }
+    ],
+    "F": [
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      }
+    ],
+    "G": [
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      }
+    ],
+    "A": [
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "E♯",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      }
+    ],
+    "B": [
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      }
+    ]
+  },
+  "R2": {
+    "C": [
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      }
+    ],
+    "D": [
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      }
+    ],
+    "E": [
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      }
+    ],
+    "F": [
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "E♭",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      }
+    ],
+    "G": [
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      }
+    ],
+    "A": [
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "A♯",
+        "pitchClasses": [10, 2, 5]
+      }
+    ],
+    "B": [
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      }
+    ]
+  },
+  "R3": {
+    "C": [
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "E♭",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      }
+    ],
+    "D": [
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      }
+    ],
+    "E": [
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      }
+    ],
+    "F": [
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "A♭",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      }
+    ],
+    "G": [
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      }
+    ],
+    "A": [
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "A♯",
+        "pitchClasses": [10, 2, 5]
+      }
+    ],
+    "B": [
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      }
+    ]
+  },
+  "R4": {
+    "C": [
+      {
+        "name": "Cm",
+        "pitchClasses": [0, 3, 7]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "A♭",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯m",
+        "pitchClasses": [1, 4, 8]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      }
+    ],
+    "D": [
+      {
+        "name": "Dm",
+        "pitchClasses": [2, 5, 9]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯m",
+        "pitchClasses": [3, 6, 10]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      }
+    ],
+    "E": [
+      {
+        "name": "Em",
+        "pitchClasses": [4, 7, 11]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      }
+    ],
+    "F": [
+      {
+        "name": "Fm",
+        "pitchClasses": [5, 8, 0]
+      },
+      {
+        "name": "E♭",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "D♭",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "E♭",
+        "pitchClasses": [3, 7, 10]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯m",
+        "pitchClasses": [6, 9, 1]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      }
+    ],
+    "G": [
+      {
+        "name": "Gm",
+        "pitchClasses": [7, 10, 2]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "E♭",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯m",
+        "pitchClasses": [8, 11, 3]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      }
+    ],
+    "A": [
+      {
+        "name": "Am",
+        "pitchClasses": [9, 0, 4]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯m",
+        "pitchClasses": [10, 1, 5]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      }
+    ],
+    "B": [
+      {
+        "name": "Bm",
+        "pitchClasses": [11, 2, 6]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      }
+    ]
+  },
+  "R5": {
+    "C": [
+      {
+        "name": "Cm",
+        "pitchClasses": [0, 3, 7]
+      },
+      {
+        "name": "A♭",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "E♭",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯m",
+        "pitchClasses": [1, 4, 8]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      }
+    ],
+    "D": [
+      {
+        "name": "Dm",
+        "pitchClasses": [2, 5, 9]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯m",
+        "pitchClasses": [3, 6, 10]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      }
+    ],
+    "E": [
+      {
+        "name": "Em",
+        "pitchClasses": [4, 7, 11]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      }
+    ],
+    "F": [
+      {
+        "name": "Fm",
+        "pitchClasses": [5, 8, 0]
+      },
+      {
+        "name": "D♭",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "A♭",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "E♭",
+        "pitchClasses": [3, 7, 10]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯m",
+        "pitchClasses": [6, 9, 1]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      }
+    ],
+    "G": [
+      {
+        "name": "Gm",
+        "pitchClasses": [7, 10, 2]
+      },
+      {
+        "name": "E♭",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯m",
+        "pitchClasses": [8, 11, 3]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      }
+    ],
+    "A": [
+      {
+        "name": "Am",
+        "pitchClasses": [9, 0, 4]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯m",
+        "pitchClasses": [10, 1, 5]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      }
+    ],
+    "B": [
+      {
+        "name": "Bm",
+        "pitchClasses": [11, 2, 6]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      }
+    ]
+  },
+  "R6": {
+    "C": [
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      }
+    ],
+    "D": [
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "A♯",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      }
+    ],
+    "E": [
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      }
+    ],
+    "F": [
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "E♭",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      }
+    ],
+    "G": [
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      }
+    ],
+    "A": [
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "E♯",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      }
+    ],
+    "B": [
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      }
+    ]
+  },
+  "R7": {
+    "C": [
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "Am",
+        "pitchClasses": [9, 0, 4]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "A♯m",
+        "pitchClasses": [10, 1, 5]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      }
+    ],
+    "D": [
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "Bm",
+        "pitchClasses": [11, 2, 6]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "B♯m",
+        "pitchClasses": [0, 3, 7]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "A♯",
+        "pitchClasses": [10, 2, 5]
+      }
+    ],
+    "E": [
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "C♯m",
+        "pitchClasses": [1, 4, 8]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      }
+    ],
+    "F": [
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "Dm",
+        "pitchClasses": [2, 5, 9]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "D♯m",
+        "pitchClasses": [3, 6, 10]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      }
+    ],
+    "G": [
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "Em",
+        "pitchClasses": [4, 7, 11]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "E♯m",
+        "pitchClasses": [5, 8, 0]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      }
+    ],
+    "A": [
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "F♯m",
+        "pitchClasses": [6, 9, 1]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "F♯♯m",
+        "pitchClasses": [7, 10, 2]
+      },
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "E♯",
+        "pitchClasses": [5, 9, 0]
+      }
+    ],
+    "B": [
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "G♯m",
+        "pitchClasses": [8, 11, 3]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      }
+    ]
+  },
+  "R8": {
+    "C": [
+      {
+        "name": "Cm",
+        "pitchClasses": [0, 3, 7]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "A♭",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯m",
+        "pitchClasses": [1, 4, 8]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      }
+    ],
+    "D": [
+      {
+        "name": "Dm",
+        "pitchClasses": [2, 5, 9]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯m",
+        "pitchClasses": [3, 6, 10]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "A♯",
+        "pitchClasses": [10, 2, 5]
+      }
+    ],
+    "E": [
+      {
+        "name": "Em",
+        "pitchClasses": [4, 7, 11]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      }
+    ],
+    "F": [
+      {
+        "name": "Fm",
+        "pitchClasses": [5, 8, 0]
+      },
+      {
+        "name": "E♭",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "D♭",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯m",
+        "pitchClasses": [6, 9, 1]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      }
+    ],
+    "G": [
+      {
+        "name": "Gm",
+        "pitchClasses": [7, 10, 2]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "E♭",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯m",
+        "pitchClasses": [8, 11, 3]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      }
+    ],
+    "A": [
+      {
+        "name": "Am",
+        "pitchClasses": [9, 0, 4]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯m",
+        "pitchClasses": [10, 1, 5]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "E♯",
+        "pitchClasses": [5, 9, 0]
+      }
+    ],
+    "B": [
+      {
+        "name": "Bm",
+        "pitchClasses": [11, 2, 6]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      }
+    ]
+  },
+  "B1": {
+    "C": [
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      }
+    ],
+    "D": [
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      }
+    ],
+    "E": [
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      }
+    ],
+    "F": [
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "B♭7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "B♭7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "B♭7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      }
+    ],
+    "G": [
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      }
+    ],
+    "A": [
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      }
+    ],
+    "B": [
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      }
+    ]
+  },
+  "B2": {
+    "C": [
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      }
+    ],
+    "D": [
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      }
+    ],
+    "E": [
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      }
+    ],
+    "F": [
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "B♭7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "B♭7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "B♭7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "B♭7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      }
+    ],
+    "G": [
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      }
+    ],
+    "A": [
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      }
+    ],
+    "B": [
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      }
+    ]
+  },
+  "B3": {
+    "C": [
+      {
+        "name": "Cm7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "Cm7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "Cm7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "Cm7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "Fm7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "Fm7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "Cm7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "Cm7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "A♭7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "Cm7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      }
+    ],
+    "D": [
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "B♭7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      }
+    ],
+    "E": [
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      }
+    ],
+    "F": [
+      {
+        "name": "Fm7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "Fm7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "Fm7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "Fm7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "B♭m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "B♭m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "Fm7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "Fm7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "D♭7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "Fm7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      }
+    ],
+    "G": [
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "Cm7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "Cm7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "E♭7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      }
+    ],
+    "A": [
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      }
+    ],
+    "B": [
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      }
+    ]
+  },
+  "B4": {
+    "C": [
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      }
+    ],
+    "D": [
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      }
+    ],
+    "E": [
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      }
+    ],
+    "F": [
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "B♭7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "B♭7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      }
+    ],
+    "G": [
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      }
+    ],
+    "A": [
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      }
+    ],
+    "B": [
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      }
+    ]
+  },
+  "B5": {
+    "C": [
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "F♯dim7",
+        "pitchClasses": [6, 9, 0, 3]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "F♯♯dim7",
+        "pitchClasses": [7, 10, 1, 4]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      }
+    ],
+    "D": [
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "G♯dim7",
+        "pitchClasses": [8, 11, 2, 5]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "G♯♯dim7",
+        "pitchClasses": [9, 0, 3, 6]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "B♯7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "E♯m7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "B♯7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "E♯m7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      }
+    ],
+    "E": [
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "A♯dim7",
+        "pitchClasses": [10, 1, 4, 7]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      }
+    ],
+    "F": [
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "B♭7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "B♭7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "Bdim7",
+        "pitchClasses": [11, 2, 5, 8]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "B♯dim7",
+        "pitchClasses": [0, 3, 6, 9]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      }
+    ],
+    "G": [
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "C♯dim7",
+        "pitchClasses": [1, 4, 7, 10]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "C♯♯dim7",
+        "pitchClasses": [2, 5, 8, 11]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      }
+    ],
+    "A": [
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "D♯dim7",
+        "pitchClasses": [3, 6, 9, 0]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "D♯♯dim7",
+        "pitchClasses": [4, 7, 10, 1]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "F♯♯7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "B♯m7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "F♯♯7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "B♯m7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      }
+    ],
+    "B": [
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "E♯dim7",
+        "pitchClasses": [5, 8, 11, 2]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      }
+    ]
+  },
+  "B6": {
+    "C": [
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      }
+    ],
+    "D": [
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "B♯7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "E♯m7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      }
+    ],
+    "E": [
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      }
+    ],
+    "F": [
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      }
+    ],
+    "G": [
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      }
+    ],
+    "A": [
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "F♯♯7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "B♯m7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      }
+    ],
+    "B": [
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      }
+    ]
+  },
+  "J1": {
+    "C": [
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "Cmaj7",
+        "pitchClasses": [0, 4, 7, 11]
+      },
+      {
+        "name": "Cmaj7",
+        "pitchClasses": [0, 4, 7, 11]
+      }
+    ],
+    "C#": [
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "C♯maj7",
+        "pitchClasses": [1, 5, 8, 0]
+      },
+      {
+        "name": "C♯maj7",
+        "pitchClasses": [1, 5, 8, 0]
+      }
+    ],
+    "D": [
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "Dmaj7",
+        "pitchClasses": [2, 6, 9, 1]
+      },
+      {
+        "name": "Dmaj7",
+        "pitchClasses": [2, 6, 9, 1]
+      }
+    ],
+    "D#": [
+      {
+        "name": "E♯m7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "D♯maj7",
+        "pitchClasses": [3, 7, 10, 2]
+      },
+      {
+        "name": "D♯maj7",
+        "pitchClasses": [3, 7, 10, 2]
+      }
+    ],
+    "E": [
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "Emaj7",
+        "pitchClasses": [4, 8, 11, 3]
+      },
+      {
+        "name": "Emaj7",
+        "pitchClasses": [4, 8, 11, 3]
+      }
+    ],
+    "F": [
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "Fmaj7",
+        "pitchClasses": [5, 9, 0, 4]
+      },
+      {
+        "name": "Fmaj7",
+        "pitchClasses": [5, 9, 0, 4]
+      }
+    ],
+    "F#": [
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "F♯maj7",
+        "pitchClasses": [6, 10, 1, 5]
+      },
+      {
+        "name": "F♯maj7",
+        "pitchClasses": [6, 10, 1, 5]
+      }
+    ],
+    "G": [
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "Gmaj7",
+        "pitchClasses": [7, 11, 2, 6]
+      },
+      {
+        "name": "Gmaj7",
+        "pitchClasses": [7, 11, 2, 6]
+      }
+    ],
+    "G#": [
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "G♯maj7",
+        "pitchClasses": [8, 0, 3, 7]
+      },
+      {
+        "name": "G♯maj7",
+        "pitchClasses": [8, 0, 3, 7]
+      }
+    ],
+    "A": [
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "Amaj7",
+        "pitchClasses": [9, 1, 4, 8]
+      },
+      {
+        "name": "Amaj7",
+        "pitchClasses": [9, 1, 4, 8]
+      }
+    ],
+    "A#": [
+      {
+        "name": "B♯m7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "A♯maj7",
+        "pitchClasses": [10, 2, 5, 9]
+      },
+      {
+        "name": "A♯maj7",
+        "pitchClasses": [10, 2, 5, 9]
+      }
+    ],
+    "B": [
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "Bmaj7",
+        "pitchClasses": [11, 3, 6, 10]
+      },
+      {
+        "name": "Bmaj7",
+        "pitchClasses": [11, 3, 6, 10]
+      }
+    ]
+  },
+  "J2": {
+    "C": [
+      {
+        "name": "Dm7♭5",
+        "pitchClasses": [2, 5, 8, 0]
+      },
+      {
+        "name": "G7♭9",
+        "pitchClasses": [7, 11, 2, 5, 8]
+      },
+      {
+        "name": "Cm7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "Cm7",
+        "pitchClasses": [0, 3, 7, 10]
+      }
+    ],
+    "C#": [
+      {
+        "name": "D♯m7♭5",
+        "pitchClasses": [3, 6, 9, 1]
+      },
+      {
+        "name": "G♯7♭9",
+        "pitchClasses": [8, 0, 3, 6, 9]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      }
+    ],
+    "D": [
+      {
+        "name": "Em7♭5",
+        "pitchClasses": [4, 7, 10, 2]
+      },
+      {
+        "name": "A7♭9",
+        "pitchClasses": [9, 1, 4, 7, 10]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      }
+    ],
+    "D#": [
+      {
+        "name": "E♯m7♭5",
+        "pitchClasses": [5, 8, 11, 3]
+      },
+      {
+        "name": "A♯7♭9",
+        "pitchClasses": [10, 2, 5, 8, 11]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      }
+    ],
+    "E": [
+      {
+        "name": "F♯m7♭5",
+        "pitchClasses": [6, 9, 0, 4]
+      },
+      {
+        "name": "B7♭9",
+        "pitchClasses": [11, 3, 6, 9, 0]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      }
+    ],
+    "F": [
+      {
+        "name": "Gm7♭5",
+        "pitchClasses": [7, 10, 1, 5]
+      },
+      {
+        "name": "C7♭9",
+        "pitchClasses": [0, 4, 7, 10, 1]
+      },
+      {
+        "name": "Fm7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "Fm7",
+        "pitchClasses": [5, 8, 0, 3]
+      }
+    ],
+    "F#": [
+      {
+        "name": "G♯m7♭5",
+        "pitchClasses": [8, 11, 2, 6]
+      },
+      {
+        "name": "C♯7♭9",
+        "pitchClasses": [1, 5, 8, 11, 2]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      }
+    ],
+    "G": [
+      {
+        "name": "Am7♭5",
+        "pitchClasses": [9, 0, 3, 7]
+      },
+      {
+        "name": "D7♭9",
+        "pitchClasses": [2, 6, 9, 0, 3]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      }
+    ],
+    "G#": [
+      {
+        "name": "A♯m7♭5",
+        "pitchClasses": [10, 1, 4, 8]
+      },
+      {
+        "name": "D♯7♭9",
+        "pitchClasses": [3, 7, 10, 1, 4]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      }
+    ],
+    "A": [
+      {
+        "name": "Bm7♭5",
+        "pitchClasses": [11, 2, 5, 9]
+      },
+      {
+        "name": "E7♭9",
+        "pitchClasses": [4, 8, 11, 2, 5]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      }
+    ],
+    "A#": [
+      {
+        "name": "B♯m7♭5",
+        "pitchClasses": [0, 3, 6, 10]
+      },
+      {
+        "name": "E♯7♭9",
+        "pitchClasses": [5, 9, 0, 3, 6]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      }
+    ],
+    "B": [
+      {
+        "name": "C♯m7♭5",
+        "pitchClasses": [1, 4, 7, 11]
+      },
+      {
+        "name": "F♯7♭9",
+        "pitchClasses": [6, 10, 1, 4, 7]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      }
+    ]
+  },
+  "J3": {
+    "C": [
+      {
+        "name": "Cmaj7",
+        "pitchClasses": [0, 4, 7, 11]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯maj7",
+        "pitchClasses": [1, 5, 8, 0]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      }
+    ],
+    "D": [
+      {
+        "name": "Dmaj7",
+        "pitchClasses": [2, 6, 9, 1]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯maj7",
+        "pitchClasses": [3, 7, 10, 2]
+      },
+      {
+        "name": "B♯m7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "E♯m7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      }
+    ],
+    "E": [
+      {
+        "name": "Emaj7",
+        "pitchClasses": [4, 8, 11, 3]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      }
+    ],
+    "F": [
+      {
+        "name": "Fmaj7",
+        "pitchClasses": [5, 9, 0, 4]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯maj7",
+        "pitchClasses": [6, 10, 1, 5]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      }
+    ],
+    "G": [
+      {
+        "name": "Gmaj7",
+        "pitchClasses": [7, 11, 2, 6]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯maj7",
+        "pitchClasses": [8, 0, 3, 7]
+      },
+      {
+        "name": "E♯m7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      }
+    ],
+    "A": [
+      {
+        "name": "Amaj7",
+        "pitchClasses": [9, 1, 4, 8]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯maj7",
+        "pitchClasses": [10, 2, 5, 9]
+      },
+      {
+        "name": "F♯♯m7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "B♯m7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      }
+    ],
+    "B": [
+      {
+        "name": "Bmaj7",
+        "pitchClasses": [11, 3, 6, 10]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      }
+    ]
+  },
+  "J4": {
+    "C": [
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "Cmaj7",
+        "pitchClasses": [0, 4, 7, 11]
+      },
+      {
+        "name": "Cmaj7",
+        "pitchClasses": [0, 4, 7, 11]
+      }
+    ],
+    "C#": [
+      {
+        "name": "E♯m7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "C♯maj7",
+        "pitchClasses": [1, 5, 8, 0]
+      },
+      {
+        "name": "C♯maj7",
+        "pitchClasses": [1, 5, 8, 0]
+      }
+    ],
+    "D": [
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "Dmaj7",
+        "pitchClasses": [2, 6, 9, 1]
+      },
+      {
+        "name": "Dmaj7",
+        "pitchClasses": [2, 6, 9, 1]
+      }
+    ],
+    "D#": [
+      {
+        "name": "F♯♯m7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "B♯m7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "E♯m7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "D♯maj7",
+        "pitchClasses": [3, 7, 10, 2]
+      },
+      {
+        "name": "D♯maj7",
+        "pitchClasses": [3, 7, 10, 2]
+      }
+    ],
+    "E": [
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "Emaj7",
+        "pitchClasses": [4, 8, 11, 3]
+      },
+      {
+        "name": "Emaj7",
+        "pitchClasses": [4, 8, 11, 3]
+      }
+    ],
+    "F": [
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "Fmaj7",
+        "pitchClasses": [5, 9, 0, 4]
+      },
+      {
+        "name": "Fmaj7",
+        "pitchClasses": [5, 9, 0, 4]
+      }
+    ],
+    "F#": [
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "F♯maj7",
+        "pitchClasses": [6, 10, 1, 5]
+      },
+      {
+        "name": "F♯maj7",
+        "pitchClasses": [6, 10, 1, 5]
+      }
+    ],
+    "G": [
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "Gmaj7",
+        "pitchClasses": [7, 11, 2, 6]
+      },
+      {
+        "name": "Gmaj7",
+        "pitchClasses": [7, 11, 2, 6]
+      }
+    ],
+    "G#": [
+      {
+        "name": "B♯m7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "E♯m7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "G♯maj7",
+        "pitchClasses": [8, 0, 3, 7]
+      },
+      {
+        "name": "G♯maj7",
+        "pitchClasses": [8, 0, 3, 7]
+      }
+    ],
+    "A": [
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "Amaj7",
+        "pitchClasses": [9, 1, 4, 8]
+      },
+      {
+        "name": "Amaj7",
+        "pitchClasses": [9, 1, 4, 8]
+      }
+    ],
+    "A#": [
+      {
+        "name": "C♯♯m7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "F♯♯m7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "B♯m7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "A♯maj7",
+        "pitchClasses": [10, 2, 5, 9]
+      },
+      {
+        "name": "A♯maj7",
+        "pitchClasses": [10, 2, 5, 9]
+      }
+    ],
+    "B": [
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "Bmaj7",
+        "pitchClasses": [11, 3, 6, 10]
+      },
+      {
+        "name": "Bmaj7",
+        "pitchClasses": [11, 3, 6, 10]
+      }
+    ]
+  },
+  "J5": {
+    "C": [
+      {
+        "name": "Cmaj7",
+        "pitchClasses": [0, 4, 7, 11]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯maj7",
+        "pitchClasses": [1, 5, 8, 0]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      }
+    ],
+    "D": [
+      {
+        "name": "Dmaj7",
+        "pitchClasses": [2, 6, 9, 1]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯maj7",
+        "pitchClasses": [3, 7, 10, 2]
+      },
+      {
+        "name": "B♯7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "E♯m7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      }
+    ],
+    "E": [
+      {
+        "name": "Emaj7",
+        "pitchClasses": [4, 8, 11, 3]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      }
+    ],
+    "F": [
+      {
+        "name": "Fmaj7",
+        "pitchClasses": [5, 9, 0, 4]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯maj7",
+        "pitchClasses": [6, 10, 1, 5]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      }
+    ],
+    "G": [
+      {
+        "name": "Gmaj7",
+        "pitchClasses": [7, 11, 2, 6]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯maj7",
+        "pitchClasses": [8, 0, 3, 7]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      }
+    ],
+    "A": [
+      {
+        "name": "Amaj7",
+        "pitchClasses": [9, 1, 4, 8]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯maj7",
+        "pitchClasses": [10, 2, 5, 9]
+      },
+      {
+        "name": "F♯♯7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "B♯m7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      }
+    ],
+    "B": [
+      {
+        "name": "Bmaj7",
+        "pitchClasses": [11, 3, 6, 10]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      }
+    ]
+  },
+  "J6": {
+    "C": [
+      {
+        "name": "Fm7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "B♭7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "Cmaj7",
+        "pitchClasses": [0, 4, 7, 11]
+      },
+      {
+        "name": "Cmaj7",
+        "pitchClasses": [0, 4, 7, 11]
+      }
+    ],
+    "C#": [
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "C♯maj7",
+        "pitchClasses": [1, 5, 8, 0]
+      },
+      {
+        "name": "C♯maj7",
+        "pitchClasses": [1, 5, 8, 0]
+      }
+    ],
+    "D": [
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "Dmaj7",
+        "pitchClasses": [2, 6, 9, 1]
+      },
+      {
+        "name": "Dmaj7",
+        "pitchClasses": [2, 6, 9, 1]
+      }
+    ],
+    "D#": [
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "D♯maj7",
+        "pitchClasses": [3, 7, 10, 2]
+      },
+      {
+        "name": "D♯maj7",
+        "pitchClasses": [3, 7, 10, 2]
+      }
+    ],
+    "E": [
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "Emaj7",
+        "pitchClasses": [4, 8, 11, 3]
+      },
+      {
+        "name": "Emaj7",
+        "pitchClasses": [4, 8, 11, 3]
+      }
+    ],
+    "F": [
+      {
+        "name": "B♭m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "E♭7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "Fmaj7",
+        "pitchClasses": [5, 9, 0, 4]
+      },
+      {
+        "name": "Fmaj7",
+        "pitchClasses": [5, 9, 0, 4]
+      }
+    ],
+    "F#": [
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "F♯maj7",
+        "pitchClasses": [6, 10, 1, 5]
+      },
+      {
+        "name": "F♯maj7",
+        "pitchClasses": [6, 10, 1, 5]
+      }
+    ],
+    "G": [
+      {
+        "name": "Cm7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "Gmaj7",
+        "pitchClasses": [7, 11, 2, 6]
+      },
+      {
+        "name": "Gmaj7",
+        "pitchClasses": [7, 11, 2, 6]
+      }
+    ],
+    "G#": [
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "G♯maj7",
+        "pitchClasses": [8, 0, 3, 7]
+      },
+      {
+        "name": "G♯maj7",
+        "pitchClasses": [8, 0, 3, 7]
+      }
+    ],
+    "A": [
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "Amaj7",
+        "pitchClasses": [9, 1, 4, 8]
+      },
+      {
+        "name": "Amaj7",
+        "pitchClasses": [9, 1, 4, 8]
+      }
+    ],
+    "A#": [
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "A♯maj7",
+        "pitchClasses": [10, 2, 5, 9]
+      },
+      {
+        "name": "A♯maj7",
+        "pitchClasses": [10, 2, 5, 9]
+      }
+    ],
+    "B": [
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "Bmaj7",
+        "pitchClasses": [11, 3, 6, 10]
+      },
+      {
+        "name": "Bmaj7",
+        "pitchClasses": [11, 3, 6, 10]
+      }
+    ]
+  },
+  "J7": {
+    "C": [
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "D♭7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "Cmaj7",
+        "pitchClasses": [0, 4, 7, 11]
+      },
+      {
+        "name": "Cmaj7",
+        "pitchClasses": [0, 4, 7, 11]
+      }
+    ],
+    "C#": [
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "C♯maj7",
+        "pitchClasses": [1, 5, 8, 0]
+      },
+      {
+        "name": "C♯maj7",
+        "pitchClasses": [1, 5, 8, 0]
+      }
+    ],
+    "D": [
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "E♭7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "Dmaj7",
+        "pitchClasses": [2, 6, 9, 1]
+      },
+      {
+        "name": "Dmaj7",
+        "pitchClasses": [2, 6, 9, 1]
+      }
+    ],
+    "D#": [
+      {
+        "name": "E♯m7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "D♯maj7",
+        "pitchClasses": [3, 7, 10, 2]
+      },
+      {
+        "name": "D♯maj7",
+        "pitchClasses": [3, 7, 10, 2]
+      }
+    ],
+    "E": [
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "Emaj7",
+        "pitchClasses": [4, 8, 11, 3]
+      },
+      {
+        "name": "Emaj7",
+        "pitchClasses": [4, 8, 11, 3]
+      }
+    ],
+    "F": [
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "G♭7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "Fmaj7",
+        "pitchClasses": [5, 9, 0, 4]
+      },
+      {
+        "name": "Fmaj7",
+        "pitchClasses": [5, 9, 0, 4]
+      }
+    ],
+    "F#": [
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "F♯maj7",
+        "pitchClasses": [6, 10, 1, 5]
+      },
+      {
+        "name": "F♯maj7",
+        "pitchClasses": [6, 10, 1, 5]
+      }
+    ],
+    "G": [
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "A♭7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "Gmaj7",
+        "pitchClasses": [7, 11, 2, 6]
+      },
+      {
+        "name": "Gmaj7",
+        "pitchClasses": [7, 11, 2, 6]
+      }
+    ],
+    "G#": [
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "G♯maj7",
+        "pitchClasses": [8, 0, 3, 7]
+      },
+      {
+        "name": "G♯maj7",
+        "pitchClasses": [8, 0, 3, 7]
+      }
+    ],
+    "A": [
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "B♭7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "Amaj7",
+        "pitchClasses": [9, 1, 4, 8]
+      },
+      {
+        "name": "Amaj7",
+        "pitchClasses": [9, 1, 4, 8]
+      }
+    ],
+    "A#": [
+      {
+        "name": "B♯m7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "A♯maj7",
+        "pitchClasses": [10, 2, 5, 9]
+      },
+      {
+        "name": "A♯maj7",
+        "pitchClasses": [10, 2, 5, 9]
+      }
+    ],
+    "B": [
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "Bmaj7",
+        "pitchClasses": [11, 3, 6, 10]
+      },
+      {
+        "name": "Bmaj7",
+        "pitchClasses": [11, 3, 6, 10]
+      }
+    ]
+  },
+  "J8": {
+    "C": [
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      },
+      {
+        "name": "Cmaj7",
+        "pitchClasses": [0, 4, 7, 11]
+      },
+      {
+        "name": "Fmaj7",
+        "pitchClasses": [5, 9, 0, 4]
+      },
+      {
+        "name": "Bm7♭5",
+        "pitchClasses": [11, 2, 5, 9]
+      },
+      {
+        "name": "E7♭9",
+        "pitchClasses": [4, 8, 11, 2, 5]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      }
+    ],
+    "C#": [
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      },
+      {
+        "name": "C♯maj7",
+        "pitchClasses": [1, 5, 8, 0]
+      },
+      {
+        "name": "F♯maj7",
+        "pitchClasses": [6, 10, 1, 5]
+      },
+      {
+        "name": "B♯m7♭5",
+        "pitchClasses": [0, 3, 6, 10]
+      },
+      {
+        "name": "E♯7♭9",
+        "pitchClasses": [5, 9, 0, 3, 6]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      }
+    ],
+    "D": [
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      },
+      {
+        "name": "Dmaj7",
+        "pitchClasses": [2, 6, 9, 1]
+      },
+      {
+        "name": "Gmaj7",
+        "pitchClasses": [7, 11, 2, 6]
+      },
+      {
+        "name": "C♯m7♭5",
+        "pitchClasses": [1, 4, 7, 11]
+      },
+      {
+        "name": "F♯7♭9",
+        "pitchClasses": [6, 10, 1, 4, 7]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      }
+    ],
+    "D#": [
+      {
+        "name": "E♯m7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "A♯7",
+        "pitchClasses": [10, 2, 5, 8]
+      },
+      {
+        "name": "D♯maj7",
+        "pitchClasses": [3, 7, 10, 2]
+      },
+      {
+        "name": "G♯maj7",
+        "pitchClasses": [8, 0, 3, 7]
+      },
+      {
+        "name": "C♯♯m7♭5",
+        "pitchClasses": [2, 5, 8, 0]
+      },
+      {
+        "name": "F♯♯7♭9",
+        "pitchClasses": [7, 11, 2, 5, 8]
+      },
+      {
+        "name": "B♯m7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "B♯m7",
+        "pitchClasses": [0, 3, 7, 10]
+      }
+    ],
+    "E": [
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      },
+      {
+        "name": "Emaj7",
+        "pitchClasses": [4, 8, 11, 3]
+      },
+      {
+        "name": "Amaj7",
+        "pitchClasses": [9, 1, 4, 8]
+      },
+      {
+        "name": "D♯m7♭5",
+        "pitchClasses": [3, 6, 9, 1]
+      },
+      {
+        "name": "G♯7♭9",
+        "pitchClasses": [8, 0, 3, 6, 9]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      }
+    ],
+    "F": [
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      },
+      {
+        "name": "Fmaj7",
+        "pitchClasses": [5, 9, 0, 4]
+      },
+      {
+        "name": "B♭maj7",
+        "pitchClasses": [10, 2, 5, 9]
+      },
+      {
+        "name": "Em7♭5",
+        "pitchClasses": [4, 7, 10, 2]
+      },
+      {
+        "name": "A7♭9",
+        "pitchClasses": [9, 1, 4, 7, 10]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      }
+    ],
+    "F#": [
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      },
+      {
+        "name": "F♯maj7",
+        "pitchClasses": [6, 10, 1, 5]
+      },
+      {
+        "name": "Bmaj7",
+        "pitchClasses": [11, 3, 6, 10]
+      },
+      {
+        "name": "E♯m7♭5",
+        "pitchClasses": [5, 8, 11, 3]
+      },
+      {
+        "name": "A♯7♭9",
+        "pitchClasses": [10, 2, 5, 8, 11]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      }
+    ],
+    "G": [
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      },
+      {
+        "name": "Gmaj7",
+        "pitchClasses": [7, 11, 2, 6]
+      },
+      {
+        "name": "Cmaj7",
+        "pitchClasses": [0, 4, 7, 11]
+      },
+      {
+        "name": "F♯m7♭5",
+        "pitchClasses": [6, 9, 0, 4]
+      },
+      {
+        "name": "B7♭9",
+        "pitchClasses": [11, 3, 6, 9, 0]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      }
+    ],
+    "G#": [
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      },
+      {
+        "name": "G♯maj7",
+        "pitchClasses": [8, 0, 3, 7]
+      },
+      {
+        "name": "C♯maj7",
+        "pitchClasses": [1, 5, 8, 0]
+      },
+      {
+        "name": "F♯♯m7♭5",
+        "pitchClasses": [7, 10, 1, 5]
+      },
+      {
+        "name": "B♯7♭9",
+        "pitchClasses": [0, 4, 7, 10, 1]
+      },
+      {
+        "name": "E♯m7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "E♯m7",
+        "pitchClasses": [5, 8, 0, 3]
+      }
+    ],
+    "A": [
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      },
+      {
+        "name": "Amaj7",
+        "pitchClasses": [9, 1, 4, 8]
+      },
+      {
+        "name": "Dmaj7",
+        "pitchClasses": [2, 6, 9, 1]
+      },
+      {
+        "name": "G♯m7♭5",
+        "pitchClasses": [8, 11, 2, 6]
+      },
+      {
+        "name": "C♯7♭9",
+        "pitchClasses": [1, 5, 8, 11, 2]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      }
+    ],
+    "A#": [
+      {
+        "name": "B♯m7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "E♯7",
+        "pitchClasses": [5, 9, 0, 3]
+      },
+      {
+        "name": "A♯maj7",
+        "pitchClasses": [10, 2, 5, 9]
+      },
+      {
+        "name": "D♯maj7",
+        "pitchClasses": [3, 7, 10, 2]
+      },
+      {
+        "name": "G♯♯m7♭5",
+        "pitchClasses": [9, 0, 3, 7]
+      },
+      {
+        "name": "C♯♯7♭9",
+        "pitchClasses": [2, 6, 9, 0, 3]
+      },
+      {
+        "name": "F♯♯m7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "F♯♯m7",
+        "pitchClasses": [7, 10, 2, 5]
+      }
+    ],
+    "B": [
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      },
+      {
+        "name": "Bmaj7",
+        "pitchClasses": [11, 3, 6, 10]
+      },
+      {
+        "name": "Emaj7",
+        "pitchClasses": [4, 8, 11, 3]
+      },
+      {
+        "name": "A♯m7♭5",
+        "pitchClasses": [10, 1, 4, 8]
+      },
+      {
+        "name": "D♯7♭9",
+        "pitchClasses": [3, 7, 10, 1, 4]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      }
+    ]
+  },
+  "M1": {
+    "C": [
+      {
+        "name": "Cm7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "F7",
+        "pitchClasses": [5, 9, 0, 3]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "F♯7",
+        "pitchClasses": [6, 10, 1, 4]
+      }
+    ],
+    "D": [
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "G7",
+        "pitchClasses": [7, 11, 2, 5]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "G♯7",
+        "pitchClasses": [8, 0, 3, 6]
+      }
+    ],
+    "E": [
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "A7",
+        "pitchClasses": [9, 1, 4, 7]
+      }
+    ],
+    "F": [
+      {
+        "name": "Fm7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "B♭7",
+        "pitchClasses": [10, 2, 5, 8]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "B7",
+        "pitchClasses": [11, 3, 6, 9]
+      }
+    ],
+    "G": [
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "C7",
+        "pitchClasses": [0, 4, 7, 10]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "C♯7",
+        "pitchClasses": [1, 5, 8, 11]
+      }
+    ],
+    "A": [
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "D7",
+        "pitchClasses": [2, 6, 9, 0]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "D♯7",
+        "pitchClasses": [3, 7, 10, 1]
+      }
+    ],
+    "B": [
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "E7",
+        "pitchClasses": [4, 8, 11, 2]
+      }
+    ]
+  },
+  "M2": {
+    "C": [
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      }
+    ],
+    "D": [
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      }
+    ],
+    "E": [
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      }
+    ],
+    "F": [
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "E♭",
+        "pitchClasses": [3, 7, 10]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      }
+    ],
+    "G": [
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      }
+    ],
+    "A": [
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      }
+    ],
+    "B": [
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      }
+    ]
+  },
+  "M3": {
+    "C": [
+      {
+        "name": "Cm",
+        "pitchClasses": [0, 3, 7]
+      },
+      {
+        "name": "D♭",
+        "pitchClasses": [1, 5, 8]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯m",
+        "pitchClasses": [1, 4, 8]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      }
+    ],
+    "D": [
+      {
+        "name": "Dm",
+        "pitchClasses": [2, 5, 9]
+      },
+      {
+        "name": "E♭",
+        "pitchClasses": [3, 7, 10]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯m",
+        "pitchClasses": [3, 6, 10]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      }
+    ],
+    "E": [
+      {
+        "name": "Em",
+        "pitchClasses": [4, 7, 11]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      }
+    ],
+    "F": [
+      {
+        "name": "Fm",
+        "pitchClasses": [5, 8, 0]
+      },
+      {
+        "name": "G♭",
+        "pitchClasses": [6, 10, 1]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯m",
+        "pitchClasses": [6, 9, 1]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      }
+    ],
+    "G": [
+      {
+        "name": "Gm",
+        "pitchClasses": [7, 10, 2]
+      },
+      {
+        "name": "A♭",
+        "pitchClasses": [8, 0, 3]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯m",
+        "pitchClasses": [8, 11, 3]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      }
+    ],
+    "A": [
+      {
+        "name": "Am",
+        "pitchClasses": [9, 0, 4]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯m",
+        "pitchClasses": [10, 1, 5]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      }
+    ],
+    "B": [
+      {
+        "name": "Bm",
+        "pitchClasses": [11, 2, 6]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      }
+    ]
+  },
+  "M4": {
+    "C": [
+      {
+        "name": "Cmaj7",
+        "pitchClasses": [0, 4, 7, 11]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯maj7",
+        "pitchClasses": [1, 5, 8, 0]
+      },
+      {
+        "name": "D♯",
+        "pitchClasses": [3, 7, 10]
+      }
+    ],
+    "D": [
+      {
+        "name": "Dmaj7",
+        "pitchClasses": [2, 6, 9, 1]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯maj7",
+        "pitchClasses": [3, 7, 10, 2]
+      },
+      {
+        "name": "E♯",
+        "pitchClasses": [5, 9, 0]
+      }
+    ],
+    "E": [
+      {
+        "name": "Emaj7",
+        "pitchClasses": [4, 8, 11, 3]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      }
+    ],
+    "F": [
+      {
+        "name": "Fmaj7",
+        "pitchClasses": [5, 9, 0, 4]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯maj7",
+        "pitchClasses": [6, 10, 1, 5]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      }
+    ],
+    "G": [
+      {
+        "name": "Gmaj7",
+        "pitchClasses": [7, 11, 2, 6]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯maj7",
+        "pitchClasses": [8, 0, 3, 7]
+      },
+      {
+        "name": "A♯",
+        "pitchClasses": [10, 2, 5]
+      }
+    ],
+    "A": [
+      {
+        "name": "Amaj7",
+        "pitchClasses": [9, 1, 4, 8]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯maj7",
+        "pitchClasses": [10, 2, 5, 9]
+      },
+      {
+        "name": "B♯",
+        "pitchClasses": [0, 4, 7]
+      }
+    ],
+    "B": [
+      {
+        "name": "Bmaj7",
+        "pitchClasses": [11, 3, 6, 10]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      }
+    ]
+  },
+  "M5": {
+    "C": [
+      {
+        "name": "Cm",
+        "pitchClasses": [0, 3, 7]
+      },
+      {
+        "name": "A♭",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "Cm",
+        "pitchClasses": [0, 3, 7]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯m",
+        "pitchClasses": [1, 4, 8]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "C♯m",
+        "pitchClasses": [1, 4, 8]
+      }
+    ],
+    "D": [
+      {
+        "name": "Dm",
+        "pitchClasses": [2, 5, 9]
+      },
+      {
+        "name": "B♭",
+        "pitchClasses": [10, 2, 5]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "Dm",
+        "pitchClasses": [2, 5, 9]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯m",
+        "pitchClasses": [3, 6, 10]
+      },
+      {
+        "name": "B",
+        "pitchClasses": [11, 3, 6]
+      },
+      {
+        "name": "C♯",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "D♯m",
+        "pitchClasses": [3, 6, 10]
+      }
+    ],
+    "E": [
+      {
+        "name": "Em",
+        "pitchClasses": [4, 7, 11]
+      },
+      {
+        "name": "C",
+        "pitchClasses": [0, 4, 7]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "Em",
+        "pitchClasses": [4, 7, 11]
+      }
+    ],
+    "F": [
+      {
+        "name": "Fm",
+        "pitchClasses": [5, 8, 0]
+      },
+      {
+        "name": "D♭",
+        "pitchClasses": [1, 5, 8]
+      },
+      {
+        "name": "E♭",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "Fm",
+        "pitchClasses": [5, 8, 0]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯m",
+        "pitchClasses": [6, 9, 1]
+      },
+      {
+        "name": "D",
+        "pitchClasses": [2, 6, 9]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "F♯m",
+        "pitchClasses": [6, 9, 1]
+      }
+    ],
+    "G": [
+      {
+        "name": "Gm",
+        "pitchClasses": [7, 10, 2]
+      },
+      {
+        "name": "E♭",
+        "pitchClasses": [3, 7, 10]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "Gm",
+        "pitchClasses": [7, 10, 2]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯m",
+        "pitchClasses": [8, 11, 3]
+      },
+      {
+        "name": "E",
+        "pitchClasses": [4, 8, 11]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "G♯m",
+        "pitchClasses": [8, 11, 3]
+      }
+    ],
+    "A": [
+      {
+        "name": "Am",
+        "pitchClasses": [9, 0, 4]
+      },
+      {
+        "name": "F",
+        "pitchClasses": [5, 9, 0]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "Am",
+        "pitchClasses": [9, 0, 4]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯m",
+        "pitchClasses": [10, 1, 5]
+      },
+      {
+        "name": "F♯",
+        "pitchClasses": [6, 10, 1]
+      },
+      {
+        "name": "G♯",
+        "pitchClasses": [8, 0, 3]
+      },
+      {
+        "name": "A♯m",
+        "pitchClasses": [10, 1, 5]
+      }
+    ],
+    "B": [
+      {
+        "name": "Bm",
+        "pitchClasses": [11, 2, 6]
+      },
+      {
+        "name": "G",
+        "pitchClasses": [7, 11, 2]
+      },
+      {
+        "name": "A",
+        "pitchClasses": [9, 1, 4]
+      },
+      {
+        "name": "Bm",
+        "pitchClasses": [11, 2, 6]
+      }
+    ]
+  },
+  "M6": {
+    "C": [
+      {
+        "name": "Cm7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "D♭m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "Cm7",
+        "pitchClasses": [0, 3, 7, 10]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "C♯m7",
+        "pitchClasses": [1, 4, 8, 11]
+      }
+    ],
+    "D": [
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      },
+      {
+        "name": "E♭m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "Dm7",
+        "pitchClasses": [2, 5, 9, 0]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "D♯m7",
+        "pitchClasses": [3, 6, 10, 1]
+      }
+    ],
+    "E": [
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      },
+      {
+        "name": "Fm7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "Em7",
+        "pitchClasses": [4, 7, 11, 2]
+      }
+    ],
+    "F": [
+      {
+        "name": "Fm7",
+        "pitchClasses": [5, 8, 0, 3]
+      },
+      {
+        "name": "G♭m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "Fm7",
+        "pitchClasses": [5, 8, 0, 3]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "F♯m7",
+        "pitchClasses": [6, 9, 1, 4]
+      }
+    ],
+    "G": [
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      },
+      {
+        "name": "A♭m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "Gm7",
+        "pitchClasses": [7, 10, 2, 5]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "G♯m7",
+        "pitchClasses": [8, 11, 3, 6]
+      }
+    ],
+    "A": [
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      },
+      {
+        "name": "B♭m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "Am7",
+        "pitchClasses": [9, 0, 4, 7]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "A♯m7",
+        "pitchClasses": [10, 1, 5, 8]
+      }
+    ],
+    "B": [
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      },
+      {
+        "name": "Cm7",
+        "pitchClasses": [0, 3, 7, 10]
+      },
+      {
+        "name": "Bm7",
+        "pitchClasses": [11, 2, 6, 9]
+      }
+    ]
+  },
+  "M7": {
+    "C": [
+      {
+        "name": "Cm7♭5",
+        "pitchClasses": [0, 3, 6, 10]
+      },
+      {
+        "name": "D♭maj7",
+        "pitchClasses": [1, 5, 8, 0]
+      }
+    ],
+    "C#": [
+      {
+        "name": "C♯m7♭5",
+        "pitchClasses": [1, 4, 7, 11]
+      },
+      {
+        "name": "Dmaj7",
+        "pitchClasses": [2, 6, 9, 1]
+      }
+    ],
+    "D": [
+      {
+        "name": "Dm7♭5",
+        "pitchClasses": [2, 5, 8, 0]
+      },
+      {
+        "name": "E♭maj7",
+        "pitchClasses": [3, 7, 10, 2]
+      }
+    ],
+    "D#": [
+      {
+        "name": "D♯m7♭5",
+        "pitchClasses": [3, 6, 9, 1]
+      },
+      {
+        "name": "Emaj7",
+        "pitchClasses": [4, 8, 11, 3]
+      }
+    ],
+    "E": [
+      {
+        "name": "Em7♭5",
+        "pitchClasses": [4, 7, 10, 2]
+      },
+      {
+        "name": "Fmaj7",
+        "pitchClasses": [5, 9, 0, 4]
+      }
+    ],
+    "F": [
+      {
+        "name": "Fm7♭5",
+        "pitchClasses": [5, 8, 11, 3]
+      },
+      {
+        "name": "G♭maj7",
+        "pitchClasses": [6, 10, 1, 5]
+      }
+    ],
+    "F#": [
+      {
+        "name": "F♯m7♭5",
+        "pitchClasses": [6, 9, 0, 4]
+      },
+      {
+        "name": "Gmaj7",
+        "pitchClasses": [7, 11, 2, 6]
+      }
+    ],
+    "G": [
+      {
+        "name": "Gm7♭5",
+        "pitchClasses": [7, 10, 1, 5]
+      },
+      {
+        "name": "A♭maj7",
+        "pitchClasses": [8, 0, 3, 7]
+      }
+    ],
+    "G#": [
+      {
+        "name": "G♯m7♭5",
+        "pitchClasses": [8, 11, 2, 6]
+      },
+      {
+        "name": "Amaj7",
+        "pitchClasses": [9, 1, 4, 8]
+      }
+    ],
+    "A": [
+      {
+        "name": "Am7♭5",
+        "pitchClasses": [9, 0, 3, 7]
+      },
+      {
+        "name": "B♭maj7",
+        "pitchClasses": [10, 2, 5, 9]
+      }
+    ],
+    "A#": [
+      {
+        "name": "A♯m7♭5",
+        "pitchClasses": [10, 1, 4, 8]
+      },
+      {
+        "name": "Bmaj7",
+        "pitchClasses": [11, 3, 6, 10]
+      }
+    ],
+    "B": [
+      {
+        "name": "Bm7♭5",
+        "pitchClasses": [11, 2, 5, 9]
+      },
+      {
+        "name": "Cmaj7",
+        "pitchClasses": [0, 4, 7, 11]
+      }
+    ]
+  }
+}

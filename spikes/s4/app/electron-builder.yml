@@ -1,0 +1,91 @@
+# electron-builder configuration for the throwaway Spike S4 packaging harness.
+#
+# The spike exists to answer one question: can PracticePlayer ship several
+# SoundFonts inside an installer on all three operating systems, and what does
+# that do to installer size and first-launch load time?
+#
+# Nothing in this directory ships. The app is a stub: a window, a custom
+# protocol handler and one large bundled asset.
+#
+# Licence note: electron-builder (MIT) is a build-time dependency only. It
+# never appears in the shipped application bundle.
+
+appId: org.practiceplayer.s4spike
+productName: PracticePlayer S4 Spike
+copyright: PracticePlayer contributors
+
+# Keep the version in step with the repository's Electron version so the
+# packaged app is the same Chromium build the rest of the project uses.
+electronVersion: 45.2.2
+
+directories:
+  output: dist/packages
+  buildResources: build
+
+# The stub application is plain JavaScript; there are no runtime dependencies
+# to copy into the package.
+files:
+  - dist/electron/**/*
+  - dist/renderer/**/*
+  - package.json
+
+# The large asset is shipped as an extra resource rather than inside the ASAR
+# archive: it must be read as a plain file by the main process, and keeping it
+# outside the archive means the installer can compress it once and the
+# protocol handler can stream it from disk.
+extraResources:
+  - from: assets
+    to: assets
+    filter:
+      - '**/*'
+
+asar: true
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  artifactName: ${productName}-${version}-${arch}.${ext}
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: PracticePlayer S4 Spike
+
+mac:
+  target:
+    - target: dmg
+      arch:
+        - x64
+        - arm64
+  category: public.app-category.music
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  identity: null
+  artifactName: ${productName}-${version}-${arch}.${ext}
+  extendInfo:
+    NSHighResolutionCapable: true
+
+dmg:
+  title: ${productName} ${version}
+
+linux:
+  target:
+    - target: AppImage
+      arch:
+        - x64
+    - target: deb
+      arch:
+        - x64
+  category: AudioVideo
+  maintainer: PracticePlayer contributors
+  synopsis: Throwaway packaging spike for PracticePlayer
+  artifactName: ${productName}-${version}-${arch}.${ext}
+
+# The spike is unsigned by design; the signing investigation is documented
+# separately in docs/spikes/s4-packaging-report.md.
+publish: null

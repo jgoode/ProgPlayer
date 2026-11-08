@@ -1,0 +1,162 @@
+name: Spike S2 — MIDI measurement
+
+# Collects the S2 MIDI measurements on Windows and macOS.
+#
+# Linux is out of scope for the S2 measurement (the decision is recorded in
+# the report and in gap G-20): the GitHub Azure runners' kernels ship
+# without the ALSA sequencer drivers, so the ALSA virtual-port loopback
+# cannot be created there. The Linux evidence is deferred to the manual
+# device test in testing.md §7.
+#
+# The measurements need a MIDI loopback:
+#   - Windows: loopMIDI. Its virtual ports are configured through the
+#     registry (HKCU\Software\Tobias Erichsen\loopMIDI\Ports), so the
+#     helper in spikes/s2/tools/windows-loopmidi.ps1 creates them without
+#     any GUI interaction. The driver needs admin rights, which the GitHub
+#     Windows runner has.
+#   - macOS: a CoreMIDI virtual source/destination pair created by the
+#     helper in spikes/s2/tools/macos-virtual-port.sh.
+#
+# The workflow uploads the JSON reports as artifacts. A platform without a
+# loopback is reported, not failed: the decision is taken in the S2 ADR, not
+# by CI.
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'spike/s2/**'
+
+concurrency:
+  group: spike-s2-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PNPM_VERSION: '12.9.1'
+  NODE_VERSION: '24'
+
+jobs:
+  measure:
+    name: measure (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            output_port: PracticePlayer S2 Loopback
+            input_port: PracticePlayer S2 Loopback
+          - os: macos-latest
+            # The CoreMIDI helper creates a virtual *destination*, which
+            # appears as an output port, and a virtual *source*, which
+            # appears as an input port.
+            output_port: PracticePlayer S2 Loopback
+            input_port: PracticePlayer S2 Loopback In
+    env:
+      S2_OUTPUT_PORT: ${{ matrix.output_port }}
+      S2_INPUT_PORT: ${{ matrix.input_port }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v6
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build the S2 renderer
+        run: pnpm run spike:s2:build
+
+      # --- Windows: loopMIDI virtual ports -------------------------------
+      - name: Install loopMIDI (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          winget install --id TobiasErichsen.loopMIDI --exact --silent `
+            --accept-package-agreements --accept-source-agreements
+
+      - name: Create the loopMIDI ports (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          powershell -File spikes/s2/tools/windows-loopmidi.ps1 `
+            -Ports "PracticePlayer S2 Loopback"
+
+      # --- macOS: CoreMIDI virtual endpoint ------------------------------
+      - name: Create the CoreMIDI virtual endpoint (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          bash spikes/s2/tools/macos-virtual-port.sh "PracticePlayer S2 Loopback" &
+          echo $! > "$RUNNER_TEMP/midi-virtual-port.pid"
+          sleep 5
+          ps -p "$(cat "$RUNNER_TEMP/midi-virtual-port.pid")" || echo "::warning::the CoreMIDI helper is not running"
+
+      # The loopback port names differ per platform:
+      #   - Windows: the loopMIDI port created above.
+      #   - macOS: the CoreMIDI source (output) and destination (input).
+      - name: Run the Web MIDI measurement (loopback)
+        run: pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}"
+
+      - name: Run the Web MIDI measurement (minimised window)
+        run: pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-minimized.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" --minimize-after 2000
+
+      - name: Run the Web MIDI measurement (heavy UI load, 300 ms look-ahead)
+        run: pnpm run spike:s2:web -- --bars 8 --bpm 120 --out "web-midi-${{ matrix.os }}-uiload.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" --ui-load --look-ahead 300
+
+      # --- hot-plug ------------------------------------------------------
+      # The loopback port is removed while the measurement is running, so
+      # the report shows whether the app survives a disappearing device
+      # (NFR-REL-2). The port is put back afterwards for the native run.
+      #
+      # The measurement is 16 bars at 120 BPM, i.e. 32 s, so there is room
+      # for the removal and the probe. The port is removed 4 s in.
+      #
+      # The probe delay has to cover the time the operating system needs to
+      # actually drop the port. On Windows the loopMIDI driver is restarted,
+      # which takes about 12 s; on macOS killing the helper disposes the
+      # CoreMIDI endpoints immediately.
+      #
+      # The removal command goes into a file as a JSON array: the CI shell
+      # (pwsh on Windows, bash on macOS) strips the double quotes from a
+      # JSON array passed as a command-line argument.
+      - name: Run the Web MIDI measurement (hot-plug, Windows)
+        if: runner.os == 'Windows'
+        run: |
+          '["powershell","-File","spikes/s2/tools/windows-loopmidi.ps1","-RemovePorts","-Ports","${{ matrix.output_port }}"]' > "$RUNNER_TEMP/hot-plug-command.json"
+          pnpm run spike:s2:web -- --bars 16 --bpm 120 --out "web-midi-${{ matrix.os }}-hotplug.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" --hot-plug-at 4000 --hot-plug-probe-delay 20000 --hot-plug-command-file "$RUNNER_TEMP/hot-plug-command.json"
+          # Enumerate the ports outside Electron, to tell "the driver still
+          # has the port" apart from "Chromium did not notice the change".
+          node -e "const {Output,Input}=require('@julusian/midi'); console.log('OS outputs after removal:', JSON.stringify(Output.getPortNames())); console.log('OS inputs after removal:', JSON.stringify(Input.getPortNames()));"
+          powershell -File spikes/s2/tools/windows-loopmidi.ps1 -Ports "${{ matrix.output_port }}"
+
+      - name: Run the Web MIDI measurement (hot-plug, macOS)
+        if: runner.os == 'macOS'
+        run: |
+          PID="$(cat "$RUNNER_TEMP/midi-virtual-port.pid")"
+          printf '["kill","%s"]\n' "${PID}" > "$RUNNER_TEMP/hot-plug-command.json"
+          cat "$RUNNER_TEMP/hot-plug-command.json"
+          pnpm run spike:s2:web -- --bars 16 --bpm 120 --out "web-midi-${{ matrix.os }}-hotplug.json" --output "${{ matrix.output_port }}" --input "${{ matrix.input_port }}" --hot-plug-at 4000 --hot-plug-probe-delay 3000 --hot-plug-command-file "$RUNNER_TEMP/hot-plug-command.json"
+          bash spikes/s2/tools/macos-virtual-port.sh "${{ matrix.output_port }}" &
+          echo $! > "$RUNNER_TEMP/midi-virtual-port.pid"
+          sleep 5
+
+      - name: Run the native (RtMidi) measurement
+        run: pnpm run spike:s2:native -- --bars 8 --bpm 120 --out "native-${{ matrix.os }}.json" --output "${{ matrix.output_port }}" --capture "${{ matrix.input_port }}"
+
+      - name: Summarise the reports
+        if: always()
+        run: node spikes/s2/tools/summarize-results.mjs | tee results-summary.md
+
+      - name: Upload the measurement reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spike-s2-${{ matrix.os }}
+          path: |
+            spikes/s2/results/*.json
+            results-summary.md
+          if-no-files-found: warn

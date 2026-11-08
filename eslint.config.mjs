@@ -14,6 +14,7 @@ export default tseslint.config(
       'coverage/**',
       'test-results/**',
       'playwright-report/**',
+      '.smoke-out/**',
       'node_modules/**',
       'docs/**',
       // The spike's build output and the vendored worklet bundle it produces.
@@ -63,6 +64,13 @@ export default tseslint.config(
         console: 'readonly',
         process: 'readonly',
         fetch: 'readonly',
+        performance: 'readonly',
+        Buffer: 'readonly',
+        WebAssembly: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        setInterval: 'readonly',
+        clearInterval: 'readonly',
       },
     },
     rules: { ...tseslint.configs.disableTypeChecked.rules },
@@ -78,12 +86,21 @@ export default tseslint.config(
         process: 'readonly',
         Buffer: 'readonly',
         URL: 'readonly',
+        URLSearchParams: 'readonly',
         Response: 'readonly',
         setTimeout: 'readonly',
         clearTimeout: 'readonly',
       },
     },
     rules: { ...tseslint.configs.disableTypeChecked.rules },
+  },
+  {
+    // The Spike S4 packaging harness runs in the Electron main process and
+    // reports its measurements on stdout.
+    files: ['spikes/s4/app/electron/**/*.ts'],
+    rules: {
+      'no-console': 'off',
+    },
   },
   {
     files: ['src/renderer/**/*.{ts,tsx}'],

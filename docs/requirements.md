@@ -2,8 +2,8 @@
 
 | | |
 |---|---|
-| **Status** | Draft v0.2 — OQ-1, OQ-3, OQ-5, OQ-8 resolved; for review |
-| **Date** | 2026-11-03 |
+| **Status** | Draft v0.4 — OQ-1, OQ-3, OQ-5, OQ-8, OQ-9, OQ-11, OQ-12 resolved; for review |
+| **Date** | 2026-11-07 |
 | **Related docs** | implementation.md, progress.md, testing.md, gap-analysis.md, agent-prompts.md (to follow) |
 
 ---
@@ -147,7 +147,7 @@ The user chooses a key (or mode), arranges progressions into song-style sections
 | FR-IO-1 | **Sessions:** save and load sessions to/from files. The format is a documented, versioned format (JSON proposed) so future versions can migrate old files. |
 | FR-IO-2 | The app restores the last-used audio/MIDI settings on startup, and degrades gracefully when a saved MIDI port or SoundFont is no longer available. |
 | FR-IO-3 | **MIDI export:** writes a Standard MIDI File containing tempo and time-signature meta events and separate tracks/channels for chords, bass and click. Options: include/exclude click, include/exclude count-in, number of times the arrangement repeats. |
-| FR-IO-4 | **Audio export:** renders the built-in synth output to WAV, and to MP3 (encoder choice is subject to licensing, OQ-9). Options: include/exclude click, include/exclude count-in, repeats. Rendering runs faster than real time when possible and shows progress. |
+| FR-IO-4 | **Audio export:** renders the built-in synth output to WAV. Options: include/exclude click, include/exclude count-in, repeats. Rendering runs faster than real time when possible and shows progress. **MP3 export is deferred**: every npm-distributable JS/WASM MP3 encoder embeds a copyleft codec, and the project's MIT licence (CON-4) rules out the LGPL ones; see ADR-0004. MP3 is added only when a combined-permissive encoder with validated quality is available. |
 | FR-IO-5 | Audio export covers only the built-in synth. Output sent to external MIDI instruments cannot be captured by the app; the UI states this clearly. |
 
 ## 6. Non-functional requirements
@@ -225,7 +225,7 @@ Notes:
 2. Built-in presets are expressed in degrees and resolved per key; non-diatonic chords are marked explicitly.
 3. The click uses the built-in synth or a bundled sample for internal output, and a GM percussion note on channel 10 for MIDI out.
 4. SoundFont engine and MIDI I/O approach are chosen after short technical spikes; neither choice changes the requirements above.
-5. **Preset resolution (to confirm):** a preset's chord roots are fixed offsets from the tonic (major-scale degree numbering with accidentals, e.g. ♭VII) and its qualities are explicit, so a preset sounds the same in every scale type. The session's scale type is used to suggest presets (each preset declares a home scale type) and to drive scale hints, not to rewrite a preset's chords.
+5. **Preset resolution (confirmed 2026-11-07, closes G-01):** a preset's chord roots are fixed offsets from the tonic (major-scale degree numbering with accidentals, e.g. ♭VII) and its qualities are explicit, so a preset sounds the same in every scale type. The session's scale type is used to suggest presets (each preset declares a home scale type) and to drive scale hints, not to rewrite a preset's chords.
 
 ## 11. Acceptance criteria (summary)
 
@@ -245,17 +245,17 @@ Notes:
 | ID | Question | Proposed default |
 |---|---|---|
 | OQ-1 | ~~Which open-source license?~~ **Resolved: MIT.** Dependencies must be MIT-compatible (permissive; Apache-2.0 is fine with NOTICE attribution). | — |
-| OQ-2 | How are enharmonic keys offered (e.g. F♯ major vs G♭ major; D♯ minor vs E♭ minor)? | Offer both spellings where both are practical |
+| OQ-2 | How are enharmonic keys offered (e.g. F♯ major vs G♭ major; D♯ minor vs E♭ minor)? | **Resolved 2026-11-07 (P2.5).** Both spellings are offered; the spelling is stored with the pitch class and preserved through scale, chord and degree resolution. All 12 tonics are available in sharp and flat spellings, and spellings that would need more than a double accidental fall back to the closest supported enharmonic and are flagged. |
 | OQ-3 | ~~Initial preset list~~ **Resolved:** 29 presets across rock, blues, jazz and modal vamps (Appendix A); expandable by the user. | — |
 | OQ-4 | Tempo range? | 30–300 BPM |
 | OQ-5 | ~~BPM unit and beat grouping~~ **Resolved:** quarter-note BPM, except 6/8 uses dotted quarter; 7/8 groups 2+2+3; 5/4 groups 3+2 (user-switchable to 2+3). | — |
-| OQ-6 | Voicing register and voice-leading rules for chords and bass? | Chords centred around middle C, close-position voicings with minimal-movement inversions; bass in the octave below |
+| OQ-6 | Voicing register and voice-leading rules for chords and bass? | **Implemented 2026-11-07 (P2.6); defaults documented in `docs/voicing-rules.md` and pending the M-7 listening review.** Chords are close-position in G3–C6, centred on middle C, with the inversion that moves least from the previous chord; chords with a 9th or higher drop the 5th, and an unaltered 11th is dropped over a major third. The bass plays the root in E1–E3, an octave below the chord centre. |
 | OQ-7 | Fretboard: chord tones only, or also suggested fingered shapes? | Chord tones only in v1 |
 | OQ-8 | ~~Scale hints for non-diatonic chords~~ **Resolved:** chord-scale chosen by chord quality, shown alongside the in-key scale. To be expanded in later iterations. | — |
-| OQ-9 | MP3 encoder choice and its license? | Evaluate options; ship WAV first if licensing is unresolved |
+| OQ-9 | ~~MP3 encoder choice and its license?~~ **Resolved 2026-11-06:** no combined-permissive JS/WASM MP3 encoder is distributed; v1.0 ships WAV only (ADR-0004). `rusty_mp3` (Apache-2.0) is the designated candidate if MP3 is reopened, subject to a listening test and a project-owned WASM build. | — |
 | OQ-10 | How to calibrate latency compensation between synth and MIDI out? | Manual offset slider with a click-test helper |
-| OQ-11 | Installer size budget and the final list of bundled SoundFonts? | Budget around 150 MB total; candidates evaluated for license and quality |
-| OQ-12 | Code signing and notarization approach for macOS and Windows? | Decide before first public release |
+| OQ-11 | ~~Installer size budget and the final list of bundled SoundFonts?~~ **Resolved 2026-11-07 (ADR-0005):** **250 MB per installer, 500 MB installed.** The 150 MB default is not reachable — the Electron runtime alone is ~115 MB of a compressed installer. The bundled set is the dedicated per-role FreePats fonts (piano, bass, acoustic guitar, electric guitar, percussion), all CC0 or CC-BY, shipped as SF3; no General MIDI bank fits the budget. |
+| OQ-12 | ~~Code signing and notarization approach for macOS and Windows?~~ **Resolved 2026-11-07 (ADR-0005):** **interim releases are unsigned**, with per-platform install instructions. macOS notarization needs an Apple Developer Program membership (99 USD/year) with no free route for an ordinary open-source project; Windows signing is 9.99 USD/month (Azure Artifact Signing), 129–300 USD/year (public-CA OV) or free via SignPath Foundation for qualifying OSS; EV certificates are not recommended. The build configuration carries the signing path so adding credentials is configuration, not code. | — |
 
 ---
 
