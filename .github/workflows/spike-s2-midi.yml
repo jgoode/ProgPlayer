@@ -3,10 +3,11 @@ name: Spike S2 — MIDI measurement
 # Collects the S2 MIDI measurements on Windows and macOS.
 #
 # Linux is out of scope for the S2 measurement (the decision is recorded in
-# the report and in gap G-20): the GitHub Azure runners' kernels ship
-# without the ALSA sequencer drivers, so the ALSA virtual-port loopback
-# cannot be created there. Linux was dropped as a supported platform on
-# 2026-11-08, so the Linux half of G-20 is withdrawn as out of scope.
+# the report and in gap G-20). It was dropped as a supported platform on
+# 2026-11-08, so the Linux half of G-20 is withdrawn as out of scope. The
+# measurement was already impossible on the runners in any case: the GitHub
+# Azure kernels ship without the ALSA sequencer drivers, so no ALSA virtual
+# loopback could be created there.
 #
 # The measurements need a MIDI loopback:
 #   - Windows: loopMIDI. Its virtual ports are configured through the

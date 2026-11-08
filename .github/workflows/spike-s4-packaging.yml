@@ -1,7 +1,7 @@
 name: Spike S4 — Packaging
 
 # Proves that PracticePlayer can be packaged with a large bundled asset on
-# all three operating systems, and measures the installer size and the
+# the supported operating systems, and measures the installer size and the
 # first-launch asset load time.
 #
 # The harness under `spikes/s4/` is a throwaway stub app: a window, a custom
@@ -39,9 +39,6 @@ jobs:
           - os: windows-latest
             builder_args: '--win --x64'
             executable: 'spikes/s4/app/dist/packages/win-unpacked/PracticePlayer S4 Spike.exe'
-          - os: ubuntu-latest
-            builder_args: '--linux --x64'
-            executable: 'spikes/s4/app/dist/packages/linux-unpacked/practiceplayer-s4-spike'
           # macOS: arm64 and x64 are separate builds. Building the x64 target
           # on an arm64 runner works (electron-builder downloads the x64
           # Electron distribution and builds a universal-safe x64 app), and
@@ -81,29 +78,10 @@ jobs:
       - name: Collect the installed size of the unpacked application
         run: node spikes/s4/tools/measure-installed-size.mjs
 
-      # Electron's Chromium SUID sandbox refuses to start when the
-      # `chrome-sandbox` helper is not owned by root with mode 4755. The
-      # unpacked tree produced by electron-builder does not carry those
-      # permissions, so set them before launching the packaged binary.
-      - name: Prepare the Chromium SUID sandbox helper (Linux only)
-        if: runner.os == 'Linux'
-        run: |
-          sudo chown root:root spikes/s4/app/dist/packages/linux-unpacked/chrome-sandbox
-          sudo chmod 4755 spikes/s4/app/dist/packages/linux-unpacked/chrome-sandbox
-
       # The first-launch measurement launches the *packaged* app, so it
       # exercises the installed layout (the asset lives in `resources/assets`
       # and is reached through the custom protocol handler).
-      - name: Measure first launch (Windows)
-        if: runner.os == 'Windows'
-        run: node spikes/s4/tools/measure.mjs
-
-      - name: Measure first launch (Linux)
-        if: runner.os == 'Linux'
-        run: xvfb-run --auto-servernum node spikes/s4/tools/measure.mjs
-
-      - name: Measure first launch (macOS)
-        if: runner.os == 'macOS'
+      - name: Measure first launch
         run: node spikes/s4/tools/measure.mjs
 
       - name: Upload packages and measurements

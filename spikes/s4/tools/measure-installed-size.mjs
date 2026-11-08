@@ -12,7 +12,6 @@
  * differ:
  *
  *  - Windows: `win-unpacked`
- *  - Linux:   `linux-unpacked`
  *  - macOS:   `mac` (x64) or `mac-arm64` (arm64), each containing
  *             `PracticePlayer S4 Spike.app`
  *
@@ -72,7 +71,6 @@ async function walk(root, seen = new Set()) {
 async function findInstalledRoot() {
   const candidates = [
     ['win-unpacked', join(packagesRoot, 'win-unpacked')],
-    ['linux-unpacked', join(packagesRoot, 'linux-unpacked')],
     ['mac-arm64', join(packagesRoot, 'mac-arm64')],
     ['mac', join(packagesRoot, 'mac')],
   ];

@@ -19,7 +19,7 @@ incompatible with MIT.
 
 > **Amendment 2026-11-08.** Linux was dropped as a supported platform for
 > v1.0 (PLT-1). The toolchain decision itself is unchanged; the `ubuntu-latest`
-> CI leg is an interim check that is removed in the code-side cutover.
+> CI leg and the Linux packaging target were removed in the same change.
 
 ## Options considered
 

@@ -43,6 +43,12 @@ const packagesRoot = resolve(spikeRoot, 'app', 'dist', 'packages');
 const platform = process.platform;
 const arch = process.arch;
 
+function unsupportedPlatform() {
+  throw new Error(
+    `Unsupported platform: ${platform}. The S4 harness packages for Windows and macOS only.`,
+  );
+}
+
 function packagedExecutable() {
   if (platform === 'win32') {
     return resolve(packagesRoot, 'win-unpacked', 'PracticePlayer S4 Spike.exe');
@@ -57,7 +63,7 @@ function packagedExecutable() {
       'PracticePlayer S4 Spike',
     );
   }
-  return resolve(packagesRoot, 'linux-unpacked', 'practiceplayer-s4-spike');
+  return unsupportedPlatform();
 }
 
 function packagedResourceAssets() {
@@ -74,7 +80,7 @@ function packagedResourceAssets() {
       'assets',
     );
   }
-  return resolve(packagesRoot, 'linux-unpacked', 'resources', 'assets');
+  return unsupportedPlatform();
 }
 
 function packagedAsar() {
@@ -91,7 +97,7 @@ function packagedAsar() {
       'app.asar',
     );
   }
-  return resolve(packagesRoot, 'linux-unpacked', 'resources', 'app.asar');
+  return unsupportedPlatform();
 }
 
 async function exists(path) {

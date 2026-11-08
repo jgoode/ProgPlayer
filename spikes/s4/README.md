@@ -5,9 +5,9 @@ application and none of its code enters `src/`.
 
 The question (implementation.md §3, spike S4; PLT-3, NFR-PRF-2, CON-4..6,
 OQ-11, OQ-12; gaps G-11 and G-13): can PracticePlayer package several
-SoundFonts inside an installer on all three operating systems, what does that
-do to the installer size and the first-launch time, and what does signing
-and notarization cost?
+SoundFonts inside an installer on the supported operating systems, what does
+that do to the installer size and the first-launch time, and what does
+signing and notarization cost?
 
 **The answer: yes, and the budget is 250 MB per installer.** ADR-0005 records
 the decision.
@@ -62,17 +62,5 @@ node spikes/s4/tools/measure-installed-size.mjs
 file instead of the generated sample.
 
 On GitHub, `.github/workflows/spike-s4-packaging.yml` runs the same steps on
-`windows-latest`, `ubuntu-latest`, `macos-latest` (arm64) and
-`macos-15-intel` (x64) and uploads the packages and the JSON reports.
-
-## Note for Linux
-
-Electron's Chromium SUID sandbox refuses to start when the `chrome-sandbox`
-helper is not owned by root with mode 4755. The unpacked tree produced by
-electron-builder does not carry those permissions, so the workflow sets them
-before launching:
-
-```bash
-sudo chown root:root spikes/s4/app/dist/packages/linux-unpacked/chrome-sandbox
-sudo chmod 4755 spikes/s4/app/dist/packages/linux-unpacked/chrome-sandbox
-```
+`windows-latest`, `macos-latest` (arm64) and `macos-15-intel` (x64) and
+uploads the packages and the JSON reports.

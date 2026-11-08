@@ -28,7 +28,8 @@ in `docs/spikes/s4-packaging-report.md`.
 
 > **Amendment 2026-11-08.** Linux was dropped as a supported platform for
 > v1.0 (PLT-1). The decision below is unchanged; the Linux measurements stay
-> as historical evidence and the Linux follow-ups are withdrawn.
+> as historical evidence, the Linux follow-ups are withdrawn, and the Linux
+> packaging target and CI leg were removed from the harness.
 
 ### What the spike measured
 

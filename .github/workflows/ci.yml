@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os: [windows-latest, macos-latest]
     steps:
       - uses: actions/checkout@v5
 
@@ -63,23 +63,7 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      # The Electron smoke test needs a display server and the Chromium system
-      # libraries on Linux. GitHub's Ubuntu runners have neither, so Xvfb
-      # provides a virtual display and `playwright install-deps` installs the
-      # shared libraries Electron links against.
-      - name: Install system dependencies (Linux only)
-        if: runner.os == 'Linux'
-        run: |
-          sudo apt-get update
-          sudo apt-get install --no-install-recommends -y xvfb
-          pnpm exec playwright install-deps chromium
-
-      - name: Electron smoke test (Linux, virtual display)
-        if: runner.os == 'Linux'
-        run: xvfb-run --auto-servernum pnpm exec playwright test
-
-      - name: Electron smoke test (Windows, macOS)
-        if: runner.os != 'Linux'
+      - name: Electron smoke test
         run: pnpm exec playwright test
 
       - name: Dependency audit

@@ -92,12 +92,9 @@ Deliverables:
 - Vitest with one passing test per layer folder; Playwright-for-Electron smoke test that launches
   the app and checks the window title.
 - GitHub Actions: matrix (windows-latest, macos-latest) running install, lint,
-  type-check, unit tests, smoke test, and a dependency+licence audit step. The
-  `ubuntu-latest` leg is an interim check only — Linux is not a supported
-  platform for v1.0 (PLT-1) and that leg is removed in the code-side cutover.
+  type-check, unit tests, smoke test, and a dependency+licence audit step.
 Constraints: pnpm; Node LTS; no audio or MIDI code yet.
-Exit check: CI green on both supported OSes (the interim Ubuntu leg must stay green
-until the cutover); app window opens on each; boundary rules demonstrably
+Exit check: CI green on both supported OSes; app window opens on each; boundary rules demonstrably
 fail on a deliberate violation (add that as a documented test, then remove the violation).
 Out of scope: any feature code.
 ```

@@ -2,7 +2,7 @@
  * Spike S2 — native RtMidi measurement harness.
  *
  * The native candidate is `@julusian/midi` (MIT), a Node-API wrapper around
- * RtMidi 6.0.0 with prebuilt binaries for Windows, macOS and Linux.
+ * RtMidi 6.0.0 with prebuilt binaries for Windows and macOS.
  *
  * What this harness measures
  * --------------------------
@@ -223,7 +223,7 @@ async function main() {
 
   // A virtual capture port lets the harness measure its own round trip
   // without an external driver. RtMidi can only create virtual ports on
-  // macOS (CoreMIDI) and Linux (ALSA sequencer); the Windows MM API cannot.
+  // macOS (CoreMIDI); the Windows MM API cannot.
   let input = null;
   let loopbackName = '';
   if (CREATE_LOOPBACK) {

@@ -362,8 +362,14 @@ node spikes/s4/tools/measure-installed-size.mjs
 ```
 
 On GitHub, the workflow `.github/workflows/spike-s4-packaging.yml` runs the
-same steps on `windows-latest`, `ubuntu-latest`, `macos-latest` (arm64) and
-`macos-15-intel` (x64) and uploads the packages and the JSON reports.
+same steps on `windows-latest`, `macos-latest` (arm64) and `macos-15-intel`
+(x64) and uploads the packages and the JSON reports.
+
+> **The Linux leg was removed on 2026-11-08**, when Linux was dropped as a
+> supported platform (PLT-1). The AppImage and `.deb` figures in this report
+> are the evidence from CI run 42381612293 and stay here as history; the
+> harness no longer has a Linux target, so they cannot be re-measured
+> without re-adding it.
 
 **Verified locally on Windows x64 (2026-11-07):** the whole sequence ran
 end to end on the development machine — `build.mjs` produced the 64 MiB
