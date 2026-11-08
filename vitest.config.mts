@@ -23,6 +23,18 @@ const shared = {
 
 export default defineConfig({
   test: {
+    // Testing.md §10: the core layer is gated at 90% lines and 85% branches.
+    // Only core sources are measured, so the gate tracks the theory core.
+    coverage: {
+      include: ['src/core/**/*.ts'],
+      exclude: ['src/core/**/*.test.ts'],
+      thresholds: {
+        lines: 90,
+        branches: 85,
+        functions: 90,
+        statements: 90,
+      },
+    },
     projects: [
       {
         ...shared,

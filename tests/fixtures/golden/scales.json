@@ -1,0 +1,784 @@
+{
+  "C": {
+    "major": {
+      "pitchClasses": [0, 2, 4, 5, 7, 9, 11],
+      "oracleNotes": ["C", "D", "E", "F", "G", "A", "B"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [0, 2, 3, 5, 7, 8, 10],
+      "oracleNotes": ["C", "D", "Eb", "F", "G", "Ab", "Bb"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [0, 2, 3, 5, 7, 8, 11],
+      "oracleNotes": ["C", "D", "Eb", "F", "G", "Ab", "B"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [0, 2, 3, 5, 7, 9, 11],
+      "oracleNotes": ["C", "D", "Eb", "F", "G", "A", "B"]
+    },
+    "ionian": {
+      "pitchClasses": [0, 2, 4, 5, 7, 9, 11],
+      "oracleNotes": ["C", "D", "E", "F", "G", "A", "B"]
+    },
+    "dorian": {
+      "pitchClasses": [0, 2, 3, 5, 7, 9, 10],
+      "oracleNotes": ["C", "D", "Eb", "F", "G", "A", "Bb"]
+    },
+    "phrygian": {
+      "pitchClasses": [0, 1, 3, 5, 7, 8, 10],
+      "oracleNotes": ["C", "Db", "Eb", "F", "G", "Ab", "Bb"]
+    },
+    "lydian": {
+      "pitchClasses": [0, 2, 4, 6, 7, 9, 11],
+      "oracleNotes": ["C", "D", "E", "F#", "G", "A", "B"]
+    },
+    "mixolydian": {
+      "pitchClasses": [0, 2, 4, 5, 7, 9, 10],
+      "oracleNotes": ["C", "D", "E", "F", "G", "A", "Bb"]
+    },
+    "aeolian": {
+      "pitchClasses": [0, 2, 3, 5, 7, 8, 10],
+      "oracleNotes": ["C", "D", "Eb", "F", "G", "Ab", "Bb"]
+    },
+    "locrian": {
+      "pitchClasses": [0, 1, 3, 5, 6, 8, 10],
+      "oracleNotes": ["C", "Db", "Eb", "F", "Gb", "Ab", "Bb"]
+    }
+  },
+  "Db": {
+    "major": {
+      "pitchClasses": [1, 3, 5, 6, 8, 10, 0],
+      "oracleNotes": ["Db", "Eb", "F", "Gb", "Ab", "Bb", "C"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [1, 3, 4, 6, 8, 9, 11],
+      "oracleNotes": ["Db", "Eb", "Fb", "Gb", "Ab", "Bbb", "Cb"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [1, 3, 4, 6, 8, 9, 0],
+      "oracleNotes": ["Db", "Eb", "Fb", "Gb", "Ab", "Bbb", "C"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [1, 3, 4, 6, 8, 10, 0],
+      "oracleNotes": ["Db", "Eb", "Fb", "Gb", "Ab", "Bb", "C"]
+    },
+    "ionian": {
+      "pitchClasses": [1, 3, 5, 6, 8, 10, 0],
+      "oracleNotes": ["Db", "Eb", "F", "Gb", "Ab", "Bb", "C"]
+    },
+    "dorian": {
+      "pitchClasses": [1, 3, 4, 6, 8, 10, 11],
+      "oracleNotes": ["Db", "Eb", "Fb", "Gb", "Ab", "Bb", "Cb"]
+    },
+    "phrygian": {
+      "pitchClasses": [1, 2, 4, 6, 8, 9, 11],
+      "oracleNotes": ["Db", "Ebb", "Fb", "Gb", "Ab", "Bbb", "Cb"]
+    },
+    "lydian": {
+      "pitchClasses": [1, 3, 5, 7, 8, 10, 0],
+      "oracleNotes": ["Db", "Eb", "F", "G", "Ab", "Bb", "C"]
+    },
+    "mixolydian": {
+      "pitchClasses": [1, 3, 5, 6, 8, 10, 11],
+      "oracleNotes": ["Db", "Eb", "F", "Gb", "Ab", "Bb", "Cb"]
+    },
+    "aeolian": {
+      "pitchClasses": [1, 3, 4, 6, 8, 9, 11],
+      "oracleNotes": ["Db", "Eb", "Fb", "Gb", "Ab", "Bbb", "Cb"]
+    },
+    "locrian": {
+      "pitchClasses": [1, 2, 4, 6, 7, 9, 11],
+      "oracleNotes": ["Db", "Ebb", "Fb", "Gb", "Abb", "Bbb", "Cb"]
+    }
+  },
+  "D": {
+    "major": {
+      "pitchClasses": [2, 4, 6, 7, 9, 11, 1],
+      "oracleNotes": ["D", "E", "F#", "G", "A", "B", "C#"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [2, 4, 5, 7, 9, 10, 0],
+      "oracleNotes": ["D", "E", "F", "G", "A", "Bb", "C"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [2, 4, 5, 7, 9, 10, 1],
+      "oracleNotes": ["D", "E", "F", "G", "A", "Bb", "C#"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [2, 4, 5, 7, 9, 11, 1],
+      "oracleNotes": ["D", "E", "F", "G", "A", "B", "C#"]
+    },
+    "ionian": {
+      "pitchClasses": [2, 4, 6, 7, 9, 11, 1],
+      "oracleNotes": ["D", "E", "F#", "G", "A", "B", "C#"]
+    },
+    "dorian": {
+      "pitchClasses": [2, 4, 5, 7, 9, 11, 0],
+      "oracleNotes": ["D", "E", "F", "G", "A", "B", "C"]
+    },
+    "phrygian": {
+      "pitchClasses": [2, 3, 5, 7, 9, 10, 0],
+      "oracleNotes": ["D", "Eb", "F", "G", "A", "Bb", "C"]
+    },
+    "lydian": {
+      "pitchClasses": [2, 4, 6, 8, 9, 11, 1],
+      "oracleNotes": ["D", "E", "F#", "G#", "A", "B", "C#"]
+    },
+    "mixolydian": {
+      "pitchClasses": [2, 4, 6, 7, 9, 11, 0],
+      "oracleNotes": ["D", "E", "F#", "G", "A", "B", "C"]
+    },
+    "aeolian": {
+      "pitchClasses": [2, 4, 5, 7, 9, 10, 0],
+      "oracleNotes": ["D", "E", "F", "G", "A", "Bb", "C"]
+    },
+    "locrian": {
+      "pitchClasses": [2, 3, 5, 7, 8, 10, 0],
+      "oracleNotes": ["D", "Eb", "F", "G", "Ab", "Bb", "C"]
+    }
+  },
+  "Eb": {
+    "major": {
+      "pitchClasses": [3, 5, 7, 8, 10, 0, 2],
+      "oracleNotes": ["Eb", "F", "G", "Ab", "Bb", "C", "D"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [3, 5, 6, 8, 10, 11, 1],
+      "oracleNotes": ["Eb", "F", "Gb", "Ab", "Bb", "Cb", "Db"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [3, 5, 6, 8, 10, 11, 2],
+      "oracleNotes": ["Eb", "F", "Gb", "Ab", "Bb", "Cb", "D"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [3, 5, 6, 8, 10, 0, 2],
+      "oracleNotes": ["Eb", "F", "Gb", "Ab", "Bb", "C", "D"]
+    },
+    "ionian": {
+      "pitchClasses": [3, 5, 7, 8, 10, 0, 2],
+      "oracleNotes": ["Eb", "F", "G", "Ab", "Bb", "C", "D"]
+    },
+    "dorian": {
+      "pitchClasses": [3, 5, 6, 8, 10, 0, 1],
+      "oracleNotes": ["Eb", "F", "Gb", "Ab", "Bb", "C", "Db"]
+    },
+    "phrygian": {
+      "pitchClasses": [3, 4, 6, 8, 10, 11, 1],
+      "oracleNotes": ["Eb", "Fb", "Gb", "Ab", "Bb", "Cb", "Db"]
+    },
+    "lydian": {
+      "pitchClasses": [3, 5, 7, 9, 10, 0, 2],
+      "oracleNotes": ["Eb", "F", "G", "A", "Bb", "C", "D"]
+    },
+    "mixolydian": {
+      "pitchClasses": [3, 5, 7, 8, 10, 0, 1],
+      "oracleNotes": ["Eb", "F", "G", "Ab", "Bb", "C", "Db"]
+    },
+    "aeolian": {
+      "pitchClasses": [3, 5, 6, 8, 10, 11, 1],
+      "oracleNotes": ["Eb", "F", "Gb", "Ab", "Bb", "Cb", "Db"]
+    },
+    "locrian": {
+      "pitchClasses": [3, 4, 6, 8, 9, 11, 1],
+      "oracleNotes": ["Eb", "Fb", "Gb", "Ab", "Bbb", "Cb", "Db"]
+    }
+  },
+  "E": {
+    "major": {
+      "pitchClasses": [4, 6, 8, 9, 11, 1, 3],
+      "oracleNotes": ["E", "F#", "G#", "A", "B", "C#", "D#"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [4, 6, 7, 9, 11, 0, 2],
+      "oracleNotes": ["E", "F#", "G", "A", "B", "C", "D"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [4, 6, 7, 9, 11, 0, 3],
+      "oracleNotes": ["E", "F#", "G", "A", "B", "C", "D#"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [4, 6, 7, 9, 11, 1, 3],
+      "oracleNotes": ["E", "F#", "G", "A", "B", "C#", "D#"]
+    },
+    "ionian": {
+      "pitchClasses": [4, 6, 8, 9, 11, 1, 3],
+      "oracleNotes": ["E", "F#", "G#", "A", "B", "C#", "D#"]
+    },
+    "dorian": {
+      "pitchClasses": [4, 6, 7, 9, 11, 1, 2],
+      "oracleNotes": ["E", "F#", "G", "A", "B", "C#", "D"]
+    },
+    "phrygian": {
+      "pitchClasses": [4, 5, 7, 9, 11, 0, 2],
+      "oracleNotes": ["E", "F", "G", "A", "B", "C", "D"]
+    },
+    "lydian": {
+      "pitchClasses": [4, 6, 8, 10, 11, 1, 3],
+      "oracleNotes": ["E", "F#", "G#", "A#", "B", "C#", "D#"]
+    },
+    "mixolydian": {
+      "pitchClasses": [4, 6, 8, 9, 11, 1, 2],
+      "oracleNotes": ["E", "F#", "G#", "A", "B", "C#", "D"]
+    },
+    "aeolian": {
+      "pitchClasses": [4, 6, 7, 9, 11, 0, 2],
+      "oracleNotes": ["E", "F#", "G", "A", "B", "C", "D"]
+    },
+    "locrian": {
+      "pitchClasses": [4, 5, 7, 9, 10, 0, 2],
+      "oracleNotes": ["E", "F", "G", "A", "Bb", "C", "D"]
+    }
+  },
+  "F": {
+    "major": {
+      "pitchClasses": [5, 7, 9, 10, 0, 2, 4],
+      "oracleNotes": ["F", "G", "A", "Bb", "C", "D", "E"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [5, 7, 8, 10, 0, 1, 3],
+      "oracleNotes": ["F", "G", "Ab", "Bb", "C", "Db", "Eb"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [5, 7, 8, 10, 0, 1, 4],
+      "oracleNotes": ["F", "G", "Ab", "Bb", "C", "Db", "E"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [5, 7, 8, 10, 0, 2, 4],
+      "oracleNotes": ["F", "G", "Ab", "Bb", "C", "D", "E"]
+    },
+    "ionian": {
+      "pitchClasses": [5, 7, 9, 10, 0, 2, 4],
+      "oracleNotes": ["F", "G", "A", "Bb", "C", "D", "E"]
+    },
+    "dorian": {
+      "pitchClasses": [5, 7, 8, 10, 0, 2, 3],
+      "oracleNotes": ["F", "G", "Ab", "Bb", "C", "D", "Eb"]
+    },
+    "phrygian": {
+      "pitchClasses": [5, 6, 8, 10, 0, 1, 3],
+      "oracleNotes": ["F", "Gb", "Ab", "Bb", "C", "Db", "Eb"]
+    },
+    "lydian": {
+      "pitchClasses": [5, 7, 9, 11, 0, 2, 4],
+      "oracleNotes": ["F", "G", "A", "B", "C", "D", "E"]
+    },
+    "mixolydian": {
+      "pitchClasses": [5, 7, 9, 10, 0, 2, 3],
+      "oracleNotes": ["F", "G", "A", "Bb", "C", "D", "Eb"]
+    },
+    "aeolian": {
+      "pitchClasses": [5, 7, 8, 10, 0, 1, 3],
+      "oracleNotes": ["F", "G", "Ab", "Bb", "C", "Db", "Eb"]
+    },
+    "locrian": {
+      "pitchClasses": [5, 6, 8, 10, 11, 1, 3],
+      "oracleNotes": ["F", "Gb", "Ab", "Bb", "Cb", "Db", "Eb"]
+    }
+  },
+  "Gb": {
+    "major": {
+      "pitchClasses": [6, 8, 10, 11, 1, 3, 5],
+      "oracleNotes": ["Gb", "Ab", "Bb", "Cb", "Db", "Eb", "F"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [6, 8, 9, 11, 1, 2, 4],
+      "oracleNotes": ["Gb", "Ab", "Bbb", "Cb", "Db", "Ebb", "Fb"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [6, 8, 9, 11, 1, 2, 5],
+      "oracleNotes": ["Gb", "Ab", "Bbb", "Cb", "Db", "Ebb", "F"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [6, 8, 9, 11, 1, 3, 5],
+      "oracleNotes": ["Gb", "Ab", "Bbb", "Cb", "Db", "Eb", "F"]
+    },
+    "ionian": {
+      "pitchClasses": [6, 8, 10, 11, 1, 3, 5],
+      "oracleNotes": ["Gb", "Ab", "Bb", "Cb", "Db", "Eb", "F"]
+    },
+    "dorian": {
+      "pitchClasses": [6, 8, 9, 11, 1, 3, 4],
+      "oracleNotes": ["Gb", "Ab", "Bbb", "Cb", "Db", "Eb", "Fb"]
+    },
+    "phrygian": {
+      "pitchClasses": [6, 7, 9, 11, 1, 2, 4],
+      "oracleNotes": ["Gb", "Abb", "Bbb", "Cb", "Db", "Ebb", "Fb"]
+    },
+    "lydian": {
+      "pitchClasses": [6, 8, 10, 0, 1, 3, 5],
+      "oracleNotes": ["Gb", "Ab", "Bb", "C", "Db", "Eb", "F"]
+    },
+    "mixolydian": {
+      "pitchClasses": [6, 8, 10, 11, 1, 3, 4],
+      "oracleNotes": ["Gb", "Ab", "Bb", "Cb", "Db", "Eb", "Fb"]
+    },
+    "aeolian": {
+      "pitchClasses": [6, 8, 9, 11, 1, 2, 4],
+      "oracleNotes": ["Gb", "Ab", "Bbb", "Cb", "Db", "Ebb", "Fb"]
+    },
+    "locrian": {
+      "pitchClasses": [6, 7, 9, 11, 0, 2, 4],
+      "oracleNotes": ["Gb", "Abb", "Bbb", "Cb", "Dbb", "Ebb", "Fb"]
+    }
+  },
+  "G": {
+    "major": {
+      "pitchClasses": [7, 9, 11, 0, 2, 4, 6],
+      "oracleNotes": ["G", "A", "B", "C", "D", "E", "F#"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [7, 9, 10, 0, 2, 3, 5],
+      "oracleNotes": ["G", "A", "Bb", "C", "D", "Eb", "F"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [7, 9, 10, 0, 2, 3, 6],
+      "oracleNotes": ["G", "A", "Bb", "C", "D", "Eb", "F#"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [7, 9, 10, 0, 2, 4, 6],
+      "oracleNotes": ["G", "A", "Bb", "C", "D", "E", "F#"]
+    },
+    "ionian": {
+      "pitchClasses": [7, 9, 11, 0, 2, 4, 6],
+      "oracleNotes": ["G", "A", "B", "C", "D", "E", "F#"]
+    },
+    "dorian": {
+      "pitchClasses": [7, 9, 10, 0, 2, 4, 5],
+      "oracleNotes": ["G", "A", "Bb", "C", "D", "E", "F"]
+    },
+    "phrygian": {
+      "pitchClasses": [7, 8, 10, 0, 2, 3, 5],
+      "oracleNotes": ["G", "Ab", "Bb", "C", "D", "Eb", "F"]
+    },
+    "lydian": {
+      "pitchClasses": [7, 9, 11, 1, 2, 4, 6],
+      "oracleNotes": ["G", "A", "B", "C#", "D", "E", "F#"]
+    },
+    "mixolydian": {
+      "pitchClasses": [7, 9, 11, 0, 2, 4, 5],
+      "oracleNotes": ["G", "A", "B", "C", "D", "E", "F"]
+    },
+    "aeolian": {
+      "pitchClasses": [7, 9, 10, 0, 2, 3, 5],
+      "oracleNotes": ["G", "A", "Bb", "C", "D", "Eb", "F"]
+    },
+    "locrian": {
+      "pitchClasses": [7, 8, 10, 0, 1, 3, 5],
+      "oracleNotes": ["G", "Ab", "Bb", "C", "Db", "Eb", "F"]
+    }
+  },
+  "Ab": {
+    "major": {
+      "pitchClasses": [8, 10, 0, 1, 3, 5, 7],
+      "oracleNotes": ["Ab", "Bb", "C", "Db", "Eb", "F", "G"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [8, 10, 11, 1, 3, 4, 6],
+      "oracleNotes": ["Ab", "Bb", "Cb", "Db", "Eb", "Fb", "Gb"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [8, 10, 11, 1, 3, 4, 7],
+      "oracleNotes": ["Ab", "Bb", "Cb", "Db", "Eb", "Fb", "G"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [8, 10, 11, 1, 3, 5, 7],
+      "oracleNotes": ["Ab", "Bb", "Cb", "Db", "Eb", "F", "G"]
+    },
+    "ionian": {
+      "pitchClasses": [8, 10, 0, 1, 3, 5, 7],
+      "oracleNotes": ["Ab", "Bb", "C", "Db", "Eb", "F", "G"]
+    },
+    "dorian": {
+      "pitchClasses": [8, 10, 11, 1, 3, 5, 6],
+      "oracleNotes": ["Ab", "Bb", "Cb", "Db", "Eb", "F", "Gb"]
+    },
+    "phrygian": {
+      "pitchClasses": [8, 9, 11, 1, 3, 4, 6],
+      "oracleNotes": ["Ab", "Bbb", "Cb", "Db", "Eb", "Fb", "Gb"]
+    },
+    "lydian": {
+      "pitchClasses": [8, 10, 0, 2, 3, 5, 7],
+      "oracleNotes": ["Ab", "Bb", "C", "D", "Eb", "F", "G"]
+    },
+    "mixolydian": {
+      "pitchClasses": [8, 10, 0, 1, 3, 5, 6],
+      "oracleNotes": ["Ab", "Bb", "C", "Db", "Eb", "F", "Gb"]
+    },
+    "aeolian": {
+      "pitchClasses": [8, 10, 11, 1, 3, 4, 6],
+      "oracleNotes": ["Ab", "Bb", "Cb", "Db", "Eb", "Fb", "Gb"]
+    },
+    "locrian": {
+      "pitchClasses": [8, 9, 11, 1, 2, 4, 6],
+      "oracleNotes": ["Ab", "Bbb", "Cb", "Db", "Ebb", "Fb", "Gb"]
+    }
+  },
+  "A": {
+    "major": {
+      "pitchClasses": [9, 11, 1, 2, 4, 6, 8],
+      "oracleNotes": ["A", "B", "C#", "D", "E", "F#", "G#"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [9, 11, 0, 2, 4, 5, 7],
+      "oracleNotes": ["A", "B", "C", "D", "E", "F", "G"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [9, 11, 0, 2, 4, 5, 8],
+      "oracleNotes": ["A", "B", "C", "D", "E", "F", "G#"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [9, 11, 0, 2, 4, 6, 8],
+      "oracleNotes": ["A", "B", "C", "D", "E", "F#", "G#"]
+    },
+    "ionian": {
+      "pitchClasses": [9, 11, 1, 2, 4, 6, 8],
+      "oracleNotes": ["A", "B", "C#", "D", "E", "F#", "G#"]
+    },
+    "dorian": {
+      "pitchClasses": [9, 11, 0, 2, 4, 6, 7],
+      "oracleNotes": ["A", "B", "C", "D", "E", "F#", "G"]
+    },
+    "phrygian": {
+      "pitchClasses": [9, 10, 0, 2, 4, 5, 7],
+      "oracleNotes": ["A", "Bb", "C", "D", "E", "F", "G"]
+    },
+    "lydian": {
+      "pitchClasses": [9, 11, 1, 3, 4, 6, 8],
+      "oracleNotes": ["A", "B", "C#", "D#", "E", "F#", "G#"]
+    },
+    "mixolydian": {
+      "pitchClasses": [9, 11, 1, 2, 4, 6, 7],
+      "oracleNotes": ["A", "B", "C#", "D", "E", "F#", "G"]
+    },
+    "aeolian": {
+      "pitchClasses": [9, 11, 0, 2, 4, 5, 7],
+      "oracleNotes": ["A", "B", "C", "D", "E", "F", "G"]
+    },
+    "locrian": {
+      "pitchClasses": [9, 10, 0, 2, 3, 5, 7],
+      "oracleNotes": ["A", "Bb", "C", "D", "Eb", "F", "G"]
+    }
+  },
+  "Bb": {
+    "major": {
+      "pitchClasses": [10, 0, 2, 3, 5, 7, 9],
+      "oracleNotes": ["Bb", "C", "D", "Eb", "F", "G", "A"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [10, 0, 1, 3, 5, 6, 8],
+      "oracleNotes": ["Bb", "C", "Db", "Eb", "F", "Gb", "Ab"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [10, 0, 1, 3, 5, 6, 9],
+      "oracleNotes": ["Bb", "C", "Db", "Eb", "F", "Gb", "A"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [10, 0, 1, 3, 5, 7, 9],
+      "oracleNotes": ["Bb", "C", "Db", "Eb", "F", "G", "A"]
+    },
+    "ionian": {
+      "pitchClasses": [10, 0, 2, 3, 5, 7, 9],
+      "oracleNotes": ["Bb", "C", "D", "Eb", "F", "G", "A"]
+    },
+    "dorian": {
+      "pitchClasses": [10, 0, 1, 3, 5, 7, 8],
+      "oracleNotes": ["Bb", "C", "Db", "Eb", "F", "G", "Ab"]
+    },
+    "phrygian": {
+      "pitchClasses": [10, 11, 1, 3, 5, 6, 8],
+      "oracleNotes": ["Bb", "Cb", "Db", "Eb", "F", "Gb", "Ab"]
+    },
+    "lydian": {
+      "pitchClasses": [10, 0, 2, 4, 5, 7, 9],
+      "oracleNotes": ["Bb", "C", "D", "E", "F", "G", "A"]
+    },
+    "mixolydian": {
+      "pitchClasses": [10, 0, 2, 3, 5, 7, 8],
+      "oracleNotes": ["Bb", "C", "D", "Eb", "F", "G", "Ab"]
+    },
+    "aeolian": {
+      "pitchClasses": [10, 0, 1, 3, 5, 6, 8],
+      "oracleNotes": ["Bb", "C", "Db", "Eb", "F", "Gb", "Ab"]
+    },
+    "locrian": {
+      "pitchClasses": [10, 11, 1, 3, 4, 6, 8],
+      "oracleNotes": ["Bb", "Cb", "Db", "Eb", "Fb", "Gb", "Ab"]
+    }
+  },
+  "B": {
+    "major": {
+      "pitchClasses": [11, 1, 3, 4, 6, 8, 10],
+      "oracleNotes": ["B", "C#", "D#", "E", "F#", "G#", "A#"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [11, 1, 2, 4, 6, 7, 9],
+      "oracleNotes": ["B", "C#", "D", "E", "F#", "G", "A"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [11, 1, 2, 4, 6, 7, 10],
+      "oracleNotes": ["B", "C#", "D", "E", "F#", "G", "A#"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [11, 1, 2, 4, 6, 8, 10],
+      "oracleNotes": ["B", "C#", "D", "E", "F#", "G#", "A#"]
+    },
+    "ionian": {
+      "pitchClasses": [11, 1, 3, 4, 6, 8, 10],
+      "oracleNotes": ["B", "C#", "D#", "E", "F#", "G#", "A#"]
+    },
+    "dorian": {
+      "pitchClasses": [11, 1, 2, 4, 6, 8, 9],
+      "oracleNotes": ["B", "C#", "D", "E", "F#", "G#", "A"]
+    },
+    "phrygian": {
+      "pitchClasses": [11, 0, 2, 4, 6, 7, 9],
+      "oracleNotes": ["B", "C", "D", "E", "F#", "G", "A"]
+    },
+    "lydian": {
+      "pitchClasses": [11, 1, 3, 5, 6, 8, 10],
+      "oracleNotes": ["B", "C#", "D#", "E#", "F#", "G#", "A#"]
+    },
+    "mixolydian": {
+      "pitchClasses": [11, 1, 3, 4, 6, 8, 9],
+      "oracleNotes": ["B", "C#", "D#", "E", "F#", "G#", "A"]
+    },
+    "aeolian": {
+      "pitchClasses": [11, 1, 2, 4, 6, 7, 9],
+      "oracleNotes": ["B", "C#", "D", "E", "F#", "G", "A"]
+    },
+    "locrian": {
+      "pitchClasses": [11, 0, 2, 4, 5, 7, 9],
+      "oracleNotes": ["B", "C", "D", "E", "F", "G", "A"]
+    }
+  },
+  "C#": {
+    "major": {
+      "pitchClasses": [1, 3, 5, 6, 8, 10, 0],
+      "oracleNotes": ["C#", "D#", "E#", "F#", "G#", "A#", "B#"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [1, 3, 4, 6, 8, 9, 11],
+      "oracleNotes": ["C#", "D#", "E", "F#", "G#", "A", "B"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [1, 3, 4, 6, 8, 9, 0],
+      "oracleNotes": ["C#", "D#", "E", "F#", "G#", "A", "B#"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [1, 3, 4, 6, 8, 10, 0],
+      "oracleNotes": ["C#", "D#", "E", "F#", "G#", "A#", "B#"]
+    },
+    "ionian": {
+      "pitchClasses": [1, 3, 5, 6, 8, 10, 0],
+      "oracleNotes": ["C#", "D#", "E#", "F#", "G#", "A#", "B#"]
+    },
+    "dorian": {
+      "pitchClasses": [1, 3, 4, 6, 8, 10, 11],
+      "oracleNotes": ["C#", "D#", "E", "F#", "G#", "A#", "B"]
+    },
+    "phrygian": {
+      "pitchClasses": [1, 2, 4, 6, 8, 9, 11],
+      "oracleNotes": ["C#", "D", "E", "F#", "G#", "A", "B"]
+    },
+    "lydian": {
+      "pitchClasses": [1, 3, 5, 7, 8, 10, 0],
+      "oracleNotes": ["C#", "D#", "E#", "F##", "G#", "A#", "B#"]
+    },
+    "mixolydian": {
+      "pitchClasses": [1, 3, 5, 6, 8, 10, 11],
+      "oracleNotes": ["C#", "D#", "E#", "F#", "G#", "A#", "B"]
+    },
+    "aeolian": {
+      "pitchClasses": [1, 3, 4, 6, 8, 9, 11],
+      "oracleNotes": ["C#", "D#", "E", "F#", "G#", "A", "B"]
+    },
+    "locrian": {
+      "pitchClasses": [1, 2, 4, 6, 7, 9, 11],
+      "oracleNotes": ["C#", "D", "E", "F#", "G", "A", "B"]
+    }
+  },
+  "D#": {
+    "major": {
+      "pitchClasses": [3, 5, 7, 8, 10, 0, 2],
+      "oracleNotes": ["D#", "E#", "F##", "G#", "A#", "B#", "C##"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [3, 5, 6, 8, 10, 11, 1],
+      "oracleNotes": ["D#", "E#", "F#", "G#", "A#", "B", "C#"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [3, 5, 6, 8, 10, 11, 2],
+      "oracleNotes": ["D#", "E#", "F#", "G#", "A#", "B", "C##"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [3, 5, 6, 8, 10, 0, 2],
+      "oracleNotes": ["D#", "E#", "F#", "G#", "A#", "B#", "C##"]
+    },
+    "ionian": {
+      "pitchClasses": [3, 5, 7, 8, 10, 0, 2],
+      "oracleNotes": ["D#", "E#", "F##", "G#", "A#", "B#", "C##"]
+    },
+    "dorian": {
+      "pitchClasses": [3, 5, 6, 8, 10, 0, 1],
+      "oracleNotes": ["D#", "E#", "F#", "G#", "A#", "B#", "C#"]
+    },
+    "phrygian": {
+      "pitchClasses": [3, 4, 6, 8, 10, 11, 1],
+      "oracleNotes": ["D#", "E", "F#", "G#", "A#", "B", "C#"]
+    },
+    "lydian": {
+      "pitchClasses": [3, 5, 7, 9, 10, 0, 2],
+      "oracleNotes": ["D#", "E#", "F##", "G##", "A#", "B#", "C##"]
+    },
+    "mixolydian": {
+      "pitchClasses": [3, 5, 7, 8, 10, 0, 1],
+      "oracleNotes": ["D#", "E#", "F##", "G#", "A#", "B#", "C#"]
+    },
+    "aeolian": {
+      "pitchClasses": [3, 5, 6, 8, 10, 11, 1],
+      "oracleNotes": ["D#", "E#", "F#", "G#", "A#", "B", "C#"]
+    },
+    "locrian": {
+      "pitchClasses": [3, 4, 6, 8, 9, 11, 1],
+      "oracleNotes": ["D#", "E", "F#", "G#", "A", "B", "C#"]
+    }
+  },
+  "F#": {
+    "major": {
+      "pitchClasses": [6, 8, 10, 11, 1, 3, 5],
+      "oracleNotes": ["F#", "G#", "A#", "B", "C#", "D#", "E#"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [6, 8, 9, 11, 1, 2, 4],
+      "oracleNotes": ["F#", "G#", "A", "B", "C#", "D", "E"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [6, 8, 9, 11, 1, 2, 5],
+      "oracleNotes": ["F#", "G#", "A", "B", "C#", "D", "E#"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [6, 8, 9, 11, 1, 3, 5],
+      "oracleNotes": ["F#", "G#", "A", "B", "C#", "D#", "E#"]
+    },
+    "ionian": {
+      "pitchClasses": [6, 8, 10, 11, 1, 3, 5],
+      "oracleNotes": ["F#", "G#", "A#", "B", "C#", "D#", "E#"]
+    },
+    "dorian": {
+      "pitchClasses": [6, 8, 9, 11, 1, 3, 4],
+      "oracleNotes": ["F#", "G#", "A", "B", "C#", "D#", "E"]
+    },
+    "phrygian": {
+      "pitchClasses": [6, 7, 9, 11, 1, 2, 4],
+      "oracleNotes": ["F#", "G", "A", "B", "C#", "D", "E"]
+    },
+    "lydian": {
+      "pitchClasses": [6, 8, 10, 0, 1, 3, 5],
+      "oracleNotes": ["F#", "G#", "A#", "B#", "C#", "D#", "E#"]
+    },
+    "mixolydian": {
+      "pitchClasses": [6, 8, 10, 11, 1, 3, 4],
+      "oracleNotes": ["F#", "G#", "A#", "B", "C#", "D#", "E"]
+    },
+    "aeolian": {
+      "pitchClasses": [6, 8, 9, 11, 1, 2, 4],
+      "oracleNotes": ["F#", "G#", "A", "B", "C#", "D", "E"]
+    },
+    "locrian": {
+      "pitchClasses": [6, 7, 9, 11, 0, 2, 4],
+      "oracleNotes": ["F#", "G", "A", "B", "C", "D", "E"]
+    }
+  },
+  "G#": {
+    "major": {
+      "pitchClasses": [8, 10, 0, 1, 3, 5, 7],
+      "oracleNotes": ["G#", "A#", "B#", "C#", "D#", "E#", "F##"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [8, 10, 11, 1, 3, 4, 6],
+      "oracleNotes": ["G#", "A#", "B", "C#", "D#", "E", "F#"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [8, 10, 11, 1, 3, 4, 7],
+      "oracleNotes": ["G#", "A#", "B", "C#", "D#", "E", "F##"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [8, 10, 11, 1, 3, 5, 7],
+      "oracleNotes": ["G#", "A#", "B", "C#", "D#", "E#", "F##"]
+    },
+    "ionian": {
+      "pitchClasses": [8, 10, 0, 1, 3, 5, 7],
+      "oracleNotes": ["G#", "A#", "B#", "C#", "D#", "E#", "F##"]
+    },
+    "dorian": {
+      "pitchClasses": [8, 10, 11, 1, 3, 5, 6],
+      "oracleNotes": ["G#", "A#", "B", "C#", "D#", "E#", "F#"]
+    },
+    "phrygian": {
+      "pitchClasses": [8, 9, 11, 1, 3, 4, 6],
+      "oracleNotes": ["G#", "A", "B", "C#", "D#", "E", "F#"]
+    },
+    "lydian": {
+      "pitchClasses": [8, 10, 0, 2, 3, 5, 7],
+      "oracleNotes": ["G#", "A#", "B#", "C##", "D#", "E#", "F##"]
+    },
+    "mixolydian": {
+      "pitchClasses": [8, 10, 0, 1, 3, 5, 6],
+      "oracleNotes": ["G#", "A#", "B#", "C#", "D#", "E#", "F#"]
+    },
+    "aeolian": {
+      "pitchClasses": [8, 10, 11, 1, 3, 4, 6],
+      "oracleNotes": ["G#", "A#", "B", "C#", "D#", "E", "F#"]
+    },
+    "locrian": {
+      "pitchClasses": [8, 9, 11, 1, 2, 4, 6],
+      "oracleNotes": ["G#", "A", "B", "C#", "D", "E", "F#"]
+    }
+  },
+  "A#": {
+    "major": {
+      "pitchClasses": [10, 0, 2, 3, 5, 7, 9],
+      "oracleNotes": ["A#", "B#", "C##", "D#", "E#", "F##", "G##"]
+    },
+    "naturalMinor": {
+      "pitchClasses": [10, 0, 1, 3, 5, 6, 8],
+      "oracleNotes": ["A#", "B#", "C#", "D#", "E#", "F#", "G#"]
+    },
+    "harmonicMinor": {
+      "pitchClasses": [10, 0, 1, 3, 5, 6, 9],
+      "oracleNotes": ["A#", "B#", "C#", "D#", "E#", "F#", "G##"]
+    },
+    "melodicMinor": {
+      "pitchClasses": [10, 0, 1, 3, 5, 7, 9],
+      "oracleNotes": ["A#", "B#", "C#", "D#", "E#", "F##", "G##"]
+    },
+    "ionian": {
+      "pitchClasses": [10, 0, 2, 3, 5, 7, 9],
+      "oracleNotes": ["A#", "B#", "C##", "D#", "E#", "F##", "G##"]
+    },
+    "dorian": {
+      "pitchClasses": [10, 0, 1, 3, 5, 7, 8],
+      "oracleNotes": ["A#", "B#", "C#", "D#", "E#", "F##", "G#"]
+    },
+    "phrygian": {
+      "pitchClasses": [10, 11, 1, 3, 5, 6, 8],
+      "oracleNotes": ["A#", "B", "C#", "D#", "E#", "F#", "G#"]
+    },
+    "lydian": {
+      "pitchClasses": [10, 0, 2, 4, 5, 7, 9],
+      "oracleNotes": ["A#", "B#", "C##", "D##", "E#", "F##", "G##"]
+    },
+    "mixolydian": {
+      "pitchClasses": [10, 0, 2, 3, 5, 7, 8],
+      "oracleNotes": ["A#", "B#", "C##", "D#", "E#", "F##", "G#"]
+    },
+    "aeolian": {
+      "pitchClasses": [10, 0, 1, 3, 5, 6, 8],
+      "oracleNotes": ["A#", "B#", "C#", "D#", "E#", "F#", "G#"]
+    },
+    "locrian": {
+      "pitchClasses": [10, 11, 1, 3, 4, 6, 8],
+      "oracleNotes": ["A#", "B", "C#", "D#", "E", "F#", "G#"]
+    }
+  }
+}

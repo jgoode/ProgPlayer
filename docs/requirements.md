@@ -225,7 +225,7 @@ Notes:
 2. Built-in presets are expressed in degrees and resolved per key; non-diatonic chords are marked explicitly.
 3. The click uses the built-in synth or a bundled sample for internal output, and a GM percussion note on channel 10 for MIDI out.
 4. SoundFont engine and MIDI I/O approach are chosen after short technical spikes; neither choice changes the requirements above.
-5. **Preset resolution (to confirm):** a preset's chord roots are fixed offsets from the tonic (major-scale degree numbering with accidentals, e.g. ♭VII) and its qualities are explicit, so a preset sounds the same in every scale type. The session's scale type is used to suggest presets (each preset declares a home scale type) and to drive scale hints, not to rewrite a preset's chords.
+5. **Preset resolution (confirmed 2026-11-07, closes G-01):** a preset's chord roots are fixed offsets from the tonic (major-scale degree numbering with accidentals, e.g. ♭VII) and its qualities are explicit, so a preset sounds the same in every scale type. The session's scale type is used to suggest presets (each preset declares a home scale type) and to drive scale hints, not to rewrite a preset's chords.
 
 ## 11. Acceptance criteria (summary)
 
@@ -245,11 +245,11 @@ Notes:
 | ID | Question | Proposed default |
 |---|---|---|
 | OQ-1 | ~~Which open-source license?~~ **Resolved: MIT.** Dependencies must be MIT-compatible (permissive; Apache-2.0 is fine with NOTICE attribution). | — |
-| OQ-2 | How are enharmonic keys offered (e.g. F♯ major vs G♭ major; D♯ minor vs E♭ minor)? | Offer both spellings where both are practical |
+| OQ-2 | How are enharmonic keys offered (e.g. F♯ major vs G♭ major; D♯ minor vs E♭ minor)? | **Resolved 2026-11-07 (P2.5).** Both spellings are offered; the spelling is stored with the pitch class and preserved through scale, chord and degree resolution. All 12 tonics are available in sharp and flat spellings, and spellings that would need more than a double accidental fall back to the closest supported enharmonic and are flagged. |
 | OQ-3 | ~~Initial preset list~~ **Resolved:** 29 presets across rock, blues, jazz and modal vamps (Appendix A); expandable by the user. | — |
 | OQ-4 | Tempo range? | 30–300 BPM |
 | OQ-5 | ~~BPM unit and beat grouping~~ **Resolved:** quarter-note BPM, except 6/8 uses dotted quarter; 7/8 groups 2+2+3; 5/4 groups 3+2 (user-switchable to 2+3). | — |
-| OQ-6 | Voicing register and voice-leading rules for chords and bass? | Chords centred around middle C, close-position voicings with minimal-movement inversions; bass in the octave below |
+| OQ-6 | Voicing register and voice-leading rules for chords and bass? | **Implemented 2026-11-07 (P2.6); defaults documented in `docs/voicing-rules.md` and pending the M-7 listening review.** Chords are close-position in G3–C6, centred on middle C, with the inversion that moves least from the previous chord; chords with a 9th or higher drop the 5th, and an unaltered 11th is dropped over a major third. The bass plays the root in E1–E3, an octave below the chord centre. |
 | OQ-7 | Fretboard: chord tones only, or also suggested fingered shapes? | Chord tones only in v1 |
 | OQ-8 | ~~Scale hints for non-diatonic chords~~ **Resolved:** chord-scale chosen by chord quality, shown alongside the in-key scale. To be expanded in later iterations. | — |
 | OQ-9 | ~~MP3 encoder choice and its license?~~ **Resolved 2026-11-06:** no combined-permissive JS/WASM MP3 encoder is distributed; v1.0 ships WAV only (ADR-0004). `rusty_mp3` (Apache-2.0) is the designated candidate if MP3 is reopened, subject to a listening test and a project-owned WASM build. | — |

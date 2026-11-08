@@ -165,7 +165,8 @@ keeps the click deterministic and avoids a fourth licence.
 - **Listening quality.** The quality notes are the publishers' own
   descriptions and the sample-format metadata; no listening test has been
   done in this spike. `testing.md` §7's manual listening check is still
-  required before any font is committed to v1.0.
+  required before any font is committed to v1.0 — the procedure is **M-8
+  (bundled SoundFont review)**, and the gap is **G-33**.
 - **University of Iowa MIS as a SoundFont.** The sets are published as
   per-note AIFF files in ZIP archives, not as SoundFonts. Building a
   playable bank from them is work that has not been costed.
@@ -174,11 +175,11 @@ keeps the click deterministic and avoids a fourth licence.
   but the converted banks were not played back and compared against the
   SF2 originals in an audition. S1 established sample-for-sample identical
   output for its own conversion; that claim has not been re-checked for
-  these ten banks.
+  these ten banks. Tracked as **G-31**.
 - **Whether the project's own conversion pipeline reproduces these sizes.**
   The SF3 figures here were produced with `sf2-cutter` 0.1.5 at Vorbis
   quality `0.4`. A different tool or quality setting gives different sizes
-  and different audio; the build must pin both.
+  and different audio; the build must pin both. Tracked as **G-31**.
 
 ## How the SF3 sizes were measured
 

@@ -210,7 +210,7 @@ for the deb.
     pipeline, pinned to `sf2-cutter` and a fixed Vorbis quality, and check
     the output sizes against the shortlist's measured figures (≈ 35 MiB for
     the dedicated set). The SF3 files measured in the spike were validated
-    structurally but not auditioned against the SF2 originals.
+    structurally but not auditioned against the SF2 originals. **Gap G-31.**
   - P10.1: add the real application to the electron-builder configuration
     and add the size check to the release workflow.
   - P10.2: obtain credentials (Apple Developer Program or SignPath
@@ -218,7 +218,11 @@ for the deb.
   - P10.3: generate the About/Licences screen from the register in
     `docs/gap-analysis.md` §4, including the CC-BY attributions for
     MuldjordKit and YDP Grand Piano.
-  - Human listening test (`testing.md` §7) of the shortlisted fonts before
-    any font is committed to v1.0.
+  - Human listening test of the shortlisted fonts before any font is
+    committed to v1.0 — `testing.md` §7 **M-8**. **Gap G-33.**
   - Re-run the packaging workflow on GitHub Actions once the billing block
-    is lifted, to capture the macOS installed-size figure in CI.
+    is lifted, to capture the macOS installed-size figure in CI. **Gap G-29.**
+  - Measure the first launch on a physical Linux desktop: the CI figure is
+    Xvfb's first paint, not the application. **Gap G-30.**
+  - Merge the spike work to `main`: all four spikes currently live on
+    `spike/s4/packaging`. **Gap G-32.**
