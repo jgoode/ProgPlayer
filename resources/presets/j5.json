@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "j5",
+  "name": "I–VI7–ii–V turnaround",
+  "category": "jazz",
+  "builtIn": true,
+  "homeScaleTypes": ["major"],
+  "timeSignature": "4/4",
+  "chords": [
+    { "degree": 1, "quality": "maj7", "durationBeats": 2 },
+    { "degree": 6, "quality": "7", "durationBeats": 2 },
+    { "degree": 2, "quality": "m7", "durationBeats": 2 },
+    { "degree": 5, "quality": "7", "durationBeats": 2 }
+  ]
+}

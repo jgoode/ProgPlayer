@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "r8",
+  "name": "Andalusian cadence",
+  "category": "rock",
+  "builtIn": true,
+  "homeScaleTypes": ["naturalMinor", "phrygian"],
+  "timeSignature": "4/4",
+  "chords": [
+    { "degree": 1, "quality": "m", "durationBeats": 4 },
+    { "degree": 7, "alteration": -1, "quality": "", "durationBeats": 4 },
+    { "degree": 6, "alteration": -1, "quality": "", "durationBeats": 4 },
+    { "degree": 5, "quality": "", "durationBeats": 4 }
+  ]
+}

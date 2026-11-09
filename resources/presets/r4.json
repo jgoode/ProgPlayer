@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "r4",
+  "name": "Minor rock vamp",
+  "category": "rock",
+  "builtIn": true,
+  "homeScaleTypes": ["naturalMinor"],
+  "timeSignature": "4/4",
+  "chords": [
+    { "degree": 1, "quality": "m", "durationBeats": 4 },
+    { "degree": 7, "alteration": -1, "quality": "", "durationBeats": 4 },
+    { "degree": 6, "alteration": -1, "quality": "", "durationBeats": 4 },
+    { "degree": 7, "alteration": -1, "quality": "", "durationBeats": 4 }
+  ]
+}

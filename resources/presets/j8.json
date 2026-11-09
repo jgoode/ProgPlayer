@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "j8",
+  "name": "Diatonic cycle to the relative minor",
+  "category": "jazz",
+  "builtIn": true,
+  "homeScaleTypes": ["major"],
+  "timeSignature": "4/4",
+  "chords": [
+    { "degree": 2, "quality": "m7", "durationBeats": 4 },
+    { "degree": 5, "quality": "7", "durationBeats": 4 },
+    { "degree": 1, "quality": "maj7", "durationBeats": 4 },
+    { "degree": 4, "quality": "maj7", "durationBeats": 4 },
+    { "degree": 7, "quality": "m7♭5", "durationBeats": 4 },
+    { "degree": 3, "quality": "7♭9", "durationBeats": 4 },
+    { "degree": 6, "quality": "m7", "durationBeats": 4 },
+    { "degree": 6, "quality": "m7", "durationBeats": 4 }
+  ]
+}

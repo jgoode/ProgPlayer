@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "b5",
+  "name": "Jazz blues (12-bar)",
+  "category": "blues",
+  "builtIn": true,
+  "homeScaleTypes": ["major"],
+  "timeSignature": "4/4",
+  "chords": [
+    { "degree": 1, "quality": "7", "durationBeats": 4 },
+    { "degree": 4, "quality": "7", "durationBeats": 4 },
+    { "degree": 1, "quality": "7", "durationBeats": 4 },
+    { "degree": 1, "quality": "7", "durationBeats": 4 },
+    { "degree": 4, "quality": "7", "durationBeats": 4 },
+    { "degree": 4, "alteration": 1, "quality": "dim7", "durationBeats": 4 },
+    { "degree": 1, "quality": "7", "durationBeats": 4 },
+    { "degree": 6, "quality": "7", "durationBeats": 4 },
+    { "degree": 2, "quality": "m7", "durationBeats": 4 },
+    { "degree": 5, "quality": "7", "durationBeats": 4 },
+    { "degree": 1, "quality": "7", "durationBeats": 2 },
+    { "degree": 6, "quality": "7", "durationBeats": 2 },
+    { "degree": 2, "quality": "m7", "durationBeats": 2 },
+    { "degree": 5, "quality": "7", "durationBeats": 2 }
+  ]
+}

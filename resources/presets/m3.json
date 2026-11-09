@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "m3",
+  "name": "Phrygian vamp",
+  "category": "modal",
+  "builtIn": true,
+  "homeScaleTypes": ["phrygian"],
+  "timeSignature": "4/4",
+  "chords": [
+    { "degree": 1, "quality": "m", "durationBeats": 8 },
+    { "degree": 2, "alteration": -1, "quality": "", "durationBeats": 8 }
+  ]
+}

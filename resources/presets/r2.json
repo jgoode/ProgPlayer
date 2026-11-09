@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "r2",
+  "name": "Mixolydian rock",
+  "category": "rock",
+  "builtIn": true,
+  "homeScaleTypes": ["mixolydian"],
+  "timeSignature": "4/4",
+  "chords": [
+    { "degree": 1, "quality": "", "durationBeats": 4 },
+    { "degree": 7, "alteration": -1, "quality": "", "durationBeats": 4 },
+    { "degree": 4, "quality": "", "durationBeats": 4 },
+    { "degree": 1, "quality": "", "durationBeats": 4 }
+  ]
+}

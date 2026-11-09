@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "b4",
+  "name": "8-bar blues",
+  "category": "blues",
+  "builtIn": true,
+  "homeScaleTypes": ["mixolydian", "major"],
+  "timeSignature": "4/4",
+  "chords": [
+    { "degree": 1, "quality": "7", "durationBeats": 4 },
+    { "degree": 5, "quality": "7", "durationBeats": 4 },
+    { "degree": 4, "quality": "7", "durationBeats": 4 },
+    { "degree": 4, "quality": "7", "durationBeats": 4 },
+    { "degree": 1, "quality": "7", "durationBeats": 4 },
+    { "degree": 1, "quality": "7", "durationBeats": 4 },
+    { "degree": 5, "quality": "7", "durationBeats": 4 },
+    { "degree": 5, "quality": "7", "durationBeats": 4 }
+  ]
+}

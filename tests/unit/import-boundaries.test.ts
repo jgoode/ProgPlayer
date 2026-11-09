@@ -66,9 +66,12 @@ describe('import boundary rules', () => {
         "import { app } from 'electron'\n\nexport const name = app.getName()\n",
       );
 
-      expect(messages).toContain(
-        "'electron' is not allowed in 'core'. Allowed external modules: none.",
-      );
+      // The rule lists the modules a layer may import, and that list changes
+      // as the project adopts dependencies, so the assertion checks that
+      // Electron is rejected rather than pinning the whole list.
+      expect(
+        messages.some((message) => message.includes("'electron' is not allowed in 'core'")),
+      ).toBe(true);
     },
     LINT_TIMEOUT_MS,
   );
@@ -96,6 +99,37 @@ describe('import boundary rules', () => {
       const messages = await lintViolation(
         'core-imports-core.ts',
         "import { IPC_CHANNELS } from '@core/contracts/api'\n\nexport const channel = IPC_CHANNELS.getAppInfo\n",
+      );
+
+      expect(messages).toEqual([]);
+    },
+    LINT_TIMEOUT_MS,
+  );
+
+  it(
+    'rejects a core module that imports an external module the core layer does not allow',
+    async () => {
+      // The core layer allow-lists its runtime dependencies (currently
+      // `zod`, see docs/gap-analysis.md §4). A dependency that is not on the
+      // list must still be rejected, so the allow-list cannot silently grow.
+      const messages = await lintViolation(
+        'core-imports-unapproved-external.ts',
+        "import { readFileSync } from 'node:fs'\n\nexport const read = readFileSync\n",
+      );
+
+      expect(
+        messages.some((message) => message.includes("'node:fs' is not allowed in 'core'")),
+      ).toBe(true);
+    },
+    LINT_TIMEOUT_MS,
+  );
+
+  it(
+    'accepts a core module that imports an allow-listed external module',
+    async () => {
+      const messages = await lintViolation(
+        'core-imports-approved-external.ts',
+        "import { z } from 'zod'\n\nexport const schema = z.object({})\n",
       );
 
       expect(messages).toEqual([]);

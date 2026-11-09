@@ -40,7 +40,11 @@ const ALLOWED_LAYERS = {
 
 /** Bare modules each layer may import, besides the layer aliases. */
 const ALLOWED_EXTERNALS = {
-  core: [],
+  // `zod` defines the session and preset file formats (P3.5). It is a pure
+  // runtime library with no Node, DOM or Electron dependency, so the core
+  // layer stays pure TypeScript. The licence is recorded in
+  // `docs/gap-analysis.md` §4 (MIT).
+  core: ['zod'],
   audio: [],
   midi: [],
   renderer: ['*'],
@@ -116,8 +120,17 @@ const boundaryRules = {
 
       const isTestFile = /\.(test|spec)\.[cm]?[jt]sx?$/.test(filename);
 
-      /** External modules that test files may always import. */
-      const TEST_EXTERNALS = ['vitest', '@testing-library/', 'node:'];
+      /**
+       * External modules that test files may always import.
+       *
+       * These are dev/test-only dependencies, registered in
+       * `docs/gap-analysis.md` §4: `fast-check` drives the property-based
+       * timeline tests, and `midi-file` is the independent reference parser
+       * the SMF round-trip test checks the writer against. Neither is ever
+       * imported by application code, so a test file using one does not
+       * make the core layer impure.
+       */
+      const TEST_EXTERNALS = ['vitest', '@testing-library/', 'node:', 'fast-check', 'midi-file'];
 
       function reportIpcRenderer(node) {
         if (layer !== 'preload' && layer !== null) {

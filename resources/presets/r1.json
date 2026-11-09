@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "r1",
+  "name": "Classic rock I–IV–V–IV",
+  "category": "rock",
+  "builtIn": true,
+  "homeScaleTypes": ["mixolydian", "major"],
+  "timeSignature": "4/4",
+  "chords": [
+    { "degree": 1, "quality": "", "durationBeats": 4 },
+    { "degree": 4, "quality": "", "durationBeats": 4 },
+    { "degree": 5, "quality": "", "durationBeats": 4 },
+    { "degree": 4, "quality": "", "durationBeats": 4 }
+  ]
+}

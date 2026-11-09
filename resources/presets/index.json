@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "presets": [
+    { "id": "r1", "file": "r1.json", "name": "Classic rock I–IV–V–IV", "category": "rock" },
+    { "id": "r2", "file": "r2.json", "name": "Mixolydian rock", "category": "rock" },
+    { "id": "r3", "file": "r3.json", "name": "Borrowed ♭III rock", "category": "rock" },
+    { "id": "r4", "file": "r4.json", "name": "Minor rock vamp", "category": "rock" },
+    { "id": "r5", "file": "r5.json", "name": "Minor anthem", "category": "rock" },
+    { "id": "r6", "file": "r6.json", "name": "Rock turnaround", "category": "rock" },
+    { "id": "r7", "file": "r7.json", "name": "50s rock-and-roll", "category": "rock" },
+    { "id": "r8", "file": "r8.json", "name": "Andalusian cadence", "category": "rock" },
+    { "id": "b1", "file": "b1.json", "name": "12-bar blues", "category": "blues" },
+    { "id": "b2", "file": "b2.json", "name": "12-bar quick-change", "category": "blues" },
+    { "id": "b3", "file": "b3.json", "name": "12-bar minor blues", "category": "blues" },
+    { "id": "b4", "file": "b4.json", "name": "8-bar blues", "category": "blues" },
+    { "id": "b5", "file": "b5.json", "name": "Jazz blues (12-bar)", "category": "blues" },
+    { "id": "b6", "file": "b6.json", "name": "Blues turnaround", "category": "blues" },
+    { "id": "j1", "file": "j1.json", "name": "ii–V–I (major)", "category": "jazz" },
+    { "id": "j2", "file": "j2.json", "name": "ii–V–i (minor)", "category": "jazz" },
+    { "id": "j3", "file": "j3.json", "name": "I–vi–ii–V", "category": "jazz" },
+    { "id": "j4", "file": "j4.json", "name": "iii–vi–ii–V–I", "category": "jazz" },
+    { "id": "j5", "file": "j5.json", "name": "I–VI7–ii–V turnaround", "category": "jazz" },
+    { "id": "j6", "file": "j6.json", "name": "Backdoor ii–V", "category": "jazz" },
+    { "id": "j7", "file": "j7.json", "name": "Tritone-substitution ii–V–I", "category": "jazz" },
+    {
+      "id": "j8",
+      "file": "j8.json",
+      "name": "Diatonic cycle to the relative minor",
+      "category": "jazz"
+    },
+    { "id": "m1", "file": "m1.json", "name": "Dorian vamp", "category": "modal" },
+    { "id": "m2", "file": "m2.json", "name": "Mixolydian vamp", "category": "modal" },
+    { "id": "m3", "file": "m3.json", "name": "Phrygian vamp", "category": "modal" },
+    { "id": "m4", "file": "m4.json", "name": "Lydian vamp", "category": "modal" },
+    { "id": "m5", "file": "m5.json", "name": "Aeolian vamp", "category": "modal" },
+    { "id": "m6", "file": "m6.json", "name": "Modal half-step shift", "category": "modal" },
+    { "id": "m7", "file": "m7.json", "name": "Locrian vamp", "category": "modal" }
+  ]
+}

@@ -4,7 +4,7 @@
 |---|---|
 | **Status** | Draft v0.5 — OQ-1, OQ-3, OQ-5, OQ-8, OQ-9, OQ-11, OQ-12 resolved; **Linux dropped from the supported platforms (2026-11-08)**; for review |
 | **Date** | 2026-11-08 |
-| **Related docs** | implementation.md, progress.md, testing.md, gap-analysis.md, agent-prompts.md (to follow) |
+| **Related docs** | implementation.md, progress.md, testing.md, gap-analysis.md, file-formats.md, agent-prompts.md (to follow) |
 
 ---
 

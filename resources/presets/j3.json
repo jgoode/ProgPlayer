@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "j3",
+  "name": "I–vi–ii–V",
+  "category": "jazz",
+  "builtIn": true,
+  "homeScaleTypes": ["major"],
+  "timeSignature": "4/4",
+  "chords": [
+    { "degree": 1, "quality": "maj7", "durationBeats": 4 },
+    { "degree": 6, "quality": "m7", "durationBeats": 4 },
+    { "degree": 2, "quality": "m7", "durationBeats": 4 },
+    { "degree": 5, "quality": "7", "durationBeats": 4 }
+  ]
+}

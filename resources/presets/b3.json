@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "b3",
+  "name": "12-bar minor blues",
+  "category": "blues",
+  "builtIn": true,
+  "homeScaleTypes": ["naturalMinor"],
+  "timeSignature": "4/4",
+  "chords": [
+    { "degree": 1, "quality": "m7", "durationBeats": 4 },
+    { "degree": 1, "quality": "m7", "durationBeats": 4 },
+    { "degree": 1, "quality": "m7", "durationBeats": 4 },
+    { "degree": 1, "quality": "m7", "durationBeats": 4 },
+    { "degree": 4, "quality": "m7", "durationBeats": 4 },
+    { "degree": 4, "quality": "m7", "durationBeats": 4 },
+    { "degree": 1, "quality": "m7", "durationBeats": 4 },
+    { "degree": 1, "quality": "m7", "durationBeats": 4 },
+    { "degree": 6, "alteration": -1, "quality": "7", "durationBeats": 4 },
+    { "degree": 5, "quality": "7", "durationBeats": 4 },
+    { "degree": 1, "quality": "m7", "durationBeats": 4 },
+    { "degree": 5, "quality": "7", "durationBeats": 4 }
+  ]
+}

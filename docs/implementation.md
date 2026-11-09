@@ -5,7 +5,7 @@
 | **Status** | Draft v0.1 — for review |
 | **Date** | 2026-11-03 |
 | **Depends on** | requirements.md (v0.2) |
-| **Companion docs** | progress.md, testing.md, gap-analysis.md, agent-prompts.md (to follow) |
+| **Companion docs** | progress.md, testing.md, gap-analysis.md, file-formats.md, agent-prompts.md (to follow) |
 
 This plan turns the requirements into an ordered set of phases. Each phase ends with something runnable and a defined exit check. Requirement IDs (FR-, NFR-, etc.) refer to requirements.md. Items marked **Proposed** are recommendations to confirm in Phase 0 or settle by a spike in Phase 1.
 
@@ -173,6 +173,8 @@ Tasks: Session/Section/Progression types and validation; timing model for bars, 
 
 Covers: FR-ARR-1..6, FR-LIB-1/5, FR-TMP-3/4, FR-IO-1, FR-IO-3 (core).
 **Exit:** property and golden tests on timelines (note counts, durations, bar boundaries) for all time signatures; round-trip tests for session files; an SMF exported from the timeline parses correctly in a reference parser.
+
+**Delivered 2026-11-09.** The arrangement model, the bar/beat model, the timeline compiler, the 29 built-in presets, the versioned file formats and the SMF writer are implemented in `src/core/arrangement/`, `src/core/compiler/` and `src/core/formats/`. The file format is documented in `docs/file-formats.md`, and **G-05, G-06 and G-07 (numbering half) are closed** — see the decision log in `progress.md`. Two points the implementation settled explicitly: a **beat is always a quarter note** (480 ticks) in every meter, so the OQ-5 dotted-quarter tempo beat of 6/8 is a click and grouping concern rather than a chord-duration unit; and the **legal chord-split positions are kept distinct from the OQ-5 accent groups**, so a two-chords-per-bar split stays possible in every meter while a 7/8 change cannot land on a weak eighth.
 
 ### Phase 4 — Playback engine and walking skeleton (L)
 

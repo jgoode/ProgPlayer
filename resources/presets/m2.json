@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "m2",
+  "name": "Mixolydian vamp",
+  "category": "modal",
+  "builtIn": true,
+  "homeScaleTypes": ["mixolydian"],
+  "timeSignature": "4/4",
+  "chords": [
+    { "degree": 1, "quality": "", "durationBeats": 8 },
+    { "degree": 7, "alteration": -1, "quality": "", "durationBeats": 8 }
+  ]
+}

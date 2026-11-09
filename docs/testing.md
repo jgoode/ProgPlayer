@@ -345,6 +345,30 @@ application code never imports it, the golden tables are committed as JSON,
 and the generator (`tests/fixtures/golden/generate.mjs`) is the only file that
 uses the oracle.
 
+### 12.3 Phase 3 test inventory (arrangement, compiler, file formats)
+
+| Layer | Test | File | Checks |
+|---|---|---|---|
+| L1 | Bar/beat model | `src/core/arrangement/meter.test.ts` | The five meters' bar lengths, the OQ-5 groupings, the click pattern and accent strengths, and the legal chord-split positions |
+| L1 | Compiler | `src/core/compiler/compile.test.ts` | Note events per part and channel, the bass below the chords, the marker kinds, and the compiler's rejections of an illegal split and a section that does not fill whole bars |
+| L1 | Golden timelines | `src/core/compiler/golden.test.ts` | The three arrangements the phase exit check names — a single-section loop, a three-section arrangement and a 7/8 arrangement — compared exactly, including the event order within a tick |
+| L1 | Timeline properties | `src/core/compiler/timeline.property.test.ts` | `fast-check` properties over generated valid sessions in all five meters: positive whole-number durations, no overlapping chords within a part, consecutive bar numbering, the count-in entirely before tick 0, one click per beat per bar, every chord change on a legal split, and compilation determinism |
+| L1 | Session round trip | `src/core/arrangement/roundtrip.test.ts` | A session survives migrate → validate → JSON unchanged; the loaded session compiles to the same timeline; every field survives; a preset round-trips; invalid documents produce a `ValidationError` naming the field; a 500-run fuzz of byte mutations never throws an unexpected error type |
+| L1 | Schema and migration | `src/core/arrangement/schema.test.ts` | The session and preset schemas accept valid documents and reject invalid ones naming the offending field; the generated JSON Schema's required fields match what the validator enforces; a newer `schemaVersion` is rejected naming both versions; a document with no usable version is rejected; the migration mechanism runs a synthetic chain in order, skips an already-applied step, and reports a gap; the musical validator rejects a chord change that is not a legal split |
+| L1 | SMF writer | `src/core/formats/smf.test.ts` | The written file parses in the independent `midi-file` reference parser: a type-1 header at 480 ticks/beat, one named track per part plus the conductor track, the tempo and time signature on the conductor track, a track name at the start and an end-of-track marker at the end of every track, the note data reconstructed from the parsed deltas, the per-part channel assignment, and the count-in shift |
+| L1 | Built-in presets | `tests/unit/built-in-presets.test.ts` | The library ships 29 presets in Appendix A order, with the four categories, whole-bar durations in 4/4 and unique ids and file names |
+| L1 | Preset content | `tests/unit/built-in-preset-content.test.ts` | Each generated preset carries the name, home scale types and chords of Appendix A, chord for chord |
+| L1 | Preset end-to-end | `tests/unit/preset-to-smf.test.ts` | Every one of the 29 built-in presets is loaded from `resources/presets/`, put into a session, compiled to a timeline and written as an SMF that the reference parser accepts — so a preset that cannot be played is caught |
+| L1 | Import boundaries | `tests/unit/import-boundaries.test.ts` | The layers may import only what the boundary rule allows, and an unapproved external is rejected in the core |
+| L1 | Core purity | `tests/unit/core-purity.test.ts` | The core imports nothing outside `src/core` — checked on the TypeScript AST, so a word in a comment is not a violation and a shadowed name is not the global |
+| L1 | Format documentation | `tests/unit/file-formats-doc.test.ts` | `docs/file-formats.md` names every field the schemas require, every supported time signature, the schema version, the tick resolution and the marker kinds — so the published document cannot drift from the code |
+
+**Reference-parser independence.** `midi-file` and `fast-check` are
+development dependencies only. The application code never imports them, the
+SMF writer is hand-written in `src/core/formats/smf.ts`, and the reference
+parser is what proves the writer's output is a real Standard MIDI File rather
+than a file this project happens to agree with.
+
 ## 13. Entry and exit criteria per phase
 
 | Phase | Entry | Exit |

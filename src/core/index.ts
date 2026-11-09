@@ -3,5 +3,8 @@
  * imports are allowed here. The lint configuration enforces that rule.
  */
 
+export * from './arrangement';
+export * from './compiler';
 export * from './contracts/api';
+export * from './formats';
 export * from './theory';

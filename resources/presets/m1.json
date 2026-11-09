@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "m1",
+  "name": "Dorian vamp",
+  "category": "modal",
+  "builtIn": true,
+  "homeScaleTypes": ["dorian"],
+  "timeSignature": "4/4",
+  "chords": [
+    { "degree": 1, "quality": "m7", "durationBeats": 8 },
+    { "degree": 4, "quality": "7", "durationBeats": 8 }
+  ]
+}
