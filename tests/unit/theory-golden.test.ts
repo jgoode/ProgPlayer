@@ -8,6 +8,7 @@ import { resolveProgression } from '@core/theory/degree';
 import { pitchClassNumber } from '@core/theory/pitch';
 import { generateScale } from '@core/theory/scales';
 import type { DegreeChord, Letter, PitchClass, ScaleType } from '@core/theory/types';
+import { DEFAULT_VOICING_RULES, voiceProgression } from '@core/theory/voicing';
 
 const goldenDirectory = fileURLToPath(new URL('../fixtures/golden/', import.meta.url));
 
@@ -131,6 +132,27 @@ describe('golden presets', () => {
     for (const [id, definition] of Object.entries(presetDefinitions)) {
       for (const chord of definition.chords) {
         expect(supported[chord.quality] === true, `${id} ${chord.quality}`).toBe(true);
+      }
+    }
+  });
+
+  it('voices every preset in every key with the bass below the chord part', () => {
+    for (const [id, definition] of Object.entries(presetDefinitions)) {
+      for (const tonicName of CANONICAL_TONICS) {
+        const tonic = parseTonic(tonicName);
+        const resolved = resolveProgression(tonic, definition.chords);
+        const voicings = voiceProgression(resolved.map((item) => item.chord));
+        for (const [index, voicing] of voicings.entries()) {
+          const label = `${id} ${tonicName} ${index}`;
+          expect(voicing.notes[0], label).toBeGreaterThan(voicing.bass);
+          expect(voicing.notes[0], label).toBeGreaterThanOrEqual(DEFAULT_VOICING_RULES.chordLow);
+          expect(voicing.notes.at(-1), label).toBeLessThanOrEqual(DEFAULT_VOICING_RULES.chordHigh);
+          expect(voicing.bass, label).toBeGreaterThanOrEqual(DEFAULT_VOICING_RULES.bassLow);
+          expect(voicing.bass, label).toBeLessThanOrEqual(DEFAULT_VOICING_RULES.bassHigh);
+          expect(voicing.notes.at(-1)! - voicing.notes[0]!, label).toBeLessThanOrEqual(
+            DEFAULT_VOICING_RULES.closeSpan,
+          );
+        }
       }
     }
   });

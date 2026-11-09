@@ -15,14 +15,14 @@ describe('progression voicing', () => {
       buildChord(C, 'maj7'),
     ]);
     expect(voicings.map((voicing) => voicing.notes)).toEqual([
-      [62, 65, 69, 72],
-      [62, 65, 67, 71],
-      [64, 67, 71, 72],
+      [50, 53, 57, 60],
+      [50, 53, 55, 59],
+      [52, 55, 59, 60],
     ]);
   });
 
-  it('prefers root position for the first chord when the root is near middle C', () => {
+  it('prefers root position for the first chord when the root is near the chord centre', () => {
     const voicings = voiceProgression([buildChord(C, 'maj7')]);
-    expect(voicings[0]?.notes).toEqual([60, 64, 67, 71]);
+    expect(voicings[0]?.notes).toEqual([48, 52, 55, 59]);
   });
 });

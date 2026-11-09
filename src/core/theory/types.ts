@@ -132,6 +132,10 @@ export interface VoicingRules {
   /** Inclusive MIDI bounds for the bass part. */
   readonly bassLow: number;
   readonly bassHigh: number;
+  /** MIDI note the chord part is centred on when a progression starts. */
+  readonly chordCentre: number;
+  /** MIDI note the bass root is placed closest to. */
+  readonly bassCentre: number;
   /** Maximum span of a close-position voicing in semitones. */
   readonly closeSpan: number;
 }

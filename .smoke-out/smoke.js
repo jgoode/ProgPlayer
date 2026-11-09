@@ -658,10 +658,12 @@ function getChordScaleHints(chord, tonic2, scaleType) {
   };
 }
 const DEFAULT_VOICING_RULES = {
-  chordLow: 55,
-  chordHigh: 84,
+  chordLow: 40,
+  chordHigh: 91,
   bassLow: 28,
-  bassHigh: 52,
+  bassHigh: 39,
+  chordCentre: 48,
+  bassCentre: 36,
   closeSpan: 24
 };
 const VOICING_RULES = [
@@ -772,10 +774,16 @@ function closePositionCandidates(chord, rules = DEFAULT_VOICING_RULES) {
   }
   return candidates;
 }
-function selectVoicing(chord, previous = [], rules = DEFAULT_VOICING_RULES) {
-  const candidates = closePositionCandidates(chord, rules);
-  if (candidates.length === 0) {
+function selectVoicing(chord, previous = [], rules = DEFAULT_VOICING_RULES, minimumNote = rules.chordLow) {
+  const allCandidates = closePositionCandidates(chord, rules);
+  if (allCandidates.length === 0) {
     throw new RangeError(`No close-position voicing fits the register for ${chord.quality}`);
+  }
+  const candidates = allCandidates.filter((candidate) => candidate.lowest >= minimumNote);
+  if (candidates.length === 0) {
+    throw new RangeError(
+      `No close-position voicing fits above MIDI ${minimumNote} for ${chord.quality}`
+    );
   }
   let best = null;
   let bestSecondary = Number.POSITIVE_INFINITY;
@@ -785,7 +793,7 @@ function selectVoicing(chord, previous = [], rules = DEFAULT_VOICING_RULES) {
     );
     const rootNote = candidate.notes[rootIndex < 0 ? 0 : rootIndex];
     const isFirst = previous.length === 0;
-    const cost = isFirst ? Math.abs(rootNote - 60) : voiceLeadingCost(previous, candidate.notes);
+    const cost = isFirst ? Math.abs(rootNote - rules.chordCentre) : voiceLeadingCost(previous, candidate.notes);
     const secondary = isFirst ? rootIndex === 0 ? 0 : 1 : candidate.lowest;
     const scored = { ...candidate, cost };
     if (best === null || scored.cost < best.cost || scored.cost === best.cost && secondary < bestSecondary) {
@@ -803,7 +811,7 @@ function selectBassNote(chord, rules = DEFAULT_VOICING_RULES) {
     if ((note % 12 + 12) % 12 !== rootPitchClass) {
       continue;
     }
-    const distance = Math.abs(note - 48);
+    const distance = Math.abs(note - rules.bassCentre);
     if (distance < bestDistance) {
       best = note;
       bestDistance = distance;
@@ -815,8 +823,9 @@ function selectBassNote(chord, rules = DEFAULT_VOICING_RULES) {
   return best;
 }
 function voiceChord(chord, previous = [], rules = DEFAULT_VOICING_RULES) {
-  const notes = selectVoicing(chord, previous, rules);
-  return { notes, bass: selectBassNote(chord, rules) };
+  const bass = selectBassNote(chord, rules);
+  const notes = selectVoicing(chord, previous, rules, bass + 1);
+  return { notes, bass };
 }
 function voiceProgression(chords, rules = DEFAULT_VOICING_RULES) {
   const voicings2 = [];

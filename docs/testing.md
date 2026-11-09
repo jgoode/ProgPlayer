@@ -196,16 +196,23 @@ no longer a supported platform, so it is not part of this matrix — dropped
 **M-7 Listening review.** A musician reviews voicings across all presets in at least four keys and rates them (acceptable / awkward / wrong); awkward and wrong cases become defects against the voicing rules.
 
 The current rule defaults are documented in `docs/voicing-rules.md`; §7 of that
-document lists the nine questions the review must answer. Minimum coverage:
+document records the nine questions, the answers given on 2026-11-08 and the
+decision taken for each. The questions are settled at the rule level; this
+procedure is the **listening** pass over the resulting sound. Minimum
+coverage:
 
 - Keys: at least four of the 12 tonics, including one sharp key and one flat
   key (e.g. C, G, D♭ and B♭).
 - Presets: all 29 Appendix A presets.
 - Ratings: every preset × key combination is rated acceptable, awkward or
   wrong, with a note for anything not acceptable.
-- Checks: chord register (G3–C6), bass register (E1–E3), the dropped 5th on
+- Checks: chord register (E2–G6, centred on C3), bass register (E1–E♭2,
+  centred on C2), the bass sitting below the chord part, the dropped 5th on
   9th-and-above chords, the dropped unaltered 11th over a major third, and
   the size of the jumps between successive voicings.
+- Checks: whether the low end is audible on laptop speakers — the chord
+  register reaches down to E2 and the bass sits in the bass guitar's lowest
+  octave, which small speakers may not reproduce.
 - Outcome: awkward and wrong cases become defects against the rule table, and
   the rules, the worked examples in `docs/voicing-rules.md` and the voicing
   tests are updated together.

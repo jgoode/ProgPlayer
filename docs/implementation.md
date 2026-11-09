@@ -104,7 +104,7 @@ Import rules (enforced by lint/dependency-cruiser): `core` imports nothing outsi
 - Pitch classes with explicit spelling (letter + accidental), so G♭ major and F♯ major are distinct (FR-KEY-1, FR-CHD-2).
 - Scale generation for major, three minors and the seven modes from interval patterns.
 - Chord formulas as data (quality → intervals/alterations); parser/formatter for chord names.
-- **Voicing:** a small rule set (Proposed): close position in the chord register; choose the inversion with minimal movement from the previous chord; for chords with a 9th or higher, drop the 5th and (over a major third) the 11th unless altered. Bass plays the root in the bass register. A rule table is documented and reviewed by ear in Phase 2.
+- **Voicing:** a small rule set (Proposed): close position in the chord register (E2–G6, centred on C3); choose the inversion with minimal movement from the previous chord; for chords with a 9th or higher, drop the 5th and (over a major third) the 11th unless altered. Bass plays the root in the bass register (E1–E♭2, centred on C2), always below the chord part. A rule table is documented and reviewed by ear in Phase 2 (`docs/voicing-rules.md`).
 - **Chord-scale hints:** a data-driven table (chord quality → suggested scale/mode, plus the in-key scale), kept in a JSON file so later iterations can expand it without code changes (OQ-8).
 - **Fretboard:** pure function from (chord tones, tuning, fret range) → list of fret positions; standard tuning E A D G B E, default 15 frets (adjustable) (FR-UI-2).
 

@@ -4,12 +4,14 @@ import { buildChord } from '@core/theory/chords';
 import { pitchClassNumber } from '@core/theory/pitch';
 import {
   closePositionCandidates,
+  countVoiceCrossings,
   DEFAULT_VOICING_RULES,
   retainedFormulaDegrees,
   selectBassNote,
   voiceChord,
   voiceProgression,
 } from '@core/theory/voicing';
+import type { Letter } from '@core/theory/types';
 
 const C = { letter: 'C', alteration: 0 } as const;
 
@@ -92,6 +94,69 @@ describe('voicing rules', () => {
       expect(bass).toBeLessThanOrEqual(DEFAULT_VOICING_RULES.bassHigh);
       expect(((bass % 12) + 12) % 12).toBe(pitchClassNumber(chord.root));
     }
+  });
+
+  it('can play a bass note for every one of the twelve roots', () => {
+    // Regression: the originally proposed E1-C2 bass register (28-36) holds
+    // only nine pitch classes, so C#, D and Eb roots had no bass note at all
+    // and threw instead of voicing.
+    const roots: readonly { letter: Letter; alteration: number }[] = [
+      { letter: 'C', alteration: 0 },
+      { letter: 'C', alteration: 1 },
+      { letter: 'D', alteration: 0 },
+      { letter: 'E', alteration: -1 },
+      { letter: 'E', alteration: 0 },
+      { letter: 'F', alteration: 0 },
+      { letter: 'F', alteration: 1 },
+      { letter: 'G', alteration: 0 },
+      { letter: 'A', alteration: -1 },
+      { letter: 'A', alteration: 0 },
+      { letter: 'B', alteration: -1 },
+      { letter: 'B', alteration: 0 },
+    ];
+    for (const root of roots) {
+      const bass = selectBassNote(buildChord(root, ''));
+      expect(bass).toBeGreaterThanOrEqual(DEFAULT_VOICING_RULES.bassLow);
+      expect(bass).toBeLessThanOrEqual(DEFAULT_VOICING_RULES.bassHigh);
+      expect(((bass % 12) + 12) % 12).toBe(pitchClassNumber(root));
+    }
+  });
+
+  it('keeps the bass below the chord part', () => {
+    // Regression: with the chord register widened to E2, a chord could be
+    // voiced below the bass line, leaving the bass sitting on top of the
+    // block. The bass must always be the lowest sounding pitch.
+    const chords = [
+      buildChord({ letter: 'B', alteration: -1 }, 'maj7'),
+      buildChord({ letter: 'D', alteration: 0 }, 'm7'),
+      buildChord({ letter: 'G', alteration: 0 }, '7'),
+      buildChord({ letter: 'C', alteration: 0 }, 'maj7'),
+    ];
+    const voicings = voiceProgression(chords);
+    for (const voicing of voicings) {
+      expect(voicing.notes[0]).toBeGreaterThan(voicing.bass);
+    }
+  });
+
+  it('counts crossing voices between two voicings', () => {
+    // No crossing: both voices keep their order.
+    expect(countVoiceCrossings([60, 64], [61, 65])).toBe(0);
+    // The voices swap order: the candidate's lower note matches the
+    // previous upper voice and vice versa.
+    expect(countVoiceCrossings([60, 64], [63, 61])).toBe(1);
+    // Different voice counts cannot be compared by rank.
+    expect(countVoiceCrossings([60, 64], [61])).toBe(0);
+  });
+
+  it('never selects a voicing whose voices cross', () => {
+    // The symmetric nearest-note cost cannot choose a crossing candidate:
+    // the nearest-note match that crosses is always more expensive than the
+    // uncrossed alternative.
+    const first = voiceChord(buildChord(C, 'maj7'));
+    const second = voiceChord(buildChord({ letter: 'G', alteration: 0 }, '7'), first.notes);
+    const third = voiceChord(buildChord(C, 'maj7'), second.notes);
+    expect(countVoiceCrossings(first.notes, second.notes)).toBe(0);
+    expect(countVoiceCrossings(second.notes, third.notes)).toBe(0);
   });
 
   it('voices every progression chord inside the register', () => {
