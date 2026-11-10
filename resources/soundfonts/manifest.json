@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "tool": "sf2-cutter 0.1.5",
+  "vorbisQuality": "0.4",
+  "fonts": [
+    {
+      "id": "UprightPianoKW",
+      "part": "chords",
+      "name": "Upright Piano KW",
+      "source": "piano/UprightPianoKW-small-SF2-20190703/UprightPianoKW-small-20190703.sf2",
+      "sourceSha256": "cf2a98eb38a32c4954b4b6e2caae4112d62dd8e892eceefdd7942b0e7d01ac2f",
+      "output": "UprightPianoKW.sf3",
+      "outputSha256": "57e3cfadec386e591a5e5fef1e21c9f67d6580fac78161142b0837a2f44c7d96",
+      "outputBytes": 770174,
+      "licence": "LICENSES/UprightPianoKW-CC0.txt"
+    },
+    {
+      "id": "FingerBassYR",
+      "part": "bass",
+      "name": "Finger Bass YR",
+      "source": "bass/FingerBassYR SF2-20190930/FingerBassYR 20190930.sf2",
+      "sourceSha256": "bd1332696f61c0cb254ce7f202fb6b945ff46ccb1dcdd62e345a50bde3afb165",
+      "output": "FingerBassYR.sf3",
+      "outputSha256": "63dde7f126dbdb14a30c85e98cbe1713010fd97f60b78c255f4b14918a3ed3c4",
+      "outputBytes": 280568,
+      "licence": "LICENSES/FingerBassYR-LICENSE.txt"
+    }
+  ]
+}

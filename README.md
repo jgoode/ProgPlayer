@@ -6,9 +6,15 @@ backing track. The v1 product plays sustained block chords, a root-note bass
 line and a metronome click through a built-in SoundFont synthesiser and/or MIDI
 out, with separate channels for chords, bass and click plus MIDI clock.
 
-**Current state: Phase 0 (bootstrap).** The app opens a hardened Electron
-window showing "PracticePlayer". No audio, MIDI or music-theory features exist
-yet — they land in later phases.
+**Current state: Phase 4 (playback engine and walking skeleton).** The app
+plays a chosen preset in a chosen key and scale at a chosen tempo through the
+built-in SoundFont synthesiser: block chords, a root-note bass line and a
+metronome click, with a look-ahead scheduler driven by a Worker timer. The
+minimal UI offers the key, the scale, the tempo, a preset picker and
+play/stop. MIDI out, export and the full UI land in later phases.
+
+The playback behaviour — what you hear, how the timing works and what the
+transport does — is documented in [docs/playback.md](docs/playback.md).
 
 ## Repository layout
 
@@ -96,4 +102,5 @@ MIT-compatible; the register lives in `docs/gap-analysis.md` §4.
 | `docs/progress.md`       | Task tracker, decisions, changelog            |
 | `docs/testing.md`        | Test strategy and manual device procedures    |
 | `docs/gap-analysis.md`   | Open gaps and the dependency/licence register |
+| `docs/playback.md`       | What the playback does, for users             |
 | `docs/adr/`              | Architecture decision records                 |

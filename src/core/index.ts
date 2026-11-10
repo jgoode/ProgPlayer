@@ -7,4 +7,6 @@ export * from './arrangement';
 export * from './compiler';
 export * from './contracts/api';
 export * from './formats';
+export * from './scheduler';
+export * from './session';
 export * from './theory';

@@ -45,7 +45,10 @@ const ALLOWED_EXTERNALS = {
   // layer stays pure TypeScript. The licence is recorded in
   // `docs/gap-analysis.md` §4 (MIT).
   core: ['zod'],
-  audio: [],
+  // `spessasynth_core` is the SoundFont engine chosen by ADR-0002. It is
+  // imported only by the AudioWorklet, which runs in its own realm, and
+  // its licence (Apache-2.0) is recorded in `docs/gap-analysis.md` §4.
+  audio: ['spessasynth_core'],
   midi: [],
   renderer: ['*'],
   main: ['electron', 'node:'],

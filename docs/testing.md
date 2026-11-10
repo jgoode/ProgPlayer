@@ -229,6 +229,22 @@ or dropped; it is not shipped. The ratings are recorded in
 every bundled bank has a recorded rating. Automated listening quality is out of
 scope for v1 (`testing.md` §1), so this procedure is the evidence.
 
+**Phase 4 status (2026-11-10).** Two of the shortlisted banks are now
+bundled — *Upright Piano KW* (chords) and *Finger Bass YR* (bass) — and both
+have been converted to SF3 by a pinned, byte-reproducible build step. **M-8
+has not been run**, so neither bank has a recorded rating and **G-33 stays
+open**, as does the audition half of **G-31**.
+
+**The timing evidence that is still missing (G-36).** Every automated test in
+this repository proves the scheduler is consistent with *itself*: the soak
+runs against a simulated clock, and the live-app check measured the worklet's
+output **level** (peak 0.059, RMS 0.023), which says nothing about *when* a
+note was emitted. **AT-1, AT-3 and AT-4 are therefore the only remaining
+evidence** for the scheduled timing: run them with speakers and a reference
+metronome on Windows and macOS, and record the result here. A systematic
+offset that made the scheduler and the engine agree with each other while
+both were wrong relative to the wall clock would pass every automated test.
+
 ## 8. Performance and timing budgets
 
 Initial targets (to be tightened or relaxed with measurements from spikes S1/S2):
@@ -239,7 +255,7 @@ Initial targets (to be tightened or relaxed with measurements from spikes S1/S2)
 | MIDI out jitter (p99) | Under 5 ms on every supported OS (NFR-TIM-2) — **measured: 1.10 ms on Windows** (typical case; 1.10–50.00 ms across five runs, one driver stall) **and 0.10 ms on macOS**, 0 late sends across 19 152 sends on Windows and 18 240 on macOS. Real-hardware runs still outstanding (gap G-20) |
 | MIDI look-ahead window | At least 300 ms, and larger than the worst expected main-thread stall (S2: a 100 ms window produced 3.51 % late sends under a 120 ms block; a 300 ms window produced none — gap G-21) |
 | Late MIDI sends (message handed to the driver after its intended time) | 0 in every configuration, including a blocked main thread and a minimised window |
-| Late scheduler events during a 10-minute soak | 0 events later than the look-ahead window |
+| Late scheduler events during a 10-minute soak | 0 events later than the look-ahead window — **measured (simulated, 2026-11-10): 3 605 events, 0 late, 0 maximum lateness, 0 drift across 75 wraps.** The external-reference check is still open (**G-36**) |
 | Audio dropouts during soak (low-tier machine) | 0 audible; 0 reported underruns |
 | CPU use during playback (typical machine) | Under 25% of one core average (to be confirmed by S1) |
 | Memory with all bundled SoundFonts loaded | Within the budget set in spike S4 |
@@ -368,6 +384,35 @@ development dependencies only. The application code never imports them, the
 SMF writer is hand-written in `src/core/formats/smf.ts`, and the reference
 parser is what proves the writer's output is a real Standard MIDI File rather
 than a file this project happens to agree with.
+
+### 12.4 Phase 4 test inventory (playback engine, synth, minimal UI)
+
+| Layer | Test | File | Checks |
+|---|---|---|---|
+| L1 | Tempo map | `src/core/scheduler/tempo-map.test.ts` | The tick↔time conversions at the initial tempo, the count-in extrapolated backwards, a tempo change from its anchor onwards, the already-scheduled times unchanged when the tempo changes, several tempo changes, an anchor replaced when the tempo changes twice before the next beat, backwards and empty maps rejected, the 30/300 BPM extremes, and the next beat boundary |
+| L1 | Transport | `src/core/scheduler/transport.test.ts` | The states, the count-in on a fresh play and not on a resume, the resume aligned to the beat, the stop back to the start, the loop-region resolution for the whole arrangement, a section and a bar range, a section covering all its repeats, and a region change at runtime (G-07) |
+| L1 | Scheduler | `src/core/scheduler/scheduler.test.ts` | **Every scenario in §4.4**: the events in order at the correct times, nothing beyond the look-ahead window, the arrangement ending, the pause releasing the held notes, no event lost or duplicated across a pause and a resume, the stop releasing every note and clearing the pending events, the count-in and the bar numbering, the seamless loop for the whole arrangement, a section, a bar range, a one-bar region and a one-chord region, a region change at the next bar boundary, the tempo change from the next beat, the 30 and 300 BPM extremes, the late timer catching up without a burst, the sink failing mid-play, and the event ordering |
+| L1 | Render-quantum arithmetic | `src/core/scheduler/quantum.test.ts` | The snapped target lands exactly on a 128-frame boundary, computed with the engine's own accumulation (G-15) |
+| L1 | Soak harness | `src/core/scheduler/soak.ts` | The harness itself: it runs the scheduler against a simulated clock and reports the events scheduled, the late events, the maximum lateness, the loop wraps and the drift |
+| L1 | Soak | `src/core/scheduler/soak.test.ts` | **Ten simulated minutes**: 0 late events, 0 maximum lateness, 0 late timer fires and **0 drift** at every wrap across 75 wraps; no event dropped across a wrap; every event inside the look-ahead window; the same result without a loop |
+| — | **Recorded metrics (2026-11-10, Windows)** | `src/core/scheduler/soak.ts` | **Ten-minute simulated soak: 3 605 events scheduled, 0 late events, 0 maximum lateness, 0 late timer fires, 0 drift, 75 loop wraps, 0 dropped events.** The live app's audio output was measured separately by tapping an analyser onto the running `AudioWorkletNode` in the built Electron app: **peak amplitude 0.059, RMS 0.023**, with the transport at "Bar 3, beat 2", 35 events scheduled and 0 late. **Unverified:** the late-event metric against real hardware on macOS, and the audible quality of the two banks (G-33) |
+| L1 | Click source | `src/audio/click-source.test.ts` | The envelope starts and ends silent, rises within a millisecond, decays monotonically, never exceeds the peak level, and the accented downbeat uses a higher pitch |
+| L1 | Worker timer | `src/audio/worker-timer.test.ts` | The worker is armed with the requested delay, the callback the scheduler gave it runs on the tick, **the callback re-arms the next tick** (the defect that stalled the playback), the cancel and the dispose paths, and no arming after a dispose |
+| L1 | Session from a preset | `src/core/session/from-preset.test.ts` | The preset's chords and duration are kept, the key, scale and tempo come from the caller, the preset's time signature and a one-bar count-in are the defaults, and the result compiles into a four-bar timeline with notes and clicks |
+| L1 | Asset path resolution | `src/main/asset-path.test.ts` | A file inside the asset root resolves; a literal, a percent-encoded and a separator-encoded parent-directory segment are rejected; a malformed escape is rejected; a URL without the scheme is rejected; a query string and a fragment are ignored |
+| L4 | End-to-end | `tests/e2e/smoke.spec.ts` | Against the **built** app: the window opens with the title, the preload API answers, the key/scale/tempo/preset controls render, the 29-preset library loads, **no request leaves the app** except to `file://` and `app-asset://`, the playback starts, the position advances past the count-in and bar by bar, the scheduler schedules events, the stop button works, and the console is free of errors |
+
+**Why the end-to-end test exists.** Four defects in the playback path were
+invisible to the unit tests and were found only by driving the built app:
+the Worker timer dropped the scheduler's callback, the built-in preset
+library was empty because `app.getAppPath()` differs between the dev server
+and the built output, the `app-asset://` fetches were blocked by CORS
+because a `file://` renderer is a different origin, and the SF3 Vorbis
+decoder could not compile its WebAssembly under `script-src 'self'`. The
+unit tests drive the scheduler through a fake clock, so none of them could
+see a real Worker, a real `AudioContext` or a real Content Security Policy.
+The end-to-end test is therefore part of the Phase 4 inventory, not an
+optional extra.
 
 ## 13. Entry and exit criteria per phase
 

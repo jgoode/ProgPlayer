@@ -13,14 +13,18 @@ const alias = {
 
 const strictCsp = [
   "default-src 'self'",
-  "script-src 'self'",
+  // `wasm-unsafe-eval` allows WebAssembly compilation, which the SF3
+  // Vorbis decoder needs. It does not allow `eval()`.
+  "script-src 'self' 'wasm-unsafe-eval'",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data:",
   "font-src 'self'",
-  "connect-src 'self'",
+  // The `app-asset:` scheme serves the bundled SoundFonts and the preset
+  // library (ADR-0005). No remote origin is allowed, so the app makes no
+  // network calls.
+  "connect-src 'self' app-asset:",
   "object-src 'none'",
   "base-uri 'none'",
-  "frame-ancestors 'none'",
 ].join('; ');
 
 /**

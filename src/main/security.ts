@@ -6,14 +6,21 @@ import type { WebPreferences } from 'electron';
  * The renderer is served from local files. `style-src` permits inline styles
  * because React inline styles are used for layout; scripts stay restricted to
  * same-origin files, so no remote or inline script can run.
+ *
+ * `connect-src` permits the `app-asset:` scheme, which serves the bundled
+ * SoundFonts and the preset library (ADR-0005). No remote origin is
+ * allowed, so the app makes no network calls.
  */
 export const contentSecurityPolicy = [
   "default-src 'self'",
-  "script-src 'self'",
+  // `wasm-unsafe-eval` allows WebAssembly compilation, which the SF3
+  // Vorbis decoder needs. It does **not** allow `eval()` or
+  // `new Function()`, so the script policy stays otherwise strict.
+  "script-src 'self' 'wasm-unsafe-eval'",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data:",
   "font-src 'self'",
-  "connect-src 'self'",
+  "connect-src 'self' app-asset:",
   "object-src 'none'",
   "base-uri 'none'",
   "frame-ancestors 'none'",
@@ -28,11 +35,11 @@ export const contentSecurityPolicy = [
  */
 export const developmentContentSecurityPolicy = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  "script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data:",
   "font-src 'self'",
-  "connect-src 'self' ws://localhost:*",
+  "connect-src 'self' app-asset: ws://localhost:*",
   "object-src 'none'",
   "base-uri 'none'",
   "frame-ancestors 'none'",

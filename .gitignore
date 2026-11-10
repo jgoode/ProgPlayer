@@ -51,3 +51,10 @@ spikes/s4/results/
 # Local downloads of the CI packaging artefacts, used to collect the size
 # and first-launch measurements for the S4 report.
 .s4-artifacts/
+
+# The SoundFont build sources: downloaded by
+# `node scripts/fetch-soundfont-sources.mjs` and converted by
+# `node scripts/build-soundfonts.mjs`. The SF2 sources and the conversion
+# tool are 14 MB and 1 MB of binaries that are not committed; the SF3
+# outputs in `resources/soundfonts/` are what the app ships.
+.font-sources/

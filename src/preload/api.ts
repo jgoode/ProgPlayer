@@ -1,4 +1,10 @@
-import { IPC_CHANNELS, type AppInfo, type PracticePlayerApi } from '@core/contracts/api';
+import {
+  IPC_CHANNELS,
+  type AppInfo,
+  type BuiltInPreset,
+  type BundledSoundFont,
+  type PracticePlayerApi,
+} from '@core/contracts/api';
 
 export type Invoke = (channel: string, ...args: unknown[]) => Promise<unknown>;
 
@@ -11,5 +17,11 @@ export type Invoke = (channel: string, ...args: unknown[]) => Promise<unknown>;
 export function createPracticePlayerApi(invoke: Invoke): PracticePlayerApi {
   return {
     getAppInfo: () => invoke(IPC_CHANNELS.getAppInfo) as Promise<AppInfo>,
+    getBundledSoundFonts: () =>
+      invoke(IPC_CHANNELS.getBundledSoundFonts) as Promise<readonly BundledSoundFont[]>,
+    getBuiltInPresets: () =>
+      invoke(IPC_CHANNELS.getBuiltInPresets) as Promise<readonly BuiltInPreset[]>,
+    setPowerSaveBlocker: (active: boolean) =>
+      invoke(IPC_CHANNELS.setPowerSaveBlocker, active) as Promise<void>,
   };
 }

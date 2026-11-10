@@ -30,6 +30,8 @@
     "test:e2e": "pnpm run build && playwright test",
     "audit:deps": "pnpm audit --audit-level high",
     "audit:licenses": "node scripts/check-licenses.mjs",
+    "fonts:fetch": "node scripts/fetch-soundfont-sources.mjs",
+    "fonts:build": "node scripts/build-soundfonts.mjs",
     "spike:s1:fixtures": "node spikes/s1/prepare-fixtures.mjs",
     "spike:s1:build": "vite build --config spikes/s1/worklet/vite.config.ts && vite build --config spikes/s1/vite.config.ts",
     "spike:s1:node": "node spikes/s1/tools/measure-engine.mjs --seconds 600 --out results",

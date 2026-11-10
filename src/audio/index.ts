@@ -1,7 +1,12 @@
 /**
- * `src/audio` will host the synth sink, offline renderer and click source.
+ * The audio layer (P4.6-P4.8).
  *
- * Phase 0 deliberately contains no audio code: the layer exists so that the
- * import boundaries can be enforced and tested from day one.
+ * It hosts the synth sink, the click source and the Worker timer. The
+ * layer may import the core, but the core may not import the audio layer:
+ * the scheduler is pure TypeScript and knows nothing about Web Audio.
  */
-export {};
+
+export * from './click-source';
+export * from './engine-clock';
+export * from './synth-sink';
+export * from './worker-timer';

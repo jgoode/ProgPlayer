@@ -23,10 +23,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
+  gap: 1.25rem;
   min-height: 100vh;
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   text-align: center;
 }
 
@@ -45,4 +44,93 @@ body {
   margin: 0;
   font-size: 0.875rem;
   color: #8f95a3;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #2a2e3a;
+  border-radius: 0.75rem;
+  background: #191c24;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.control-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #8f95a3;
+}
+
+.control select,
+.control input {
+  min-width: 8rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid #343947;
+  border-radius: 0.4rem;
+  background: #10121a;
+  color: inherit;
+  font: inherit;
+}
+
+.control input[type='number'] {
+  width: 8rem;
+}
+
+.control-unit {
+  font-size: 0.75rem;
+  color: #8f95a3;
+}
+
+.transport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.transport button {
+  padding: 0.6rem 1.4rem;
+  border: 1px solid #343947;
+  border-radius: 0.4rem;
+  background: #232733;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.transport button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.transport .play-button {
+  background: #3d6fd4;
+  border-color: #4d7fe4;
+}
+
+.position {
+  min-width: 11rem;
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  color: #d7dae2;
+}
+
+.error {
+  margin: 0;
+  padding: 0.6rem 1rem;
+  border: 1px solid #7a3038;
+  border-radius: 0.4rem;
+  background: #2a1a1e;
+  color: #f3aab2;
+  max-width: 42rem;
 }
